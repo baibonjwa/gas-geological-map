@@ -1,0 +1,914 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\GIS.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\GIS.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\GIS.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\GIS.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7FF2375E-9594-4EE8-A3CD-40CF245E47FA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GIS</RootNamespace>
+    <AssemblyName>GIS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\internalrefs\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\..\packages\Antlr.3.1.3.42154\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.ActiveRecord">
+      <HintPath>..\..\packages\Castle.Activerecord.3.0.0.1\lib\Net40\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.ActiveRecord.Web">
+      <HintPath>..\..\packages\Castle.Activerecord.3.0.0.1\lib\Net40\Castle.ActiveRecord.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Validator">
+      <HintPath>..\..\packages\Castle.Components.Validator.2.5.0\lib\NET40\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Core.2.5.1\lib\NET35\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v13.2.Reporting.Extensions, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="ESRI.ArcGIS.3DAnalyst, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Analyst3DTools, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.AxControls, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\ESRI.ArcGIS.AxControls\10.1.0.0__8fc3cc631e44ad86\ESRI.ArcGIS.AxControls.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\ESRI.ArcGIS.Carto\10.1.0.0__8fc3cc631e44ad86\ESRI.ArcGIS.Carto.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Controls, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ConversionTools, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataInteroperabilityTools, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesFile, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\ESRI.ArcGIS.DataSourcesFile\10.1.0.0__8fc3cc631e44ad86\ESRI.ArcGIS.DataSourcesFile.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesRaster, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\ESRI.ArcGIS.Display\10.1.0.0__8fc3cc631e44ad86\ESRI.ArcGIS.Display.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Editor, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.GeoAnalyst, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\ESRI.ArcGIS.Geodatabase\10.1.0.0__8fc3cc631e44ad86\ESRI.ArcGIS.Geodatabase.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\ESRI.ArcGIS.Geometry\10.1.0.0__8fc3cc631e44ad86\ESRI.ArcGIS.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessing, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessor, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Output, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Server, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SpatialAnalyst, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\ESRI.ArcGIS.System\10.1.0.0__8fc3cc631e44ad86\ESRI.ArcGIS.System.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\ESRI.ArcGIS.SystemUI\10.1.0.0__8fc3cc631e44ad86\ESRI.ArcGIS.SystemUI.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Version, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\ESRI.ArcGIS.Version\10.1.0.0__8fc3cc631e44ad86\ESRI.ArcGIS.Version.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Iesi.Collections.1.0.1\lib\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.3.0.0.4000\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.3.0.0.4000\lib\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Search, Version=0.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Activerecord.3.0.0.1\lib\Net40\NHibernate.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.41.2, Culture=neutral, PublicKeyToken=cab60358ab4081ea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.3.0.0.4000\lib\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainFrm.cs" />
+    <Compile Include="SpecialGraphic\DrawBigFaultageInfo.cs" />
+    <Compile Include="SpecialGraphic\FrmNewXZZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialGraphic\FrmNewXZZ.Designer.cs">
+      <DependentUpon>FrmNewXZZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialGraphic\ToolUpdateXZZ.cs" />
+    <Compile Include="Warning\AlarmAnalysis.cs" />
+    <Compile Include="BasicGraphic\AddAnnotation.cs" />
+    <Compile Include="BasicGraphic\AddBezerLine.cs" />
+    <Compile Include="BasicGraphic\AddBezierCurve.cs" />
+    <Compile Include="BasicGraphic\AddCircle.cs" />
+    <Compile Include="BasicGraphic\AddCircularArc.cs" />
+    <Compile Include="BasicGraphic\AddEllipse.cs" />
+    <Compile Include="BasicGraphic\AddFeatureLine.cs" />
+    <Compile Include="BasicGraphic\AddPoint.cs" />
+    <Compile Include="BasicGraphic\AddPolygon.cs" />
+    <Compile Include="BasicGraphic\AddRectangle.cs" />
+    <Compile Include="BasicGraphic\AddStraightFeatureLine.cs" />
+    <Compile Include="BasicGraphic\AddText.cs" />
+    <Compile Include="BasicGraphic\AddArc.cs" />
+    <Compile Include="BasicGraphic\BTGraphicsRotateElement.cs" />
+    <Compile Include="BasicGraphic\UToolStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BasicGraphic\UToolStatus.Designer.cs">
+      <DependentUpon>UToolStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\DataEditCommon.cs" />
+    <Compile Include="Common\DrawCommon.cs" />
+    <Compile Include="Common\DrawSpecialCommon.cs" />
+    <Compile Include="Common\LayerHelper.cs" />
+    <Compile Include="Common\LicenseInitializer.cs" />
+    <Compile Include="Common\MapPrintCommon.cs" />
+    <Compile Include="Common\MyMapHelp.cs" />
+    <Compile Include="Common\PointsFit2Polyline.cs" />
+    <Compile Include="Common\SDEOperation.cs" />
+    <Compile Include="FileMenu\ExportCADSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileMenu\ExportCADSetup.Designer.cs">
+      <DependentUpon>ExportCADSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileMenu\FrmExploreToShape.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileMenu\FrmExploreToShape.Designer.cs">
+      <DependentUpon>FrmExploreToShape.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GIS_Const.cs" />
+    <Compile Include="GIS_FileMenu.cs" />
+    <Compile Include="GIS_ToolbarBasic.cs" />
+    <Compile Include="GIS_ToolbarEdit.cs" />
+    <Compile Include="GIS_ToolbarModify.cs" />
+    <Compile Include="GIS_ToolbarSpecial.cs" />
+    <Compile Include="GIS_ToolbarView.cs" />
+    <Compile Include="GIS_ToolbarWarning.cs" />
+    <Compile Include="GraphicEdit\AttributeQueryEdit.cs" />
+    <Compile Include="GraphicEdit\FeatureAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicEdit\FeatureAttribute.designer.cs">
+      <DependentUpon>FeatureAttribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicEdit\FeatureClearSelect.cs" />
+    <Compile Include="GraphicEdit\FeatureSelect.cs" />
+    <Compile Include="GraphicEdit\FeatureSelectAll.cs" />
+    <Compile Include="GraphicEdit\MenuFeatureSelect.cs" />
+    <Compile Include="GraphicEdit\MeasureArea.cs" />
+    <Compile Include="GraphicEdit\MeasureDistance.cs" />
+    <Compile Include="GraphicEdit\MeasureResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicEdit\MeasureResult.Designer.cs">
+      <DependentUpon>MeasureResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicEdit\RedoEdit.cs" />
+    <Compile Include="GraphicEdit\SaveEdit.cs" />
+    <Compile Include="GraphicEdit\SnapSetting.cs" />
+    <Compile Include="GraphicEdit\UndoEdit.cs" />
+    <Compile Include="GraphicModify\DeleteFeature.cs" />
+    <Compile Include="GraphicModify\EditCopyCommand.cs" />
+    <Compile Include="GraphicModify\EditCutCommand.cs" />
+    <Compile Include="GraphicModify\EditPasteCommand.cs" />
+    <Compile Include="GraphicModify\ExtendTool.cs" />
+    <Compile Include="GraphicModify\FeatureMoveEdit.cs" />
+    <Compile Include="GraphicModify\MirrorFeature.cs" />
+    <Compile Include="BasicGraphic\InputText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicGraphic\InputText.Designer.cs">
+      <DependentUpon>InputText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicModify\RotateTool.cs" />
+    <Compile Include="GraphicModify\TrimLineTool.cs" />
+    <Compile Include="HdProc\CommonClass.cs" />
+    <Compile Include="HdProc\ConstructParallel.cs" />
+    <Compile Include="HdProc\Global.cs" />
+    <Compile Include="HdProc\QYJSClass.cs" />
+    <Compile Include="HdProc\TddcClass.cs" />
+    <Compile Include="LayerNames.cs" />
+    <Compile Include="LayersManager\LayerSelectable.cs" />
+    <Compile Include="BasicGraphic\LayersList.cs" />
+    <Compile Include="BasicGraphic\LayersListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BasicGraphic\LayersListControl.Designer.cs">
+      <DependentUpon>LayersListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayersManager\LayersManagerLayer.cs" />
+    <Compile Include="LayersManager\LayersManagerMap.cs" />
+    <Compile Include="LayersManager\LayerVisibility.cs" />
+    <Compile Include="LayersManager\LayerVisible.cs" />
+    <Compile Include="LayersManager\MapControlRightButton.cs" />
+    <Compile Include="LayersManager\RemoveLayer.cs" />
+    <Compile Include="LayersManager\ZoomToLayer.cs" />
+    <Compile Include="Common\MDBOperation.cs" />
+    <Compile Include="FileMenu\Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileMenu\Print.Designer.cs">
+      <DependentUpon>Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapPrint\AddTextElement.cs" />
+    <Compile Include="MapPrint\CreateNorthArrow.cs" />
+    <Compile Include="MapPrint\CreateScaleBar.cs" />
+    <Compile Include="MapPrint\SelectElement.cs" />
+    <Compile Include="MapPrint\SymbolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapPrint\TextSetUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapPrint\TextSetUp.designer.cs">
+      <DependentUpon>TextSetUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pageLayout\LayoutBackExtent.cs" />
+    <Compile Include="pageLayout\LayoutFixedZoomIncs.cs" />
+    <Compile Include="pageLayout\LayoutFixedZoomOut.cs" />
+    <Compile Include="pageLayout\LayoutNextExtent.cs" />
+    <Compile Include="pageLayout\LayoutPan.cs" />
+    <Compile Include="pageLayout\LayoutZoom100.cs" />
+    <Compile Include="pageLayout\LayoutZoomIn.cs" />
+    <Compile Include="pageLayout\LayoutZoomOut.cs" />
+    <Compile Include="pageLayout\LayoutZoomWhole.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialGraphic\AddDongshi.cs" />
+    <Compile Include="SpecialGraphic\CollapsePillarsEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialGraphic\CollapsePillarsEntering.Designer.cs">
+      <DependentUpon>CollapsePillarsEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialGraphic\DrawContours.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpecialGraphic\DrawHCLine.cs" />
+    <Compile Include="SpecialGraphic\DrawJJLine.cs" />
+    <Compile Include="SpecialGraphic\DrawJT.cs" />
+    <Compile Include="SpecialGraphic\DrawPoint.cs" />
+    <Compile Include="SpecialGraphic\DrawStopLine.cs" />
+    <Compile Include="SpecialGraphic\DrawTunnels.cs" />
+    <Compile Include="SpecialGraphic\DrawWSHLD.cs" />
+    <Compile Include="SpecialGraphic\DrawWSYCLD.cs" />
+    <Compile Include="SpecialGraphic\DrawWSYLD.cs" />
+    <Compile Include="SpecialGraphic\DrawXLZ.cs" />
+    <Compile Include="SpecialGraphic\DrawXZZ.cs" />
+    <Compile Include="SpecialGraphic\DrawZK1.cs" />
+    <Compile Include="SpecialGraphic\DrawZK2.cs" />
+    <Compile Include="SpecialGraphic\FormCaveSizeInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialGraphic\FormCaveSizeInput.Designer.cs">
+      <DependentUpon>FormCaveSizeInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialGraphic\FrmManageZhzzt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialGraphic\FrmManageZhzzt.Designer.cs">
+      <DependentUpon>FrmManageZhzzt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialGraphic\FrmNewZHZZT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialGraphic\FrmNewZHZZT.Designer.cs">
+      <DependentUpon>FrmNewZHZZT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialGraphic\FrmZhzzt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialGraphic\FrmZhzzt.Designer.cs">
+      <DependentUpon>FrmZhzzt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialGraphic\MakeContours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialGraphic\MakeContours.designer.cs">
+      <DependentUpon>MakeContours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClearView.cs" />
+    <Compile Include="View\ExtentBackCommand.cs" />
+    <Compile Include="View\ExtentForwardCommand.cs" />
+    <Compile Include="View\FixedZoomInCommand.cs" />
+    <Compile Include="View\FixedZoomOutCommand.cs" />
+    <Compile Include="View\FrmGoToXY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmGoToXY.designer.cs">
+      <DependentUpon>FrmGoToXY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FullExtentCommand.cs" />
+    <Compile Include="View\LocalView.cs" />
+    <Compile Include="View\MapRotateTool.cs" />
+    <Compile Include="View\PanTool.cs" />
+    <Compile Include="View\RefreshViewCommand.cs" />
+    <Compile Include="View\ToolbarLocalView.cs" />
+    <Compile Include="View\ZoomInTool.cs" />
+    <Compile Include="View\ZoomOutTool.cs" />
+    <Compile Include="View\ZoomToTool.cs" />
+    <Compile Include="Warning\FlashWarningPoints.cs" />
+    <Compile Include="Warning\FrmWarningPolygon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warning\FrmWarningPolygon.Designer.cs">
+      <DependentUpon>FrmWarningPolygon.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BasicGraphic\UToolStatus.resx">
+      <DependentUpon>UToolStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileMenu\ExportCADSetup.resx">
+      <DependentUpon>ExportCADSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileMenu\FrmExploreToShape.resx">
+      <DependentUpon>FrmExploreToShape.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicEdit\FeatureAttribute.resx">
+      <DependentUpon>FeatureAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicEdit\MeasureResult.resx">
+      <DependentUpon>MeasureResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicGraphic\InputText.resx">
+      <DependentUpon>InputText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicGraphic\LayersListControl.resx">
+      <DependentUpon>LayersListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileMenu\Print.resx">
+      <DependentUpon>Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapPrint\SymbolForm.resx">
+      <DependentUpon>SymbolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapPrint\TextSetUp.resx">
+      <DependentUpon>TextSetUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialGraphic\CollapsePillarsEntering.resx">
+      <DependentUpon>CollapsePillarsEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialGraphic\FormCaveSizeInput.resx">
+      <DependentUpon>FormCaveSizeInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialGraphic\FrmManageZhzzt.resx">
+      <DependentUpon>FrmManageZhzzt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialGraphic\FrmNewZHZZT.resx">
+      <DependentUpon>FrmNewZHZZT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialGraphic\FrmZhzzt.resx">
+      <DependentUpon>FrmZhzzt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialGraphic\MakeContours.resx">
+      <DependentUpon>MakeContours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialGraphic\FrmNewXZZ.resx">
+      <DependentUpon>FrmNewXZZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmGoToXY.resx">
+      <DependentUpon>FrmGoToXY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warning\FrmWarningPolygon.resx">
+      <DependentUpon>FrmWarningPolygon.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\FilePageSet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FilePrint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FilePrintPreview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingCircleTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingEllipseTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingFreehandTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingLineTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingMidpointArcSegmentTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingPointTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingPolygonTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingRectangleTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ElementLine16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ElementText16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddBezerline.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddText.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddCircle.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddCircularArc.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddEllipse.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddFeatureLine.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddPoint.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddPolygon.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddRectangule.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddStraightFeatureLine.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddSpecialPoint.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditCopy16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditCut16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingCircleTool161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingCircleTool32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingEditTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingEllipseTool161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingEllipseTool32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingFreehandTool161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingLineTool161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingLineTool32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingMidpointArcSegmentTool161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingMidpointArcSegmentTool32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingMirrorTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingPointTool161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingPointTool32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingPolygonTool161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingPolygonTool32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingRectangleTool161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingRectangleTool32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingRotateTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingSketchTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditPaste16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditRedo_B_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditUndo_B_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ElementCircle32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ElementEllipse32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ElementLine161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ElementLine32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ElementPolygon32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ElementRectangle32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ElementText161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ElementText32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FilePageSet1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FilePrint1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FilePrintPreview1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GenericBlackDelete16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GenericInformation16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GenericOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GenericSave_B_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GraphBubble16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdentifyTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MeasureAreaTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MeasureTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SelectionClearSelected16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SelectionSelectAll16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SelectionSelectTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SnappingPoint16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TableExcel16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\图片" />
+    <None Include="Resources\空白图片.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GenericGlobeLarge16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GenericRefresh16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GoToXY16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomFixedZoomIn16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomFixedZoomOut16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomInTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomOutTool_B_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomOutTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataFrameRotate16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GenericBlueLeftArrowLongTail16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GenericBlueRightArrowLongTail16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ZoomInTool.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClearView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LocalView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\图片.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\incident.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tuichu.png" />
+    <None Include="Resources\xinjian.png" />
+    <None Include="Resources\zhedian.png" />
+    <None Include="Resources\qiexian.png" />
+    <None Include="Resources\bianxian.png" />
+    <None Include="Resources\dian.png" />
+    <None Include="Resources\duandian.png" />
+    <Content Include="Resources\ElementSelectTool16.png" />
+    <Content Include="Resources\ElementSelectTool32.png" />
+    <None Include="Resources\jiaodian.png" />
+    <Content Include="Resources\MapReferenceScale16.png" />
+    <Content Include="Resources\MapReferenceScale32.png" />
+    <Content Include="Resources\NorthArrow16.png" />
+    <Content Include="Resources\NorthArrow32.png" />
+    <None Include="Resources\zhongdian.png" />
+    <None Include="Resources\zoomto16.png" />
+    <None Include="Resources\LayoutZoom100.png" />
+    <None Include="Resources\LayoutSelectElement16.png" />
+    <None Include="Resources\LayoutPan16.png" />
+    <None Include="Resources\LayoutNextExtent16.png" />
+    <None Include="Resources\LayoutFixedZoomOut16.png" />
+    <None Include="Resources\LayoutFixedZoomIn16.png" />
+    <None Include="Resources\LayoutBackExtent16.png" />
+    <None Include="Resources\LayoutZoomWhole16.png" />
+    <None Include="Resources\LayoutZoomOut16.png" />
+    <None Include="Resources\LayoutZoomIn.png" />
+    <None Include="Resources\EditingTrimTool16.png" />
+    <None Include="Resources\EditingExtendTool16.png" />
+    <None Include="Resources\RotateTool.bmp" />
+    <EmbeddedResource Include="Resources\MirrorFeature.cur" />
+    <EmbeddedResource Include="Resources\RotateTool.cur" />
+    <EmbeddedResource Include="Resources\AddBezierCurve.cur" />
+    <EmbeddedResource Include="Resources\Cross.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibBusiness\LibBusiness.csproj">
+      <Project>{4586C1E2-10A4-47AF-8867-B1B32B0CDEE5}</Project>
+      <Name>LibBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibCommonControl\LibCommonControl.csproj">
+      <Project>{C98CB9D1-8567-4539-B30F-79BF7654727E}</Project>
+      <Name>LibCommonControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibCommonForm\LibCommonForm.csproj">
+      <Project>{e0db63e3-2420-4b72-99f8-776f8ed1d3ef}</Project>
+      <Name>LibCommonForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibCommon\LibCommon.csproj">
+      <Project>{2ebcde4b-a244-4cca-a1ae-1a884d81772b}</Project>
+      <Name>LibCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibConfig\LibConfig.csproj">
+      <Project>{697EED3C-3244-494D-B663-296CC80D4022}</Project>
+      <Name>LibConfig</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibDatabase\LibDatabase.csproj">
+      <Project>{38b3be6b-bd0c-4108-9414-a728f5990a0c}</Project>
+      <Name>LibDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibEntity\LibEntity.csproj">
+      <Project>{28C303D9-18CB-42B3-B0FA-B9B126503176}</Project>
+      <Name>LibEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibGeometry\LibGeometry.csproj">
+      <Project>{a55911aa-ac2b-4c4f-aa2a-ce839bd9afba}</Project>
+      <Name>LibGeometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibSocket\LibSocket.csproj">
+      <Project>{93547539-03E2-49C3-88FC-3CCD81942D5F}</Project>
+      <Name>LibSocket</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

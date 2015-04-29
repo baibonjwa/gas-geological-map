@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{59209FCC-CFF7-4056-A256-CB71293225B1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sys3</RootNamespace>
+    <AssemblyName>sys3</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\GewsPublish\sys3\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>\\192.168.1.119\publish\sys3\</UpdateUrl>
+    <ProductName>sys3-工作面地质测量管理系统</ProductName>
+    <PublisherName>沈阳煤科院</PublisherName>
+    <SuiteName>预警系统</SuiteName>
+    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationVersion>0.10.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\3.GeologyMeasure.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\3.GeologyMeasure.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>29A94DFF9BBCC5DA501B035A19DDBBCDF560D3C7</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>3.GeologyMeasure_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.1.3.42154, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.1.3.42154\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.ActiveRecord, Version=3.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Activerecord.3.0.0.1\lib\Net40\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.ActiveRecord.Web">
+      <HintPath>..\packages\Castle.Activerecord.3.0.0.1\lib\Net40\Castle.ActiveRecord.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Validator, Version=2.5.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Components.Validator.2.5.0\lib\NET40\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Core.2.5.1\lib\NET35\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.AxControls, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Controls, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessor, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Version, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FarPoint.Win, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FarPoint.Win.Spread, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Iesi.Collections.1.0.1\lib\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\internalrefs\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.3.0.0.4000\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.3.0.0.4000\lib\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Search, Version=0.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Activerecord.3.0.0.1\lib\Net40\NHibernate.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.41.2, Culture=neutral, PublicKeyToken=cab60358ab4081ea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.3.0.0.4000\lib\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BigFaultageInfoEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BigFaultageInfoEntering.Designer.cs">
+      <DependentUpon>BigFaultageInfoEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BigFaultageInfoManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BigFaultageInfoManagement.Designer.cs">
+      <DependentUpon>BigFaultageInfoManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoreholeInfoEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BoreholeInfoEntering.Designer.cs">
+      <DependentUpon>BoreholeInfoEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoreholeInfoManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BoreholeInfoManagement.Designer.cs">
+      <DependentUpon>BoreholeInfoManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CollapsePillarsEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CollapsePillarsEntering.Designer.cs">
+      <DependentUpon>CollapsePillarsEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CollapsePillarsInfoEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CollapsePillarsInfoEntering.Designer.cs">
+      <DependentUpon>CollapsePillarsInfoEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CollapsePillarsManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CollapsePillarsManagement.Designer.cs">
+      <DependentUpon>CollapsePillarsManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TunnelHCEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TunnelHCEntering.Designer.cs">
+      <DependentUpon>TunnelHCEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PitshaftInfoManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PitshaftInfoManagement.Designer.cs">
+      <DependentUpon>PitshaftInfoManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PitshaftInfoEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PitshaftInfoEntering.Designer.cs">
+      <DependentUpon>PitshaftInfoEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProspectingLineInfoManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProspectingLineInfoManagement.Designer.cs">
+      <DependentUpon>ProspectingLineInfoManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProspectingLineInfoEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProspectingLineInfoEntering.Designer.cs">
+      <DependentUpon>ProspectingLineInfoEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FaultageInfoManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FaultageInfoManagement.Designer.cs">
+      <DependentUpon>FaultageInfoManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm_GM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm_GM.Designer.cs">
+      <DependentUpon>MainForm_GM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TunnelHChuanEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TunnelHChuanEntering.Designer.cs">
+      <DependentUpon>TunnelHChuanEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TunnelHCJZEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TunnelHCJZEntering.Designer.cs">
+      <DependentUpon>TunnelHCJZEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TunnelHCManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TunnelHCManagement.Designer.cs">
+      <DependentUpon>TunnelHCManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TunnelInfoManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TunnelInfoManagement.Designer.cs">
+      <DependentUpon>TunnelInfoManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TunnelJJEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TunnelJJEntering.Designer.cs">
+      <DependentUpon>TunnelJJEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TunnelJJManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TunnelJJManagement.Designer.cs">
+      <DependentUpon>TunnelJJManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TunnelJZEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TunnelJZEntering.Designer.cs">
+      <DependentUpon>TunnelJZEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TunnelHChuanManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TunnelHChuanManagement.Designer.cs">
+      <DependentUpon>TunnelHChuanManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WireInfoEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WireInfoEntering.Designer.cs">
+      <DependentUpon>WireInfoEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FaultageInfoEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FaultageInfoEntering.Designer.cs">
+      <DependentUpon>FaultageInfoEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WireInfoManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WireInfoManagement.Designer.cs">
+      <DependentUpon>WireInfoManagement.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BigFaultageInfoEntering.resx">
+      <DependentUpon>BigFaultageInfoEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BigFaultageInfoManagement.resx">
+      <DependentUpon>BigFaultageInfoManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoreholeInfoEntering.resx">
+      <DependentUpon>BoreholeInfoEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoreholeInfoManagement.resx">
+      <DependentUpon>BoreholeInfoManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CollapsePillarsEntering.resx">
+      <DependentUpon>CollapsePillarsEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CollapsePillarsInfoEntering.resx">
+      <DependentUpon>CollapsePillarsInfoEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CollapsePillarsManagement.resx">
+      <DependentUpon>CollapsePillarsManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="TunnelHCEntering.resx">
+      <DependentUpon>TunnelHCEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PitshaftInfoManagement.resx">
+      <DependentUpon>PitshaftInfoManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PitshaftInfoEntering.resx">
+      <DependentUpon>PitshaftInfoEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProspectingLineInfoManagement.resx">
+      <DependentUpon>ProspectingLineInfoManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProspectingLineInfoEntering.resx">
+      <DependentUpon>ProspectingLineInfoEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FaultageInfoManagement.resx">
+      <DependentUpon>FaultageInfoManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm_GM.resx">
+      <DependentUpon>MainForm_GM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TunnelHChuanEntering.resx">
+      <DependentUpon>TunnelHChuanEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TunnelHChuanManagement.resx">
+      <DependentUpon>TunnelHChuanManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TunnelHCJZEntering.resx">
+      <DependentUpon>TunnelHCJZEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TunnelHCManagement.resx">
+      <DependentUpon>TunnelHCManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TunnelInfoManagement.resx">
+      <DependentUpon>TunnelInfoManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TunnelJJEntering.resx">
+      <DependentUpon>TunnelJJEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TunnelJJManagement.resx">
+      <DependentUpon>TunnelJJManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TunnelJZEntering.resx">
+      <DependentUpon>TunnelJZEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WireInfoEntering.resx">
+      <DependentUpon>WireInfoEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FaultageInfoEntering.resx">
+      <DependentUpon>FaultageInfoEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="WireInfoManagement.resx">
+      <DependentUpon>WireInfoManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="3.GeologyMeasure_TemporaryKey.pfx" />
+    <None Include="app.config" />
+    <Content Include="Config.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigDatabaseGIS.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="default.mxd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DefaultUser">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LibCommon.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="local.mxd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PanelFormName.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="工作面地质测量管理系统帮助文件.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="symbol.ServerStyle">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserInfo.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="综合柱状图.mxd" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LoginBackground.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="系统三关于图片.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library\GIS\GIS.csproj">
+      <Project>{7ff2375e-9594-4ee8-a3cd-40cf245e47fa}</Project>
+      <Name>GIS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibAbout\LibAbout.csproj">
+      <Project>{9ec74138-a934-432d-a3b6-42ec84052ff8}</Project>
+      <Name>LibAbout</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibBusiness\LibBusiness.csproj">
+      <Project>{4586c1e2-10a4-47af-8867-b1b32b0cdee5}</Project>
+      <Name>LibBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibCommonControl\LibCommonControl.csproj">
+      <Project>{c98cb9d1-8567-4539-b30f-79bf7654727e}</Project>
+      <Name>LibCommonControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibCommonForm\LibCommonForm.csproj">
+      <Project>{e0db63e3-2420-4b72-99f8-776f8ed1d3ef}</Project>
+      <Name>LibCommonForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibCommon\LibCommon.csproj">
+      <Project>{2ebcde4b-a244-4cca-a1ae-1a884d81772b}</Project>
+      <Name>LibCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibConfig\LibConfig.csproj">
+      <Project>{697eed3c-3244-494d-b663-296cc80d4022}</Project>
+      <Name>LibConfig</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibDatabase\LibDatabase.csproj">
+      <Project>{38b3be6b-bd0c-4108-9414-a728f5990a0c}</Project>
+      <Name>LibDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibEncryptDecrypt\LibEncryptDecrypt.csproj">
+      <Project>{123585d4-b4a2-4694-81e8-df9cdccc487f}</Project>
+      <Name>LibEncryptDecrypt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibEntity\LibEntity.csproj">
+      <Project>{28c303d9-18cb-42b3-b0fa-b9b126503176}</Project>
+      <Name>LibEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibGeometry\LibGeometry.csproj">
+      <Project>{a55911aa-ac2b-4c4f-aa2a-ce839bd9afba}</Project>
+      <Name>LibGeometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibLoginForm\LibLoginForm.csproj">
+      <Project>{ed482a03-e8d9-4a16-856f-be8f56b454c0}</Project>
+      <Name>LibLoginForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibPanels\LibPanels.csproj">
+      <Project>{fc8d5ce1-f721-401b-bac2-c265d6fcc13d}</Project>
+      <Name>LibPanels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibSocket\LibSocket.csproj">
+      <Project>{93547539-03e2-49c3-88fc-3ccd81942d5f}</Project>
+      <Name>LibSocket</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\LibXPorperty\LibXPorperty.csproj">
+      <Project>{1238b891-86ad-4851-97a2-0c0302e24bd8}</Project>
+      <Name>LibXPorperty</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call $(ProjectDir)CopyResourceFile.bat</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

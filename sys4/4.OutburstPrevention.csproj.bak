@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FDABDFA6-E751-452C-9658-5963162784B0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>_4.OutburstPrevention</RootNamespace>
+    <AssemblyName>4.OutburstPrevention</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\GewsPublish\sys4\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <UpdateUrl>\\192.168.1.119\publish\sys4\</UpdateUrl>
+    <ProductName>sys4-工作面动态防突管理系统</ProductName>
+    <PublisherName>沈阳煤科院</PublisherName>
+    <SuiteName>预警系统</SuiteName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationVersion>0.10.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\4.OutburstPrevention.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\4.OutburstPrevention.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>03E577ECDBA02271B76C05DC77604E3F91BA4FEA</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>4.OutburstPrevention_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ResourceFiles\AllRequired\DevExpress.BonusSkins.v11.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.OfficeSkins.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ResourceFiles\AllRequired\DevExpress.OfficeSkins.v11.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ResourceFiles\AllRequired\DevExpress.Printing.v11.1.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v11.1.Core, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.3DAnalyst, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Analyst3DTools, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.AxControls, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Controls, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ConversionTools, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DisplayUI, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessor, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Version, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\ESRI.ArcGIS.Version\10.1.0.0__8fc3cc631e44ad86\ESRI.ArcGIS.Version.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FarPoint.CalcEngine, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FarPoint.Excel, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FarPoint.PDF, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FarPoint.Win, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FarPoint.Win.Chart, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FarPoint.Win.Spread, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GasContentInfoEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GasContentInfoEntering.Designer.cs">
+      <DependentUpon>GasContentInfoEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GasContentInfoManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GasContentInfoManagement.Designer.cs">
+      <DependentUpon>GasContentInfoManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GasPressureInfoEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GasPressureInfoEntering.Designer.cs">
+      <DependentUpon>GasPressureInfoEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GasPressureInfoManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GasPressureInfoManagement.Designer.cs">
+      <DependentUpon>GasPressureInfoManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="K1DeleteMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="K1DeleteMessageBox.Designer.cs">
+      <DependentUpon>K1DeleteMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="K1ValueEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="K1ValueEntering.Designer.cs">
+      <DependentUpon>K1ValueEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="K1ValueManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="K1ValueManagement.Designer.cs">
+      <DependentUpon>K1ValueManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm_OP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm_OP.Designer.cs">
+      <DependentUpon>MainForm_OP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GasGushQuantityInfoEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GasGushQuantityInfoEntering.Designer.cs">
+      <DependentUpon>GasGushQuantityInfoEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GasGushQuantityInfoManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GasGushQuantityInfoManagement.Designer.cs">
+      <DependentUpon>GasGushQuantityInfoManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SValueEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SValueEntering.Designer.cs">
+      <DependentUpon>SValueEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SValueManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SValueManagement.Designer.cs">
+      <DependentUpon>SValueManagement.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GasContentInfoEntering.resx">
+      <DependentUpon>GasContentInfoEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GasContentInfoManagement.resx">
+      <DependentUpon>GasContentInfoManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GasPressureInfoEntering.resx">
+      <DependentUpon>GasPressureInfoEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GasPressureInfoManagement.resx">
+      <DependentUpon>GasPressureInfoManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="K1DeleteMessageBox.resx">
+      <DependentUpon>K1DeleteMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="K1ValueEntering.resx">
+      <DependentUpon>K1ValueEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="K1ValueManagement.resx">
+      <DependentUpon>K1ValueManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm_OP.resx">
+      <DependentUpon>MainForm_OP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="GasGushQuantityInfoEntering.resx">
+      <DependentUpon>GasGushQuantityInfoEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GasGushQuantityInfoManagement.resx">
+      <DependentUpon>GasGushQuantityInfoManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SValueEntering.resx">
+      <DependentUpon>SValueEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SValueManagement.resx">
+      <DependentUpon>SValueManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="4.OutburstPrevention_TemporaryKey.pfx" />
+    <None Include="app.config" />
+    <Content Include="Config.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigDatabaseGIS.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="default.mxd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DefaultUser">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LibCommon.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="local.mxd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PanelFormName.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="工作面动态防突管理系统帮助文件.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="symbol.ServerStyle">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserInfo.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="综合柱状图.mxd" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GIS\GIS.csproj">
+      <Project>{7FF2375E-9594-4EE8-A3CD-40CF245E47FA}</Project>
+      <Name>GIS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibAbout\LibAbout.csproj">
+      <Project>{9EC74138-A934-432D-A3B6-42EC84052FF8}</Project>
+      <Name>LibAbout</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibBusiness\LibBusiness.csproj">
+      <Project>{4586C1E2-10A4-47AF-8867-B1B32B0CDEE5}</Project>
+      <Name>LibBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibCommonControl\LibCommonControl.csproj">
+      <Project>{C98CB9D1-8567-4539-B30F-79BF7654727E}</Project>
+      <Name>LibCommonControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibCommonForm\LibCommonForm.csproj">
+      <Project>{E0DB63E3-2420-4B72-99F8-776F8ED1D3EF}</Project>
+      <Name>LibCommonForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibCommon\LibCommon.csproj">
+      <Project>{2EBCDE4B-A244-4CCA-A1AE-1A884D81772B}</Project>
+      <Name>LibCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibConfig\LibConfig.csproj">
+      <Project>{697EED3C-3244-494D-B663-296CC80D4022}</Project>
+      <Name>LibConfig</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibDatabase\LibDatabase.csproj">
+      <Project>{38B3BE6B-BD0C-4108-9414-A728F5990A0C}</Project>
+      <Name>LibDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibEntity\LibEntity.csproj">
+      <Project>{28C303D9-18CB-42B3-B0FA-B9B126503176}</Project>
+      <Name>LibEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibGeometry\LibGeometry.csproj">
+      <Project>{a55911aa-ac2b-4c4f-aa2a-ce839bd9afba}</Project>
+      <Name>LibGeometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibLoginForm\LibLoginForm.csproj">
+      <Project>{ED482A03-E8D9-4A16-856F-BE8F56B454C0}</Project>
+      <Name>LibLoginForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibPanels\LibPanels.csproj">
+      <Project>{FC8D5CE1-F721-401B-BAC2-C265D6FCC13D}</Project>
+      <Name>LibPanels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibSocket\LibSocket.csproj">
+      <Project>{93547539-03E2-49C3-88FC-3CCD81942D5F}</Project>
+      <Name>LibSocket</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LoginBackground.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="系统四关于图片.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call $(ProjectDir)CopyResourceFile.bat</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="EditingExtendTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingExtendTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingMidpointArcSegmentTool32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingMidpointArcSegmentTool32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementText32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementText32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SelectionSelectTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SelectionSelectTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xinjian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xinjian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingLineTool32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingLineTool32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementSelectTool32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementSelectTool32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PanTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PanTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingTrimTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingTrimTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bianxian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bianxian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZoomFixedZoomOut16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZoomFixedZoomOut16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementText161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementText161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingFreehandTool161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingFreehandTool161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FilePrint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FilePrint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingCircleTool32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingCircleTool32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementPolygon32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementPolygon32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingMidpointArcSegmentTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingMidpointArcSegmentTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zhongdian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zhongdian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="qiexian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\qiexian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FilePrint1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FilePrint1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementLine32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementLine32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditPaste16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditPaste16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingCircleTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingCircleTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClearView" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClearView.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingPointTool161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingPointTool161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NorthArrow32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NorthArrow32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SnappingPoint16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SnappingPoint16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GenericSave_B_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GenericSave_B_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditCopy16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditCopy16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LocalView" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LocalView.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LayoutZoomIn16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LayoutZoomIn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoomto16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoomto16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FilePrintPreview1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FilePrintPreview1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GraphBubble16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GraphBubble16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MapReferenceScale16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MapReferenceScale16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TableExcel16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TableExcel16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingPolygonTool161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingPolygonTool161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZoomOutTool_B_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZoomOutTool_B_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LayoutFixedZoomOut16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LayoutFixedZoomOut16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GenericOpen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GenericOpen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GenericInformation16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GenericInformation16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingPointTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingPointTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FilePageSet1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FilePageSet1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingSketchTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingSketchTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MeasureAreaTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MeasureAreaTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZoomOutTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZoomOutTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingPolygonTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingPolygonTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementEllipse32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementEllipse32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MeasureTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MeasureTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LayoutZoomOut16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LayoutZoomOut16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GenericBlueLeftArrowLongTail16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GenericBlueLeftArrowLongTail16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingRectangleTool32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingRectangleTool32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingFreehandTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingFreehandTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZoomInTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZoomInTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingRectangleTool161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingRectangleTool161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DataFrameRotate16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DataFrameRotate16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingMirrorTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingMirrorTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LayoutZoomWhole16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LayoutZoomWhole16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingEllipseTool32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingEllipseTool32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GenericBlackDelete16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GenericBlackDelete16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZoomFixedZoomIn16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZoomFixedZoomIn16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LayoutZoom100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LayoutZoom100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LayoutBackExtent16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LayoutBackExtent16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SelectionClearSelected16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SelectionClearSelected16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditUndo_B_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditUndo_B_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="图片" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\图片.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementSelectTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementSelectTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingPointTool32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingPointTool32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IdentifyTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IdentifyTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingRectangleTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingRectangleTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditRedo_B_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditRedo_B_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingEllipseTool161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingEllipseTool161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FilePageSet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FilePageSet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingLineTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingLineTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="duandian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\duandian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NorthArrow16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NorthArrow16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingMidpointArcSegmentTool161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingMidpointArcSegmentTool161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddSpecialPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddSpecialPoint.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditCut16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditCut16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zhedian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zhedian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementRectangle32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementRectangle32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GenericRefresh16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GenericRefresh16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LayoutFixedZoomIn16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LayoutFixedZoomIn16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingEditTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingEditTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementLine16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementLine16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementCircle32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementCircle32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SelectionSelectAll16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SelectionSelectAll16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RotateTool" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RotateTool.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FilePrintPreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FilePrintPreview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingLineTool161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingLineTool161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementText16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementText16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElementLine161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ElementLine161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingPolygonTool32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingPolygonTool32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingCircleTool161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingCircleTool161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GenericBlueRightArrowLongTail16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GenericBlueRightArrowLongTail16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GenericGlobeLarge16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GenericGlobeLarge16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingRotateTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingRotateTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EditingEllipseTool16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditingEllipseTool16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MapReferenceScale32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MapReferenceScale32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LayoutPan16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LayoutPan16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jiaodian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jiaodian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LayoutNextExtent16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LayoutNextExtent16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tuichu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tuichu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

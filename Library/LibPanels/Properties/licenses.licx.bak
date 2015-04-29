@@ -1,0 +1,6 @@
+DevExpress.XtraLayout.LayoutControl, DevExpress.XtraLayout.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+FarPoint.Win.Spread.FpSpread, FarPoint.Win.Spread, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457
+DevExpress.XtraSpreadsheet.SpreadsheetControl, DevExpress.XtraSpreadsheet.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit, DevExpress.XtraEditors.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a

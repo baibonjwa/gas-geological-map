@@ -1,0 +1,4 @@
+DevExpress.Patch.InMemoryPatch, DevExpress.Patch.Common, Version=6.1.0.0, Culture=neutral, PublicKeyToken=7fc7bfca2443de66
+FarPoint.Win.Spread.FpSpread, FarPoint.Win.Spread, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457
+DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpressReg.LicensePatcher, DevExpressReg, Version=11.1.6.26670, Culture=neutral, PublicKeyToken=d6ff4ebaea2d8ac4
