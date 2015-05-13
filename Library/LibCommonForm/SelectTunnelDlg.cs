@@ -24,8 +24,6 @@ namespace LibCommonForm
         {
             InitializeComponent();
             selectTunnelUserControl1.LoadData();
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.TUNNEL_CHOOSE);
         }
 
         /// <summary>
@@ -35,16 +33,12 @@ namespace LibCommonForm
         public SelectTunnelDlg(Tunnel tunnel)
         {
             InitializeComponent();
-            //窗体属性设置
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.TUNNEL_CHOOSE);
             SelectedTunnel = tunnel;
         }
 
         public SelectTunnelDlg(WorkingFace workingFace)
         {
             InitializeComponent();
-            //窗体属性设置
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.TUNNEL_CHOOSE);
             selectTunnelUserControl1.LoadData(workingFace);
         }
 

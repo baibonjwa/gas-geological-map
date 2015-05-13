@@ -273,7 +273,7 @@ namespace LibCommonForm
             }
             else
             {
-                Alert.alert("请先选择所在矿井名称！");
+                Alert.AlertMsg("请先选择所在矿井名称！");
             }
         }
 
@@ -295,7 +295,7 @@ namespace LibCommonForm
             }
             else
             {
-                Alert.alert("请先选择所在水平名称！");
+                Alert.AlertMsg("请先选择所在水平名称！");
             }
         }
 
@@ -317,7 +317,7 @@ namespace LibCommonForm
             }
             else
             {
-                Alert.alert("请先选择所在采区名称！");
+                Alert.AlertMsg("请先选择所在采区名称！");
             }
         }
     }

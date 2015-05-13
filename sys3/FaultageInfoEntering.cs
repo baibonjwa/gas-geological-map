@@ -19,7 +19,7 @@ using LibEntity;
 using stdole;
 using Font = System.Drawing.Font;
 
-namespace sys3
+namespace geoInput
 {
     public partial class FaultageInfoEntering : Form
     {
@@ -29,9 +29,6 @@ namespace sys3
         public FaultageInfoEntering()
         {
             InitializeComponent();
-
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.INSERT_FAULTAGE_INFO);
         }
 
         /// <summary>
@@ -41,8 +38,6 @@ namespace sys3
         {
             InitializeComponent();
             Faultage = faultage;
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.UPDATE_FAULTAGE_INFO);
 
             // 设置断层信息
             // 断层名称
@@ -52,7 +47,7 @@ namespace sys3
             // 倾角
             txtAngle.Text = Faultage.Angle.ToString(CultureInfo.InvariantCulture);
             // 类型
-            if (Const_GM.FRONT_FAULTAGE.Equals(Faultage.Type))
+            if (Faultage.Type == "正断层")
             {
                 rbtnFrontFaultage.Checked = true;
             }
@@ -73,7 +68,7 @@ namespace sys3
             //长度
             var bid = Faultage.BindingId;
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.DEFALUT_EXPOSE_FAULTAGE);
-            var featureLayer = (IFeatureLayer) pLayer;
+            var featureLayer = (IFeatureLayer)pLayer;
             if (pLayer == null)
             {
                 txtLength.Text = @"0";
@@ -82,7 +77,7 @@ namespace sys3
             var pFeature = MyMapHelp.FindFeatureByWhereClause(featureLayer, "BID='" + bid + "'");
             if (pFeature != null)
             {
-                var pline = (IPolyline) pFeature.Shape;
+                var pline = (IPolyline)pFeature.Shape;
                 if (pline == null) return;
                 txtLength.Text = Math.Round(pline.Length).ToString(CultureInfo.InvariantCulture);
             }
@@ -100,21 +95,15 @@ namespace sys3
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            // 验证
-            if (!Check())
-            {
-                DialogResult = DialogResult.None;
-                return;
-            }
             DialogResult = DialogResult.OK;
 
             // 创建断层实体
             Faultage = Faultage.FindByFaultageName(txtFaultageName.Text.Trim());
-            Faultage = Faultage ?? new Faultage {BindingId = IDGenerator.NewBindingID()};
+            Faultage = Faultage ?? new Faultage { BindingId = IdGenerator.NewBindingId() };
 
             Faultage.FaultageName = txtFaultageName.Text.Trim();
             Faultage.Gap = txtGap.Text.Trim();
-            Faultage.Type = rbtnFrontFaultage.Checked ? Const_GM.FRONT_FAULTAGE : Const_GM.OPPOSITE_FAULTAGE;
+            Faultage.Type = rbtnFrontFaultage.Checked ? "正断层" : "逆断层";
             Faultage.Trend = Convert.ToDouble(txtTrend.Text);
             Faultage.Separation = txtSeparation.Text.Trim();
 
@@ -165,123 +154,6 @@ namespace sys3
         {
             // 关闭窗口
             Close();
-        }
-
-        /// <summary>
-        ///     验证画面入力数据
-        /// </summary>
-        /// <returns>验证结果：true 通过验证, false未通过验证</returns>
-        private bool Check()
-        {
-            // 判断断层名称是否录入
-            if (!LibCommon.Check.isEmpty(txtFaultageName, Const_GM.FAULTAGE_NAME))
-            {
-                return false;
-            }
-
-            // 断层名称特殊字符判断
-            if (!LibCommon.Check.checkSpecialCharacters(txtFaultageName, Const_GM.FAULTAGE_NAME))
-            {
-                return false;
-            }
-
-            // 判断落差是否录入
-            if (!LibCommon.Check.isEmpty(txtGap, Const_GM.GAP))
-            {
-                return false;
-            }
-            // 判断长度是否录入
-            if (!LibCommon.Check.isEmpty(txtLength, "长度"))
-            {
-                return false;
-            }
-
-            // 判断落差是否为数字
-            if (!LibCommon.Check.IsNumeric(txtGap, Const_GM.GAP))
-            {
-                return false;
-            }
-
-            // 判断倾角是否录入
-            if (!LibCommon.Check.isEmpty(txtAngle, Const_GM.ANGLE))
-            {
-                return false;
-            }
-
-            // 判断倾角是否为数字
-            if (!LibCommon.Check.IsNumeric(txtAngle, Const_GM.ANGLE))
-            {
-                return false;
-            }
-            // 判断长度是否为数字
-            if (!LibCommon.Check.IsNumeric(txtLength, "长度"))
-            {
-                return false;
-            }
-            // 判断走向是否录入
-            if (!LibCommon.Check.isEmpty(txtTrend, Const_GM.TREND))
-            {
-                return false;
-            }
-
-            // 判断走向是否为数字
-            if (!LibCommon.Check.IsNumeric(txtTrend, Const_GM.TREND))
-            {
-                return false;
-            }
-
-            // 判断断距是否录入
-            if (!LibCommon.Check.isEmpty(txtSeparation, Const_GM.SEPARATION))
-            {
-                return false;
-            }
-
-            // 判断断距是否为数字
-            if (!LibCommon.Check.IsNumeric(txtSeparation, Const_GM.SEPARATION))
-            {
-                return false;
-            }
-
-            //****************************************************
-            // 判断坐标X是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateX, Const_GM.COORDINATE_X))
-            {
-                return false;
-            }
-
-            // 判断坐标X是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateX, Const_GM.COORDINATE_X))
-            {
-                return false;
-            }
-
-            // 判断坐标Y是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateY, Const_GM.COORDINATE_Y))
-            {
-                return false;
-            }
-
-            // 判断坐标Y是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateY, Const_GM.COORDINATE_Y))
-            {
-                return false;
-            }
-
-            // 判断坐标Z是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateZ, Const_GM.COORDINATE_Z))
-            {
-                return false;
-            }
-
-            // 判断坐标Z是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateZ, Const_GM.COORDINATE_Z))
-            {
-                return false;
-            }
-            //****************************************************
-
-            // 验证通过
-            return true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -355,7 +227,7 @@ namespace sys3
                                 Angle = String.IsNullOrWhiteSpace(str[5]) ? 0.0 : Convert.ToDouble(str[5]),
                                 Length = String.IsNullOrWhiteSpace(str[6]) ? 0.0 : Convert.ToDouble(str[6]),
                                 Type = str[3],
-                                BindingId = IDGenerator.NewBindingID()
+                                BindingId = IdGenerator.NewBindingId()
                             };
                             DrawJldc(faultage);
                         }
@@ -387,12 +259,12 @@ namespace sys3
                     btnDetails.Enabled = true;
                 }
             }
-            Alert.alert("导入完成");
+            Alert.AlertMsg("导入完成");
         }
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            Alert.alert(ErrorMsg);
+            Alert.AlertMsg(ErrorMsg);
         }
 
         #region 绘制图元
@@ -522,7 +394,7 @@ namespace sys3
 
 
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.DEFALUT_EXPOSE_FAULTAGE);
-            var featureLayer = (IFeatureLayer) pLayer;
+            var featureLayer = (IFeatureLayer)pLayer;
             if (pLayer == null)
             {
                 MessageBox.Show(@"未找到揭露断层图层,无法绘制揭露断层图元。");
@@ -536,7 +408,7 @@ namespace sys3
             centrePt.Z = faultage.CoordinateZ;
 
             var trend = faultage.Trend; //走向
-            var length = faultage.Length/2; //默认长度为20，左右各10
+            var length = faultage.Length / 2; //默认长度为20，左右各10
 
             //计算起止点
             IPoint fromPt = new PointClass();
@@ -546,10 +418,10 @@ namespace sys3
             ILine line = new LineClass();
             line.PutCoords(fromPt, toPt);
             var missing = Type.Missing;
-            var segment = (ISegment) line;
+            var segment = (ISegment)line;
             ISegmentCollection newLine = new PolylineClass();
             newLine.AddSegment(segment, ref missing, ref missing);
-            var polyline = (IPolyline) newLine;
+            var polyline = (IPolyline)newLine;
 
             var list = new List<ziduan>
             {
@@ -567,7 +439,7 @@ namespace sys3
             if (pfeature == null) return;
             MyMapHelp.Jump(polyline);
             DataEditCommon.g_pMyMapCtrl.ActiveView.PartialRefresh(
-                (esriViewDrawPhase) 34, null, null);
+                (esriViewDrawPhase)34, null, null);
         }
 
         /// <summary>
@@ -581,13 +453,13 @@ namespace sys3
         private static void CalculateEndpoints(IPoint centrePt, double angle, double length, ref IPoint fromPt,
             ref IPoint toPt)
         {
-            var radian = (Math.PI/180)*angle; //角度转为弧度
+            var radian = (Math.PI / 180) * angle; //角度转为弧度
 
-            fromPt.X = centrePt.X + length*Math.Cos(radian);
-            fromPt.Y = centrePt.Y + length*Math.Sin(radian);
+            fromPt.X = centrePt.X + length * Math.Cos(radian);
+            fromPt.Y = centrePt.Y + length * Math.Sin(radian);
 
-            toPt.X = centrePt.X - length*Math.Cos(radian);
-            toPt.Y = centrePt.Y - length*Math.Sin(radian);
+            toPt.X = centrePt.X - length * Math.Cos(radian);
+            toPt.Y = centrePt.Y - length * Math.Sin(radian);
 
             //给Z坐标赋值
             if (!double.IsNaN(centrePt.Z))
@@ -612,7 +484,7 @@ namespace sys3
         public static ILineSymbol GetSymbol(string sServerStylePath, string sGalleryClassName, string symbolName)
         {
             IStyleGallery pStyleGallery = new ServerStyleGalleryClass();
-            var pStyleGalleryStorage = (IStyleGalleryStorage) pStyleGallery;
+            var pStyleGalleryStorage = (IStyleGalleryStorage)pStyleGallery;
             ILineSymbol lineSymbol = new SimpleLineSymbolClass();
 
             //查找到符号
@@ -626,7 +498,7 @@ namespace sys3
             {
                 if (pStyleGalleryItem.Name == symbolName)
                 {
-                    lineSymbol = (ILineSymbol) pStyleGalleryItem.Item;
+                    lineSymbol = (ILineSymbol)pStyleGalleryItem.Item;
                     Marshal.ReleaseComObject(pEnumStyleGalleryItem);
                     break;
                 }
@@ -651,7 +523,7 @@ namespace sys3
             {
                 var fieldIndex = geoFeaLayer.FeatureClass.Fields.FindField(field);
 
-                var customSymbol = (ISymbol) lineSymbol;
+                var customSymbol = (ISymbol)lineSymbol;
 
                 var featureCursor = geoFeaLayer.FeatureClass.Search(queryFilter, true);
                 var feature = featureCursor.NextFeature();
@@ -684,7 +556,7 @@ namespace sys3
 
             uniValueRender.FieldCount = 1;
             uniValueRender.Field[0] = "OBJECTID";
-            var customSymbol = (ISymbol) lineSymbol;
+            var customSymbol = (ISymbol)lineSymbol;
 
             //选择某个字段作为渲染符号值            
             if (geoFeaLayer != null)
@@ -722,7 +594,7 @@ namespace sys3
                 IColor fontColor = new RgbColor();
                 fontColor.RGB = 255; //字体颜色      
                 var font = new Font("宋体", 10, FontStyle.Bold);
-                var dispFont = (IFontDisp) OLE.GetIFontDispFromFont(font);
+                var dispFont = (IFontDisp)OLE.GetIFontDispFromFont(font);
 
                 ITextSymbol pTextSymbol = new TextSymbolClass
                 {
@@ -765,7 +637,7 @@ namespace sys3
                     Expression = "[" + fieldName + "]"
                 };
                 //设置标注的参考比例尺  
-                var pAnnoLyrPros = (IAnnotateLayerTransformationProperties) pLableEngine;
+                var pAnnoLyrPros = (IAnnotateLayerTransformationProperties)pLableEngine;
                 pAnnoLyrPros.ReferenceScale = 2500000;
                 //设置标注可见的最大最小比例尺       
                 var pAnnoPros = pLableEngine as IAnnotateLayerProperties;

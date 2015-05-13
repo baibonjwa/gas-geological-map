@@ -5,7 +5,7 @@ using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord("T_WIRE_POINT")]
+    [ActiveRecord]
     public class WirePoint : ActiveRecordBase<WirePoint>
     {
         private Wire _wire;
@@ -35,28 +35,28 @@ namespace LibEntity
         /// <summary>
         ///     主键
         /// </summary>
-        [PrimaryKey(PrimaryKeyType.Identity, "ID")]
+        [PrimaryKey(PrimaryKeyType.Identity)]
         public int WirePointId { get; set; }
 
-        [Property("WIRE_POINT_NAME")]
+        [Property]
         public string WirePointName { get; set; }
 
         /// <summary>
         ///     距底板距离
         /// </summary>
-        [Property("DISTANCE_FROM_BOTTOM")]
+        [Property]
         public double BottomDis { get; set; }
 
         /// <summary>
         ///     距顶板距离
         /// </summary>
-        [Property("DISTANCE_FROM_TOP")]
+        [Property]
         public double TopDis { get; set; }
 
         /// <summary>
         ///     绑定导线编号
         /// </summary>
-        [BelongsTo("WIRE_INFO_ID")]
+        [BelongsTo("WireId")]
         public Wire Wire
         {
             get { return _wire; }
@@ -66,37 +66,37 @@ namespace LibEntity
         /// <summary>
         ///     坐标X
         /// </summary>
-        [Property("COORDINATE_X")]
+        [Property]
         public double CoordinateX { get; set; }
 
         /// <summary>
         ///     坐标Y
         /// </summary>
-        [Property("COORDINATE_Y")]
+        [Property]
         public double CoordinateY { get; set; }
 
         /// <summary>
         ///     坐标Z
         /// </summary>
-        [Property("COORDINATE_Z")]
+        [Property]
         public double CoordinateZ { get; set; }
 
         /// <summary>
         ///     距左帮距离
         /// </summary>
-        [Property("DISTANCE_FROM_THE_LEFT")]
+        [Property]
         public double LeftDis { get; set; }
 
         /// <summary>
         ///     距右帮距离
         /// </summary>
-        [Property("DISTANCE_FROM_THE_RIGHT")]
+        [Property]
         public double RightDis { get; set; }
 
         /// <summary>
         ///     绑定ID
         /// </summary>
-        [Property("BINDINGID")]
+        [Property]
         public string BindingId { get; set; }
 
         public static bool ExistsByWirePointIdInWireInfo(int wireInfoId, string wirePointId)

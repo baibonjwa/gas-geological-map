@@ -11,7 +11,7 @@ using GIS.Common;
 using LibCommon;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class PitshaftInfoEntering : Form
     {
@@ -26,9 +26,6 @@ namespace sys3
         public PitshaftInfoEntering()
         {
             InitializeComponent();
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.INSERT_PITSHAFT_INFO);
-            // 加载井筒类型信息
             LoadPitshaftTypeInfo();
         }
 
@@ -37,15 +34,13 @@ namespace sys3
         /// </summary>
         /// <param name="strPrimaryKey">主键</param>
         /// <param name="strTitle"></param>
-        public PitshaftInfoEntering(string strPrimaryKey, string strTitle)
+        public PitshaftInfoEntering(string strPrimaryKey)
         {
             InitializeComponent();
             // 设置业务类型
             _bllType = "update";
             // 主键
             _iPk = Convert.ToInt32(strPrimaryKey);
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, strTitle);
             // 加载井筒类型信息
             LoadPitshaftTypeInfo();
             // 设置井筒信息
@@ -96,12 +91,6 @@ namespace sys3
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            // 验证
-            if (!check())
-            {
-                DialogResult = DialogResult.None;
-                return;
-            }
             DialogResult = DialogResult.OK;
 
             // 创建井筒实体
@@ -160,7 +149,7 @@ namespace sys3
             if (_bllType == "add")
             {
                 // BID
-                pitshaftEntity.BindingId = IDGenerator.NewBindingID();
+                pitshaftEntity.BindingId = IdGenerator.NewBindingId();
                 pitshaftEntity.Save();
 
                 DrawJingTong(pitshaftEntity);
@@ -195,143 +184,6 @@ namespace sys3
         {
             // 关闭窗口
             Close();
-        }
-
-        /// <summary>
-        ///     验证画面入力数据
-        /// </summary>
-        /// <returns>验证结果：true 通过验证, false未通过验证</returns>
-        private bool check()
-        {
-            // 判断<井筒名称>是否录入
-            if (!Check.isEmpty(txtPitshaftName, Const_GM.PITSHAFT_NAME))
-            {
-                return false;
-            }
-
-            // 判断<井筒名称>是否包含特殊字符
-            if (!Check.checkSpecialCharacters(txtPitshaftName, Const_GM.PITSHAFT_NAME))
-            {
-                return false;
-            }
-
-            // 判断井筒名称是否重复
-            if (_bllType == "add")
-            {
-                // 判断井筒名称是否存在
-                if (Pitshaft.ExistsByPitshaftName(txtPitshaftName.Text.Trim()))
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                /* 修改的时候，首先要获取UI输入的名称到DB中去检索，
-                如果检索件数 > 0 并且该断层ID还不是传过来的主键，那么视为输入了已存在的名称 */
-                if (Pitshaft.ExistsByPitshaftName(txtPitshaftName.Text.Trim()))
-                {
-                    txtPitshaftName.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert(Const_GM.PITSHAFT_NAME_EXIST_MSG); // 井筒名称已存在，请重新录入！
-                    txtPitshaftName.Focus();
-                    return false;
-                }
-            }
-
-            // 判断<井筒类型>是否选择
-            if (!Check.isEmpty(cobPitshaftType, Const_GM.PITSHAFT_TYPE))
-            {
-                return false;
-            }
-
-            // 判断<井口标高>是否录入
-            if (!Check.isEmpty(txtWellheadElevation, Const_GM.WELLHEAD_ELEVATION))
-            {
-                return false;
-            }
-
-            // 判断<井口标高>是否为数字
-            if (!Check.IsNumeric(txtWellheadElevation, Const_GM.WELLHEAD_ELEVATION))
-            {
-                return false;
-            }
-
-            // 判断<井底标高>是否录入
-            if (!Check.isEmpty(txtWellbottomElevation, Const_GM.WELLBOTTOM_ELEVATION))
-            {
-                return false;
-            }
-
-            // 判断<井底标高>是否为数字
-            if (!Check.IsNumeric(txtWellbottomElevation, Const_GM.WELLBOTTOM_ELEVATION))
-            {
-                return false;
-            }
-
-            // 判断<井筒坐标X>是否录入
-            if (!Check.isEmpty(txtPitshaftCoordinateX, Const_GM.PITSHAFT_COORDINATE_X))
-            {
-                return false;
-            }
-
-            // 判断<井筒坐标X>是否为数字
-            if (!Check.IsNumeric(txtPitshaftCoordinateX, Const_GM.PITSHAFT_COORDINATE_X))
-            {
-                return false;
-            }
-
-            // 判断<井筒坐标Y>是否录入
-            if (!Check.isEmpty(txtPitshaftCoordinateY, Const_GM.PITSHAFT_COORDINATE_Y))
-            {
-                return false;
-            }
-
-            // 判断<井筒坐标Y>是否为数字
-            if (!Check.IsNumeric(txtPitshaftCoordinateY, Const_GM.PITSHAFT_COORDINATE_Y))
-            {
-                return false;
-            }
-
-            // 判断<图形坐标X>是否录入
-            if (!Check.isEmpty(txtFigureCoordinateX, Const_GM.FIGURE_COORDINATE_X))
-            {
-                return false;
-            }
-
-            // 判断<图形坐标X>是否为数字
-            if (!Check.IsNumeric(txtFigureCoordinateX, Const_GM.FIGURE_COORDINATE_X))
-            {
-                return false;
-            }
-
-            // 判断<图形坐标Y>是否录入
-            if (!Check.isEmpty(txtFigureCoordinateY, Const_GM.FIGURE_COORDINATE_Y))
-            {
-                return false;
-            }
-
-            // 判断<图形坐标Y>是否为数字
-            if (!Check.IsNumeric(txtFigureCoordinateY, Const_GM.FIGURE_COORDINATE_Y))
-            {
-                return false;
-            }
-
-            // TODO:图形坐标Z暂时设为非必须录入，暂时保留
-            //// 判断<图形坐标Z>是否录入
-            //if (!Check.isEmpty(this.txtFigureCoordinateZ, Const_GM.FIGURE_COORDINATE_Z))
-            //{
-            //    return false;
-            //}
-
-            // 判断<图形坐标Z>是否为数字
-            if (!Check.IsNumeric(txtFigureCoordinateZ, Const_GM.FIGURE_COORDINATE_Z))
-            {
-                return false;
-            }
-
-            //****************************************************
-
-            // 验证通过
-            return true;
         }
 
         private void btnQD_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿namespace sys3
+﻿namespace geoInput
 {
     partial class CollapsePillarsManagement
     {

@@ -8,15 +8,13 @@ using GIS.Common;
 using LibCommon;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class FaultageInfoManagement : Form
     {
         public FaultageInfoManagement()
         {
             InitializeComponent();
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetManagementFormDefaultProperties(this, Const_GM.MANAGE_FAULTAGE_INFO);
         }
 
         private void RefreshData()
@@ -49,10 +47,10 @@ namespace sys3
         {
             if (gridView1.GetFocusedRow() == null)
             {
-                Alert.alert("请选择要修改的信息");
+                Alert.AlertMsg("请选择要修改的信息");
                 return;
             }
-            var faultageInfoEnteringForm = new FaultageInfoEntering((Faultage) gridView1.GetFocusedRow());
+            var faultageInfoEnteringForm = new FaultageInfoEntering((Faultage)gridView1.GetFocusedRow());
             if (faultageInfoEnteringForm.ShowDialog() == DialogResult.OK)
             {
                 RefreshData();
@@ -66,12 +64,12 @@ namespace sys3
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (!Alert.confirm(Const_GM.DEL_CONFIRM_MSG_FAULTAGE)) return;
+            if (!Alert.Confirm("确认要删除该断层吗？")) return;
             //var faultage = (Faultage)gridView1.GetFocusedRow();
             var selectedIndex = gridView1.GetSelectedRows();
-            foreach (var faultage in selectedIndex.Select(i => (Faultage) gridView1.GetRow(i)))
+            foreach (var faultage in selectedIndex.Select(i => (Faultage)gridView1.GetRow(i)))
             {
-                DeleteJLDCByBID(new[] {faultage.BindingId});
+                DeleteJLDCByBID(new[] { faultage.BindingId });
                 faultage.Delete();
             }
             RefreshData();
@@ -148,7 +146,7 @@ namespace sys3
 
         private void btnMap_Click(object sender, EventArgs e)
         {
-            var faultage = (Faultage) gridView1.GetFocusedRow();
+            var faultage = (Faultage)gridView1.GetFocusedRow();
             var bid = faultage.BindingId;
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.DEFALUT_EXPOSE_FAULTAGE);
             if (pLayer == null)
@@ -156,7 +154,7 @@ namespace sys3
                 MessageBox.Show(@"未发现揭露断层图层！");
                 return;
             }
-            var pFeatureLayer = (IFeatureLayer) pLayer;
+            var pFeatureLayer = (IFeatureLayer)pLayer;
             var str = "";
             //for (int i = 0; i < iSelIdxsArr.Length; i++)
             //{
@@ -186,7 +184,7 @@ namespace sys3
             }
             else
             {
-                Alert.alert("图元丢失");
+                Alert.AlertMsg("图元丢失");
             }
         }
 

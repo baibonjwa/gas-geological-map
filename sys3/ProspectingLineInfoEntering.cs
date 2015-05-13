@@ -7,7 +7,7 @@ using GIS.Common;
 using LibCommon;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class ProspectingLineInfoEntering : Form
     {
@@ -28,30 +28,6 @@ namespace sys3
         public ProspectingLineInfoEntering()
         {
             InitializeComponent();
-
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.INSERT_PROSPECTING_LINE_INFO);
-
-            //this.listBox1.Click += (ss, ee) =>
-            //{
-            //    ListBox lb = ss as ListBox;
-            //    Point p = lb.PointToClient(Control.MousePosition);
-            //    for (int i = 0; i < lb.Items.Count; i++)
-            //    {
-            //        if (ListBoxItemClick != null && lb.GetItemRectangle(i).Contains(p))
-            //        {
-            //            ListBoxItemClick.Invoke(lb, new ItemClickEventArgs() { Index = i });
-            //            break;
-            //        }
-            //    }
-            //};
-
-            //this.ListBoxItemClick += (s, e) =>
-            //{
-            //    MessageBox.Show(e.Index.ToString());
-            //};
-
-            // 绑定钻孔信息
         }
 
         /// <summary>
@@ -61,9 +37,6 @@ namespace sys3
         public ProspectingLineInfoEntering(ProspectingLine prospectingLine)
         {
             InitializeComponent();
-
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.UPDATE_PROSPECTING_LINE_INFO);
 
             // 设置业务类型
             _bllType = "update";
@@ -76,7 +49,7 @@ namespace sys3
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            for (var i = 0; i < lstProspectingBoreholeAll.SelectedItems.Count;)
+            for (var i = 0; i < lstProspectingBoreholeAll.SelectedItems.Count; )
             {
                 // 将左侧ListBox中选择的数据添加到右侧ListBox中
                 lstProspectingBoreholeSelected.Items.Add(lstProspectingBoreholeAll.SelectedItems[i].ToString());
@@ -92,7 +65,7 @@ namespace sys3
         /// <param name="e"></param>
         private void btnDeltete_Click(object sender, EventArgs e)
         {
-            for (var i = 0; i < lstProspectingBoreholeSelected.SelectedItems.Count;)
+            for (var i = 0; i < lstProspectingBoreholeSelected.SelectedItems.Count; )
             {
                 // 将右侧ListBox中选择移除的数据恢复到左侧ListBox中
                 lstProspectingBoreholeAll.Items.Add(lstProspectingBoreholeSelected.SelectedItems[i].ToString());
@@ -108,12 +81,6 @@ namespace sys3
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            // 验证
-            if (!check())
-            {
-                DialogResult = DialogResult.None;
-                return;
-            }
             DialogResult = DialogResult.OK;
 
             // 创建勘探线实体
@@ -126,7 +93,7 @@ namespace sys3
             for (var i = 0; i < cnt; i++)
             {
                 var strDisplayName = lstProspectingBoreholeSelected.Items[i].ToString();
-                if (Validator.IsEmpty(prospectingLineEntity.ProspectingBorehole))
+                if (String.IsNullOrWhiteSpace(prospectingLineEntity.ProspectingBorehole))
                 {
                     prospectingLineEntity.ProspectingBorehole = strDisplayName;
                 }
@@ -136,8 +103,6 @@ namespace sys3
                                                                 strDisplayName;
                 }
 
-                ///20140505 lyf
-                ///根据钻孔点名查找钻孔点信息  
                 IPoint pt = new PointClass();
                 pt = GetProspectingBoreholePointSelected(strDisplayName);
                 if (pt != null && !lstProspectingBoreholePts.Contains(pt))
@@ -150,7 +115,7 @@ namespace sys3
             if (_bllType == "add")
             {
                 // BIDID
-                prospectingLineEntity.BindingId = IDGenerator.NewBindingID();
+                prospectingLineEntity.BindingId = IdGenerator.NewBindingId();
 
                 // 勘探线信息登录
                 prospectingLineEntity.Save();
@@ -193,66 +158,6 @@ namespace sys3
         }
 
         /// <summary>
-        ///     验证画面入力数据
-        /// </summary>
-        /// <returns>验证结果：true 通过验证, false未通过验证</returns>
-        private bool check()
-        {
-            // 判断勘探线名称是否录入
-            if (!Check.isEmpty(txtProspectingLineName, Const_GM.PROSPECTING_LINE_NAME))
-            {
-                return false;
-            }
-
-            // 勘探线名称特殊字符判断
-            if (!Check.checkSpecialCharacters(txtProspectingLineName, Const_GM.PROSPECTING_LINE_NAME))
-            {
-                return false;
-            }
-
-            //// 判断勘探线名称是否存在
-            //if (!Check.isExist(this.txtProspectingLineName, Const_GM.PROSPECTING_LINE_NAME, 
-            //    ProspectingLineBLL.isProspectingLineNameExist(this.txtProspectingLineName.Text.Trim())))
-            //{
-            //    return false;
-            //}
-
-            // 只有当添加新勘探线信息的时候才去判断勘探线名称是否重复
-            if (_bllType == "add")
-            {
-                // 判断孔号是否存在
-                if (ProspectingLine.ExistsByProspectingLineName(txtProspectingLineName.Text.Trim()))
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                /* 修改的时候，首先要获取UI输入的钻孔名称到DB中去检索，
-                如果检索件数 > 0 并且该断层ID还不是传过来的主键，那么视为输入了已存在的钻孔名称 */
-                var boreholeId = -1;
-                if (ProspectingLine.ExistsByProspectingLineName(txtProspectingLineName.Text.Trim()))
-                {
-                    txtProspectingLineName.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert(Const_GM.PROSPECTING_LINE_EXIST_MSG); // 勘探线名称已存在，请重新录入！
-                    txtProspectingLineName.Focus();
-                    return false;
-                }
-            }
-
-            // 勘探线钻孔必须选择
-            if (lstProspectingBoreholeSelected.Items.Count == 0)
-            {
-                Alert.alert(Const_GM.PROSPECTING_BOREHOLE_MUST_CHOOSE_MSG);
-                lstProspectingBoreholeAll.Focus();
-                return false;
-            }
-
-            // 验证通过
-            return true;
-        }
-
-        /// <summary>
         ///     实现点击鼠标右键，将点击处的Item设为选中
         /// </summary>
         /// <param name="sender"></param>
@@ -283,7 +188,7 @@ namespace sys3
 
             if (iNowIndex == 0)
             {
-                Alert.alert("无法上移");
+                Alert.AlertMsg("无法上移");
                 return;
             }
 
@@ -310,7 +215,7 @@ namespace sys3
 
             if (iNowIndex == lstProspectingBoreholeSelected.Items.Count - 1)
             {
-                Alert.alert("无法下移");
+                Alert.AlertMsg("无法下移");
                 return;
             }
 

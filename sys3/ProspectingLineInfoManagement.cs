@@ -6,7 +6,7 @@ using GIS.Common;
 using LibCommon;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class ProspectingLineInfoManagement : Form
     {
@@ -14,9 +14,6 @@ namespace sys3
         public ProspectingLineInfoManagement()
         {
             InitializeComponent();
-
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetManagementFormDefaultProperties(this, Const_GM.MANAGE_PROSPECTING_LINE_INFO);
         }
 
         private void RefreshData()
@@ -60,13 +57,11 @@ namespace sys3
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (Alert.confirm(Const_GM.DEL_CONFIRM_MSG_PROSPECTING_LINE))
-            {
-                var prospectingLine = (ProspectingLine)gridView1.GetFocusedRow();
-                DeleteJLDCByBID(new[] { prospectingLine.BindingId });
-                prospectingLine.Delete();
-                RefreshData();
-            }
+            if (!Alert.Confirm("确定要删除勘探线吗？")) return;
+            var prospectingLine = (ProspectingLine)gridView1.GetFocusedRow();
+            DeleteJLDCByBID(new[] { prospectingLine.BindingId });
+            prospectingLine.Delete();
+            RefreshData();
         }
 
         #region 删除勘探线图元
@@ -187,7 +182,7 @@ namespace sys3
             }
             else
             {
-                Alert.alert("图元丢失");
+                Alert.AlertMsg("图元丢失");
             }
         }
 

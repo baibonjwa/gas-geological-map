@@ -31,7 +31,7 @@ namespace LibAbout
         {
             try
             {
-                bmp = new Bitmap(Const.strPicturepath);//打开一张图将起转换为24位
+                bmp = new Bitmap("");//打开一张图将起转换为24位
                 m_bmp = bmp.Clone(new Rectangle(0, 0, bmp.Width, bmp.Height), PixelFormat.Format24bppRgb);
                 pictureBox1.Image = m_bmp;
                 pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -58,7 +58,7 @@ namespace LibAbout
             }
             catch
             {
-                Alert.alert("未找到关于图片");
+                Alert.AlertMsg("未找到关于图片");
             }
         }
         //绘制水波

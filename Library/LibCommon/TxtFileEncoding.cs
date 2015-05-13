@@ -6,12 +6,6 @@ namespace LibCommon
 {
     public class TxtFileEncoding
     {
-        public TxtFileEncoding()
-        {
-            //
-            // TODO: 在此处添加构造函数逻辑
-            //
-        }
         /// <summary>
         /// 取得一个文本文件的编码方式。如果无法在文件头部找到有效的前导符，Encoding.Default将被返回。
         /// </summary>

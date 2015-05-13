@@ -1,117 +1,99 @@
 ﻿using System.Linq;
 using Castle.ActiveRecord;
 using NHibernate.Criterion;
-using NHibernate.Engine;
 
 namespace LibEntity
 {
-    [ActiveRecord("T_TUNNEL_INFO")]
+    [ActiveRecord]
     public class Tunnel : ActiveRecordBase<Tunnel>
     {
         /// <summary>
         ///     巷道编号
         /// </summary>
-        [PrimaryKey(PrimaryKeyType.Identity, "TUNNEL_ID")]
+        [PrimaryKey(PrimaryKeyType.Identity)]
         public int TunnelId { get; set; }
 
         /// <summary>
         ///     巷道名称
         /// </summary>
-        [Property("TUNNEL_NAME")]
+        [Property]
         public string TunnelName { get; set; }
 
         /// <summary>
         ///     支护方式
         /// </summary>
-        [Property("SUPPORT_PATTERN")]
+        [Property]
         public string TunnelSupportPattern { get; set; }
-
-        // 围岩类型
 
         /// <summary>
         ///     围岩类型
         /// </summary>
-        [BelongsTo("LITHOLOGY_ID")]
+        [BelongsTo("LithologyId")]
         public Lithology Lithology { get; set; }
-
-        // 断面类型
 
         /// <summary>
         ///     断面类型
         /// </summary>
-        [Property("SECTION_TYPE")]
+        [Property]
         public string TunnelSectionType { get; set; }
-
-        // 断面参数
 
         /// <summary>
         ///     断面参数
         /// </summary>
-        [Property("PARAM")]
+        [Property]
         public string TunnelParam { get; set; }
-
-        // 设计长度
 
         /// <summary>
         ///     设计长度
         /// </summary>
-        [Property("DESIGNLENGTH")]
+        [Property]
         public double TunnelDesignLength { get; set; }
-
-        // 设计面积
 
         /// <summary>
         ///     设计面积
         /// </summary>
-        [Property("DESIGNAREA")]
+        [Property]
         public double TunnelDesignArea { get; set; }
-
-        //巷道类型
 
         /// <summary>
         ///     巷道类型
         /// </summary>
-        [Property("TUNNEL_TYPE")]
+        [Property]
         public TunnelTypeEnum TunnelType { get; set; }
-
-        // 工作面
 
         /// <summary>
         ///     工作面
         /// </summary>
-        [BelongsTo("WORKINGFACE_ID")]
+        [BelongsTo("WorkingFaceId")]
         public WorkingFace WorkingFace { get; set; }
-
-        // 煤巷岩巷
 
         /// <summary>
         ///     煤巷岩巷
         /// </summary>
-        [Property("COAL_OR_STONE")]
+        [Property]
         public string CoalOrStone { get; set; }
-
-        // 绑定煤层ID
 
         /// <summary>
         ///     绑定煤层ID
         /// </summary>
-        [BelongsTo("COAL_LAYER_ID")]
+        //[BelongsTo("COAL_LAYER_ID")]
         public CoalSeams CoalSeams { get; set; }
 
 
         public Wire Wire { get; set; }
 
-        // BID
-
         /// <summary>
         ///     BID
         /// </summary>
-        [Property("BINDINGID")]
+        [Property]
         public string BindingId { get; set; }
 
 
-        [Property("RULE_IDS")]
+        [Property]
         public string RuleIds { get; set; }
+
+        [Property]
+        public string PreWarningParams { get; set; }
 
         /// <summary>
         ///     巷道使用次数，用来缓存信息，此外无实际意义。
@@ -121,8 +103,8 @@ namespace LibEntity
         /// <summary>
         ///     巷道宽度
         /// </summary>
-        [Property("Tunnel_Wid")]
-        public double TunnelWid { get; set; }
+        [Property]
+        public double TunnelWidth { get; set; }
 
         public static Tunnel[] FindAllByWorkingFaceId(int workingfaceId)
         {

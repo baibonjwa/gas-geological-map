@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,7 +14,7 @@ namespace LibCommonForm
     public partial class TunnelInfoEntering : Form
     {
         private int _formHeight;
-        private Tunnel Tunnel { get; set; }
+        private Tunnel Tunnel { set; get; }
 
         /// <summary>
         ///     添加
@@ -21,9 +22,6 @@ namespace LibCommonForm
         public TunnelInfoEntering()
         {
             InitializeComponent();
-            //设置窗体格式
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.TUNNEL_INFO_ADD);
-            Text = Const_GM.TUNNEL_INFO_ADD;
         }
 
         public override sealed string Text
@@ -38,8 +36,6 @@ namespace LibCommonForm
         public TunnelInfoEntering(Tunnel tunnel)
         {
             InitializeComponent();
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.TUNNEL_INFO_CHANGE);
-            Text = Const_GM.TUNNEL_INFO_CHANGE;
             Tunnel = tunnel;
         }
 
@@ -73,7 +69,7 @@ namespace LibCommonForm
             cboTunnelType.ValueMember = "Value";
 
 
-            if (Text == Const_GM.TUNNEL_INFO_ADD)
+            if (Tunnel == null)
             {
                 selectWorkingFaceControl1.LoadData();
                 cboTunnelType.SelectedValue = (int)TunnelTypeEnum.OTHER;
@@ -108,7 +104,7 @@ namespace LibCommonForm
                 workingFace = WorkingFace.Find(workingFace.WorkingFaceId);
                 if (workingFace.Tunnels.FirstOrDefault(u => u.TunnelName == txtTunnelName.Text) != null)
                 {
-                    Alert.alert("该工作面下已有同名巷道！");
+                    Alert.AlertMsg("该工作面下已有同名巷道！");
                     return;
                 }
             }
@@ -123,8 +119,8 @@ namespace LibCommonForm
                 TunnelType = (TunnelTypeEnum)cboTunnelType.SelectedValue,
                 CoalOrStone = cboCoalOrStone.Text,
                 CoalSeams = CoalSeams.FindAll().First(),
-                BindingId = IDGenerator.NewBindingID(),
-                TunnelWid = 5
+                BindingId = IdGenerator.NewBindingId(),
+                TunnelWidth = 5
             };
 
             //设计长度
@@ -139,7 +135,7 @@ namespace LibCommonForm
             //巷道信息登录
 
             tunnel.Save();
-            Alert.alert("提交成功！");
+            Alert.AlertMsg("提交成功！");
         }
 
         private void UpdateTunnelInfo()
@@ -158,7 +154,7 @@ namespace LibCommonForm
             //围岩类型
             Tunnel.Lithology = (Lithology)cboLithology.SelectedItem;
             Tunnel.CoalSeams = CoalSeams.FindAll().First();
-            Tunnel.TunnelWid = 5;
+            Tunnel.TunnelWidth = 5;
 
             //设计长度
             if (txtDesignLength.Text != "")
@@ -176,7 +172,7 @@ namespace LibCommonForm
             }
 
             Tunnel.Save();
-            Alert.alert("提交成功！");
+            Alert.AlertMsg("提交成功！");
         }
 
 
@@ -187,11 +183,11 @@ namespace LibCommonForm
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (Text == Const_GM.TUNNEL_INFO_ADD)
+            if (Tunnel == null)
             {
                 AddTunnelInfo();
             }
-            if (Text == Const_GM.TUNNEL_INFO_CHANGE)
+            else
             {
                 UpdateTunnelInfo();
             }
@@ -215,26 +211,18 @@ namespace LibCommonForm
         {
             if (selectWorkingFaceControl1.SelectedWorkingFace == null)
             {
-                Alert.alert("请选择巷道所在工作面信息");
+                Alert.AlertMsg("请选择巷道所在工作面信息");
                 return false;
             }
             // 判断巷道名称是否入力
             if (String.IsNullOrWhiteSpace(txtTunnelName.Text))
             {
-                txtTunnelName.BackColor = Const.ERROR_FIELD_COLOR;
-                Alert.alert("巷道名称不能为空！");
+                txtTunnelName.BackColor = Color.Red;
+                Alert.AlertMsg("巷道名称不能为空！");
                 txtTunnelName.Focus();
                 return false;
             }
-            txtTunnelName.BackColor = Const.NO_ERROR_FIELD_COLOR;
-            if (String.IsNullOrWhiteSpace(txtDesignLength.Text))
-            {
-                if (!LibCommon.Check.IsNumeric(txtDesignLength, "设计长度"))
-                {
-                    return false;
-                }
-            }
-
+            txtTunnelName.BackColor = Color.White;
             //验证通过
             return true;
         }

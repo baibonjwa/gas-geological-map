@@ -1,4 +1,4 @@
-﻿namespace sys4
+﻿namespace ggm
 {
     partial class MainForm_OP
     {
@@ -68,20 +68,6 @@
             this.mniWSYLDHZ = new DevExpress.XtraBars.BarButtonItem();
             this.mniWSHLDHZ = new DevExpress.XtraBars.BarButtonItem();
             this.mniWSYCLDHZ = new DevExpress.XtraBars.BarButtonItem();
-            this.mniFTCS = new DevExpress.XtraBars.BarSubItem();
-            this.mniAreaMeasures = new DevExpress.XtraBars.BarButtonItem();
-            this.mniLocalMeasures = new DevExpress.XtraBars.BarButtonItem();
-            this.mniFTZKSJ = new DevExpress.XtraBars.BarButtonItem();
-            this.mniCSJS = new DevExpress.XtraBars.BarSubItem();
-            this.mniWSYL = new DevExpress.XtraBars.BarButtonItem();
-            this.mniWSHL = new DevExpress.XtraBars.BarButtonItem();
-            this.mniWSYCL = new DevExpress.XtraBars.BarButtonItem();
-            this.mniFSWSYLHHL = new DevExpress.XtraBars.BarButtonItem();
-            this.mniMCTQXXS = new DevExpress.XtraBars.BarButtonItem();
-            this.mniTCZB = new DevExpress.XtraBars.BarButtonItem();
-            this.mniCFGLZLJS = new DevExpress.XtraBars.BarButtonItem();
-            this.mniWSCFGJ = new DevExpress.XtraBars.BarButtonItem();
-            this.mniCFBXX = new DevExpress.XtraBars.BarButtonItem();
             this.mniHelp = new DevExpress.XtraBars.BarSubItem();
             this.bbiCheckUpdate = new DevExpress.XtraBars.BarButtonItem();
             this.mniHelpFile = new DevExpress.XtraBars.BarButtonItem();
@@ -101,6 +87,18 @@
             this.mniUserGroupInfoMana = new DevExpress.XtraBars.BarButtonItem();
             this.mniExport3 = new DevExpress.XtraBars.BarButtonItem();
             this.mniS = new DevExpress.XtraBars.BarButtonItem();
+            this.mniAreaMeasures = new DevExpress.XtraBars.BarButtonItem();
+            this.mniLocalMeasures = new DevExpress.XtraBars.BarButtonItem();
+            this.mniFTZKSJ = new DevExpress.XtraBars.BarButtonItem();
+            this.mniWSYL = new DevExpress.XtraBars.BarButtonItem();
+            this.mniWSHL = new DevExpress.XtraBars.BarButtonItem();
+            this.mniWSYCL = new DevExpress.XtraBars.BarButtonItem();
+            this.mniFSWSYLHHL = new DevExpress.XtraBars.BarButtonItem();
+            this.mniMCTQXXS = new DevExpress.XtraBars.BarButtonItem();
+            this.mniTCZB = new DevExpress.XtraBars.BarButtonItem();
+            this.mniCFGLZLJS = new DevExpress.XtraBars.BarButtonItem();
+            this.mniWSCFGJ = new DevExpress.XtraBars.BarButtonItem();
+            this.mniCFBXX = new DevExpress.XtraBars.BarButtonItem();
             this.mniDatabaseSet = new DevExpress.XtraBars.BarButtonItem();
             this.mniEmployeeInfoMan = new DevExpress.XtraBars.BarButtonItem();
             this.mniDepartmentInfoMana = new DevExpress.XtraBars.BarButtonItem();
@@ -339,8 +337,6 @@
             this.mniFile,
             this.mniDataManagement,
             this.mniPlot,
-            this.mniFTCS,
-            this.mniCSJS,
             this.mniSystemSet,
             this.mniHelp,
             this.mniSave,
@@ -436,8 +432,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.mniFile),
             new DevExpress.XtraBars.LinkPersistInfo(this.mniDataManagement),
             new DevExpress.XtraBars.LinkPersistInfo(this.mniPlot),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.mniFTCS, false),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.mniCSJS, false),
             new DevExpress.XtraBars.LinkPersistInfo(this.mniHelp)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
@@ -635,135 +629,6 @@
             this.mniWSYCLDHZ.Name = "mniWSYCLDHZ";
             this.mniWSYCLDHZ.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniWSYCLDHZ_ItemClick);
             // 
-            // mniFTCS
-            // 
-            this.mniFTCS.Caption = "防突措施(&K)";
-            this.mniFTCS.Id = 3;
-            this.mniFTCS.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniAreaMeasures),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniLocalMeasures),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniFTZKSJ)});
-            this.mniFTCS.Name = "mniFTCS";
-            // 
-            // mniAreaMeasures
-            // 
-            this.mniAreaMeasures.Caption = "区域措施(&Z)...";
-            this.mniAreaMeasures.Id = 25;
-            this.mniAreaMeasures.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z));
-            this.mniAreaMeasures.Name = "mniAreaMeasures";
-            this.mniAreaMeasures.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniAreaMeasures_ItemClick);
-            // 
-            // mniLocalMeasures
-            // 
-            this.mniLocalMeasures.Caption = "局部措施(&L)...";
-            this.mniLocalMeasures.Id = 26;
-            this.mniLocalMeasures.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
-            this.mniLocalMeasures.Name = "mniLocalMeasures";
-            this.mniLocalMeasures.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniLocalMeasures_ItemClick);
-            // 
-            // mniFTZKSJ
-            // 
-            this.mniFTZKSJ.Caption = "防突钻孔设计(&F)...";
-            this.mniFTZKSJ.Id = 27;
-            this.mniFTZKSJ.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F));
-            this.mniFTZKSJ.Name = "mniFTZKSJ";
-            this.mniFTZKSJ.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniFTZKSJ_ItemClick);
-            // 
-            // mniCSJS
-            // 
-            this.mniCSJS.Caption = "参数计算(&A)";
-            this.mniCSJS.Id = 4;
-            this.mniCSJS.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniWSYL),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniWSHL),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniWSYCL),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniFSWSYLHHL),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniMCTQXXS),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniTCZB),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniCFGLZLJS),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniWSCFGJ),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mniCFBXX)});
-            this.mniCSJS.Name = "mniCSJS";
-            // 
-            // mniWSYL
-            // 
-            this.mniWSYL.Caption = "瓦斯压力(&P)...";
-            this.mniWSYL.Id = 28;
-            this.mniWSYL.ImageIndex = 16;
-            this.mniWSYL.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D5));
-            this.mniWSYL.Name = "mniWSYL";
-            this.mniWSYL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniWSYL_ItemClick);
-            // 
-            // mniWSHL
-            // 
-            this.mniWSHL.Caption = "瓦斯含量(&C)...";
-            this.mniWSHL.Id = 29;
-            this.mniWSHL.ImageIndex = 13;
-            this.mniWSHL.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6));
-            this.mniWSHL.Name = "mniWSHL";
-            this.mniWSHL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniWSHL_ItemClick);
-            // 
-            // mniWSYCL
-            // 
-            this.mniWSYCL.Caption = "瓦斯涌出量(&R)...";
-            this.mniWSYCL.Id = 30;
-            this.mniWSYCL.ImageIndex = 19;
-            this.mniWSYCL.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D7));
-            this.mniWSYCL.Name = "mniWSYCL";
-            this.mniWSYCL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniWSYCL_ItemClick);
-            // 
-            // mniFSWSYLHHL
-            // 
-            this.mniFSWSYLHHL.Caption = "反算瓦斯压力/含量(&B)...";
-            this.mniFSWSYLHHL.Id = 31;
-            this.mniFSWSYLHHL.ImageIndex = 6;
-            this.mniFSWSYLHHL.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B));
-            this.mniFSWSYLHHL.Name = "mniFSWSYLHHL";
-            this.mniFSWSYLHHL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniFSWSYLHHL_ItemClick);
-            // 
-            // mniMCTQXXS
-            // 
-            this.mniMCTQXXS.Caption = "煤层透气性系数(&V)...";
-            this.mniMCTQXXS.Id = 32;
-            this.mniMCTQXXS.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V));
-            this.mniMCTQXXS.Name = "mniMCTQXXS";
-            this.mniMCTQXXS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniMCTQXXS_ItemClick);
-            // 
-            // mniTCZB
-            // 
-            this.mniTCZB.Caption = "突出指标(D、K)(&H)...";
-            this.mniTCZB.Id = 33;
-            this.mniTCZB.ImageIndex = 11;
-            this.mniTCZB.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H));
-            this.mniTCZB.Name = "mniTCZB";
-            this.mniTCZB.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniTCZB_ItemClick);
-            // 
-            // mniCFGLZLJS
-            // 
-            this.mniCFGLZLJS.Caption = "抽放管路阻力计算(&D)...";
-            this.mniCFGLZLJS.Id = 34;
-            this.mniCFGLZLJS.ImageIndex = 5;
-            this.mniCFGLZLJS.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D));
-            this.mniCFGLZLJS.Name = "mniCFGLZLJS";
-            this.mniCFGLZLJS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniCFGLZLJS_ItemClick);
-            // 
-            // mniWSCFGJ
-            // 
-            this.mniWSCFGJ.Caption = "瓦斯抽放管径(&T)...";
-            this.mniWSCFGJ.Id = 35;
-            this.mniWSCFGJ.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D8));
-            this.mniWSCFGJ.Name = "mniWSCFGJ";
-            this.mniWSCFGJ.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniWSCFGJ_ItemClick);
-            // 
-            // mniCFBXX
-            // 
-            this.mniCFBXX.Caption = "抽放泵选型(&M)...";
-            this.mniCFBXX.Id = 36;
-            this.mniCFBXX.ImageIndex = 4;
-            this.mniCFBXX.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M));
-            this.mniCFBXX.Name = "mniCFBXX";
-            this.mniCFBXX.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniCFBXX_ItemClick);
-            // 
             // mniHelp
             // 
             this.mniHelp.Caption = "帮助(&H)";
@@ -911,6 +776,109 @@
             // 
             this.mniS.Id = 91;
             this.mniS.Name = "mniS";
+            // 
+            // mniAreaMeasures
+            // 
+            this.mniAreaMeasures.Caption = "区域措施(&Z)...";
+            this.mniAreaMeasures.Id = 25;
+            this.mniAreaMeasures.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z));
+            this.mniAreaMeasures.Name = "mniAreaMeasures";
+            this.mniAreaMeasures.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniAreaMeasures_ItemClick);
+            // 
+            // mniLocalMeasures
+            // 
+            this.mniLocalMeasures.Caption = "局部措施(&L)...";
+            this.mniLocalMeasures.Id = 26;
+            this.mniLocalMeasures.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
+            this.mniLocalMeasures.Name = "mniLocalMeasures";
+            this.mniLocalMeasures.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniLocalMeasures_ItemClick);
+            // 
+            // mniFTZKSJ
+            // 
+            this.mniFTZKSJ.Caption = "防突钻孔设计(&F)...";
+            this.mniFTZKSJ.Id = 27;
+            this.mniFTZKSJ.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F));
+            this.mniFTZKSJ.Name = "mniFTZKSJ";
+            this.mniFTZKSJ.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniFTZKSJ_ItemClick);
+            // 
+            // mniWSYL
+            // 
+            this.mniWSYL.Caption = "瓦斯压力(&P)...";
+            this.mniWSYL.Id = 28;
+            this.mniWSYL.ImageIndex = 16;
+            this.mniWSYL.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D5));
+            this.mniWSYL.Name = "mniWSYL";
+            this.mniWSYL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniWSYL_ItemClick);
+            // 
+            // mniWSHL
+            // 
+            this.mniWSHL.Caption = "瓦斯含量(&C)...";
+            this.mniWSHL.Id = 29;
+            this.mniWSHL.ImageIndex = 13;
+            this.mniWSHL.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6));
+            this.mniWSHL.Name = "mniWSHL";
+            this.mniWSHL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniWSHL_ItemClick);
+            // 
+            // mniWSYCL
+            // 
+            this.mniWSYCL.Caption = "瓦斯涌出量(&R)...";
+            this.mniWSYCL.Id = 30;
+            this.mniWSYCL.ImageIndex = 19;
+            this.mniWSYCL.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D7));
+            this.mniWSYCL.Name = "mniWSYCL";
+            this.mniWSYCL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniWSYCL_ItemClick);
+            // 
+            // mniFSWSYLHHL
+            // 
+            this.mniFSWSYLHHL.Caption = "反算瓦斯压力/含量(&B)...";
+            this.mniFSWSYLHHL.Id = 31;
+            this.mniFSWSYLHHL.ImageIndex = 6;
+            this.mniFSWSYLHHL.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B));
+            this.mniFSWSYLHHL.Name = "mniFSWSYLHHL";
+            this.mniFSWSYLHHL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniFSWSYLHHL_ItemClick);
+            // 
+            // mniMCTQXXS
+            // 
+            this.mniMCTQXXS.Caption = "煤层透气性系数(&V)...";
+            this.mniMCTQXXS.Id = 32;
+            this.mniMCTQXXS.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V));
+            this.mniMCTQXXS.Name = "mniMCTQXXS";
+            this.mniMCTQXXS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniMCTQXXS_ItemClick);
+            // 
+            // mniTCZB
+            // 
+            this.mniTCZB.Caption = "突出指标(D、K)(&H)...";
+            this.mniTCZB.Id = 33;
+            this.mniTCZB.ImageIndex = 11;
+            this.mniTCZB.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H));
+            this.mniTCZB.Name = "mniTCZB";
+            this.mniTCZB.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniTCZB_ItemClick);
+            // 
+            // mniCFGLZLJS
+            // 
+            this.mniCFGLZLJS.Caption = "抽放管路阻力计算(&D)...";
+            this.mniCFGLZLJS.Id = 34;
+            this.mniCFGLZLJS.ImageIndex = 5;
+            this.mniCFGLZLJS.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D));
+            this.mniCFGLZLJS.Name = "mniCFGLZLJS";
+            this.mniCFGLZLJS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniCFGLZLJS_ItemClick);
+            // 
+            // mniWSCFGJ
+            // 
+            this.mniWSCFGJ.Caption = "瓦斯抽放管径(&T)...";
+            this.mniWSCFGJ.Id = 35;
+            this.mniWSCFGJ.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D8));
+            this.mniWSCFGJ.Name = "mniWSCFGJ";
+            this.mniWSCFGJ.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniWSCFGJ_ItemClick);
+            // 
+            // mniCFBXX
+            // 
+            this.mniCFBXX.Caption = "抽放泵选型(&M)...";
+            this.mniCFBXX.Id = 36;
+            this.mniCFBXX.ImageIndex = 4;
+            this.mniCFBXX.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M));
+            this.mniCFBXX.Name = "mniCFBXX";
+            this.mniCFBXX.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniCFBXX_ItemClick);
             // 
             // mniDatabaseSet
             // 
@@ -1190,7 +1158,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm_OP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "KJGEW113 工作面动态防突管理系统";
+            this.Text = "动态瓦斯地质图绘制系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_OP_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_OP_Load);
@@ -1236,8 +1204,6 @@
         private DevExpress.XtraBars.BarButtonItem mniWSYLD;
         private DevExpress.XtraBars.BarButtonItem mniWSYCLD;
         private DevExpress.XtraBars.BarSubItem mniPlot;
-        private DevExpress.XtraBars.BarSubItem mniFTCS;
-        private DevExpress.XtraBars.BarSubItem mniCSJS;
         private DevExpress.XtraBars.BarSubItem mniSystemSet;
         private DevExpress.XtraBars.BarSubItem mniHelp;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;

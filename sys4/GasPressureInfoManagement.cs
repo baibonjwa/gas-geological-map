@@ -8,7 +8,7 @@ using GIS.Common;
 using LibCommon;
 using LibEntity;
 
-namespace sys4
+namespace ggm
 {
     public partial class GasPressureInfoManagement : Form
     {
@@ -18,9 +18,6 @@ namespace sys4
         public GasPressureInfoManagement()
         {
             InitializeComponent();
-
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetManagementFormDefaultProperties(this, Const_OP.MANAGE_GASPRESSURE_INFO);
         }
 
         private void RefreshData()
@@ -49,7 +46,7 @@ namespace sys4
         /// <param name="e"></param>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            var gasPressureInfoEnteringForm = new GasPressureInfoEntering((GasPressure) gridView1.GetFocusedRow());
+            var gasPressureInfoEnteringForm = new GasPressureInfoEntering((GasPressure)gridView1.GetFocusedRow());
             if (DialogResult.OK == gasPressureInfoEnteringForm.ShowDialog())
             {
                 RefreshData();
@@ -63,12 +60,12 @@ namespace sys4
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (!Alert.confirm(Const_OP.DEL_CONFIRM_MSG_GASPRESSURE)) return;
+            if (!Alert.Confirm("确定要删除瓦斯压力数据吗？")) return;
             // 瓦斯压力数据删除
             var selectedIndex = gridView1.GetSelectedRows();
-            foreach (var gasPressure in selectedIndex.Select(i => (GasPressure) gridView1.GetRow(i)))
+            foreach (var gasPressure in selectedIndex.Select(i => (GasPressure)gridView1.GetRow(i)))
             {
-                DelGasGushQuantityPt(new[] {gasPressure.BindingId});
+                DelGasGushQuantityPt(new[] { gasPressure.BindingId });
                 gasPressure.Delete();
             }
             RefreshData();
@@ -81,7 +78,7 @@ namespace sys4
         private void DelGasGushQuantityPt(string[] bid)
         {
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.LAYER_ALIAS_MR_WSYLD);
-            var pFeatureLayer = (IFeatureLayer) pLayer;
+            var pFeatureLayer = (IFeatureLayer)pLayer;
             var strsql = "";
             for (var i = 0; i < bid.Length; i++)
             {
@@ -140,7 +137,7 @@ namespace sys4
         private void btnMap_Click(object sender, EventArgs e)
         {
             var selectedIndex = gridView1.GetSelectedRows();
-            var list = selectedIndex.Select(i => (GasPressure) gridView1.GetRow(i)).Select(gasPressure => new PointClass
+            var list = selectedIndex.Select(i => (GasPressure)gridView1.GetRow(i)).Select(gasPressure => new PointClass
             {
                 X = gasPressure.CoordinateX,
                 Y = gasPressure.CoordinateY

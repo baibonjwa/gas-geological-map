@@ -16,7 +16,7 @@ using LibCommon;
 using LibEntity;
 using Point = ESRI.ArcGIS.Geometry.Point;
 
-namespace sys3
+namespace geoInput
 {
     public partial class WireInfoEntering : Form
     {
@@ -31,37 +31,7 @@ namespace sys3
         public WireInfoEntering()
         {
             InitializeComponent();
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.WIRE_INFO_ADD);
             selectTunnelUserControl1.LoadData();
-            // 注册委托事件
-            //selectTunnelUserControl1.TunnelNameChanged +=
-            //    InheritTunnelNameChanged;
-            ////巷道信息赋值
-            //Dictionary<string, string> flds = new Dictionary<string, string>();
-            //flds.Add(GIS_Const.FIELD_HDID, _tunnelID.ToString());
-
-            //List<Tuple<IFeature, IGeometry, Dictionary<string, string>>> selobjs = Global.commonclss.SearchFeaturesByGeoAndText(Global.centerfdlyr, flds);
-
-            //// 序号
-            //int xh = 0;
-            //if (selobjs.Count > 0)
-            //    xh = Convert.ToInt16(selobjs[0].Item3[GIS_Const.FIELD_XH]) + 1;
-            //string bid = "";
-            //string hdname = "";
-            //DataSet dst = LibBusiness.TunnelInfoBLL.selectOneTunnelInfoByTunnelID(_tunnelID);
-            //if (dst.Tables[0].Rows.Count > 0)
-            //{
-            //    bid = dst.Tables[0].Rows[0][LibBusiness.TunnelInfoDbConstNames.BINDINGID].ToString();
-            //    hdname = dst.Tables[0].Rows[0][LibBusiness.TunnelInfoDbConstNames.TUNNEL_NAME].ToString();
-            //}
-
-            //dics.Clear();
-            //dics.Add(GIS_Const.FIELD_HDID, _tunnelID.ToString());
-            //dics.Add(GIS_Const.FIELD_ID, "0");
-            //dics.Add(GIS_Const.FIELD_BS, "1");
-            //dics.Add(GIS_Const.FIELD_BID, bid);
-            //dics.Add(GIS_Const.FIELD_NAME, hdname);
-            //dics.Add(GIS_Const.FIELD_XH, xh.ToString());
         }
 
         /// <summary>
@@ -102,37 +72,6 @@ namespace sys3
             cboChecker.Text = wire.Checker;
             cboChecker.Text = wire.Checker;
             dtpCheckDate.Value = wire.CheckDate;
-
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.WIRE_INFO_CHANGE);
-            //this.selectTunnelUserControl1.setCurSelectedID(_arr);
-
-            // 注册委托事件
-            //selectTunnelUserControl1.TunnelNameChanged +=
-            //    InheritTunnelNameChanged;
-
-            //巷道信息赋值
-            //Dictionary<string, string> flds = new Dictionary<string, string>();
-            //flds.Add(GIS_Const.FIELD_HDID, _tunnelID.ToString());
-            //List<Tuple<IFeature, IGeometry, Dictionary<string, string>>> selobjs = Global.commonclss.SearchFeaturesByGeoAndText(Global.centerfdlyr, flds);
-            //int xh = 0;
-            //string bid = "";
-            //string hdname = "";
-            //DataSet dst=LibBusiness.TunnelInfoBLL.selectOneTunnelInfoByTunnelID(_tunnelID);
-            //if (dst.Tables[0].Rows.Count > 0)
-            //{
-            //    bid = dst.Tables[0].Rows[0][LibBusiness.TunnelInfoDbConstNames.BINDINGID].ToString();
-            //    hdname = dst.Tables[0].Rows[0][LibBusiness.TunnelInfoDbConstNames.TUNNEL_NAME].ToString();
-            //}
-            //if (selobjs.Count > 0)
-            //    xh = Convert.ToInt16(selobjs[0].Item3[GIS_Const.FIELD_XH]) + 1;
-
-            //dics.Clear();
-            //dics.Add(GIS_Const.FIELD_HDID, _tunnelID.ToString());
-            //dics.Add(GIS_Const.FIELD_ID, "0");
-            //dics.Add(GIS_Const.FIELD_BS, "1");
-            //dics.Add(GIS.GIS_Const.FIELD_BID, bid);
-            //dics.Add(GIS_Const.FIELD_HDNAME, hdname);
-            //dics.Add(GIS_Const.FIELD_XH, (xh + 1).ToString());
         }
 
         private Wire Wire { get; set; }
@@ -144,23 +83,18 @@ namespace sys3
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!Check())
-            {
-                DialogResult = DialogResult.None;
-                return;
-            }
             var wirePoints = GetWirePointListFromDataGrid();
             using (new SessionScope())
             {
                 var wire = Wire.FindOneByTunnelId(selectTunnelUserControl1.SelectedTunnel.TunnelId);
                 if (wirePoints.Count < 2)
                 {
-                    Alert.alert(Const_GM.WIRE_INFO_MSG_POINT_MUST_MORE_THAN_TWO);
+                    Alert.AlertMsg("导线点数据小于2个");
                     return;
                 }
                 if (wire != null)
                 {
-                    if (Alert.confirm("该巷道已绑定导线点，是否覆盖？"))
+                    if (Alert.Confirm("该巷道已绑定导线点，是否覆盖？"))
                     {
                         //foreach (var p in wire.WirePoints)
                         //{
@@ -242,7 +176,7 @@ namespace sys3
                 xh = Convert.ToInt16(selobjs[0].Item3[GIS_Const.FIELD_XH]) + 1;
             var bid = tunnel.BindingId;
             var hdname = tunnel.TunnelName;
-            hdwid = tunnel.TunnelWid;
+            hdwid = tunnel.TunnelWidth;
             _dics.Clear();
             _dics.Add(GIS_Const.FIELD_HDID, tunnel.TunnelId.ToString(CultureInfo.InvariantCulture));
             _dics.Add(GIS_Const.FIELD_ID, "0");
@@ -351,7 +285,7 @@ namespace sys3
             {
                 var wirePoint = SetWirePointEntity(i);
                 if (wirePoint == null) break;
-                wirePoint.BindingId = IDGenerator.NewBindingID();
+                wirePoint.BindingId = IdGenerator.NewBindingId();
                 wirePoints.Add(wirePoint);
             }
 
@@ -367,208 +301,6 @@ namespace sys3
         {
             // 关闭窗口
             Close();
-        }
-
-        /// <summary>
-        ///     验证画面入力数据
-        /// </summary>
-        /// <returns>验证结果：true 通过验证, false未通过验证</returns>
-        private bool Check()
-        {
-            for (var i = 0; i < dgrdvWire.Rows.Count; i++)
-            {
-                dgrdvWire.BackgroundColor = Const.NO_ERROR_FIELD_COLOR;
-            }
-            //// 判断巷道信息是否选择
-            if (selectTunnelUserControl1.SelectedTunnel == null)
-            {
-                Alert.alert(Const.MSG_PLEASE_CHOOSE + Const_GM.TUNNEL + Const.SIGN_EXCLAMATION_MARK);
-                return false;
-            }
-            if (Validator.IsEmpty(txtWireName.Text))
-            {
-                txtWireName.BackColor = Const.ERROR_FIELD_COLOR;
-                Alert.alert(Const.MSG_PLEASE_TYPE_IN + Const_GM.WIRE_NAME + Const.SIGN_EXCLAMATION_MARK);
-                return false;
-            }
-            txtWireName.BackColor = Const.NO_ERROR_FIELD_COLOR;
-            // 判断导线点编号是否入力
-            if (dgrdvWire.Rows.Count - 1 == 0)
-            {
-                Alert.alert(Const.MSG_PLEASE_TYPE_IN + Const_GM.WIRE_POINT_ID + Const.SIGN_EXCLAMATION_MARK);
-                return false;
-            }
-            //dgrdvWire内部判断
-            for (var i = 0; i < dgrdvWire.RowCount; i++)
-            {
-                // 最后一行为空行时，跳出循环
-                if (i == dgrdvWire.RowCount - 1)
-                {
-                    break;
-                }
-                var cell = dgrdvWire.Rows[i].Cells[0] as DataGridViewTextBoxCell;
-                // 判断导线点编号是否入力
-                if (cell != null && cell.Value == null)
-                {
-                    cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert(Const_GM.WIRE_POINT_ID + Const.MSG_NOT_NULL + Const.SIGN_EXCLAMATION_MARK);
-                    return false;
-                }
-                if (cell != null) cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-
-                ////判断导线点编号是否存在
-                //if (Text == Const_GM.WIRE_INFO_ADD)
-                //{
-                //    //导线点是否存在
-                //    if (WirePoint.ExistsByWirePointIdInWireInfo(wireEntity.WireId,
-                //        dgrdvWire.Rows[i].Cells[0].Value.ToString()))
-                //    {
-                //        cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                //        Alert.alert(Const_GM.WIRE_POINT_ID + Const.MSG_ALREADY_HAVE + Const.SIGN_EXCLAMATION_MARK);
-                //        return false;
-                //    }
-                //    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                //}
-                ////判断导线点编号是否有输入重复
-                //for (int j = 0; j < i; j++)
-                //{
-                //    if (dgrdvWire[0, j].Value.ToString() == dgrdvWire[0, i].Value.ToString())
-                //    {
-                //        cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                //        dgrdvWire[0, j].Style.BackColor = Const.ERROR_FIELD_COLOR;
-                //        Alert.alert(Const_GM.WIRE_POINT_ID + Const.MSG_DOUBLE_EXISTS + Const.SIGN_EXCLAMATION_MARK);
-                //        return false;
-                //    }
-                //    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                //    dgrdvWire[0, j].Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                //}
-
-                //判断坐标X是否入力
-                cell = dgrdvWire.Rows[i].Cells[1] as DataGridViewTextBoxCell;
-                if (cell != null && cell.Value == null)
-                {
-                    cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert(Const.rowNotNull(i, Const_GM.X));
-                    return false;
-                }
-                if (cell != null)
-                {
-                    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-
-                    // 判断坐标X是否为数字
-                    if (!Validator.IsNumeric(cell.Value.ToString()))
-                    {
-                        cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                        Alert.alert(Const.rowMustBeNumber(i, Const_GM.X));
-                        return false;
-                    }
-                    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                }
-                //判断坐标Y是否入力
-                cell = dgrdvWire.Rows[i].Cells[2] as DataGridViewTextBoxCell;
-                if (cell != null && cell.Value == null)
-                {
-                    cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert(Const.rowNotNull(i, Const_GM.Y));
-                    return false;
-                }
-                if (cell != null)
-                {
-                    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-
-                    // 判断坐标Y是否为数字
-                    if (!Validator.IsNumeric(cell.Value.ToString()))
-                    {
-                        cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                        Alert.alert(Const.rowMustBeNumber(i, Const_GM.Y));
-                        return false;
-                    }
-                    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                }
-                //判断坐标Z是否入力
-                cell = dgrdvWire.Rows[i].Cells[3] as DataGridViewTextBoxCell;
-                if (cell != null && cell.Value == null)
-                {
-                    cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert(Const.rowNotNull(i, Const_GM.Z));
-                    return false;
-                }
-                if (cell != null)
-                {
-                    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-
-                    // 判断坐标Z是否为数字
-                    if (!Validator.IsNumeric(cell.Value.ToString()))
-                    {
-                        cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                        Alert.alert(Const.rowMustBeNumber(i, Const_GM.Z));
-                        return false;
-                    }
-                    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                }
-                //判断距左帮距离是否入力
-                cell = dgrdvWire.Rows[i].Cells[4] as DataGridViewTextBoxCell;
-                if (cell != null && cell.Value == null)
-                {
-                    cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert(Const.rowNotNull(i, Const_GM.DISTANCE_TO_LEFT));
-                    return false;
-                }
-                if (cell != null)
-                {
-                    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-
-                    // 判断距左帮距离是否为数字
-                    if (!Validator.IsNumeric(cell.Value.ToString()))
-                    {
-                        cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                        Alert.alert(Const.rowMustBeNumber(i, Const_GM.DISTANCE_TO_LEFT));
-                        return false;
-                    }
-                    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                }
-                //判断距右帮距离是否入力
-                cell = dgrdvWire.Rows[i].Cells[5] as DataGridViewTextBoxCell;
-                if (cell != null && cell.Value == null)
-                {
-                    cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert(Const.rowNotNull(i, Const_GM.DISTANCE_TO_RIGHT));
-                    return false;
-                }
-                if (cell != null)
-                {
-                    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-
-                    // 判断距右帮距离是否为数字
-                    if (!Validator.IsNumeric(cell.Value.ToString()))
-                    {
-                        cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                        Alert.alert(Const.rowMustBeNumber(i, Const_GM.DISTANCE_TO_RIGHT));
-                        return false;
-                    }
-                    cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                }
-                cell = dgrdvWire.Rows[i].Cells[6] as DataGridViewTextBoxCell;
-                // 判断距顶板距离是否为数字
-                if (cell != null && (cell.Value != null && !Validator.IsNumeric(cell.Value.ToString())))
-                {
-                    cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert(Const.rowMustBeNumber(i, Const_GM.DISTANCE_TO_TOP));
-                    return false;
-                }
-                if (cell != null) cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                cell = dgrdvWire.Rows[i].Cells[7] as DataGridViewTextBoxCell;
-                // 判断距底板距离是否为数字
-                if (cell != null && (cell.Value != null && !Validator.IsNumeric(cell.Value.ToString())))
-                {
-                    cell.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert(Const.rowMustBeNumber(i, Const_GM.DISTANCE_TO_BOTTOM));
-                    return false;
-                }
-                if (cell != null) cell.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-            }
-            //验证成功
-            return true;
         }
 
         /// <summary>
@@ -594,17 +326,7 @@ namespace sys3
         /// <param name="e"></param>
         private void WireInfoEntering_Load(object sender, EventArgs e)
         {
-            if (Text == Const_GM.WIRE_INFO_ADD)
-            {
-                selectTunnelUserControl1.LoadData();
-                dtpMeasureDate.Value = DateTime.Now;
-                dtpCountDate.Value = DateTime.Now;
-                dtpCheckDate.Value = DateTime.Now;
-            }
-            else
-            {
-                selectTunnelUserControl1.LoadData(Wire.Tunnel);
-            }
+            selectTunnelUserControl1.LoadData(Wire.Tunnel);
         }
 
         /// <summary>
@@ -722,13 +444,13 @@ namespace sys3
                     var miningArea = MiningArea.FindOneByMiningAreaName(miningAreaName);
                     if (miningArea == null)
                     {
-                        Alert.confirm("该采区不存在，请先添加采区");
+                        Alert.Confirm("该采区不存在，请先添加采区");
                         return;
                     }
                     var workingFace = WorkingFace.FindByWorkingFaceNameAndMiningAreaId(workingFaceName, miningArea.MiningAreaId);
                     if (workingFace == null)
                     {
-                        if (Alert.confirm("该工作面不存在，是否创建该工作面？"))
+                        if (Alert.Confirm("该工作面不存在，是否创建该工作面？"))
                         {
                             workingFace = AddWorkingFace(miningArea, workingFaceName);
                         }
@@ -742,11 +464,11 @@ namespace sys3
                     }
                     else
                     {
-                        if (Alert.confirm("该巷道不存在，是否创建该巷道？"))
+                        if (Alert.Confirm("该巷道不存在，是否创建该巷道？"))
                         {
                             if (Tunnel.ExistsByTunnelNameAndWorkingFaceId(tunnelName, workingFace.WorkingFaceId))
                             {
-                                Alert.alert("该巷道已经存在");
+                                Alert.AlertMsg("该巷道已经存在");
                                 return;
                             }
                             var tunnel = AddTunnel(workingFace, tunnelName);
@@ -780,7 +502,7 @@ namespace sys3
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            Alert.alert(_errorMsg);
+            Alert.AlertMsg(_errorMsg);
         }
 
         #region 绘制导线点和巷道图形
@@ -792,8 +514,8 @@ namespace sys3
             {
                 TunnelName = tunnelName,
                 WorkingFace = workingFace,
-                TunnelWid = 5,
-                BindingId = IDGenerator.NewBindingID(),
+                TunnelWidth = 5,
+                BindingId = IdGenerator.NewBindingId(),
                 TunnelType = type
             };
             tunnel.Save();
@@ -806,7 +528,7 @@ namespace sys3
             {
                 WorkingFaceName = workingFaceName,
                 MiningArea = miningArea,
-                WorkingfaceTypeEnum = WorkingfaceTypeEnum.HC
+                WorkingfaceType = WorkingfaceTypeEnum.HC
             };
             workingFace.Save();
             return workingFace;
@@ -1029,7 +751,7 @@ namespace sys3
                         var miningArea = MiningArea.FindOneByMiningAreaName(miningAreaName);
                         if (miningArea == null)
                         {
-                            Alert.confirm("该采区不存在，请先添加采区");
+                            Alert.Confirm("该采区不存在，请先添加采区");
                             return;
                         }
                         var workingFace = WorkingFace.FindByWorkingFaceNameAndMiningAreaId(workingFaceName, miningArea.MiningAreaId);
@@ -1062,7 +784,7 @@ namespace sys3
 
                             wirePoints.Add(new WirePoint
                             {
-                                BindingId = IDGenerator.NewBindingID(),
+                                BindingId = IdGenerator.NewBindingId(),
                                 WirePointName = pointName,
                                 CoordinateX = Convert.ToDouble(pointX),
                                 CoordinateY = Convert.ToDouble(pointY),
@@ -1075,7 +797,6 @@ namespace sys3
                         }
                         if (wirePoints.Count < 2)
                         {
-                            Alert.alert(Const_GM.WIRE_INFO_MSG_POINT_MUST_MORE_THAN_TWO);
                             throw new Exception();
                         }
                         var wire = Wire.FindOneByTunnelId(tunnel.TunnelId);
@@ -1122,7 +843,7 @@ namespace sys3
                     btnDetails.Enabled = true;
                 }
             }
-            Alert.alert("导入完成");
+            Alert.AlertMsg("导入完成");
         }
     }
 }

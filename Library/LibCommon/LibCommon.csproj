@@ -135,36 +135,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="3.GeologyMeasureConst\Const_GM.cs" />
-    <Compile Include="4.OutburstPreventionConst\Const_OP.cs" />
     <Compile Include="Alert.cs" />
-    <Compile Include="AuthorizeInterceptor.cs" />
-    <Compile Include="Check.cs" />
-    <Compile Include="ConstTable.cs" />
-    <Compile Include="DateTimeUtil.cs" />
     <Compile Include="DevUtil.cs" />
-    <Compile Include="DXSeting.cs" />
-    <Compile Include="Const.cs" />
     <Compile Include="EnumUtils.cs" />
-    <Compile Include="FormDefaultPropertiesSetter.cs" />
-    <Compile Include="LibFarpintTiltes.cs" />
-    <Compile Include="LibFormTitles.cs" />
     <Compile Include="IDGenerator.cs" />
-    <Compile Include="LibAutoResizeFarpoint.cs" />
-    <Compile Include="LibExcelHelper.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="MySpeech.cs" />
-    <Compile Include="ObjectCopier.cs" />
-    <Compile Include="Permission.cs" />
-    <Compile Include="AuthorizeAttribute.cs" />
-    <Compile Include="PowerCodeAnalyze.cs" />
-    <Compile Include="SetShortMessage.cs" />
-    <Compile Include="SpanCell.cs" />
-    <Compile Include="StringSplitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TunnelFilter.cs" />
     <Compile Include="TxtFileEncoding.cs" />
-    <Compile Include="Validator.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

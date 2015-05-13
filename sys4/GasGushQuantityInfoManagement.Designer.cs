@@ -1,4 +1,4 @@
-﻿namespace sys4
+﻿namespace ggm
 {
     partial class GasGushQuantityInfoManagement
     {

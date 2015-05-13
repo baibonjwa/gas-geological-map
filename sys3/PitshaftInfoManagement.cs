@@ -6,16 +6,13 @@ using GIS.Common;
 using LibCommon;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class PitshaftInfoManagement : Form
     {
         public PitshaftInfoManagement()
         {
             InitializeComponent();
-
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetManagementFormDefaultProperties(this, Const_GM.MANAGE_PITSHAFT_INFO);
         }
 
         private void RefreshData()
@@ -46,11 +43,10 @@ namespace sys3
         {
             if (gridView1.GetFocusedRow() == null)
             {
-                Alert.alert("请选择要修改的信息");
+                Alert.AlertMsg("请选择要修改的信息");
                 return;
             }
-            var m = new PitshaftInfoEntering(((Pitshaft) gridView1.GetFocusedRow()).PitshaftId.ToString(),
-                Const_GM.UPDATE_PITSHAFT_INFO);
+            var m = new PitshaftInfoEntering(((Pitshaft)gridView1.GetFocusedRow()).PitshaftId.ToString());
             if (DialogResult.OK == m.ShowDialog())
             {
                 RefreshData();
@@ -64,13 +60,11 @@ namespace sys3
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (Alert.confirm(Const_GM.DEL_CONFIRM_MSG_PITSHAFT))
-            {
-                var pitshaft = (Pitshaft) gridView1.GetFocusedRow();
-                DeleteJintTongByBID(new[] {pitshaft.BindingId});
-                pitshaft.Delete();
-                RefreshData();
-            }
+            if (!Alert.Confirm("确认要删除井筒吗？")) return;
+            var pitshaft = (Pitshaft)gridView1.GetFocusedRow();
+            DeleteJintTongByBID(new[] { pitshaft.BindingId });
+            pitshaft.Delete();
+            RefreshData();
         }
 
         #region 删除井筒图元
@@ -156,14 +150,14 @@ namespace sys3
         /// <param name="e"></param>
         private void btnMap_Click(object sender, EventArgs e)
         {
-            var bid = ((Pitshaft) gridView1.GetFocusedRow()).BindingId;
+            var bid = ((Pitshaft)gridView1.GetFocusedRow()).BindingId;
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.DEFALUT_JINGTONG);
             if (pLayer == null)
             {
                 MessageBox.Show("未发现井筒图层！");
                 return;
             }
-            var pFeatureLayer = (IFeatureLayer) pLayer;
+            var pFeatureLayer = (IFeatureLayer)pLayer;
             var str = "";
             //for (int i = 0; i < iSelIdxsArr.Length; i++)
             //{
@@ -193,7 +187,7 @@ namespace sys3
             }
             else
             {
-                Alert.alert("图元丢失");
+                Alert.AlertMsg("图元丢失");
             }
         }
     }

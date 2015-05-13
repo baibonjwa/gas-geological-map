@@ -6,15 +6,17 @@ using ESRI.ArcGIS;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
 using GIS;
 using GIS.Common;
 using GIS.GraphicEdit;
 using GIS.LayersManager;
 using GIS.SpecialGraphic;
 using LibAbout;
-using LibCommon;
+using LibBusiness;
 
-namespace sys4
+namespace ggm
 {
     public partial class MainForm_OP : Form
     {
@@ -46,7 +48,13 @@ namespace sys4
 
         private void MainForm_OP_Load(object sender, EventArgs e)
         {
-            mapControl_OP.LoadMxFile("D:\\default.mxd");
+
+            IMapDocument pMapDocument = new MapDocumentClass();
+            pMapDocument.Open(ConfigHelper.GetAttribute("mxd_path"));
+            mapControl_OP.LoadMxFile(ConfigHelper.GetAttribute("mxd_path"));
+
+
+
             statusStrip1.AxMap = mapControl_OP;
             m_FileMenu.AxMapControl = mapControl_OP; //传入MapControl控件    
             var mapControl = (IMapControl3)mapControl_OP.Object;
@@ -58,9 +66,45 @@ namespace sys4
             DataEditCommon.g_tbCtlEdit = toolbarControl;
             DataEditCommon.g_pAxMapControl = mapControl_OP;
             DataEditCommon.g_axTocControl = tocControl_OP;
-            DataEditCommon.load();
+            DataEditCommon.load(ConfigHelper.GetAttribute("gdb_path"));
+
+            IEnumDataset pEnumDataSet =
+             DataEditCommon.g_pCurrentWorkSpace.Datasets[esriDatasetType.esriDTFeatureDataset];
+            IDataset pDataSet = pEnumDataSet.Next();
+            ISpatialReference pRef = (pDataSet as IGeoDataset).SpatialReference;
+            string sDistrictCode = string.Empty;
+            string sScale = string.Empty;
+
+            if (pDataSet != null)
+            {
+                UID uid = new UIDClass();
+                uid.Value = "{" + typeof(IFeatureLayer).GUID.ToString() + "}";
+                IEnumLayer pEnumLayer = mapControl_OP.Map.Layers[uid];
+                IFeatureLayer pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
+                IFeatureWorkspace pFeaClsWks = DataEditCommon.g_pCurrentWorkSpace as IFeatureWorkspace;
+                while (pFeaLyr != null)
+                {
+                    string sDsName = ((pFeaLyr as IDataLayer).DataSourceName as IDatasetName).Name;
+                    if ((DataEditCommon.g_pCurrentWorkSpace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, sDsName))
+                    {
+                        pFeaLyr.FeatureClass = pFeaClsWks.OpenFeatureClass(sDsName);
+                        pFeaLyr.Name = pFeaLyr.Name;
+                    }
+
+                    pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
+                }
+                ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(DataEditCommon.g_pCurrentWorkSpace);
+                ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(pFeaClsWks);
+                mapControl_OP.Map.SpatialReference = pRef;
+                IMxdContents pMxdC;
+                pMxdC = mapControl_OP.Map as IMxdContents;
+                pMapDocument.Open(ConfigHelper.GetAttribute("mxd_path"));
+                pMapDocument.ReplaceContents(pMxdC);
+                pMapDocument.Save(true, true);
+            }
+
+
             AddToolBar.Addtool(mapControl_OP, mapControl, toolbarControl, DataEditCommon.g_pCurrentWorkSpace);
-            DXSeting.floatToolsLoadSet();
         }
 
 
@@ -524,14 +568,14 @@ namespace sys4
         //帮助文件
         private void mniHelpFile_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var strHelpFilePath = Application.StartupPath + Const_OP.System4_Help_File;
+            var strHelpFilePath = Application.StartupPath + "动态瓦斯地质图绘制软件帮助文件.chm";
             Process.Start(strHelpFilePath);
         }
 
         //关于
         private void mniAbout_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Const.strPicturepath = Application.StartupPath + Const_OP.Picture_Name;
+            var strAboutFilePath = Application.StartupPath + "动态瓦斯地质图绘制软件关于图片.jpg";
             var libabout = new About(ProductName, ProductVersion);
             libabout.ShowDialog();
         }

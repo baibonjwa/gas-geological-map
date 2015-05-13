@@ -8,7 +8,7 @@ using GIS.Common;
 using LibCommon;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class BoreholeInfoManagement : Form
     {
@@ -18,8 +18,6 @@ namespace sys3
         public BoreholeInfoManagement()
         {
             InitializeComponent();
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetManagementFormDefaultProperties(this, Const_GM.MANAGE_BOREHOLE_INFO);
         }
 
         private void RefreshData()
@@ -51,7 +49,7 @@ namespace sys3
         {
             if (gridView1.GetFocusedRow() == null)
             {
-                Alert.alert("请选择要修改的信息");
+                Alert.AlertMsg("请选择要修改的信息");
                 return;
             }
             var m = new BoreholeInfoEntering(((Borehole) gridView1.GetFocusedRow()));
@@ -68,7 +66,7 @@ namespace sys3
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (!Alert.confirm(Const_GM.DEL_CONFIRM_MSG_BOREHOLE)) return;
+            if (!Alert.Confirm("确认要删除该钻孔吗？")) return;
             var selectedIndex = gridView1.GetSelectedRows();
             foreach (var borehole in selectedIndex.Select(i => (Borehole) gridView1.GetRow(i)))
             {
@@ -190,7 +188,7 @@ namespace sys3
             }
             else
             {
-                Alert.alert("图元丢失");
+                Alert.AlertMsg("图元丢失");
             }
         }
 

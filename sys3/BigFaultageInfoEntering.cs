@@ -9,7 +9,7 @@ using GIS;
 using LibCommon;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class BigFaultageInfoEntering : Form
     {
@@ -21,8 +21,6 @@ namespace sys3
         public BigFaultageInfoEntering()
         {
             InitializeComponent();
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.INSERT_BIG_FAULTAGE_INFO);
         }
 
         public BigFaultageInfoEntering(BigFaultage bigFaultage)
@@ -33,8 +31,6 @@ namespace sys3
             {
                 // 设置窗体默认属性
                 bigFaultage = BigFaultage.Find(bigFaultage.BigFaultageId);
-                FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.INSERT_BIG_FAULTAGE_INFO);
-
                 tbFaultageName.Text = bigFaultage.BigFaultageName;
                 tbGap.Text = bigFaultage.Gap;
                 tbAngle.Text = bigFaultage.Angle;
@@ -137,16 +133,16 @@ namespace sys3
                     Angle = tbAngle.Text,
                     Trend = tbTrend.Text,
                     Type = rbtnFrontFaultage.Checked ? "正断层" : "逆断层",
-                    BindingId = IDGenerator.NewBindingID()
+                    BindingId = IdGenerator.NewBindingId()
                 };
                 for (var i = 0; i < dgrdvUp.Rows.Count; i++)
                 {
-                    var point = new BigFaultagePoint {UpOrDown = "上盘"};
+                    var point = new BigFaultagePoint { UpOrDown = "上盘" };
                     if (dgrdvUp.Rows[i].Cells[0].Value == null) continue;
                     point.CoordinateX = Convert.ToDouble(dgrdvUp.Rows[i].Cells[0].Value);
                     point.CoordinateY = Convert.ToDouble(dgrdvUp.Rows[i].Cells[1].Value);
                     point.CoordinateZ = Convert.ToDouble(dgrdvUp.Rows[i].Cells[2].Value);
-                    point.BindingId = IDGenerator.NewBindingID();
+                    point.BindingId = IdGenerator.NewBindingId();
                     bigFaultagePoingList.Add(point);
                 }
                 for (var i = 0; i < dgrdvDown.Rows.Count; i++)
@@ -157,7 +153,7 @@ namespace sys3
                     point.CoordinateX = Convert.ToDouble(dgrdvDown.Rows[i].Cells[0].Value);
                     point.CoordinateY = Convert.ToDouble(dgrdvDown.Rows[i].Cells[1].Value);
                     point.CoordinateZ = Convert.ToDouble(dgrdvDown.Rows[i].Cells[2].Value);
-                    point.BindingId = IDGenerator.NewBindingID();
+                    point.BindingId = IdGenerator.NewBindingId();
                     bigFaultagePoingList.Add(point);
                 }
                 bigFaultage.Save();
@@ -215,7 +211,7 @@ namespace sys3
                             Gap = split[1],
                             Type = split[2],
                             Angle = split[3],
-                            BindingId = IDGenerator.NewBindingID()
+                            BindingId = IdGenerator.NewBindingId()
                         };
                     }
                     else
@@ -247,7 +243,7 @@ namespace sys3
                         {
                             bigFaultagePoints.Add(new BigFaultagePoint
                             {
-                                BindingId = IDGenerator.NewBindingID(),
+                                BindingId = IdGenerator.NewBindingId(),
                                 BigFaultage = bigFaultage,
                                 CoordinateX = Convert.ToDouble(strs[i].Split(',')[0]),
                                 CoordinateY = Convert.ToDouble(strs[i].Split(',')[1]),
@@ -259,7 +255,7 @@ namespace sys3
                         {
                             bigFaultagePoints.Add(new BigFaultagePoint
                             {
-                                BindingId = IDGenerator.NewBindingID(),
+                                BindingId = IdGenerator.NewBindingId(),
                                 BigFaultage = bigFaultage,
                                 CoordinateX = Convert.ToDouble(strs[i].Split(',')[0]),
                                 CoordinateY = Convert.ToDouble(strs[i].Split(',')[1]),
@@ -287,12 +283,12 @@ namespace sys3
                     btnDetails.Enabled = true;
                 }
             }
-            Alert.alert("导入成功！");
+            Alert.AlertMsg("导入成功！");
         }
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            Alert.alert(_errorMsg);
+            Alert.AlertMsg(_errorMsg);
         }
     }
 }

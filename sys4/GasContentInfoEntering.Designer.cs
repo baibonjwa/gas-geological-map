@@ -1,4 +1,4 @@
-﻿namespace sys4
+﻿namespace ggm
 {
     partial class GasContentInfoEntering
     {
@@ -31,6 +31,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.gbTunnel = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.selectTunnelSimple1 = new LibCommonForm.SelectTunnelSimple();
             this.gbGasContentInfo = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,16 +51,8 @@
             this.lblCoordinateZ = new System.Windows.Forms.Label();
             this.lblCoordinateY = new System.Windows.Forms.Label();
             this.lblCoordinateX = new System.Windows.Forms.Label();
-            this.lblCoalSeams = new System.Windows.Forms.Label();
-            this.btnAddCoalSeams = new System.Windows.Forms.Button();
-            this.gbCoalSeams = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cboCoalSeams = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.selectTunnelSimple1 = new LibCommonForm.SelectTunnelSimple();
             this.gbTunnel.SuspendLayout();
             this.gbGasContentInfo.SuspendLayout();
-            this.gbCoalSeams.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -95,6 +89,25 @@
             this.gbTunnel.TabIndex = 0;
             this.gbTunnel.TabStop = false;
             this.gbTunnel.Text = "所在巷道";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(222, 31);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(11, 12);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "*";
+            // 
+            // selectTunnelSimple1
+            // 
+            this.selectTunnelSimple1.BackColor = System.Drawing.Color.Transparent;
+            this.selectTunnelSimple1.Location = new System.Drawing.Point(14, 20);
+            this.selectTunnelSimple1.Name = "selectTunnelSimple1";
+            this.selectTunnelSimple1.SelectedTunnel = null;
+            this.selectTunnelSimple1.Size = new System.Drawing.Size(219, 38);
+            this.selectTunnelSimple1.TabIndex = 0;
             // 
             // gbGasContentInfo
             // 
@@ -274,74 +287,6 @@
             this.lblCoordinateX.TabIndex = 0;
             this.lblCoordinateX.Text = "坐标X：";
             // 
-            // lblCoalSeams
-            // 
-            this.lblCoalSeams.AutoSize = true;
-            this.lblCoalSeams.Location = new System.Drawing.Point(24, 18);
-            this.lblCoalSeams.Name = "lblCoalSeams";
-            this.lblCoalSeams.Size = new System.Drawing.Size(65, 12);
-            this.lblCoalSeams.TabIndex = 0;
-            this.lblCoalSeams.Text = "所在煤层：";
-            // 
-            // btnAddCoalSeams
-            // 
-            this.btnAddCoalSeams.Location = new System.Drawing.Point(212, 15);
-            this.btnAddCoalSeams.Name = "btnAddCoalSeams";
-            this.btnAddCoalSeams.Size = new System.Drawing.Size(32, 20);
-            this.btnAddCoalSeams.TabIndex = 3;
-            this.btnAddCoalSeams.Text = "+";
-            this.btnAddCoalSeams.UseVisualStyleBackColor = true;
-            this.btnAddCoalSeams.Click += new System.EventHandler(this.btnAddCoalSeams_Click);
-            // 
-            // gbCoalSeams
-            // 
-            this.gbCoalSeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.gbCoalSeams.Controls.Add(this.label6);
-            this.gbCoalSeams.Controls.Add(this.cboCoalSeams);
-            this.gbCoalSeams.Controls.Add(this.lblCoalSeams);
-            this.gbCoalSeams.Controls.Add(this.btnAddCoalSeams);
-            this.gbCoalSeams.Location = new System.Drawing.Point(12, 86);
-            this.gbCoalSeams.Name = "gbCoalSeams";
-            this.gbCoalSeams.Size = new System.Drawing.Size(585, 43);
-            this.gbCoalSeams.TabIndex = 2;
-            this.gbCoalSeams.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(195, 18);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(11, 12);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "*";
-            // 
-            // cboCoalSeams
-            // 
-            this.cboCoalSeams.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCoalSeams.FormattingEnabled = true;
-            this.cboCoalSeams.Location = new System.Drawing.Point(85, 15);
-            this.cboCoalSeams.Name = "cboCoalSeams";
-            this.cboCoalSeams.Size = new System.Drawing.Size(104, 20);
-            this.cboCoalSeams.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(222, 31);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(11, 12);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "*";
-            // 
-            // selectTunnelSimple1
-            // 
-            this.selectTunnelSimple1.Location = new System.Drawing.Point(14, 20);
-            this.selectTunnelSimple1.Name = "selectTunnelSimple1";
-            this.selectTunnelSimple1.Size = new System.Drawing.Size(219, 38);
-            this.selectTunnelSimple1.TabIndex = 0;
-            // 
             // GasContentInfoEntering
             // 
             this.AcceptButton = this.btnSubmit;
@@ -349,7 +294,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(610, 291);
-            this.Controls.Add(this.gbCoalSeams);
             this.Controls.Add(this.gbGasContentInfo);
             this.Controls.Add(this.gbTunnel);
             this.Controls.Add(this.btnCancel);
@@ -365,8 +309,6 @@
             this.gbTunnel.PerformLayout();
             this.gbGasContentInfo.ResumeLayout(false);
             this.gbGasContentInfo.PerformLayout();
-            this.gbCoalSeams.ResumeLayout(false);
-            this.gbCoalSeams.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -394,11 +336,6 @@
         private System.Windows.Forms.Label lblCoordinateZ;
         private System.Windows.Forms.Label lblCoordinateY;
         private System.Windows.Forms.Label lblCoordinateX;
-        private System.Windows.Forms.Button btnAddCoalSeams;
-        private System.Windows.Forms.Label lblCoalSeams;
-        private System.Windows.Forms.GroupBox gbCoalSeams;
-        private System.Windows.Forms.ComboBox cboCoalSeams;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private LibCommonForm.SelectTunnelSimple selectTunnelSimple1;
     }

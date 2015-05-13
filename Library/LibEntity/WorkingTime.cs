@@ -8,7 +8,7 @@ namespace LibEntity
     ///     工作时间类
     /// </summary>
     [ActiveRecord("T_WORK_TIME")]
-    public class WorkingTime : ActiveRecordBase<WorkingTime>
+    public class WorkTime : ActiveRecordBase<WorkTime>
     {
 
         public const String TableName = "T_WORK_TIME";
@@ -42,7 +42,7 @@ namespace LibEntity
         [Property("WORK_TIME_TO")]
         public DateTime WorkTimeTo { get; set; }
 
-        public static WorkingTime[] FindAllByWorkTimeGroupId(int workTimeGroupId)
+        public static WorkTime[] FindAllByWorkTimeGroupId(int workTimeGroupId)
         {
             var criterion = new ICriterion[]
             {
@@ -51,7 +51,7 @@ namespace LibEntity
             return FindAll(criterion);
         }
 
-        public static WorkingTime FindOneByWorkTimeName(string workTimeName)
+        public static WorkTime FindOneByWorkTimeName(string workTimeName)
         {
             var criterion = new ICriterion[]
             {
@@ -61,12 +61,12 @@ namespace LibEntity
         }
 
 
-        public static WorkingTime[] FindAllBy38Times()
+        public static WorkTime[] FindAllBy38Times()
         {
             return FindAllByWorkTimeGroupId(1);
         }
 
-        public static WorkingTime[] FindAllBy46Times()
+        public static WorkTime[] FindAllBy46Times()
         {
             return FindAllByWorkTimeGroupId(2);
         }

@@ -8,7 +8,7 @@ using GIS.Common;
 using LibCommon;
 using LibEntity;
 
-namespace sys4
+namespace ggm
 {
     public partial class GasGushQuantityInfoManagement : Form
     {
@@ -18,9 +18,6 @@ namespace sys4
         public GasGushQuantityInfoManagement()
         {
             InitializeComponent();
-
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetManagementFormDefaultProperties(this, Const_OP.MANAGE_GASGUSHQUANTITY_INFO);
         }
 
         private void RefreshData()
@@ -64,7 +61,7 @@ namespace sys4
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (!Alert.confirm(Const_OP.DEL_CONFIRM_MSG_GASGUSHQUANTITY)) return;
+            if (!Alert.Confirm("确定要删除瓦斯涌出量数据吗？")) return;
             var selectedIndex = gridView1.GetSelectedRows();
             foreach (var gasContent in selectedIndex.Select(i => (GasGushQuantity) gridView1.GetRow(i)))
             {

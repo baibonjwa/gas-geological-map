@@ -57,7 +57,7 @@ namespace LibEntity
         /// <summary>
         ///     煤层编号
         /// </summary>
-        [BelongsTo("CoalSeamsId")]
+        //[BelongsTo("CoalSeamsId")]
         public CoalSeams CoalSeams { get; set; }
 
         /// <summary>

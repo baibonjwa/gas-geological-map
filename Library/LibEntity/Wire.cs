@@ -5,7 +5,7 @@ using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord("T_WIRE_INFO")]
+    [ActiveRecord]
     public class Wire : ActiveRecordBase<Wire>
     {
         public const String TableName = "T_WIRE_INFO";
@@ -13,65 +13,65 @@ namespace LibEntity
         /// <summary>
         ///     导线编号
         /// </summary>
-        [PrimaryKey(PrimaryKeyType.Identity, "OBJECTID")]
+        [PrimaryKey(PrimaryKeyType.Identity)]
         public int WireId { get; set; }
 
-        [HasMany(typeof(WirePoint), Table = "T_WIRE_POINT", ColumnKey = "WIRE_INFO_ID",
+        [HasMany(typeof(WirePoint), Table = "WirePoint", ColumnKey = "WireId",
     Cascade = ManyRelationCascadeEnum.All, Lazy = true)]
         public IList<WirePoint> WirePoints { get; set; }
 
         /// <summary>
         ///     校核日期
         /// </summary>
-        [Property("CHECK_DATE")]
+        [Property]
         public DateTime CheckDate { get; set; }
 
         /// <summary>
         ///     校核者
         /// </summary>
-        [Property("CHECKER")]
+        [Property]
         public string Checker { get; set; }
 
         /// <summary>
         ///     计算日期
         /// </summary>
-        [Property("COUNT_DATE")]
+        [Property]
         public DateTime CountDate { get; set; }
 
         /// <summary>
         ///     计算者
         /// </summary>
-        [Property("COUNTER")]
+        [Property]
         public string Counter { get; set; }
 
         /// <summary>
         ///     巷道编号
         /// </summary>
-        [BelongsTo("TUNNEL_ID")]
+        [BelongsTo("TunnelId")]
         public Tunnel Tunnel { get; set; }
 
         /// <summary>
         ///     导线名称
         /// </summary>
-        [Property("WIRE_NAME")]
+        [Property]
         public string WireName { get; set; }
 
         /// <summary>
         ///     导线级别
         /// </summary>
-        [Property("WIRE_LEVEL")]
+        [Property]
         public string WireLevel { get; set; }
 
         /// <summary>
         ///     测试日期
         /// </summary>
-        [Property("MEASURE_DATE")]
+        [Property]
         public DateTime MeasureDate { get; set; }
 
         /// <summary>
         ///     观测者
         /// </summary>
-        [Property("VOBSERVER")]
+        [Property]
         public string Vobserver { get; set; }
 
         public override void Delete()

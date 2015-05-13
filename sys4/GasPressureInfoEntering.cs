@@ -6,12 +6,10 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geometry;
 using GIS;
 using GIS.Common;
-using LibBusiness;
 using LibCommon;
-using LibCommonForm;
 using LibEntity;
 
-namespace sys4
+namespace ggm
 {
     public partial class GasPressureInfoEntering : Form
     {
@@ -21,9 +19,6 @@ namespace sys4
         public GasPressureInfoEntering()
         {
             InitializeComponent();
-
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_OP.INSERT_GASPRESSURE_INFO);
         }
 
         /// <summary>
@@ -45,20 +40,16 @@ namespace sys4
         private void GasPressureInfoEntering_Load(object sender, EventArgs e)
         {
             dtpMeasureDateTime.Format = DateTimePickerFormat.Custom;
-            dtpMeasureDateTime.CustomFormat = Const.DATE_FORMART_YYYY_MM_DD;
-            DataBindUtil.LoadCoalSeamsName(cboCoalSeams);
+            dtpMeasureDateTime.CustomFormat = @"yyyy/MM/dd HH:mm:ss";
             // 坐标X
-            if (GasPressure != null)
-            {
-                txtCoordinateX.Text = GasPressure.CoordinateX.ToString(CultureInfo.InvariantCulture);
-                txtCoordinateY.Text = GasPressure.CoordinateY.ToString(CultureInfo.InvariantCulture);
-                txtCoordinateZ.Text = GasPressure.CoordinateZ.ToString(CultureInfo.InvariantCulture);
-                txtDepth.Text = GasPressure.Depth.ToString(CultureInfo.InvariantCulture);
-                txtGasPressureValue.Text = GasPressure.GasPressureValue.ToString(CultureInfo.InvariantCulture);
-                dtpMeasureDateTime.Value = GasPressure.MeasureDateTime;
-                cboCoalSeams.SelectedValue = GasPressure.CoalSeams;
-                selectTunnelSimple1.SetTunnel(GasPressure.Tunnel);
-            }
+            if (GasPressure == null) return;
+            txtCoordinateX.Text = GasPressure.CoordinateX.ToString(CultureInfo.InvariantCulture);
+            txtCoordinateY.Text = GasPressure.CoordinateY.ToString(CultureInfo.InvariantCulture);
+            txtCoordinateZ.Text = GasPressure.CoordinateZ.ToString(CultureInfo.InvariantCulture);
+            txtDepth.Text = GasPressure.Depth.ToString(CultureInfo.InvariantCulture);
+            txtGasPressureValue.Text = GasPressure.GasPressureValue.ToString(CultureInfo.InvariantCulture);
+            dtpMeasureDateTime.Value = GasPressure.MeasureDateTime;
+            selectTunnelSimple1.SetTunnel(GasPressure.Tunnel);
         }
 
         /// <summary>
@@ -68,12 +59,6 @@ namespace sys4
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            // 验证
-            if (!Check())
-            {
-                DialogResult = DialogResult.None;
-                return;
-            }
             DialogResult = DialogResult.OK;
 
             // 创建一个瓦斯含量点实体
@@ -88,8 +73,7 @@ namespace sys4
                     GasPressureValue = Convert.ToDouble(txtGasPressureValue.Text),
                     MeasureDateTime = dtpMeasureDateTime.Value,
                     Tunnel = selectTunnelSimple1.SelectedTunnel,
-                    CoalSeams = (CoalSeams) cboCoalSeams.SelectedItem,
-                    BindingId = IDGenerator.NewBindingID()
+                    BindingId = IdGenerator.NewBindingId()
                 };
                 // 坐标X
                 gasPressure.Save();
@@ -104,7 +88,6 @@ namespace sys4
                 GasPressure.GasPressureValue = Convert.ToDouble(txtGasPressureValue.Text);
                 GasPressure.MeasureDateTime = dtpMeasureDateTime.Value;
                 GasPressure.Tunnel = selectTunnelSimple1.SelectedTunnel;
-                GasPressure.CoalSeams = (CoalSeams) cboCoalSeams.SelectedValue;
                 GasPressure.Save();
                 DelGasGushQuantityPt(GasPressure.BindingId, GasPressure.CoalSeams.CoalSeamsName);
                 DrawGasGushQuantityPt(GasPressure);
@@ -120,99 +103,6 @@ namespace sys4
         {
             // 关闭窗口
             Close();
-        }
-
-        /// <summary>
-        ///     验证画面入力数据
-        /// </summary>
-        /// <returns>验证结果：true 通过验证, false未通过验证</returns>
-        private bool Check()
-        {
-            // 判断所在煤层是否选择
-            if (cboCoalSeams.SelectedValue == null)
-            {
-                Alert.alert(Const.COALSEAMS_MUST_SELECT);
-                return false;
-            }
-
-            // 判断坐标X是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateX, Const_OP.COORDINATE_X))
-            {
-                return false;
-            }
-
-            // 判断坐标X是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateX, Const_OP.COORDINATE_X))
-            {
-                return false;
-            }
-
-            // 判断坐标Y是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateY, Const_OP.COORDINATE_Y))
-            {
-                return false;
-            }
-
-            // 判断坐标Y是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateY, Const_OP.COORDINATE_Y))
-            {
-                return false;
-            }
-
-            // 判断测点标高是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateZ, Const_OP.GAS_PRESSURE_COORDINATE_Z))
-            {
-                return false;
-            }
-
-            // 判断测点标高是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateZ, Const_OP.GAS_PRESSURE_COORDINATE_Z))
-            {
-                return false;
-            }
-
-            // 判断埋深是否录入
-            if (!LibCommon.Check.isEmpty(txtDepth, Const_OP.DEPTH))
-            {
-                return false;
-            }
-
-            // 判断埋深是否为数字
-            if (!LibCommon.Check.IsNumeric(txtDepth, Const_OP.DEPTH))
-            {
-                return false;
-            }
-
-            // 判断瓦斯压力值是否录入
-            if (!LibCommon.Check.isEmpty(txtGasPressureValue, Const_OP.GAS_PRESSURE_VALUE))
-            {
-                return false;
-            }
-
-            // 判断瓦斯压力值是否为数字
-            if (!LibCommon.Check.IsNumeric(txtGasPressureValue, Const_OP.GAS_PRESSURE_VALUE))
-            {
-                return false;
-            }
-
-            // 验证通过
-            return true;
-        }
-
-        /// <summary>
-        ///     煤层信息添加管理
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnAddCoalSeams_Click(object sender, EventArgs e)
-        {
-            var commonManagementForm = new CommonManagement(5, 0);
-
-            if (DialogResult.OK == commonManagementForm.ShowDialog())
-            {
-                // 绑定煤层名称信息
-                DataBindUtil.LoadCoalSeamsName(cboCoalSeams);
-            }
         }
 
         /// <summary>
@@ -233,7 +123,7 @@ namespace sys4
                 MessageBox.Show(@"未找到瓦斯压力点图层,无法绘制瓦斯压力点图元。");
                 return;
             }
-            var pFeatureLayer = (IFeatureLayer) pLayer;
+            var pFeatureLayer = (IFeatureLayer)pLayer;
             IGeometry geometry = pt;
             var list = new List<ziduan>
             {
@@ -270,7 +160,7 @@ namespace sys4
             {
                 MyMapHelp.Jump(pt);
                 DataEditCommon.g_pMyMapCtrl.ActiveView.PartialRefresh(
-                    (esriViewDrawPhase) 34, null, null);
+                    (esriViewDrawPhase)34, null, null);
             }
         }
 
@@ -282,7 +172,7 @@ namespace sys4
         private void DelGasGushQuantityPt(string bid, string mc)
         {
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.LAYER_ALIAS_MR_WSYLD);
-            var pFeatureLayer = (IFeatureLayer) pLayer;
+            var pFeatureLayer = (IFeatureLayer)pLayer;
             DataEditCommon.DeleteFeatureByWhereClause(pFeatureLayer, "bid='" + bid + "' and mc='" + mc + "'");
         }
 

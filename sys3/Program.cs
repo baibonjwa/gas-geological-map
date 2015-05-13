@@ -7,6 +7,7 @@ using Castle.ActiveRecord;
 using Castle.ActiveRecord.Framework;
 using Castle.ActiveRecord.Framework.Config;
 using ESRI.ArcGIS;
+using geoInput;
 using LibCommon;
 
 namespace sys3

@@ -1,4 +1,4 @@
-﻿namespace sys3
+﻿namespace geoInput
 {
     partial class MainForm_GM
     {
@@ -1906,7 +1906,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm_GM";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "KJGEW112 工作面地质测量管理系统";
+            this.Text = "动态瓦斯地质图基础信息录入系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_GM_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_GM_FormClosed);

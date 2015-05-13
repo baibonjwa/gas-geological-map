@@ -10,7 +10,7 @@ using LibCommon;
 using LibCommonForm;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class TunnelInfoManagement : Form
     {
@@ -20,7 +20,6 @@ namespace sys3
         public TunnelInfoManagement()
         {
             InitializeComponent();
-            FormDefaultPropertiesSetter.SetManagementFormDefaultProperties(this, Const_GM.TUNNEL_INFO_MANAGEMENT);
         }
 
         private void RefreshData()
@@ -36,10 +35,6 @@ namespace sys3
         private void TunnelInfoManagement_Load(object sender, EventArgs e)
         {
             RefreshData();
-            btnNoWire.BackColor = Const.NO_WIRE_TUNNEL_COLOR;
-            btnWired.BackColor = Const.WIRED_TUNNEL_COLOR;
-            btnTunnelJJ.BackColor = Const.JJ_TUNNEL_COLOR;
-            btnTunnelHC.BackColor = Const.HC_TUNNEL_COLOR;
         }
 
         /// <summary>
@@ -66,10 +61,10 @@ namespace sys3
         {
             if (gridView1.GetFocusedRow() == null)
             {
-                Alert.alert("请选择要修改的信息");
+                Alert.AlertMsg("请选择要修改的信息");
                 return;
             }
-            var d = new TunnelInfoEntering((Tunnel) gridView1.GetFocusedRow());
+            var d = new TunnelInfoEntering((Tunnel)gridView1.GetFocusedRow());
             if (DialogResult.OK == d.ShowDialog())
             {
                 RefreshData();
@@ -83,10 +78,10 @@ namespace sys3
         /// <param name="e"></param>
         private void tsBtnDel_Click(object sender, EventArgs e)
         {
-            if (!Alert.confirm(Const_GM.TUNNEL_INFO_MSG_DEL)) return;
+            if (!Alert.Confirm("确认要删除该巷道吗？")) return;
             //掘进ID
             var selectedIndex = gridView1.GetSelectedRows();
-            foreach (var tunnel in selectedIndex.Select(i => (Tunnel) gridView1.GetRow(i)))
+            foreach (var tunnel in selectedIndex.Select(i => (Tunnel)gridView1.GetRow(i)))
             {
                 GisHelper.DelHdByHdId(tunnel.TunnelId.ToString(CultureInfo.InvariantCulture));
                 tunnel.Delete();
@@ -146,10 +141,10 @@ namespace sys3
                 MessageBox.Show(@"未发现巷道全图层！");
                 return;
             }
-            var pFeatureLayer = (IFeatureLayer) pLayer;
+            var pFeatureLayer = (IFeatureLayer)pLayer;
             //for (int i = 0; i < iSelIdxsArr.Length; i++)
             //{
-            var tunnel = (Tunnel) gridView1.GetFocusedRow();
+            var tunnel = (Tunnel)gridView1.GetFocusedRow();
             //if (bid != "")
             //{
             //if (true)
@@ -176,7 +171,7 @@ namespace sys3
             }
             else
             {
-                Alert.alert("图元丢失");
+                Alert.AlertMsg("图元丢失");
             }
         }
 

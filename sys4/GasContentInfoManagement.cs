@@ -8,7 +8,7 @@ using GIS.Common;
 using LibCommon;
 using LibEntity;
 
-namespace sys4
+namespace ggm
 {
     public partial class GasContentInfoManagement : Form
     {
@@ -18,7 +18,6 @@ namespace sys4
         public GasContentInfoManagement()
         {
             InitializeComponent();
-            FormDefaultPropertiesSetter.SetManagementFormDefaultProperties(this, Const_OP.MANAGE_GASCONTENT_INFO);
         }
 
         private void RefreshData()
@@ -62,7 +61,7 @@ namespace sys4
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (!Alert.confirm(Const_OP.DEL_CONFIRM_MSG_GASCONTENT)) return;
+            if (!Alert.Confirm("确定要删除瓦斯含量数据吗？")) return;
             var selectedIndex = gridView1.GetSelectedRows();
             foreach (var gasContent in selectedIndex.Select(i => (GasContent)gridView1.GetRow(i)))
             {

@@ -99,6 +99,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoalSeams.cs" />
     <Compile Include="WorkingTimeDefault.cs" />
     <Compile Include="StopLine.cs" />
     <Compile Include="WorkingTime.cs" />
@@ -107,7 +108,6 @@
     <Compile Include="CollapsePillars.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="BigFaultagePoint.cs" />
-    <Compile Include="CoalSeams.cs" />
     <Compile Include="PitshaftType.cs" />
     <Compile Include="Pitshaft.cs" />
     <Compile Include="ProspectingLine.cs" />

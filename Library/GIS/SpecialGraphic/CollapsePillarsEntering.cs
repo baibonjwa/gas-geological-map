@@ -27,8 +27,6 @@ namespace GIS.SpecialGraphic
         public CollapsePillarsEntering()
         {
             InitializeComponent();
-            //设置窗体属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.COLLAPSEPILLARE_ADD);
         }
 
         /// <summary>
@@ -49,8 +47,6 @@ namespace GIS.SpecialGraphic
                 else
                     dgrdvCoordinate[2, i].Value = pointCollection.Point[i].Z;
             }
-            //设置窗体属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.COLLAPSEPILLARE_ADD);
         }
 
         /// <summary>
@@ -73,9 +69,6 @@ namespace GIS.SpecialGraphic
                         t.CoordinateY,
                         t.CoordinateZ);
                 }
-
-                //设置窗体属性
-                FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.COLLAPSEPILLARE_CHANGE);
             }
         }
 
@@ -105,7 +98,7 @@ namespace GIS.SpecialGraphic
                     CollapsePillarsName = txtCollapsePillarsName.Text,
                     Discribe = txtDescribe.Text,
                     Xtype = radioBtnX.Checked ? "0" : "1",
-                    BindingId = IDGenerator.NewBindingID()
+                    BindingId = IdGenerator.NewBindingId()
                 };
             }
             else
@@ -127,13 +120,6 @@ namespace GIS.SpecialGraphic
                 }
             }
 
-            //验证
-            if (!Check())
-            {
-                DialogResult = DialogResult.None;
-                return;
-            }
-
             var collapsePillarsPoints = new List<CollapsePillarsPoint>();
             //添加关键点
             for (int i = 0; i < dgrdvCoordinate.RowCount - 1; i++)
@@ -144,7 +130,7 @@ namespace GIS.SpecialGraphic
                     CoordinateX = Convert.ToDouble(dgrdvCoordinate[0, i].Value),
                     CoordinateY = Convert.ToDouble(dgrdvCoordinate[1, i].Value),
                     CoordinateZ = Convert.ToDouble(dgrdvCoordinate[2, i].Value),
-                    BindingId = IDGenerator.NewBindingID(),
+                    BindingId = IdGenerator.NewBindingId(),
                     CollapsePillars = collapsePillars
                 };
                 collapsePillarsPoints.Add(collapsePillarsPoint);
@@ -171,101 +157,10 @@ namespace GIS.SpecialGraphic
                 TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
         }
 
-        /// <summary>
-        ///     验证
-        /// </summary>
-        /// <returns></returns>
-        private bool Check()
-        {
-            //陷落柱非空
-            if (!LibCommon.Check.isEmpty(txtCollapsePillarsName, Const_GM.COLLAPSEPILLARE_NAME))
-            {
-                return false;
-            }
-            //陷落柱名称特殊字符
-            if (!LibCommon.Check.checkSpecialCharacters(txtCollapsePillarsName, Const_GM.COLLAPSEPILLARE_NAME))
-            {
-                return false;
-            }
-
-            //datagridview内部
-            for (int i = 0; i < dgrdvCoordinate.RowCount - 1; i++)
-            {
-                //坐标X
-                var cell = dgrdvCoordinate.Rows[i].Cells[0] as DataGridViewTextBoxCell;
-                //非空
-                if (cell != null && cell.Value == null)
-                {
-                    Alert.alert(Const_GM.COORDINATE_X + Const.MSG_NOT_NULL + Const.SIGN_EXCLAMATION_MARK);
-                    return false;
-                }
-                //数字
-                if (cell != null && !Validator.IsNumeric(cell.Value.ToString()))
-                {
-                    Alert.alert(Const_GM.COORDINATE_X + Const.MSG_MUST_NUMBER + Const.SIGN_EXCLAMATION_MARK);
-                    return false;
-                }
-                //坐标Y
-                cell = dgrdvCoordinate.Rows[i].Cells[1] as DataGridViewTextBoxCell;
-                //非空
-                if (cell != null && cell.Value == null)
-                {
-                    Alert.alert(Const_GM.COORDINATE_Y + Const.MSG_NOT_NULL + Const.SIGN_EXCLAMATION_MARK);
-                    return false;
-                }
-                //数字
-                if (cell != null && !Validator.IsNumeric(cell.Value.ToString()))
-                {
-                    Alert.alert(Const_GM.COORDINATE_Y + Const.MSG_MUST_NUMBER + Const.SIGN_EXCLAMATION_MARK);
-                    return false;
-                }
-                //坐标Z
-                cell = dgrdvCoordinate.Rows[i].Cells[2] as DataGridViewTextBoxCell;
-                //非空
-                if (cell != null && cell.Value == null)
-                {
-                    Alert.alert(Const_GM.COORDINATE_Z + Const.MSG_NOT_NULL + Const.SIGN_EXCLAMATION_MARK);
-                    return false;
-                }
-                //数字
-                if (cell == null || Validator.IsNumeric(cell.Value.ToString())) continue;
-                Alert.alert(Const_GM.COORDINATE_Z + Const.MSG_MUST_NUMBER + Const.SIGN_EXCLAMATION_MARK);
-                return false;
-            }
-            //关键点数>3
-            if ((dgrdvCoordinate.RowCount <= 3))
-            {
-                Alert.alert(Const_GM.COLLAPSEPILLARE_MSG_MUST_MORE_THAN_THREE);
-                return false;
-            }
-            //描述特殊字符
-            if (!LibCommon.Check.checkSpecialCharacters(txtDescribe, Const_GM.COLLAPSEPILLARE_DISCRIBE))
-            {
-                return false;
-            }
-            ILayer mPCurrentLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap,
-                LayerNames.LAYER_ALIAS_MR_XianLuoZhu1);
-            var featureLayer = mPCurrentLayer as IFeatureLayer;
-            if (featureLayer == null)
-            {
-                MessageBox.Show(@"陷落柱图层丢失！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DataEditCommon.g_pMyMapCtrl.CurrentTool = null;
-                return false;
-            }
-            if (featureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPolygon)
-            {
-                MessageBox.Show(@"陷落柱图层丢失！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DataEditCommon.g_pMyMapCtrl.CurrentTool = null;
-                return false;
-            }
-            //成功
-            return true;
-        }
-
         private void dgrdvCoordinate_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != dgrdvCoordinate.Rows.Count - 1 && e.ColumnIndex == 3 &&
-                Alert.confirm(Const.DEL_CONFIRM_MSG))
+                Alert.Confirm("确认要删除吗？"))
             {
                 if (e.ColumnIndex == 3)
                 {
@@ -495,7 +390,7 @@ namespace GIS.SpecialGraphic
                         collapsePillars = new CollapsePillars
                         {
                             Xtype = "0",
-                            BindingId = IDGenerator.NewBindingID(),
+                            BindingId = IdGenerator.NewBindingId(),
                             CollapsePillarsName = collapsePillarsName
                         };
                     }
@@ -513,7 +408,7 @@ namespace GIS.SpecialGraphic
                             CoordinateX = Convert.ToDouble(file[i].Split(',')[0]),
                             CoordinateY = Convert.ToDouble(file[i].Split(',')[1]),
                             CoordinateZ = 0.0,
-                            BindingId = IDGenerator.NewBindingID(),
+                            BindingId = IdGenerator.NewBindingId(),
                             CollapsePillars = collapsePillars
                         };
                         collapsePillarsPoints.Add(collapsePillarsPoint);
@@ -536,12 +431,12 @@ namespace GIS.SpecialGraphic
                 }
 
             }
-            Alert.alert("导入成功！");
+            Alert.AlertMsg("导入成功！");
         }
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            Alert.alert(_errorMsg);
+            Alert.AlertMsg(_errorMsg);
         }
     }
 }

@@ -6,6 +6,8 @@ using ESRI.ArcGIS;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
 using GIS;
 using GIS.BasicGraphic;
@@ -17,10 +19,12 @@ using GIS.LayersManager;
 using GIS.SpecialGraphic;
 using GIS.View;
 using LibAbout;
+using LibBusiness;
 using LibCommon;
 using LibCommonForm;
+using sys3;
 
-namespace sys3
+namespace geoInput
 {
     public partial class MainForm_GM : Form
     {
@@ -49,13 +53,15 @@ namespace sys3
 
         private void MainForm_GM_Load(object sender, EventArgs e)
         {
-            mapControl_GM.LoadMxFile("D:\\" + "defalut.mxd");
+            IMapDocument pMapDocument = new MapDocumentClass();
+            pMapDocument.Open(ConfigHelper.GetAttribute("mxd_path"));
+            mapControl_GM.LoadMxFile(ConfigHelper.GetAttribute("mxd_path"));
             //this.mapControl_GM.LoadMxFile(Application.StartupPath + "\\local.mxd");
             Log.Debug("[GM]....Finished to load MXD file.....");
             statusStrip1.AxMap = mapControl_GM;
             m_FileMenu.AxMapControl = mapControl_GM; //传入MapControl控件                      
 
-            ///加载数据   
+            //加载数据   
             var mapControl = (IMapControl3)mapControl_GM.Object;
             var toolbarControl = (IToolbarControl)toolBar_GM.Object;
 
@@ -67,18 +73,51 @@ namespace sys3
             DataEditCommon.g_tbCtlEdit = toolbarControl;
             DataEditCommon.g_pAxMapControl = mapControl_GM;
             DataEditCommon.g_axTocControl = tocControl_GM;
-            DataEditCommon.load();
+            DataEditCommon.load(ConfigHelper.GetAttribute("gdb_path"));
+
+            IEnumDataset pEnumDataSet =
+                DataEditCommon.g_pCurrentWorkSpace.Datasets[esriDatasetType.esriDTFeatureDataset];
+            IDataset pDataSet = pEnumDataSet.Next();
+            ISpatialReference pRef = (pDataSet as IGeoDataset).SpatialReference;
+            string sDistrictCode = string.Empty;
+            string sScale = string.Empty;
+
+            if (pDataSet != null)
+            {
+                UID uid = new UIDClass();
+                uid.Value = "{" + typeof(IFeatureLayer).GUID.ToString() + "}";
+                IEnumLayer pEnumLayer = mapControl_GM.Map.Layers[uid];
+                IFeatureLayer pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
+                IFeatureWorkspace pFeaClsWks = DataEditCommon.g_pCurrentWorkSpace as IFeatureWorkspace;
+                while (pFeaLyr != null)
+                {
+                    string sDsName = ((pFeaLyr as IDataLayer).DataSourceName as IDatasetName).Name;
+                    if ((DataEditCommon.g_pCurrentWorkSpace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, sDsName))
+                    {
+                        pFeaLyr.FeatureClass = pFeaClsWks.OpenFeatureClass(sDsName);
+                        pFeaLyr.Name = pFeaLyr.Name;
+                    }
+
+                    pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
+                }
+                ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(DataEditCommon.g_pCurrentWorkSpace);
+                ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(pFeaClsWks);
+                mapControl_GM.Map.SpatialReference = pRef;
+                IMxdContents pMxdC;
+                pMxdC = mapControl_GM.Map as IMxdContents;
+                pMapDocument.Open(ConfigHelper.GetAttribute("mxd_path"));
+                pMapDocument.ReplaceContents(pMxdC);
+                pMapDocument.Save(true, true);
+            }
+
+
+
+
             AddToolBar.Addtool(mapControl_GM, mapControl, toolbarControl, DataEditCommon.g_pCurrentWorkSpace);
 
             //给GIS工程的全局变量赋值
             Global.SetInitialParams(mapControl_GM.ActiveView);
 
-            Log.Debug("[GM]....Construction finished.");
-
-            //浮动工具条中文设置
-            DXSeting.floatToolsLoadSet();
-
-            Log.Debug("[GM]....Loading finished.");
         }
 
         private void MainForm_GM_FormClosing(object sender, FormClosingEventArgs e)
@@ -644,21 +683,21 @@ namespace sys3
         //帮助文件
         private void mniHelpFile_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var strHelpFilePath = Application.StartupPath + Const_GM.System3_Help_File;
+            var strHelpFilePath = Application.StartupPath + "动态瓦斯地质图基础信息录入系统帮助文件.chm";
             try
             {
                 Process.Start(strHelpFilePath);
             }
             catch
             {
-                Alert.alert("帮助文件未找到或已损坏");
+                Alert.AlertMsg("帮助文件未找到或已损坏");
             }
         }
 
         //关于
         private void mniAbout_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Const.strPicturepath = Application.StartupPath + Const_GM.Picture_Name;
+            var aboutFilePath = Application.StartupPath + "动态瓦斯地质图基础信息录入系统关于图片.jpg";
             var libabout = new About(ProductName, ProductVersion);
             libabout.ShowDialog();
         }

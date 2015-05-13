@@ -38,12 +38,12 @@ namespace GIS.Common
         public static GIS.LayersManager.MapControlRightButton contextMenu = new GIS.LayersManager.MapControlRightButton();
         public static int copypaste = 0;
         public static IFeatureLayer copypasteLayer = null;
-        public static void load()
+        public static void load(string path)
         {
             g_pMyMapCtrl = (IMapControl3)g_pAxMapControl.Object;
             g_pMap = g_pAxMapControl.Map;
             g_pGraph = (IGraphicsContainer)g_pMap;
-            IWorkspace workspace = SDEOperation.connectSde();//dfjia
+            IWorkspace workspace = SDEOperation.connectSde(path);//dfjia
             g_pCurrentWorkSpace = workspace;
             g_CurWorkspaceEdit = (IWorkspaceEdit)workspace;
             contextMenu.SetHook(g_pAxMapControl.Object);

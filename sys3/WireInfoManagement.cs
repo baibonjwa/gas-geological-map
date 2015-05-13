@@ -8,7 +8,7 @@ using GIS.Common;
 using LibCommon;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class WireInfoManagement : Form
     {
@@ -18,9 +18,6 @@ namespace sys3
         public WireInfoManagement()
         {
             InitializeComponent();
-
-            //设置窗体属性
-            FormDefaultPropertiesSetter.SetManagementFormDefaultProperties(this, Const_GM.WIRE_INFO_MANAGEMENT);
         }
 
         private void RefreshData()
@@ -60,10 +57,10 @@ namespace sys3
         /// <param name="e"></param>
         private void tsBtnModify_Click(object sender, EventArgs e)
         {
-            var wire = (Wire) gridView1.GetFocusedRow();
+            var wire = (Wire)gridView1.GetFocusedRow();
             if (wire == null)
             {
-                Alert.alert("请选择要修改的巷道");
+                Alert.AlertMsg("请选择要修改的巷道");
                 return;
             }
             var wireInfoForm = new WireInfoEntering(wire);
@@ -81,9 +78,9 @@ namespace sys3
         private void tsBtnDel_Click(object sender, EventArgs e)
         {
             //是否删除导线点
-            if (!Alert.confirm(Const.DEL_CONFIRM_MSG)) return;
+            if (!Alert.Confirm("确认要删除吗？")) return;
             var selectedIndex = gridView1.GetSelectedRows();
-            foreach (var wire in selectedIndex.Select(index => (Wire) gridView1.GetRow(index)))
+            foreach (var wire in selectedIndex.Select(index => (Wire)gridView1.GetRow(index)))
             {
                 GisHelper.DelHdByHdId(wire.Tunnel.TunnelId.ToString(CultureInfo.InvariantCulture));
                 wire.Delete();
@@ -149,9 +146,9 @@ namespace sys3
                 MessageBox.Show(@"未发现导线点图层！");
                 return;
             }
-            var pFeatureLayer = (IFeatureLayer) pLayer;
+            var pFeatureLayer = (IFeatureLayer)pLayer;
             var str = "";
-            var bid = ((Wire) gridView1.GetFocusedRow()).Tunnel.BindingId;
+            var bid = ((Wire)gridView1.GetFocusedRow()).Tunnel.BindingId;
             if (bid != "")
             {
                 if (true)
@@ -177,7 +174,7 @@ namespace sys3
             }
             else
             {
-                Alert.alert("图元丢失");
+                Alert.AlertMsg("图元丢失");
             }
         }
     }

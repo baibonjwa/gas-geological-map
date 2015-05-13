@@ -5,21 +5,21 @@ using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord("T_WORKINGFACE_INFO")]
+    [ActiveRecord]
     public class WorkingFace : ActiveRecordBase<WorkingFace>
     {
         /** 工作面编号 **/
         private DateTime _startDate;
         private DateTime _stopDate;
 
-        [HasMany(typeof(Tunnel), Table = "T_TUNNEL_INFO", ColumnKey = "WORKINGFACE_ID",
+        [HasMany(typeof(Tunnel), ColumnKey = "WorkingFaceId", Table = "Tunnel",
             Cascade = ManyRelationCascadeEnum.SaveUpdate, Lazy = true)]
         public IList<Tunnel> Tunnels { get; set; }
 
         /// <summary>
         ///     工作面编号
         /// </summary>
-        [PrimaryKey(PrimaryKeyType.Identity, "WORKINGFACE_ID")]
+        [PrimaryKey(PrimaryKeyType.Identity)]
         public int WorkingFaceId { get; set; }
 
         /** 工作面名称 **/
@@ -27,25 +27,25 @@ namespace LibEntity
         /// <summary>
         ///     工作面名称
         /// </summary>
-        [Property("WORKINGFACE_NAME")]
+        [Property]
         public string WorkingFaceName { get; set; }
 
         /// <summary>
         ///     坐标X
         /// </summary>
-        [Property("COORDINATE_X")]
+        [Property]
         public double CoordinateX { get; set; }
 
         /// <summary>
         ///     坐标X
         /// </summary>
-        [Property("COORDINATE_Y")]
+        [Property]
         public double CoordinateY { get; set; }
 
         /// <summary>
         ///     坐标X
         /// </summary>
-        [Property("COORDINATE_Z")]
+        [Property]
         public double CoordinateZ { get; set; }
 
         // 开工日期
@@ -65,7 +65,7 @@ namespace LibEntity
         /// <summary>
         ///     设置或获取是否掘进完毕
         /// </summary>
-        [Property("IS_FINISH")]
+        [Property]
         public int IsFinish { get; set; }
 
         // 停工日期
@@ -82,7 +82,7 @@ namespace LibEntity
 
 
         // 采区
-        [BelongsTo("MININGAREA_ID")]
+        [BelongsTo("MiningAreaId")]
         public MiningArea MiningArea { get; set; }
 
         // 工作制式
@@ -90,7 +90,7 @@ namespace LibEntity
         /// <summary>
         ///     设置或获取工作制式
         /// </summary>
-        [Property("WORK_STYLE")]
+        [Property]
         public string WorkStyle { get; set; }
 
         // 班次
@@ -98,7 +98,7 @@ namespace LibEntity
         /// <summary>
         ///     设置或获取班次
         /// </summary>
-        [Property("WORK_TIME")]
+        [Property]
         public string WorkTime { get; set; }
 
         // 用于暂存关联巷道信息
@@ -113,8 +113,8 @@ namespace LibEntity
         /// <summary>
         ///     巷道类型
         /// </summary>
-        [Property("WORKINGFACE_TYPE")]
-        public WorkingfaceTypeEnum WorkingfaceTypeEnum { get; set; }
+        [Property]
+        public WorkingfaceTypeEnum WorkingfaceType { get; set; }
 
         public static WorkingFace[] FindAllByMiningAreaId(int miningAreaId)
         {

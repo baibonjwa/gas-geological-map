@@ -143,7 +143,7 @@ namespace LibBusiness
             String selectedText = "")
         {
             var workingTimes =
-                WorkingTime.FindAllByWorkTimeGroupId(timeGroupId);
+                WorkTime.FindAllByWorkTimeGroupId(timeGroupId);
             if (workingTimes != null)
             {
                 DataBindListControl(lb, workingTimes, "WorkTimeName",
@@ -155,7 +155,7 @@ namespace LibBusiness
         public static void LoadWorkTime(DataGridViewComboBoxColumn dgvcbc, int timeGroupId, String selectedText = "")
         {
             var workingTimes =
-                WorkingTime.FindAllByWorkTimeGroupId(timeGroupId);
+                WorkTime.FindAllByWorkTimeGroupId(timeGroupId);
             foreach (var t in workingTimes)
             {
                 dgvcbc.Items.Add(t.WorkTimeName);
@@ -167,12 +167,12 @@ namespace LibBusiness
         {
             //获取班次
             var workingTimes = workStyle == "三八制" ?
-                WorkingTime.FindAllBy38Times() :
-                WorkingTime.FindAllBy46Times();
+                WorkTime.FindAllBy38Times() :
+                WorkTime.FindAllBy46Times();
             //小时
             int hour = DateTime.Now.Hour;
             string workTime = "";
-            foreach (WorkingTime t in workingTimes)
+            foreach (WorkTime t in workingTimes)
             {
                 //对比小时
                 if (hour >

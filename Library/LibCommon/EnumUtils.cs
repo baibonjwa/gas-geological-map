@@ -7,7 +7,6 @@ namespace LibCommon
 {
     public class EnumUtils
     {
-
         /// <summary>
         /// int --> enum
         /// </summary>
@@ -17,7 +16,6 @@ namespace LibCommon
         /// <returns></returns>
         public static T GetEnumInstance<T>(T enumType, string value)
         {
-
             T returnValue = (T)Enum.Parse(typeof(T), value);
             return returnValue;
         }

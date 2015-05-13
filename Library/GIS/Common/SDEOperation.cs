@@ -21,13 +21,15 @@ namespace GIS.Common
     /// </summary>
     public class SDEOperation
     {
-        public static IWorkspace connectSde()
+        public static IWorkspace connectSde(string path)
         {
             try
             {
                 //定义工作空间，工作空间的数据源来自SDE，IWorkspaceFactory是Geodatabase的入口
                 //Type factoryType = Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory");
                 //IWorkspaceFactory workspaceFactory = (IWorkspaceFactory)Activator.CreateInstance(factoryType);
+
+                IWorkspaceFactory workspaceFactory = new FileGDBWorkspaceFactory();
 
                 ////通过IPropertySet设置通过SDE连接数据库的各种参数
                 //IPropertySet propertySet = new PropertySetClass();
@@ -41,22 +43,22 @@ namespace GIS.Common
                 //propertySet.SetProperty("VERSION", "sde.DEFAULT");
 
                 ////通过以上设置的参数将数据库的数据通过SDE读入工作空间
-                //IWorkspace workspace = workspaceFactory.Open(propertySet, 0);
-                IWorkspace workspace = null;
+                IWorkspace workspace = workspaceFactory.OpenFromFile(path, 0);
+                //IWorkspace workspace = null;
 
-                ILayer pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap,"点");
-               
-                IFeatureLayer pFeatureLayer = (IFeatureLayer)pLayer;
-              
-                IFeatureClass pFeatureClass = pFeatureLayer.FeatureClass;
-                IDataset pDataset = (IDataset)pFeatureClass;
-                workspace = pDataset.Workspace;
+                //ILayer pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap,"点");
+
+                //IFeatureLayer pFeatureLayer = (IFeatureLayer)pLayer;
+
+                //IFeatureClass pFeatureClass = pFeatureLayer.FeatureClass;
+                //IDataset pDataset = (IDataset)pFeatureClass;
+                //workspace = pDataset.Workspace;
                 //IWorkspaceFactory workspaceFactory = new SdeWorkspaceFactoryClass();
                 //workspace = workspaceFactory.Open(ConnectSDE(true), 0);
                 return workspace;
 
 
-                
+
                 //return GetSDEWorkspace();
             }
             catch (Exception ex)
@@ -113,12 +115,12 @@ namespace GIS.Common
             IPropertySet Propset = new PropertySetClass();
             if (ChkSdeLinkModle == true) // 采用SDE连接
             {
-                string[] str=File.ReadAllLines(Application.StartupPath+@"\ConfigDatabaseGIS.ini");
+                string[] str = File.ReadAllLines(Application.StartupPath + @"\ConfigDatabaseGIS.ini");
                 for (int i = 0; i < str.Length; i++)
                 {
                     string key = str[i].Substring(0, str[i].IndexOf('='));
                     string value = str[i].Substring(str[i].IndexOf('=') + 1);
-                    Propset.SetProperty(key,value);
+                    Propset.SetProperty(key, value);
                 }
                 ////设置数据库服务器名
                 //Propset.SetProperty("SERVER", "10.64.192.51");
@@ -148,6 +150,6 @@ namespace GIS.Common
             }
             return Propset;
         }
- 
+
     }
 }

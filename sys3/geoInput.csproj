@@ -8,8 +8,8 @@
     <ProjectGuid>{59209FCC-CFF7-4056-A256-CB71293225B1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>sys3</RootNamespace>
-    <AssemblyName>sys3</AssemblyName>
+    <RootNamespace>geoInput</RootNamespace>
+    <AssemblyName>geoInput</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -353,6 +353,9 @@
     <EmbeddedResource Include="CollapsePillarsManagement.resx">
       <DependentUpon>CollapsePillarsManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FaultageInfoManagement.resx">
+      <DependentUpon>FaultageInfoManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="PitshaftInfoManagement.resx">
       <DependentUpon>PitshaftInfoManagement.cs</DependentUpon>
@@ -366,9 +369,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProspectingLineInfoEntering.resx">
       <DependentUpon>ProspectingLineInfoEntering.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FaultageInfoManagement.resx">
-      <DependentUpon>FaultageInfoManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm_GM.resx">
       <DependentUpon>MainForm_GM.cs</DependentUpon>
@@ -396,18 +396,8 @@
     <EmbeddedResource Include="WireInfoManagement.resx">
       <DependentUpon>WireInfoManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="3.GeologyMeasure_TemporaryKey.pfx" />
     <None Include="app.config" />
-    <Content Include="default.mxd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DefaultUser">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="LibCommon.dll.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PanelFormName.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
@@ -420,9 +410,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="工作面地质测量管理系统帮助文件.chm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="symbol.ServerStyle">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -448,14 +435,6 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="LoginBackground.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="系统三关于图片.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library\GIS\GIS.csproj">

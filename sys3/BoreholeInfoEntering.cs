@@ -15,7 +15,7 @@ using LibBusiness;
 using LibCommon;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class BoreholeInfoEntering : Form
     {
@@ -27,9 +27,6 @@ namespace sys3
         public BoreholeInfoEntering()
         {
             InitializeComponent();
-
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.INSERT_BOREHOLE_INFO);
             DataBindUtil.LoadLithology(LITHOLOGY);
         }
 
@@ -37,8 +34,6 @@ namespace sys3
         {
             InitializeComponent();
 
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.INSERT_BOREHOLE_INFO);
             txtCoordinateX.Text = pt.X.ToString(CultureInfo.InvariantCulture);
             txtCoordinateY.Text = pt.Y.ToString(CultureInfo.InvariantCulture);
             txtCoordinateZ.Text = pt.Z.ToString(CultureInfo.InvariantCulture).Equals("非数字")
@@ -54,9 +49,6 @@ namespace sys3
         public BoreholeInfoEntering(Borehole borehole)
         {
             InitializeComponent();
-
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_GM.UPDATE_BOREHOLE_INFO);
             using (new SessionScope())
             {
                 borehole = Borehole.Find(borehole.BoreholeId);
@@ -116,16 +108,8 @@ namespace sys3
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            // 验证
-            if (!Check())
-            {
-                DialogResult = DialogResult.None;
-                return;
-            }
-
-
             var borehole = Borehole.FindOneByBoreholeNum(txtBoreholeNumber.Text) ??
-                           new Borehole {BindingId = IDGenerator.NewBindingID()};
+                           new Borehole {BindingId = IdGenerator.NewBindingId()};
             borehole.BoreholeNumber = txtBoreholeNumber.Text.Trim();
             borehole.GroundElevation = Convert.ToDouble(txtGroundElevation.Text.Trim());
             borehole.CoordinateX = Convert.ToDouble(txtCoordinateX.Text.Trim());
@@ -219,213 +203,6 @@ namespace sys3
         }
 
         /// <summary>
-        ///     验证画面入力数据
-        /// </summary>
-        /// <returns>验证结果：true 通过验证, false未通过验证</returns>
-        private bool Check()
-        {
-            // 判断孔号是否录入
-            if (!LibCommon.Check.isEmpty(txtBoreholeNumber, Const_GM.BOREHOLE_NUMBER))
-            {
-                return false;
-            }
-
-            // 判断地面标高是否录入
-            if (!LibCommon.Check.isEmpty(txtGroundElevation, Const_GM.GROUND_ELEVATION))
-            {
-                return false;
-            }
-
-            // 判断地面标高是否为数字
-            if (!LibCommon.Check.IsNumeric(txtGroundElevation, Const_GM.GROUND_ELEVATION))
-            {
-                return false;
-            }
-
-            // 判断坐标X是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateX, Const_GM.COORDINATE_X))
-            {
-                return false;
-            }
-
-            // 判断坐标X是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateX, Const_GM.COORDINATE_X))
-            {
-                return false;
-            }
-
-            // 判断坐标Y是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateY, Const_GM.COORDINATE_Y))
-            {
-                return false;
-            }
-
-            // 判断坐标Y是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateY, Const_GM.COORDINATE_Y))
-            {
-                return false;
-            }
-
-            // 判断坐标Z是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateZ, Const_GM.COORDINATE_Z))
-            {
-                return false;
-            }
-
-            // 判断坐标Z是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateZ, Const_GM.COORDINATE_Z))
-            {
-                return false;
-            }
-
-            // 判断岩性是否入力
-            if (gvCoalSeamsTexture.Rows.Count - 1 == 0)
-            {
-                Alert.alert(Const_GM.LITHOLOGY_MUST_INPUT); // 请录入煤层的岩性！
-                return false;
-            }
-
-            // 临时存储煤层名称
-            var arrCoalSeamsName = new List<String>();
-
-            // 判断底板标高、厚度是否入力，以及入力的是否为数字
-            for (var i = 0; i < gvCoalSeamsTexture.RowCount; i++)
-            {
-                // 最后一行为空行时，跳出循环
-                if (i == gvCoalSeamsTexture.RowCount - 1)
-                {
-                    break;
-                }
-
-                // 岩性
-                var cell0 = gvCoalSeamsTexture.Rows[i].Cells[0] as DataGridViewComboBoxCell;
-                // 判断岩性是否选择
-                if (cell0 != null && cell0.Value == null)
-                {
-                    Alert.alert("第" + (i + 1) + "行，请选择岩性！");
-                    return false;
-                }
-
-                // 底板标高
-                var cell1 = gvCoalSeamsTexture.Rows[i].Cells[1] as DataGridViewTextBoxCell;
-                // 判断底板标高是否入力
-                if (cell1 != null && cell1.Value == null)
-                {
-                    cell1.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert("第" + (i + 1) + "行，底板标高不能为空！");
-                    return false;
-                }
-                if (cell1 != null)
-                {
-                    cell1.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-
-                    // 判断底板标高是否为数字
-                    if (!Validator.IsNumeric(cell1.Value.ToString()))
-                    {
-                        cell1.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                        Alert.alert("第" + (i + 1) + "行，底板标高应为数字！");
-                        return false;
-                    }
-                    cell1.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                }
-
-                // 厚度
-                var cell2 = gvCoalSeamsTexture.Rows[i].Cells[2] as DataGridViewTextBoxCell;
-                // 判断厚度是否入力
-                if (cell2 != null && cell2.Value == null)
-                {
-                    cell2.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert("第" + (i + 1) + "行，厚度不能为空！");
-                    return false;
-                }
-                if (cell2 != null)
-                {
-                    cell2.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                    // 判断厚度是否为数字
-                    if (!Validator.IsNumeric(cell2.Value.ToString()))
-                    {
-                        cell2.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                        Alert.alert("第" + (i + 1) + "行，厚度应为数字！");
-                        return false;
-                    }
-                    cell2.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                }
-
-                // 当岩性选择为煤层时
-                var lithology = Lithology.FindOneByCoal();
-                if (cell0 != null && Convert.ToString(cell0.Value) == lithology.LithologyName)
-                {
-                    // 煤层名称
-                    var cell3 = gvCoalSeamsTexture.Rows[i].Cells[3] as DataGridViewTextBoxCell;
-                    if (cell3 != null)
-                    {
-                        cell3.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-
-                        // 特殊符号判断
-                        //if (Validator.checkSpecialCharacters(cell3.Value.ToString()))
-                        //{
-                        //    cell3.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                        //    Alert.alert("第" + (i + 1) + "行，煤层结构名称包含特殊符号！");
-                        //    return false;
-                        //}
-                        //else
-                        //{
-                        if (cell3.Value.ToString().Trim() != "")
-                        {
-                            cell3.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-
-                            // 煤层名称不能重复
-                            if (!arrCoalSeamsName.Contains(cell3.Value.ToString().Trim()))
-                            {
-                                arrCoalSeamsName.Add(cell3.Value.ToString().Trim());
-                                cell3.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-                            }
-                            else
-                            {
-                                cell3.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                                Alert.alert("第" + (i + 1) + "行，煤层名称重复！（同一钻孔不能有相同的煤层名称）");
-                                return false;
-                            }
-                        }
-                    }
-                }
-
-                var cell40 = gvCoalSeamsTexture.Rows[i].Cells[4] as DataGridViewTextBoxCell;
-                // 判断坐标X是否为数字
-                if (cell40 != null && !Validator.IsNumeric(Convert.ToString(cell40.Value)))
-                {
-                    cell40.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert("第" + (i + 1) + "行，坐标X应为数字！");
-                    return false;
-                }
-                if (cell40 != null) cell40.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-
-                var cell50 = gvCoalSeamsTexture.Rows[i].Cells[5] as DataGridViewTextBoxCell;
-                // 判断坐标Y是否为数字
-                if (cell50 != null && !Validator.IsNumeric(Convert.ToString(cell50.Value)))
-                {
-                    cell50.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert("第" + (i + 1) + "行，坐标Y应为数字！");
-                    return false;
-                }
-                if (cell50 != null) cell50.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-
-                var cell60 = gvCoalSeamsTexture.Rows[i].Cells[6] as DataGridViewTextBoxCell;
-                // 判断坐标Z是否为数字
-                if (cell60 != null && !Validator.IsNumeric(Convert.ToString(cell60.Value)))
-                {
-                    cell60.Style.BackColor = Const.ERROR_FIELD_COLOR;
-                    Alert.alert("第" + (i + 1) + "行，坐标Z应为数字！");
-                    return false;
-                }
-                if (cell60 != null) cell60.Style.BackColor = Const.NO_ERROR_FIELD_COLOR;
-            }
-
-            // 验证通过
-            return true;
-        }
-
-        /// <summary>
         ///     岩性选择事件
         /// </summary>
         /// <param name="sender"></param>
@@ -503,7 +280,7 @@ namespace sys3
             // 最后一行删除按钮设为不可
             if (gvCoalSeamsTexture.CurrentRow == null ||
                 gvCoalSeamsTexture.RowCount - 1 == gvCoalSeamsTexture.CurrentRow.Index) return;
-            if (Alert.confirm(Const.DEL_CONFIRM_MSG))
+            if (Alert.Confirm("确认要删除吗？"))
             {
                 gvCoalSeamsTexture.Rows.Remove(gvCoalSeamsTexture.CurrentRow);
             }
@@ -544,7 +321,7 @@ namespace sys3
 
                 if (iNowIndex == 0)
                 {
-                    Alert.alert("无法上移");
+                    Alert.AlertMsg("无法上移");
                     return;
                 }
 
@@ -604,7 +381,7 @@ namespace sys3
             if (iNowIndex == gvCoalSeamsTexture.Rows.Count - 2 ||
                 iNowIndex == gvCoalSeamsTexture.Rows.Count - 1)
             {
-                Alert.alert("无法下移");
+                Alert.AlertMsg("无法下移");
                 return;
             }
 
@@ -710,7 +487,7 @@ namespace sys3
                     {
                         var str = duqu.Split('|');
                         var borehole = Borehole.FindOneByBoreholeNum(str[0]) ??
-                                       new Borehole {BindingId = IDGenerator.NewBindingID()};
+                                       new Borehole {BindingId = IdGenerator.NewBindingId()};
 
                         borehole.BoreholeNumber = str[0];
                         borehole.GroundElevation = Convert.ToDouble(str[3]);
@@ -749,7 +526,7 @@ namespace sys3
                     (Convert.ToInt32(lblSuccessed.Text) + 1).ToString(CultureInfo.InvariantCulture);
                 pbCount.Value++;
             }
-            Alert.alert("导入成功！");
+            Alert.AlertMsg("导入成功！");
         }
 
         private void btnReadTxt_Click(object sender, EventArgs e)
@@ -781,7 +558,7 @@ namespace sys3
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            Alert.alert(_errorMsg);
+            Alert.AlertMsg(_errorMsg);
         }
 
         #region 绘制钻孔

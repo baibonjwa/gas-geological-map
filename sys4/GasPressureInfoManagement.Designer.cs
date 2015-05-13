@@ -1,4 +1,4 @@
-﻿namespace sys4
+﻿namespace ggm
 {
     partial class GasPressureInfoManagement
     {
@@ -64,7 +64,6 @@
             // 
             // tsBtnPrint
             // 
-            this.tsBtnPrint.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnPrint.Image")));
             this.tsBtnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnPrint.Name = "tsBtnPrint";
             this.tsBtnPrint.Size = new System.Drawing.Size(52, 21);
@@ -92,7 +91,6 @@
             // 
             // tsBtnExport
             // 
-            this.tsBtnExport.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnExport.Image")));
             this.tsBtnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnExport.Name = "tsBtnExport";
             this.tsBtnExport.Size = new System.Drawing.Size(52, 21);
@@ -101,7 +99,6 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(52, 21);
@@ -110,7 +107,6 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(52, 21);
@@ -119,7 +115,6 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(52, 21);
@@ -128,7 +123,6 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(52, 21);
@@ -137,7 +131,6 @@
             // 
             // btnMap
             // 
-            this.btnMap.Image = ((System.Drawing.Image)(resources.GetObject("btnMap.Image")));
             this.btnMap.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMap.Name = "btnMap";
             this.btnMap.Size = new System.Drawing.Size(52, 21);
@@ -146,7 +139,6 @@
             // 
             // btnExit
             // 
-            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(52, 21);

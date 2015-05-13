@@ -20,88 +20,8 @@ namespace GIS.SpecialGraphic
         public FrmNewXZZ()
         {
             InitializeComponent();
-            //设置窗体属性
-            LibCommon.FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, "新建小柱状");
         }
         
-        /// <summary>
-        /// 验证
-        /// </summary>
-        /// <returns></returns>
-        private bool check()
-        {
-            //非空
-            if (!Check.isEmpty(txtX, "坐标X"))
-            {
-                return false;
-            }
-            if (!Check.isEmpty(txtY, "坐标Y"))
-            {
-                return false;
-            }
-            //比例尺非空
-            if (!Check.isEmpty(txtBlc, "比例尺"))
-            {
-                return false;
-            }
-            //比例尺数字
-            if (!Check.IsNumeric(txtBlc, "比例尺"))
-            {
-                return false;
-            }
-            //角度非空
-            if (!Check.isEmpty(txtAngle, "角度"))
-            {
-                return false;
-            }
-            //角度数字
-            if (!Check.IsNumeric(txtAngle, "角度"))
-            {
-                return false;
-            }
-            //底板标高非空
-            if (!Check.isEmpty(txtDBBG, "底板标高"))
-            {
-                return false;
-            }
-            //底板标高数字
-            if (!Check.IsNumeric(txtDBBG, "底板标高"))
-            {
-                return false;
-            }
-            if (dgrdvZhzzt.RowCount < 2)
-            {
-                Alert.alert("小柱状图属性不能空！");
-                return false;
-            }
-            //datagridview内部
-            for (int i = 0; i < dgrdvZhzzt.RowCount - 1; i++)
-            {
-                //厚度
-                DataGridViewTextBoxCell cell = dgrdvZhzzt.Rows[i].Cells[0] as DataGridViewTextBoxCell;
-                //非空
-                if (cell.Value == null)
-                {
-                    Alert.alert("厚度" + Const.MSG_NOT_NULL + Const.SIGN_EXCLAMATION_MARK);
-                    return false;
-                }
-                //数字
-                if (!Validator.IsNumeric(cell.Value.ToString()))
-                {
-                    Alert.alert("厚度" + Const.MSG_MUST_NUMBER + Const.SIGN_EXCLAMATION_MARK);
-                    return false;
-                }
-                
-                //柱状非空
-                if (dgrdvZhzzt.Rows[i].Cells[1].Value == null)
-                {
-                    Alert.alert("柱状" + Const.MSG_NOT_NULL + Const.SIGN_EXCLAMATION_MARK);
-                    return false;
-                }
-            }
-            //成功
-            return true;
-        }
         #region 保存
         private void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -117,14 +37,8 @@ namespace GIS.SpecialGraphic
                         this.dgrdvZhzzt.Rows.RemoveAt(i);
                     }
                 }
-                //验证
-                if (!check())
-                {
-                    this.DialogResult = DialogResult.None;
-                    return;
-                }
                 this.DialogResult = DialogResult.OK;
-                string bid = IDGenerator.NewBindingID();
+                string bid = IdGenerator.NewBindingId();
                 //实体赋值
                 IPoint pt = new PointClass();
                 pt.X = Convert.ToDouble(txtX.Text);
@@ -178,7 +92,7 @@ namespace GIS.SpecialGraphic
         #region datagrid事件
         private void dgrdvZhzzt_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != dgrdvZhzzt.Rows.Count - 1 && e.ColumnIndex == 2 && Alert.confirm(Const.DEL_CONFIRM_MSG))
+            if (e.RowIndex != dgrdvZhzzt.Rows.Count - 1 && e.ColumnIndex == 2 && Alert.Confirm("确认要删除吗？"))
             {
                 if (e.ColumnIndex == 2)
                 {
@@ -232,7 +146,7 @@ namespace GIS.SpecialGraphic
 
             if (iNowIndex == 0)
             {
-                Alert.alert("无法上移");
+                Alert.AlertMsg("无法上移");
                 return;
             }
 
@@ -268,7 +182,7 @@ namespace GIS.SpecialGraphic
 
             if (iNowIndex == this.dgrdvZhzzt.Rows.Count - 2 || iNowIndex == this.dgrdvZhzzt.Rows.Count - 1)
             {
-                Alert.alert("无法下移");
+                Alert.AlertMsg("无法下移");
                 return;
             }
 

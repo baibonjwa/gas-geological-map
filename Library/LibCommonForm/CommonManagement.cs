@@ -237,11 +237,11 @@ namespace LibCommonForm
             }
             catch (Exception)
             {
-                Alert.alert("输入信息有误，请检查信息是否输入正确");
+                Alert.AlertMsg("输入信息有误，请检查信息是否输入正确");
                 return;
             }
 
-            Alert.alert(Const.SUCCESS_MSG);
+            Alert.AlertMsg("修改成功！");
         }
 
         /// <summary>
@@ -320,7 +320,7 @@ namespace LibCommonForm
 
         private void beDelete_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
-            if (!Alert.confirm("确认删除数据？")) return;
+            if (!Alert.Confirm("确认删除数据？")) return;
             switch (_typeFlag)
             {
                 case FlagManangingMineName:

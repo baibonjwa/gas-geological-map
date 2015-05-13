@@ -8,7 +8,7 @@ using GIS.HdProc;
 using LibCommon;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class BigFaultageInfoManagement : Form
     {
@@ -48,10 +48,10 @@ namespace sys3
         {
             if (gridView1.GetFocusedRow() == null)
             {
-                Alert.alert("请选择要修改的信息");
+                Alert.AlertMsg("请选择要修改的信息");
                 return;
             }
-            var bigFaultageInfoEntering = new BigFaultageInfoEntering(((BigFaultage) gridView1.GetFocusedRow()));
+            var bigFaultageInfoEntering = new BigFaultageInfoEntering(((BigFaultage)gridView1.GetFocusedRow()));
             if (DialogResult.OK == bigFaultageInfoEntering.ShowDialog())
             {
                 RefreshData();
@@ -65,11 +65,11 @@ namespace sys3
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (!Alert.confirm("确认删除数据吗？")) return;
+            if (!Alert.Confirm("确认删除数据吗？")) return;
             var selectedIndex = gridView1.GetSelectedRows();
-            foreach (var bigFaultage in selectedIndex.Select(i => (BigFaultage) gridView1.GetRow(i)))
+            foreach (var bigFaultage in selectedIndex.Select(i => (BigFaultage)gridView1.GetRow(i)))
             {
-                Global.tdclass.DelTdLyr(new[] {bigFaultage.BindingId});
+                Global.tdclass.DelTdLyr(new[] { bigFaultage.BindingId });
                 bigFaultage.Delete();
             }
             RefreshData();
@@ -126,7 +126,7 @@ namespace sys3
         private void btnMap_Click(object sender, EventArgs e)
         {
             // 获取已选择明细行的索引
-            int[] iSelIdxsArr = {((BigFaultage) gridView1.GetFocusedRow()).BigFaultageId};
+            int[] iSelIdxsArr = { ((BigFaultage)gridView1.GetFocusedRow()).BigFaultageId };
 
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.DEFALUT_INFERRED_FAULTAGE);
             if (pLayer == null)
@@ -134,11 +134,11 @@ namespace sys3
                 MessageBox.Show(@"未发现推断断层图层！");
                 return;
             }
-            var pFeatureLayer = (IFeatureLayer) pLayer;
+            var pFeatureLayer = (IFeatureLayer)pLayer;
             var str = "";
             for (var i = 0; i < iSelIdxsArr.Length; i++)
             {
-                var bid = ((BigFaultage) gridView1.GetFocusedRow()).BindingId;
+                var bid = ((BigFaultage)gridView1.GetFocusedRow()).BindingId;
                 if (bid == "") continue;
                 if (i == 0)
                     str = "bid='" + bid + "'";
@@ -163,7 +163,7 @@ namespace sys3
             }
             else
             {
-                Alert.alert("图元丢失");
+                Alert.AlertMsg("图元丢失");
             }
         }
 

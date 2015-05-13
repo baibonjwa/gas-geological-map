@@ -9,7 +9,7 @@ using GIS.SpecialGraphic;
 using LibCommon;
 using LibEntity;
 
-namespace sys3
+namespace geoInput
 {
     public partial class CollapsePillarsManagement : Form
     {
@@ -19,9 +19,6 @@ namespace sys3
         public CollapsePillarsManagement()
         {
             InitializeComponent();
-
-            //设置窗体属性
-            FormDefaultPropertiesSetter.SetManagementFormDefaultProperties(this, Const_GM.COLLAPSEPILLARE_MANAGEMENT);
         }
 
         private void RefreshData()
@@ -74,7 +71,7 @@ namespace sys3
         /// <param name="e"></param>
         private void tsBtnDel_Click(object sender, EventArgs e)
         {
-            if (!Alert.confirm(Const.DEL_CONFIRM_MSG)) return;
+            if (!Alert.Confirm("确认要删除吗？")) return;
             var selectedIndex = gridView1.GetSelectedRows();
             foreach (var collapsePillars in selectedIndex.Select(i => (CollapsePillars)gridView1.GetRow(i)))
             {
@@ -169,7 +166,7 @@ namespace sys3
             }
             else
             {
-                Alert.alert("图元丢失");
+                Alert.AlertMsg("图元丢失");
             }
         }
 

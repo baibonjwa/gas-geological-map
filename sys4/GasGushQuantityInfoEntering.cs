@@ -6,12 +6,10 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geometry;
 using GIS;
 using GIS.Common;
-using LibBusiness;
 using LibCommon;
-using LibCommonForm;
 using LibEntity;
 
-namespace sys4
+namespace ggm
 {
     public partial class GasGushQuantityInfoEntering : Form
     {
@@ -22,8 +20,6 @@ namespace sys4
         {
             GasGushQuantityPoint = null;
             InitializeComponent();
-            // 设置窗体默认属性
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_OP.INSERT_GASGUSHQUANTITY_INFO);
         }
 
         /// <summary>
@@ -36,7 +32,6 @@ namespace sys4
             InitializeComponent();
             // 设置窗体默认属性
             GasGushQuantity = gasGushQuantity;
-            FormDefaultPropertiesSetter.SetEnteringFormDefaultProperties(this, Const_OP.UPDATE_GASGUSHQUANTITY_INFO);
         }
 
         private GasGushQuantity GasGushQuantity { get; set; }
@@ -50,8 +45,7 @@ namespace sys4
         {
             // 设置日期控件格式
             dtpStopeDate.Format = DateTimePickerFormat.Custom;
-            dtpStopeDate.CustomFormat = Const.DATE_FORMART_YYYY_MM;
-            DataBindUtil.LoadCoalSeamsName(cboCoalSeams);
+            dtpStopeDate.CustomFormat = @"yyyy/MM/dd HH:mm:ss";
             if (GasGushQuantity != null)
             {
                 txtCoordinateX.Text = GasGushQuantity.CoordinateX.ToString(CultureInfo.InvariantCulture);
@@ -64,7 +58,6 @@ namespace sys4
                 txtWorkingFaceDayOutput.Text =
                     GasGushQuantity.WorkingFaceDayOutput.ToString(CultureInfo.InvariantCulture);
                 dtpStopeDate.Value = GasGushQuantity.StopeDate;
-                cboCoalSeams.SelectedValue = GasGushQuantity.CoalSeams;
                 selectTunnelSimple1.SetTunnel(GasGushQuantity.Tunnel);
             }
         }
@@ -76,12 +69,6 @@ namespace sys4
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            // 验证
-            if (!Check())
-            {
-                DialogResult = DialogResult.None;
-                return;
-            }
             DialogResult = DialogResult.OK;
 
             // 创建瓦斯涌出量点实体
@@ -97,8 +84,7 @@ namespace sys4
                     WorkingFaceDayOutput = Convert.ToDouble(txtWorkingFaceDayOutput.Text),
                     StopeDate = dtpStopeDate.Value,
                     Tunnel = selectTunnelSimple1.SelectedTunnel,
-                    CoalSeams = (CoalSeams)cboCoalSeams.SelectedValue,
-                    BindingId = IDGenerator.NewBindingID()
+                    BindingId = IdGenerator.NewBindingId()
                 };
                 // 坐标X
                 gasGushQuantity.Save();
@@ -114,8 +100,7 @@ namespace sys4
                 GasGushQuantity.WorkingFaceDayOutput = Convert.ToDouble(txtWorkingFaceDayOutput.Text);
                 GasGushQuantity.StopeDate = dtpStopeDate.Value;
                 GasGushQuantity.Tunnel = selectTunnelSimple1.SelectedTunnel;
-                GasGushQuantity.CoalSeams = (CoalSeams)cboCoalSeams.SelectedValue;
-                GasGushQuantity.BindingId = IDGenerator.NewBindingID();
+                GasGushQuantity.BindingId = IdGenerator.NewBindingId();
                 GasGushQuantity.Save();
                 DelGasGushQuantityPt(GasGushQuantity.BindingId, GasGushQuantity.CoalSeams.CoalSeamsName);
                 DrawGasGushQuantityPt(GasGushQuantity);
@@ -131,86 +116,6 @@ namespace sys4
         {
             // 关闭窗口
             Close();
-        }
-
-        /// <summary>
-        ///     验证画面入力数据
-        /// </summary>
-        /// <returns>验证结果：true 通过验证, false未通过验证</returns>
-        private bool Check()
-        {
-            // 判断是否选择所属巷道
-            if (selectTunnelSimple1.SelectedTunnel == null)
-            {
-                Alert.alert(Const_OP.TUNNEL_NAME_MUST_INPUT);
-                return false;
-            }
-
-            // 判断所在煤层是否选择
-            if (cboCoalSeams.SelectedValue == null)
-            {
-                Alert.alert(Const.COALSEAMS_MUST_SELECT);
-                return false;
-            }
-
-            // 判断坐标X是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateX, Const_OP.COORDINATE_X))
-                return false;
-
-            // 判断坐标X是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateX, Const_OP.COORDINATE_X))
-                return false;
-
-            // 判断坐标Y是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateY, Const_OP.COORDINATE_Y))
-                return false;
-
-            // 判断坐标Y是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateY, Const_OP.COORDINATE_Y))
-                return false;
-
-            // 判断坐标Z是否录入
-            if (!LibCommon.Check.isEmpty(txtCoordinateZ, Const_OP.STOPE_WORKING_FACE_GAS_GUSH_QUANTITY_COORDINATE_Z))
-                return false;
-
-            // 判断坐标Z是否为数字
-            if (!LibCommon.Check.IsNumeric(txtCoordinateZ, Const_OP.STOPE_WORKING_FACE_GAS_GUSH_QUANTITY_COORDINATE_Z))
-                return false;
-
-            // 判断绝对瓦斯涌出量是否录入
-            if (!LibCommon.Check.isEmpty(txtAbsoluteGasGushQuantity, Const_OP.ABSOLUTE_GAS_GUSH_QUANTITY))
-                return false;
-
-            // 判断绝对瓦斯涌出量是否为数字
-            if (!LibCommon.Check.IsNumeric(txtAbsoluteGasGushQuantity, Const_OP.ABSOLUTE_GAS_GUSH_QUANTITY))
-                return false;
-
-            // 判断相对瓦斯涌出量是否录入
-            if (!LibCommon.Check.isEmpty(txtRelativeGasGushQuantity, Const_OP.RELATIVE_GAS_GUSH_QUANTITY))
-            {
-                return false;
-            }
-
-            // 判断相对瓦斯涌出量是否为数字
-            if (!LibCommon.Check.IsNumeric(txtRelativeGasGushQuantity, Const_OP.RELATIVE_GAS_GUSH_QUANTITY))
-            {
-                return false;
-            }
-
-            // 判断工作面日产量是否录入
-            if (!LibCommon.Check.isEmpty(txtWorkingFaceDayOutput, Const_OP.WORKING_FACE_DAY_OUTPUT))
-            {
-                return false;
-            }
-
-            // 判断工作面日产量是否为数字
-            if (!LibCommon.Check.IsNumeric(txtWorkingFaceDayOutput, Const_OP.WORKING_FACE_DAY_OUTPUT))
-            {
-                return false;
-            }
-
-            // 验证通过
-            return true;
         }
 
         public const string STOPE_WORKING_FACE_GAS_GUSH_QUANTITY_PT = "瓦斯涌出量点";
@@ -301,24 +206,6 @@ namespace sys4
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.LAYER_ALIAS_MR_HCGZMWSYCLD);
             var pFeatureLayer = (IFeatureLayer)pLayer;
             DataEditCommon.DeleteFeatureByWhereClause(pFeatureLayer, "bid='" + bid + "' and mc='" + mc + "'");
-        }
-
-        /// <summary>
-        ///     20140311 lyf 绘制瓦斯涌出量点图元
-        /// </summary>
-        /// <summary>
-        ///     煤层信息添加管理
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnAddCoalSeams_Click(object sender, EventArgs e)
-        {
-            var commonManagementForm = new CommonManagement(5, 0);
-            if (DialogResult.OK == commonManagementForm.ShowDialog())
-            {
-                // 绑定煤层名称信息
-                DataBindUtil.LoadCoalSeamsName(cboCoalSeams);
-            }
         }
     }
 }

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
 
-[assembly: AssemblyTitle("工作面地质测量管理系统")]
+[assembly: AssemblyTitle("  ")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("煤科集团沈阳研究院有限公司")]
-[assembly: AssemblyProduct("工作面地质测量管理系统")]
+[assembly: AssemblyProduct("动态瓦斯地质图基础信息录入系统")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -35,5 +35,5 @@ using System.Runtime.InteropServices;
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion("0.2.0.*")]
+[assembly: AssemblyVersion("0.3.0.*")]
 //[assembly: AssemblyFileVersion("0.1.0.*")]

@@ -3,6 +3,7 @@ using NHibernate.Criterion;
 
 namespace LibEntity
 {
+    [ActiveRecord]
     public class CoalSeams : ActiveRecordBase<CoalSeams>
     {
         /// <summary>

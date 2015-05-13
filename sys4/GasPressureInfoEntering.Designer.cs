@@ -1,4 +1,4 @@
-﻿namespace sys4
+﻿namespace ggm
 {
     partial class GasPressureInfoEntering
     {
@@ -48,17 +48,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gbTunnel = new System.Windows.Forms.GroupBox();
+            this.selectTunnelSimple1 = new LibCommonForm.SelectTunnelSimple();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gbCoalSeams = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cboCoalSeams = new System.Windows.Forms.ComboBox();
-            this.lblCoalSeams = new System.Windows.Forms.Label();
-            this.btnAddCoalSeams = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.selectTunnelSimple1 = new LibCommonForm.SelectTunnelSimple();
             this.gbTunnel.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.gbCoalSeams.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblCoordinateX
@@ -244,6 +239,15 @@
             this.gbTunnel.TabStop = false;
             this.gbTunnel.Text = "所在巷道";
             // 
+            // selectTunnelSimple1
+            // 
+            this.selectTunnelSimple1.BackColor = System.Drawing.Color.Transparent;
+            this.selectTunnelSimple1.Location = new System.Drawing.Point(16, 20);
+            this.selectTunnelSimple1.Name = "selectTunnelSimple1";
+            this.selectTunnelSimple1.SelectedTunnel = null;
+            this.selectTunnelSimple1.Size = new System.Drawing.Size(219, 38);
+            this.selectTunnelSimple1.TabIndex = 0;
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -273,53 +277,11 @@
             // gbCoalSeams
             // 
             this.gbCoalSeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.gbCoalSeams.Controls.Add(this.label7);
-            this.gbCoalSeams.Controls.Add(this.cboCoalSeams);
-            this.gbCoalSeams.Controls.Add(this.lblCoalSeams);
-            this.gbCoalSeams.Controls.Add(this.btnAddCoalSeams);
             this.gbCoalSeams.Location = new System.Drawing.Point(12, 83);
             this.gbCoalSeams.Name = "gbCoalSeams";
             this.gbCoalSeams.Size = new System.Drawing.Size(585, 43);
             this.gbCoalSeams.TabIndex = 30;
             this.gbCoalSeams.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(186, 17);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(11, 12);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "*";
-            // 
-            // cboCoalSeams
-            // 
-            this.cboCoalSeams.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCoalSeams.FormattingEnabled = true;
-            this.cboCoalSeams.Location = new System.Drawing.Point(76, 14);
-            this.cboCoalSeams.Name = "cboCoalSeams";
-            this.cboCoalSeams.Size = new System.Drawing.Size(104, 20);
-            this.cboCoalSeams.TabIndex = 1;
-            // 
-            // lblCoalSeams
-            // 
-            this.lblCoalSeams.AutoSize = true;
-            this.lblCoalSeams.Location = new System.Drawing.Point(15, 17);
-            this.lblCoalSeams.Name = "lblCoalSeams";
-            this.lblCoalSeams.Size = new System.Drawing.Size(65, 12);
-            this.lblCoalSeams.TabIndex = 0;
-            this.lblCoalSeams.Text = "所在煤层：";
-            // 
-            // btnAddCoalSeams
-            // 
-            this.btnAddCoalSeams.Location = new System.Drawing.Point(203, 14);
-            this.btnAddCoalSeams.Name = "btnAddCoalSeams";
-            this.btnAddCoalSeams.Size = new System.Drawing.Size(32, 20);
-            this.btnAddCoalSeams.TabIndex = 3;
-            this.btnAddCoalSeams.Text = "+";
-            this.btnAddCoalSeams.UseVisualStyleBackColor = true;
-            this.btnAddCoalSeams.Click += new System.EventHandler(this.btnAddCoalSeams_Click);
             // 
             // label6
             // 
@@ -330,13 +292,6 @@
             this.label6.Size = new System.Drawing.Size(11, 12);
             this.label6.TabIndex = 24;
             this.label6.Text = "*";
-            // 
-            // selectTunnelSimple1
-            // 
-            this.selectTunnelSimple1.Location = new System.Drawing.Point(16, 20);
-            this.selectTunnelSimple1.Name = "selectTunnelSimple1";
-            this.selectTunnelSimple1.Size = new System.Drawing.Size(219, 38);
-            this.selectTunnelSimple1.TabIndex = 0;
             // 
             // GasPressureInfoEntering
             // 
@@ -361,8 +316,6 @@
             this.gbTunnel.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.gbCoalSeams.ResumeLayout(false);
-            this.gbCoalSeams.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,12 +344,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox gbTunnel;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox gbCoalSeams;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cboCoalSeams;
-        private System.Windows.Forms.Label lblCoalSeams;
-        private System.Windows.Forms.Button btnAddCoalSeams;
-        private System.Windows.Forms.Label label6;
         private LibCommonForm.SelectTunnelSimple selectTunnelSimple1;
+        private System.Windows.Forms.GroupBox gbCoalSeams;
+        private System.Windows.Forms.Label label6;
     }
 }
