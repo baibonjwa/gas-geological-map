@@ -12,75 +12,75 @@ namespace LibEntity
         ///     断层编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int FaultageId { get; set; }
+        public int faultage_id { get; set; }
 
         /// <summary>
         ///     断层名称
         /// </summary>
         [Property]
-        public string FaultageName { get; set; }
+        public string faultage_name { get; set; }
 
         /// <summary>
         ///     落差
         /// </summary>
         [Property]
-        public string Gap { get; set; }
+        public string gap { get; set; }
 
         /// <summary>
         ///     倾角
         /// </summary>
         [Property]
-        public double Angle { get; set; }
+        public double angle { get; set; }
 
         /// <summary>
         ///     类型
         /// </summary>
         [Property]
-        public string Type { get; set; }
+        public string type { get; set; }
 
         /// <summary>
         ///     走向
         /// </summary>
         [Property]
-        public double Trend { get; set; }
+        public double trend { get; set; }
 
         /// <summary>
         ///     断距
         /// </summary>
         [Property]
-        public string Separation { get; set; }
+        public string separation { get; set; }
 
         /// <summary>
         /// 长度
         /// </summary>
         [Property]
-        public double Length { get; set; }
+        public double length { get; set; }
 
         /// <summary>
         ///     坐标X
         /// </summary>
         [Property]
-        public double CoordinateX { get; set; }
+        public double coordinate_x { get; set; }
 
         /// <summary>
         ///     坐标Y
         /// </summary>
         [Property]
-        public double CoordinateY { get; set; }
+        public double coordinate_y { get; set; }
 
         /// <summary>
         ///     坐标Z
         /// </summary>
         [Property]
-        public double CoordinateZ { get; set; }
+        public double coordinate_z { get; set; }
 
         /// <summary>
         ///     BID
         /// </summary>
         [Property]
-        public string BindingId { get; set; }
+        public string binding_id { get; set; }
 
-        public static bool ExistsByFaultageName(string faultageName)
+        public static bool exists_by_faultage_name(string faultageName)
         {
             var criterion = new List<ICriterion>
             {
@@ -89,7 +89,7 @@ namespace LibEntity
             return Exists(criterion.ToArray());
         }
 
-        public static Faultage FindByFaultageName(string faultageName)
+        public static Faultage find_by_faultage_name(string faultageName)
         {
             var criterion = new List<ICriterion>
             {

@@ -10,66 +10,66 @@ namespace LibEntity
         ///     编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int GasGushQuantityId { get; set; }
+        public int gas_gush_quantity_id { get; set; }
 
         /// <summary>
         ///     坐标X
         /// </summary>
         [Property]
-        public double CoordinateX { get; set; }
+        public double coordinate_x { get; set; }
 
         /// <summary>
         ///     坐标Y
         /// </summary>
         [Property]
-        public double CoordinateY { get; set; }
+        public double coordinate_y { get; set; }
 
         /// <summary>
         ///     坐标Z
         /// </summary>
         [Property]
-        public double CoordinateZ { get; set; }
+        public double coordinate_z { get; set; }
 
         /// <summary>
         ///     绝对瓦斯涌出量
         /// </summary>
         [Property]
-        public double AbsoluteGasGushQuantity { get; set; }
+        public double absolute_gas_gush_quantity { get; set; }
 
         /// <summary>
         ///     相对瓦斯涌出量
         /// </summary>
         [Property]
-        public double RelativeGasGushQuantity { get; set; }
+        public double relative_gas_gush_quantity { get; set; }
 
         /// <summary>
         ///     工作面日产量
         /// </summary>
         [Property]
-        public double WorkingFaceDayOutput { get; set; }
+        public double working_face_day_output { get; set; }
 
         /// <summary>
         ///     回采年月
         /// </summary>
         [Property]
-        public DateTime StopeDate { get; set; }
+        public DateTime stope_date { get; set; }
 
         /// <summary>
         ///     巷道编号
         /// </summary>
         [BelongsTo("TunnelId")]
-        public Tunnel Tunnel { get; set; }
+        public Tunnel tunnel { get; set; }
 
         /// <summary>
         ///     煤层编号
         /// </summary>
         //[BelongsTo("CoalSeamsId")]
-        public CoalSeams CoalSeams { get; set; }
+        public CoalSeams coal_seams { get; set; }
 
         /// <summary>
         ///     BID
         /// </summary>
         [Property]
-        public string BindingId { get; set; }
+        public string binding_id { get; set; }
     }
 }

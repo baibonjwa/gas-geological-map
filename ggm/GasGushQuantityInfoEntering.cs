@@ -48,17 +48,17 @@ namespace ggm
             dtpStopeDate.CustomFormat = @"yyyy/MM/dd HH:mm:ss";
             if (GasGushQuantity != null)
             {
-                txtCoordinateX.Text = GasGushQuantity.CoordinateX.ToString(CultureInfo.InvariantCulture);
-                txtCoordinateY.Text = GasGushQuantity.CoordinateY.ToString(CultureInfo.InvariantCulture);
-                txtCoordinateZ.Text = GasGushQuantity.CoordinateZ.ToString(CultureInfo.InvariantCulture);
+                txtCoordinateX.Text = GasGushQuantity.coordinate_x.ToString(CultureInfo.InvariantCulture);
+                txtCoordinateY.Text = GasGushQuantity.coordinate_y.ToString(CultureInfo.InvariantCulture);
+                txtCoordinateZ.Text = GasGushQuantity.coordinate_z.ToString(CultureInfo.InvariantCulture);
                 txtAbsoluteGasGushQuantity.Text =
-                    GasGushQuantity.AbsoluteGasGushQuantity.ToString(CultureInfo.InvariantCulture);
+                    GasGushQuantity.absolute_gas_gush_quantity.ToString(CultureInfo.InvariantCulture);
                 txtRelativeGasGushQuantity.Text =
-                    GasGushQuantity.RelativeGasGushQuantity.ToString(CultureInfo.InvariantCulture);
+                    GasGushQuantity.relative_gas_gush_quantity.ToString(CultureInfo.InvariantCulture);
                 txtWorkingFaceDayOutput.Text =
-                    GasGushQuantity.WorkingFaceDayOutput.ToString(CultureInfo.InvariantCulture);
-                dtpStopeDate.Value = GasGushQuantity.StopeDate;
-                selectTunnelSimple1.SetTunnel(GasGushQuantity.Tunnel);
+                    GasGushQuantity.working_face_day_output.ToString(CultureInfo.InvariantCulture);
+                dtpStopeDate.Value = GasGushQuantity.stope_date;
+                selectTunnelSimple1.SetTunnel(GasGushQuantity.tunnel);
             }
         }
 
@@ -76,15 +76,15 @@ namespace ggm
             {
                 var gasGushQuantity = new GasGushQuantity
                 {
-                    CoordinateX = Convert.ToDouble(txtCoordinateX.Text),
-                    CoordinateY = Convert.ToDouble(txtCoordinateY.Text),
-                    CoordinateZ = Convert.ToDouble(txtCoordinateZ.Text),
-                    AbsoluteGasGushQuantity = Convert.ToDouble(txtAbsoluteGasGushQuantity.Text),
-                    RelativeGasGushQuantity = Convert.ToDouble(txtRelativeGasGushQuantity.Text),
-                    WorkingFaceDayOutput = Convert.ToDouble(txtWorkingFaceDayOutput.Text),
-                    StopeDate = dtpStopeDate.Value,
-                    Tunnel = selectTunnelSimple1.SelectedTunnel,
-                    BindingId = IdGenerator.NewBindingId()
+                    coordinate_x = Convert.ToDouble(txtCoordinateX.Text),
+                    coordinate_y = Convert.ToDouble(txtCoordinateY.Text),
+                    coordinate_z = Convert.ToDouble(txtCoordinateZ.Text),
+                    absolute_gas_gush_quantity = Convert.ToDouble(txtAbsoluteGasGushQuantity.Text),
+                    relative_gas_gush_quantity = Convert.ToDouble(txtRelativeGasGushQuantity.Text),
+                    working_face_day_output = Convert.ToDouble(txtWorkingFaceDayOutput.Text),
+                    stope_date = dtpStopeDate.Value,
+                    tunnel = selectTunnelSimple1.SelectedTunnel,
+                    binding_id = IdGenerator.NewBindingId()
                 };
                 // 坐标X
                 gasGushQuantity.Save();
@@ -92,17 +92,17 @@ namespace ggm
             }
             else
             {
-                GasGushQuantity.CoordinateX = Convert.ToDouble(txtCoordinateX.Text);
-                GasGushQuantity.CoordinateY = Convert.ToDouble(txtCoordinateY.Text);
-                GasGushQuantity.CoordinateZ = Convert.ToDouble(txtCoordinateZ.Text);
-                GasGushQuantity.AbsoluteGasGushQuantity = Convert.ToDouble(txtAbsoluteGasGushQuantity.Text);
-                GasGushQuantity.RelativeGasGushQuantity = Convert.ToDouble(txtRelativeGasGushQuantity.Text);
-                GasGushQuantity.WorkingFaceDayOutput = Convert.ToDouble(txtWorkingFaceDayOutput.Text);
-                GasGushQuantity.StopeDate = dtpStopeDate.Value;
-                GasGushQuantity.Tunnel = selectTunnelSimple1.SelectedTunnel;
-                GasGushQuantity.BindingId = IdGenerator.NewBindingId();
+                GasGushQuantity.coordinate_x = Convert.ToDouble(txtCoordinateX.Text);
+                GasGushQuantity.coordinate_y = Convert.ToDouble(txtCoordinateY.Text);
+                GasGushQuantity.coordinate_z = Convert.ToDouble(txtCoordinateZ.Text);
+                GasGushQuantity.absolute_gas_gush_quantity = Convert.ToDouble(txtAbsoluteGasGushQuantity.Text);
+                GasGushQuantity.relative_gas_gush_quantity = Convert.ToDouble(txtRelativeGasGushQuantity.Text);
+                GasGushQuantity.working_face_day_output = Convert.ToDouble(txtWorkingFaceDayOutput.Text);
+                GasGushQuantity.stope_date = dtpStopeDate.Value;
+                GasGushQuantity.tunnel = selectTunnelSimple1.SelectedTunnel;
+                GasGushQuantity.binding_id = IdGenerator.NewBindingId();
                 GasGushQuantity.Save();
-                DelGasGushQuantityPt(GasGushQuantity.BindingId, GasGushQuantity.CoalSeams.CoalSeamsName);
+                DelGasGushQuantityPt(GasGushQuantity.binding_id, GasGushQuantity.coal_seams.coal_seams_name);
                 DrawGasGushQuantityPt(GasGushQuantity);
             }
         }
@@ -143,14 +143,14 @@ namespace ggm
             IGeometry geometry = pt;
             var list = new List<ziduan>
             {
-                new ziduan("bid", gasGushQuantityEntity.BindingId),
-                new ziduan("mc", gasGushQuantityEntity.CoalSeams.ToString()),
+                new ziduan("bid", gasGushQuantityEntity.binding_id),
+                new ziduan("mc", gasGushQuantityEntity.coal_seams.ToString()),
                 new ziduan("addtime", DateTime.Now.ToString(CultureInfo.InvariantCulture))
             };
-            var hcny = gasGushQuantityEntity.StopeDate.ToLongDateString();
-            var ydwsycl = gasGushQuantityEntity.AbsoluteGasGushQuantity.ToString(CultureInfo.InvariantCulture);
-            var xdwsycl = gasGushQuantityEntity.RelativeGasGushQuantity.ToString(CultureInfo.InvariantCulture);
-            var gzmrcl = gasGushQuantityEntity.WorkingFaceDayOutput.ToString(CultureInfo.InvariantCulture);
+            var hcny = gasGushQuantityEntity.stope_date.ToLongDateString();
+            var ydwsycl = gasGushQuantityEntity.absolute_gas_gush_quantity.ToString(CultureInfo.InvariantCulture);
+            var xdwsycl = gasGushQuantityEntity.relative_gas_gush_quantity.ToString(CultureInfo.InvariantCulture);
+            var gzmrcl = gasGushQuantityEntity.working_face_day_output.ToString(CultureInfo.InvariantCulture);
             if (DataEditCommon.strLen(ydwsycl) < DataEditCommon.strLen(xdwsycl))
             {
                 var count = DataEditCommon.strLen(xdwsycl) - DataEditCommon.strLen(ydwsycl);

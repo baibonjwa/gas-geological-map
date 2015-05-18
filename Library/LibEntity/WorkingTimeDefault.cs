@@ -11,11 +11,11 @@ namespace LibEntity
     public class WorkingTimeDefault : ActiveRecordBase<WorkingTimeDefault>
     {
 
-        public const String TableName = "T_WORK_TIME_DEFAULT";
+        public const String TABLE_NAME = "T_WORK_TIME_DEFAULT";
         /// <summary>
         ///     获取设置工作制Id
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity, "DEFAULT_WORK_TIME_GROUP_ID")]
-        public int DefaultWorkTimeGroupId { get; set; }
+        public int default_work_time_group_id { get; set; }
     }
 }

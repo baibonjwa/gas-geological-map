@@ -76,6 +76,8 @@
             this.mniWSHLDZXHZFloat = new DevExpress.XtraBars.BarButtonItem();
             this.mniWSYLDZXHZFloat = new DevExpress.XtraBars.BarButtonItem();
             this.mniWSYCLDZXHZFloat = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiFloorEvevationContour = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiGroundLevelContour = new DevExpress.XtraBars.BarButtonItem();
             this.mniWSYLDHZFloat = new DevExpress.XtraBars.BarButtonItem();
             this.mniWSHLDHZFloat = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -139,6 +141,11 @@
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.axLicenseControl2 = new ESRI.ArcGIS.Controls.AxLicenseControl();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapControl_OP)).BeginInit();
@@ -418,9 +425,11 @@
             this.barButtonItem4,
             this.barButtonItem5,
             this.mniDCShape,
-            this.bbiCheckUpdate});
+            this.bbiCheckUpdate,
+            this.bbiFloorEvevationContour,
+            this.bbiGroundLevelContour});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 106;
+            this.barManager1.MaxItemId = 108;
             // 
             // bar2
             // 
@@ -674,6 +683,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.mniWSHLDZXHZFloat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.mniWSYLDZXHZFloat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.mniWSYCLDZXHZFloat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiFloorEvevationContour),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiGroundLevelContour),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.mniWSYLDHZFloat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.mniWSHLDHZFloat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar4.OptionsBar.AllowRename = true;
@@ -702,6 +713,20 @@
             this.mniWSYCLDZXHZFloat.ImageIndex = 14;
             this.mniWSYCLDZXHZFloat.Name = "mniWSYCLDZXHZFloat";
             this.mniWSYCLDZXHZFloat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mniWSYCLDZXHZFloat_ItemClick);
+            // 
+            // bbiFloorEvevationContour
+            // 
+            this.bbiFloorEvevationContour.Caption = "煤层底板等高线绘制";
+            this.bbiFloorEvevationContour.Id = 106;
+            this.bbiFloorEvevationContour.Name = "bbiFloorEvevationContour";
+            this.bbiFloorEvevationContour.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFloorEvevationContour_ItemClick);
+            // 
+            // bbiGroundLevelContour
+            // 
+            this.bbiGroundLevelContour.Caption = "地面标高等值线绘制";
+            this.bbiGroundLevelContour.Id = 107;
+            this.bbiGroundLevelContour.Name = "bbiGroundLevelContour";
+            this.bbiGroundLevelContour.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiGroundLevelContour_ItemClick);
             // 
             // mniWSYLDHZFloat
             // 
@@ -1138,6 +1163,44 @@
             this.axLicenseControl2.Size = new System.Drawing.Size(32, 32);
             this.axLicenseControl2.TabIndex = 17;
             // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "瓦斯涌出量等值线绘制(&R)...";
+            this.barButtonItem6.Id = 20;
+            this.barButtonItem6.ImageIndex = 20;
+            this.barButtonItem6.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R));
+            this.barButtonItem6.Name = "barButtonItem6";
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "瓦斯涌出量等值线绘制(&R)...";
+            this.barButtonItem7.Id = 20;
+            this.barButtonItem7.ImageIndex = 20;
+            this.barButtonItem7.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R));
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "瓦斯涌出量等值线绘制(&R)...";
+            this.barButtonItem8.Id = 20;
+            this.barButtonItem8.ImageIndex = 20;
+            this.barButtonItem8.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R));
+            this.barButtonItem8.Name = "barButtonItem8";
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "瓦斯压力等值线绘制";
+            this.barButtonItem9.Id = 60;
+            this.barButtonItem9.ImageIndex = 17;
+            this.barButtonItem9.Name = "barButtonItem9";
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "瓦斯压力等值线绘制";
+            this.barButtonItem10.Id = 60;
+            this.barButtonItem10.ImageIndex = 17;
+            this.barButtonItem10.Name = "barButtonItem10";
+            // 
             // MainForm_OP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1286,5 +1349,12 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem mniDCShape;
         private DevExpress.XtraBars.BarButtonItem bbiCheckUpdate;
+        private DevExpress.XtraBars.BarButtonItem bbiFloorEvevationContour;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.BarButtonItem bbiGroundLevelContour;
     }
 }

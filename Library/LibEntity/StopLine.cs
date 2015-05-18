@@ -11,57 +11,57 @@ namespace LibEntity
         ///     设置或获取主键
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int StopLineId { get; set; }
+        public int stop_line_id { get; set; }
 
         /// <summary>
         ///     设置或获取停采线名称
         /// </summary>
         [Property]
-        public string StopLineName { get; set; }
+        public string stop_line_name { get; set; }
 
         /// <summary>
         ///     设置或获取起点坐标X
         /// </summary>
         [Property]
-        public double SCoordinateX { get; set; }
+        public double s_coordinate_x { get; set; }
 
         /// <summary>y
         ///     设置或获取起点坐标Y
         /// </summary>
         [Property]
-        public double SCoordinateY { get; set; }
+        public double s_coordinate_y { get; set; }
 
         /// <summary>
         ///     设置或获取起点坐标Z
         /// </summary>
         [Property]
-        public double SCoordinateZ { get; set; }
+        public double s_coordinate_z { get; set; }
 
         /// <summary>
         ///     设置或获取终点坐标X
         /// </summary>
         [Property]
-        public double FCoordinateX { get; set; }
+        public double f_coordinate_x { get; set; }
 
         /// <summary>
         ///     设置或获取终点坐标Y
         /// </summary>
         [Property]
-        public double FCoordinateY { get; set; }
+        public double f_coordinate_y { get; set; }
 
         /// <summary>
         ///     设置或获取终点坐标Z
         /// </summary>
         [Property]
-        public double FCoordinateZ { get; set; }
+        public double f_coordinate_z { get; set; }
 
         /// <summary>
         ///     BID
         /// </summary>
         [Property]
-        public string BindingId { get; set; }
+        public string binding_id { get; set; }
 
-        public static bool ExistsByStopLineName(string stopLineName)
+        public static bool exists_by_stop_line_name(string stopLineName)
         {
             var criterion = new List<ICriterion>
             {

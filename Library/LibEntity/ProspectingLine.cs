@@ -11,27 +11,27 @@ namespace LibEntity
         ///     勘探线编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int ProspectingLineId { get; set; }
+        public int prospecting_line_id { get; set; }
 
         /// <summary>
         ///     勘探线名称
         /// </summary>
         [Property]
-        public string ProspectingLineName { get; set; }
+        public string prospecting_line_name { get; set; }
 
         /// <summary>
         ///     勘探钻孔
         /// </summary>
         [Property]
-        public string ProspectingBorehole { get; set; }
+        public string prospecting_borehole { get; set; }
 
         /// <summary>
         ///     BID
         /// </summary>
         [Property]
-        public string BindingId { get; set; }
+        public string binding_id { get; set; }
 
-        public static bool ExistsByProspectingLineName(string prospectingLineName)
+        public static bool exists_by_prospecting_line_name(string prospectingLineName)
         {
             var criterion = new List<ICriterion>
             {

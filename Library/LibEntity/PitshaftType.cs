@@ -8,12 +8,12 @@ namespace LibEntity
         ///     井筒类型编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int PitshaftTypeId { get; set; }
+        public int pitshaft_type_id { get; set; }
 
         /// <summary>
         ///     井筒类型名称
         /// </summary>
         [Property]
-        public string PitshaftTypeName { get; set; }
+        public string pitshaft_type_name { get; set; }
     }
 }

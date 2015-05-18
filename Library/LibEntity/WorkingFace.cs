@@ -14,13 +14,13 @@ namespace LibEntity
 
         [HasMany(typeof(Tunnel), ColumnKey = "WorkingFaceId", Table = "Tunnel",
             Cascade = ManyRelationCascadeEnum.SaveUpdate, Lazy = true)]
-        public IList<Tunnel> Tunnels { get; set; }
+        public IList<Tunnel> tunnels { get; set; }
 
         /// <summary>
         ///     工作面编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int WorkingFaceId { get; set; }
+        public int working_face_id { get; set; }
 
         /** 工作面名称 **/
 
@@ -28,25 +28,25 @@ namespace LibEntity
         ///     工作面名称
         /// </summary>
         [Property]
-        public string WorkingFaceName { get; set; }
+        public string working_face_name { get; set; }
 
         /// <summary>
         ///     坐标X
         /// </summary>
         [Property]
-        public double CoordinateX { get; set; }
+        public double coordinate_x { get; set; }
 
         /// <summary>
         ///     坐标X
         /// </summary>
         [Property]
-        public double CoordinateY { get; set; }
+        public double coordinate_y { get; set; }
 
         /// <summary>
         ///     坐标X
         /// </summary>
         [Property]
-        public double CoordinateZ { get; set; }
+        public double coordinate_z { get; set; }
 
         // 开工日期
 
@@ -54,7 +54,7 @@ namespace LibEntity
         ///     设置或获取开工日期
         /// </summary>
         //[Property("START_DATE")]
-        public DateTime StartDate
+        public DateTime start_date
         {
             get { return _startDate; }
             set { _startDate = value; }
@@ -66,7 +66,7 @@ namespace LibEntity
         ///     设置或获取是否掘进完毕
         /// </summary>
         [Property]
-        public int IsFinish { get; set; }
+        public int is_finish { get; set; }
 
         // 停工日期
 
@@ -74,7 +74,7 @@ namespace LibEntity
         ///     设置或获取停工日期
         /// </summary>
         //[Property("STOP_DATE")]
-        public DateTime StopDate
+        public DateTime stop_date
         {
             get { return _stopDate; }
             set { _stopDate = value; }
@@ -83,7 +83,7 @@ namespace LibEntity
 
         // 采区
         [BelongsTo("MiningAreaId")]
-        public MiningArea MiningArea { get; set; }
+        public MiningArea mining_area { get; set; }
 
         // 工作制式
 
@@ -91,7 +91,7 @@ namespace LibEntity
         ///     设置或获取工作制式
         /// </summary>
         [Property]
-        public string WorkStyle { get; set; }
+        public string work_style { get; set; }
 
         // 班次
 
@@ -99,24 +99,24 @@ namespace LibEntity
         ///     设置或获取班次
         /// </summary>
         [Property]
-        public string WorkTime { get; set; }
+        public string work_time { get; set; }
 
         // 用于暂存关联巷道信息
 
-        public void SetCoordinate(double xx, double yy, double zz)
+        public void set_coordinate(double xx, double yy, double zz)
         {
-            CoordinateX = xx;
-            CoordinateY = yy;
-            CoordinateZ = zz;
+            coordinate_x = xx;
+            coordinate_y = yy;
+            coordinate_z = zz;
         }
 
         /// <summary>
         ///     巷道类型
         /// </summary>
         [Property]
-        public WorkingfaceTypeEnum WorkingfaceType { get; set; }
+        public WorkingfaceTypeEnum workingface_type { get; set; }
 
-        public static WorkingFace[] FindAllByMiningAreaId(int miningAreaId)
+        public static WorkingFace[] find_all_by_mining_area_id(int miningAreaId)
         {
             var criterion = new ICriterion[]
             {
@@ -125,7 +125,7 @@ namespace LibEntity
             return FindAll(criterion);
         }
 
-        public static WorkingFace FindByWorkingFaceName(string workingFaceName)
+        public static WorkingFace find_by_working_face_name(string workingFaceName)
         {
             var criterion = new ICriterion[]
             {
@@ -134,7 +134,7 @@ namespace LibEntity
             return FindOne(criterion);
         }
 
-        public static WorkingFace FindByWorkingFaceNameAndMiningAreaId(string workingFaceName, int miningAreaId)
+        public static WorkingFace find_by_working_face_name_and_mining_area_id(string workingFaceName, int miningAreaId)
         {
             var criterion = new ICriterion[]
             {
@@ -144,7 +144,7 @@ namespace LibEntity
             return FindOne(criterion);
         }
 
-        public static bool ExistsByWorkingFaceName(string workingFaceName)
+        public static bool exists_by_working_face_name(string workingFaceName)
         {
             var criterion = new List<ICriterion>
             {
@@ -153,7 +153,7 @@ namespace LibEntity
             return Exists(criterion.ToArray());
         }
 
-        public static bool ExistsByMiningAreaId(int miningAreaId)
+        public static bool exists_by_mining_area_id(int miningAreaId)
         {
             var criterion = new List<ICriterion>
             {

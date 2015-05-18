@@ -75,7 +75,7 @@ namespace geoInput
             var selectedIndex = gridView1.GetSelectedRows();
             foreach (var collapsePillars in selectedIndex.Select(i => (CollapsePillars)gridView1.GetRow(i)))
             {
-                DeleteyXLZ(collapsePillars.CollapsePillarsId.ToString());
+                DeleteyXLZ(collapsePillars.collapse_pillars_id.ToString());
                 collapsePillars.Delete();
             }
             RefreshData();
@@ -140,7 +140,7 @@ namespace geoInput
             }
             var pFeatureLayer = (IFeatureLayer)pLayer;
             var str = "";
-            var bid = ((CollapsePillars)gridView1.GetFocusedRow()).CollapsePillarsId.ToString(CultureInfo.InvariantCulture);
+            var bid = ((CollapsePillars)gridView1.GetFocusedRow()).collapse_pillars_id.ToString(CultureInfo.InvariantCulture);
             if (bid != "")
             {
                 if (true)

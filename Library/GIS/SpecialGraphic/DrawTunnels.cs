@@ -46,9 +46,9 @@ namespace GIS.SpecialGraphic
 
                     feature.Shape = point;
                     feature.Value[feature.Fields.FindField(GIS_Const.FIELD_BID)] = id;
-                    feature.Value[feature.Fields.FindField(GIS_Const.FIELD_HDID)] = wirePoint.Wire.Tunnel.TunnelId;
-                    feature.Value[feature.Fields.FindField(GIS_Const.FIELD_NAME)] = wirePoint.WirePointName;
-                    feature.Value[feature.Fields.FindField(GIS_Const.FIELD_ID)] = wirePoint.WirePointId;
+                    feature.Value[feature.Fields.FindField(GIS_Const.FIELD_HDID)] = wirePoint.wire.tunnel.tunnel_id;
+                    feature.Value[feature.Fields.FindField(GIS_Const.FIELD_NAME)] = wirePoint.wire_point_name;
+                    feature.Value[feature.Fields.FindField(GIS_Const.FIELD_ID)] = wirePoint.wire_point_id;
                     feature.Store();
                     workspaceEdit.StopEditOperation();
 

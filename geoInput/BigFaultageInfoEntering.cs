@@ -23,20 +23,20 @@ namespace geoInput
             InitializeComponent();
         }
 
-        public BigFaultageInfoEntering(BigFaultage bigFaultage)
+        public BigFaultageInfoEntering(InferFaultage inferFaultage)
         {
             InitializeComponent();
             // 主键
             using (new SessionScope())
             {
                 // 设置窗体默认属性
-                bigFaultage = BigFaultage.Find(bigFaultage.BigFaultageId);
-                tbFaultageName.Text = bigFaultage.BigFaultageName;
-                tbGap.Text = bigFaultage.Gap;
-                tbAngle.Text = bigFaultage.Angle;
-                tbTrend.Text = bigFaultage.Trend;
+                inferFaultage = InferFaultage.Find(inferFaultage.id);
+                tbFaultageName.Text = inferFaultage.big_faultage_name;
+                tbGap.Text = inferFaultage.gap;
+                tbAngle.Text = inferFaultage.angle;
+                tbTrend.Text = inferFaultage.trend;
 
-                if (bigFaultage.Type == "正断层")
+                if (inferFaultage.type == "正断层")
                 {
                     rbtnFrontFaultage.Checked = true;
                     rbtnOppositeFaultage.Checked = false;
@@ -47,15 +47,15 @@ namespace geoInput
                     rbtnOppositeFaultage.Checked = true;
                 }
 
-                foreach (var i in bigFaultage.BigFaultagePoints)
+                foreach (var i in inferFaultage.big_faultage_points)
                 {
-                    if (i.UpOrDown == "上盘")
+                    if (i.up_or_down == "上盘")
                     {
-                        dgrdvUp.Rows.Add(i.CoordinateX, i.CoordinateY, i.CoordinateZ);
+                        dgrdvUp.Rows.Add(i.coordinate_x, i.coordinate_y, i.coordinate_z);
                     }
                     else
                     {
-                        dgrdvDown.Rows.Add(i.CoordinateX, i.CoordinateY, i.CoordinateZ);
+                        dgrdvDown.Rows.Add(i.coordinate_x, i.coordinate_y, i.coordinate_z);
                     }
                 }
             }
@@ -122,52 +122,52 @@ namespace geoInput
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            var bigFaultage = BigFaultage.FindOneByBigFaultageName(tbFaultageName.Text);
-            var bigFaultagePoingList = new List<BigFaultagePoint>();
+            var bigFaultage = InferFaultage.find_one_by_big_faultage_name(tbFaultageName.Text);
+            var bigFaultagePoingList = new List<InferFaultagePoint>();
             if (bigFaultage == null)
             {
-                bigFaultage = new BigFaultage
+                bigFaultage = new InferFaultage
                 {
-                    BigFaultageName = tbFaultageName.Text,
-                    Gap = tbGap.Text,
-                    Angle = tbAngle.Text,
-                    Trend = tbTrend.Text,
-                    Type = rbtnFrontFaultage.Checked ? "正断层" : "逆断层",
-                    BindingId = IdGenerator.NewBindingId()
+                    big_faultage_name = tbFaultageName.Text,
+                    gap = tbGap.Text,
+                    angle = tbAngle.Text,
+                    trend = tbTrend.Text,
+                    type = rbtnFrontFaultage.Checked ? "正断层" : "逆断层",
+                    bid = IdGenerator.NewBindingId()
                 };
                 for (var i = 0; i < dgrdvUp.Rows.Count; i++)
                 {
-                    var point = new BigFaultagePoint { UpOrDown = "上盘" };
+                    var point = new InferFaultagePoint { up_or_down = "上盘" };
                     if (dgrdvUp.Rows[i].Cells[0].Value == null) continue;
-                    point.CoordinateX = Convert.ToDouble(dgrdvUp.Rows[i].Cells[0].Value);
-                    point.CoordinateY = Convert.ToDouble(dgrdvUp.Rows[i].Cells[1].Value);
-                    point.CoordinateZ = Convert.ToDouble(dgrdvUp.Rows[i].Cells[2].Value);
-                    point.BindingId = IdGenerator.NewBindingId();
+                    point.coordinate_x = Convert.ToDouble(dgrdvUp.Rows[i].Cells[0].Value);
+                    point.coordinate_y = Convert.ToDouble(dgrdvUp.Rows[i].Cells[1].Value);
+                    point.coordinate_z = Convert.ToDouble(dgrdvUp.Rows[i].Cells[2].Value);
+                    point.bid = IdGenerator.NewBindingId();
                     bigFaultagePoingList.Add(point);
                 }
                 for (var i = 0; i < dgrdvDown.Rows.Count; i++)
                 {
-                    var point = new BigFaultagePoint();
+                    var point = new InferFaultagePoint();
                     if (dgrdvDown.Rows[i].Cells[0].Value == null) continue;
-                    point.UpOrDown = "下盘";
-                    point.CoordinateX = Convert.ToDouble(dgrdvDown.Rows[i].Cells[0].Value);
-                    point.CoordinateY = Convert.ToDouble(dgrdvDown.Rows[i].Cells[1].Value);
-                    point.CoordinateZ = Convert.ToDouble(dgrdvDown.Rows[i].Cells[2].Value);
-                    point.BindingId = IdGenerator.NewBindingId();
+                    point.up_or_down = "下盘";
+                    point.coordinate_x = Convert.ToDouble(dgrdvDown.Rows[i].Cells[0].Value);
+                    point.coordinate_y = Convert.ToDouble(dgrdvDown.Rows[i].Cells[1].Value);
+                    point.coordinate_z = Convert.ToDouble(dgrdvDown.Rows[i].Cells[2].Value);
+                    point.bid = IdGenerator.NewBindingId();
                     bigFaultagePoingList.Add(point);
                 }
                 bigFaultage.Save();
-                var title = bigFaultage.BigFaultageName + "  " + bigFaultage.Angle + "  " +
-                            bigFaultage.Gap;
-                DrawBigFaultageInfo.DrawTddc(title, bigFaultagePoingList, bigFaultage.BindingId);
+                var title = bigFaultage.big_faultage_name + "  " + bigFaultage.angle + "  " +
+                            bigFaultage.gap;
+                DrawBigFaultageInfo.DrawTddc(title, bigFaultagePoingList, bigFaultage.bid);
             }
             else
             {
-                bigFaultage.BigFaultageName = tbFaultageName.Text;
-                bigFaultage.Gap = tbGap.Text;
-                bigFaultage.Angle = tbAngle.Text;
-                bigFaultage.Trend = tbTrend.Text;
-                bigFaultage.Type = rbtnFrontFaultage.Checked ? "正断层" : "逆断层";
+                bigFaultage.big_faultage_name = tbFaultageName.Text;
+                bigFaultage.gap = tbGap.Text;
+                bigFaultage.angle = tbAngle.Text;
+                bigFaultage.trend = tbTrend.Text;
+                bigFaultage.type = rbtnFrontFaultage.Checked ? "正断层" : "逆断层";
                 foreach (var bigFaultagePoint in bigFaultagePoingList)
                 {
                     bigFaultagePoint.Save();
@@ -201,25 +201,25 @@ namespace geoInput
                     var strs = File.ReadAllLines(fileName, Encoding.GetEncoding("GB2312"));
                     var type = "";
                     var split = strs[0].Split('|');
-                    var bigFaultage = BigFaultage.FindOneByBigFaultageName(split[0]);
-                    var bigFaultagePoints = new List<BigFaultagePoint>();
+                    var bigFaultage = InferFaultage.find_one_by_big_faultage_name(split[0]);
+                    var bigFaultagePoints = new List<InferFaultagePoint>();
                     if (bigFaultage == null)
                     {
-                        bigFaultage = new BigFaultage
+                        bigFaultage = new InferFaultage
                         {
-                            BigFaultageName = split[0],
-                            Gap = split[1],
-                            Type = split[2],
-                            Angle = split[3],
-                            BindingId = IdGenerator.NewBindingId()
+                            big_faultage_name = split[0],
+                            gap = split[1],
+                            type = split[2],
+                            angle = split[3],
+                            bid = IdGenerator.NewBindingId()
                         };
                     }
                     else
                     {
-                        bigFaultage.BigFaultageName = split[0];
-                        bigFaultage.Gap = split[1];
-                        bigFaultage.Type = split[2];
-                        bigFaultage.Angle = split[3];
+                        bigFaultage.big_faultage_name = split[0];
+                        bigFaultage.gap = split[1];
+                        bigFaultage.type = split[2];
+                        bigFaultage.angle = split[3];
                     }
 
 
@@ -241,33 +241,33 @@ namespace geoInput
                         }
                         if (type == "上盘")
                         {
-                            bigFaultagePoints.Add(new BigFaultagePoint
+                            bigFaultagePoints.Add(new InferFaultagePoint
                             {
-                                BindingId = IdGenerator.NewBindingId(),
-                                BigFaultage = bigFaultage,
-                                CoordinateX = Convert.ToDouble(strs[i].Split(',')[0]),
-                                CoordinateY = Convert.ToDouble(strs[i].Split(',')[1]),
-                                CoordinateZ = 0.0,
-                                UpOrDown = "上盘"
+                                bid = IdGenerator.NewBindingId(),
+                                infer_faultage = bigFaultage,
+                                coordinate_x = Convert.ToDouble(strs[i].Split(',')[0]),
+                                coordinate_y = Convert.ToDouble(strs[i].Split(',')[1]),
+                                coordinate_z = 0.0,
+                                up_or_down = "上盘"
                             });
                         }
                         if (type == "下盘")
                         {
-                            bigFaultagePoints.Add(new BigFaultagePoint
+                            bigFaultagePoints.Add(new InferFaultagePoint
                             {
-                                BindingId = IdGenerator.NewBindingId(),
-                                BigFaultage = bigFaultage,
-                                CoordinateX = Convert.ToDouble(strs[i].Split(',')[0]),
-                                CoordinateY = Convert.ToDouble(strs[i].Split(',')[1]),
-                                CoordinateZ = 0.0,
-                                UpOrDown = "下盘"
+                                bid = IdGenerator.NewBindingId(),
+                                infer_faultage = bigFaultage,
+                                coordinate_x = Convert.ToDouble(strs[i].Split(',')[0]),
+                                coordinate_y = Convert.ToDouble(strs[i].Split(',')[1]),
+                                coordinate_z = 0.0,
+                                up_or_down = "下盘"
                             });
                         }
                     }
-                    bigFaultage.BigFaultagePoints = bigFaultagePoints;
-                    var title = bigFaultage.BigFaultageName + "  " + bigFaultage.Angle + "  " +
-                                bigFaultage.Gap;
-                    DrawBigFaultageInfo.DrawTddc(title, bigFaultagePoints, bigFaultage.BindingId);
+                    bigFaultage.big_faultage_points = bigFaultagePoints;
+                    var title = bigFaultage.big_faultage_name + "  " + bigFaultage.angle + "  " +
+                                bigFaultage.gap;
+                    DrawBigFaultageInfo.DrawTddc(title, bigFaultagePoints, bigFaultage.bid);
                     bigFaultage.Save();
                     lblSuccessed.Text =
                         (Convert.ToInt32(lblSuccessed.Text) + 1).ToString(CultureInfo.InvariantCulture);

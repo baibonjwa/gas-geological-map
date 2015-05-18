@@ -79,6 +79,8 @@
             this.CB_InterpolationMethod.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.CB_InterpolationMethod.Items.AddRange(new object[] {
             "样条函数插值法",
+            "自然邻域插值法",
+            "克里格插值法",
             "反距离权重插值法",
             "趋势面插值法"});
             this.CB_InterpolationMethod.Location = new System.Drawing.Point(74, 7);

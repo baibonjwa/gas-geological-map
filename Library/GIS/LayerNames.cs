@@ -4,7 +4,7 @@ namespace GIS
 {
     public class LayerNames
     {
-        public const string LAYER_ALIAS_MINE_BOUNDARY = "Polyline_矿界5000";
+        public const string LAYER_ALIAS_MINE_BOUNDARY = "矿界5000";
         public const string LAYER_ALIAS_TUNNEL = "巷道";
         public const string LAYER_ALIAS_MR_WSYLD = "瓦斯压力点";
         public const string LAYER_ALIAS_MR_WSHLD = "瓦斯含量点";
@@ -24,12 +24,12 @@ namespace GIS
         public const string LAYER_ALIAS_MR_PolylineXZZ = "小柱状线";
         public const string LAYER_ALIAS_MR_PolygonXZZ = "小柱状面";
 
-        public const string LAYER_ALIAS_MR_CENTER_LINE    = "中心线全";
+        public const string LAYER_ALIAS_MR_CENTER_LINE = "中心线全";
         public const string LAYER_ALIAS_MR_CENTER_LINE_FD = "中心线分段";
         public const string LAYER_ALIAS_MR_STOPING_AREA = "采掘区";
-        public const string LAYER_ALIAS_MR_DX_POINT       = "导线点";
-        public const string LAYER_ALIAS_MR_TUNNEL         = "巷道全";
-        public const string LAYER_ALIAS_MR_TUNNEL_FD      = "巷道分段";
+        public const string LAYER_ALIAS_MR_DX_POINT = "导线点";
+        public const string LAYER_ALIAS_MR_TUNNEL = "巷道全";
+        public const string LAYER_ALIAS_MR_TUNNEL_FD = "巷道分段";
         public const string LAYER_ALIAS_MR_DXDLINE = "导线点线";
         public const string LAYER_ALIAS_MR_HENGCHUAN = "横川";
 
@@ -41,7 +41,7 @@ namespace GIS
         public const string LAYER_NAME_MR_XLZ = "陷落柱";
         public const string LAYER_NAME_MR_XLZ1 = "陷落柱1";
         public const string LAYER_NAME_MR_JT = "井筒";
-        public const string LAYER_NAME_MR_zhuzhuang = "GasEarlyWarningGIS.SDE.MR_zhuzhuang"; 
+        public const string LAYER_NAME_MR_zhuzhuang = "GasEarlyWarningGIS.SDE.MR_zhuzhuang";
 
 
 
@@ -55,20 +55,23 @@ namespace GIS
         public const string LAYER_NAME_MR_YJD = "预警点";
         public const string LAYER_NAME_MR_K1 = "K1";
         public const string LAYER_NAME_MR_S = "S";
-        public const string LAYER_NAME_MR_HLDZX  = "GasEarlyWarningGIS.SDE.MR_HLDZX";
-        public const string LAYER_NAME_MR_YLDZX  = "GasEarlyWarningGIS.SDE.MR_YLDZX";
-        public const string LAYER_NAME_MR_YCLDZX = "GasEarlyWarningGIS.SDE.MR_YCLDZX";
+        public const string LAYER_NAME_MR_HLDZX = "MR_HLDZX";
+        public const string LAYER_NAME_MR_YLDZX = "MR_YLDZX";
+        public const string LAYER_NAME_MR_YCLDZX = "MR_YCLDZX";
+        public const string LAYER_NAME_MR_DMBG = "MR_DMBGDZX";
+        public const string LAYER_NAME_MR_MCDB = "MR_MCDBDZX";
+        public const string LAYER_NAME_MR_MS = "MR_MSDZX";
 
 
-        public const string LAYER_NAME_MR_CENTER_LINE    = "GasEarlyWarningGIS.SDE.MR_centerline"; // "中心线全";
+        public const string LAYER_NAME_MR_CENTER_LINE = "GasEarlyWarningGIS.SDE.MR_centerline"; // "中心线全";
         public const string LAYER_NAME_MR_CENTER_LINE_FD = "GasEarlyWarningGIS.SDE.MR_centerlinfd";//"中心线分段";
-        public const string LAYER_NAME_MR_STOPING_AREA   = "GasEarlyWarningGIS.SDE.MR_cjqreg"; //"采掘区";
-        public const string LAYER_NAME_MR_DX_POINT       = "GasEarlyWarningGIS.SDE.MR_dxdpnt"; //"导线点";
-        public const string LAYER_NAME_MR_TUNNEL         = "GasEarlyWarningGIS.SDE.MR_hdjs";   // "巷道全";
-        public const string LAYER_NAME_MR_TUNNEL_FD      = "GasEarlyWarningGIS.SDE.MR_hdreg"; //"巷道分段";
+        public const string LAYER_NAME_MR_STOPING_AREA = "GasEarlyWarningGIS.SDE.MR_cjqreg"; //"采掘区";
+        public const string LAYER_NAME_MR_DX_POINT = "GasEarlyWarningGIS.SDE.MR_dxdpnt"; //"导线点";
+        public const string LAYER_NAME_MR_TUNNEL = "GasEarlyWarningGIS.SDE.MR_hdjs";   // "巷道全";
+        public const string LAYER_NAME_MR_TUNNEL_FD = "GasEarlyWarningGIS.SDE.MR_hdreg"; //"巷道分段";
 
-        public const string DEFAULT = "默认"; 
-         
+        public const string DEFAULT = "默认";
+
         #region 系统一
         public const string TRANSDUCER = "传感器";
 
@@ -170,6 +173,12 @@ namespace GIS
 
         public const string GAS_OUTBURST_PT = "瓦斯突出点";
 
+        public const string GROUND_LEVLE_PT = "地面标高点";
+
+        public const string FLOOR_ELEVATION_PT = "底板标高点";
+
+        public const string EMBEDDED_DEPTH_PT = "埋深点";
+
         public const string POWER_PHENOMENON_PT = "动力现象点";
 
         public const string STOPE_WORKING_FACE_GAS_GUSH_QUANTITY_PT = "回采工作面瓦斯涌出量点";
@@ -179,6 +188,12 @@ namespace GIS
         public const string GAS_CONTENT_CONTOUR = "含量等值线";
 
         public const string GUSH_QUANTITY_CONTOUR = "涌出量等值线";
+
+        public const string GROUND_LEVLE_CONTOUR = "地面标高等值线";
+
+        public const string FLOOR_ELEVATION_CONTOUR = "煤层底板等值线";
+
+        public const string EMBEDDED_DEPTH_CONTOUR = "埋深等值线";
 
         private static string[] _sys4BuiltinLayerNames = null;
 

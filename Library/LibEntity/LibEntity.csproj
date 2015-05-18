@@ -107,7 +107,7 @@
     <Compile Include="BoreholeLithology.cs" />
     <Compile Include="CollapsePillars.cs" />
     <Compile Include="Coordinate.cs" />
-    <Compile Include="BigFaultagePoint.cs" />
+    <Compile Include="InferFaultagePoint.cs" />
     <Compile Include="PitshaftType.cs" />
     <Compile Include="Pitshaft.cs" />
     <Compile Include="ProspectingLine.cs" />
@@ -124,7 +124,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tunnel.cs" />
     <Compile Include="Wire.cs" />
-    <Compile Include="BigFaultage.cs" />
+    <Compile Include="InferFaultage.cs" />
     <Compile Include="WirePoint.cs" />
     <Compile Include="TunnelTypeEnum.cs" />
     <Compile Include="WorkingfaceTypeEnum.cs" />

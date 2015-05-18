@@ -41,13 +41,13 @@ namespace geoInput
 
             // 设置断层信息
             // 断层名称
-            txtFaultageName.Text = Faultage.FaultageName;
+            txtFaultageName.Text = Faultage.faultage_name;
             // 落差
-            txtGap.Text = Faultage.Gap;
+            txtGap.Text = Faultage.gap;
             // 倾角
-            txtAngle.Text = Faultage.Angle.ToString(CultureInfo.InvariantCulture);
+            txtAngle.Text = Faultage.angle.ToString(CultureInfo.InvariantCulture);
             // 类型
-            if (Faultage.Type == "正断层")
+            if (Faultage.type == "正断层")
             {
                 rbtnFrontFaultage.Checked = true;
             }
@@ -56,17 +56,17 @@ namespace geoInput
                 rbtnOppositeFaultage.Checked = true;
             }
             // 走向
-            txtTrend.Text = Faultage.Trend.ToString(CultureInfo.InvariantCulture);
+            txtTrend.Text = Faultage.trend.ToString(CultureInfo.InvariantCulture);
             // 断距
-            txtSeparation.Text = Faultage.Separation;
+            txtSeparation.Text = Faultage.separation;
             // 坐标X
-            txtCoordinateX.Text = Faultage.CoordinateX.ToString(CultureInfo.InvariantCulture);
+            txtCoordinateX.Text = Faultage.coordinate_x.ToString(CultureInfo.InvariantCulture);
             // 坐标Y
-            txtCoordinateY.Text = Faultage.CoordinateY.ToString(CultureInfo.InvariantCulture);
+            txtCoordinateY.Text = Faultage.coordinate_y.ToString(CultureInfo.InvariantCulture);
             // 坐标Z
-            txtCoordinateZ.Text = Faultage.CoordinateZ.ToString(CultureInfo.InvariantCulture);
+            txtCoordinateZ.Text = Faultage.coordinate_z.ToString(CultureInfo.InvariantCulture);
             //长度
-            var bid = Faultage.BindingId;
+            var bid = Faultage.binding_id;
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.DEFALUT_EXPOSE_FAULTAGE);
             var featureLayer = (IFeatureLayer)pLayer;
             if (pLayer == null)
@@ -98,45 +98,45 @@ namespace geoInput
             DialogResult = DialogResult.OK;
 
             // 创建断层实体
-            Faultage = Faultage.FindByFaultageName(txtFaultageName.Text.Trim());
-            Faultage = Faultage ?? new Faultage { BindingId = IdGenerator.NewBindingId() };
+            Faultage = Faultage.find_by_faultage_name(txtFaultageName.Text.Trim());
+            Faultage = Faultage ?? new Faultage { binding_id = IdGenerator.NewBindingId() };
 
-            Faultage.FaultageName = txtFaultageName.Text.Trim();
-            Faultage.Gap = txtGap.Text.Trim();
-            Faultage.Type = rbtnFrontFaultage.Checked ? "正断层" : "逆断层";
-            Faultage.Trend = Convert.ToDouble(txtTrend.Text);
-            Faultage.Separation = txtSeparation.Text.Trim();
+            Faultage.faultage_name = txtFaultageName.Text.Trim();
+            Faultage.gap = txtGap.Text.Trim();
+            Faultage.type = rbtnFrontFaultage.Checked ? "正断层" : "逆断层";
+            Faultage.trend = Convert.ToDouble(txtTrend.Text);
+            Faultage.separation = txtSeparation.Text.Trim();
 
             double dAngle;
             if (double.TryParse(txtAngle.Text.Trim(), out dAngle))
             {
-                Faultage.Angle = dAngle;
+                Faultage.angle = dAngle;
             }
 
             // 坐标X
             double dCoordinateX;
             if (double.TryParse(txtCoordinateX.Text.Trim(), out dCoordinateX))
             {
-                Faultage.CoordinateX = dCoordinateX;
+                Faultage.coordinate_x = dCoordinateX;
             }
 
             // 坐标Y
             double dCoordinateY;
             if (double.TryParse(txtCoordinateY.Text.Trim(), out dCoordinateY))
             {
-                Faultage.CoordinateY = dCoordinateY;
+                Faultage.coordinate_y = dCoordinateY;
             }
 
             // 坐标Z
             double dCoordinateZ;
             if (double.TryParse(txtCoordinateZ.Text.Trim(), out dCoordinateZ))
             {
-                Faultage.CoordinateZ = dCoordinateZ;
+                Faultage.coordinate_z = dCoordinateZ;
             }
             double dLength;
             if (double.TryParse(txtLength.Text.Trim(), out dLength))
             {
-                Faultage.Length = dLength;
+                Faultage.length = dLength;
             }
 
             ModifyJldc(Faultage);
@@ -212,37 +212,37 @@ namespace geoInput
                     while ((duqu = sr.ReadLine()) != null)
                     {
                         var str = duqu.Split('|');
-                        var faultage = Faultage.FindByFaultageName(str[0]);
+                        var faultage = Faultage.find_by_faultage_name(str[0]);
                         if (faultage == null)
                         {
                             faultage = new Faultage
                             {
-                                FaultageName = str[0],
-                                CoordinateX = Convert.ToDouble(str[1].Split(',')[0]),
-                                CoordinateY = Convert.ToDouble(str[1].Split(',')[1]),
-                                CoordinateZ = 0.0,
-                                Separation = str[2],
-                                Gap = str[2],
-                                Trend = String.IsNullOrWhiteSpace(str[4]) ? 0.0 : Convert.ToDouble(str[4]),
-                                Angle = String.IsNullOrWhiteSpace(str[5]) ? 0.0 : Convert.ToDouble(str[5]),
-                                Length = String.IsNullOrWhiteSpace(str[6]) ? 0.0 : Convert.ToDouble(str[6]),
-                                Type = str[3],
-                                BindingId = IdGenerator.NewBindingId()
+                                faultage_name = str[0],
+                                coordinate_x = Convert.ToDouble(str[1].Split(',')[0]),
+                                coordinate_y = Convert.ToDouble(str[1].Split(',')[1]),
+                                coordinate_z = 0.0,
+                                separation = str[2],
+                                gap = str[2],
+                                trend = String.IsNullOrWhiteSpace(str[4]) ? 0.0 : Convert.ToDouble(str[4]),
+                                angle = String.IsNullOrWhiteSpace(str[5]) ? 0.0 : Convert.ToDouble(str[5]),
+                                length = String.IsNullOrWhiteSpace(str[6]) ? 0.0 : Convert.ToDouble(str[6]),
+                                type = str[3],
+                                binding_id = IdGenerator.NewBindingId()
                             };
                             DrawJldc(faultage);
                         }
                         else
                         {
-                            faultage.FaultageName = str[0];
-                            faultage.CoordinateX = Convert.ToDouble(str[1].Split(',')[0]);
-                            faultage.CoordinateY = Convert.ToDouble(str[1].Split(',')[1]);
-                            faultage.CoordinateZ = 0.0;
-                            faultage.Separation = str[2];
-                            faultage.Gap = str[2];
-                            faultage.Trend = String.IsNullOrWhiteSpace(str[4]) ? 0.0 : Convert.ToDouble(str[4]);
-                            faultage.Angle = String.IsNullOrWhiteSpace(str[5]) ? 0.0 : Convert.ToDouble(str[5]);
-                            faultage.Length = String.IsNullOrWhiteSpace(str[6]) ? 0.0 : Convert.ToDouble(str[6]);
-                            faultage.Type = str[3];
+                            faultage.faultage_name = str[0];
+                            faultage.coordinate_x = Convert.ToDouble(str[1].Split(',')[0]);
+                            faultage.coordinate_y = Convert.ToDouble(str[1].Split(',')[1]);
+                            faultage.coordinate_z = 0.0;
+                            faultage.separation = str[2];
+                            faultage.gap = str[2];
+                            faultage.trend = String.IsNullOrWhiteSpace(str[4]) ? 0.0 : Convert.ToDouble(str[4]);
+                            faultage.angle = String.IsNullOrWhiteSpace(str[5]) ? 0.0 : Convert.ToDouble(str[5]);
+                            faultage.length = String.IsNullOrWhiteSpace(str[6]) ? 0.0 : Convert.ToDouble(str[6]);
+                            faultage.type = str[3];
                             ModifyJldc(faultage);
                         }
                         faultage.Save();
@@ -286,7 +286,7 @@ namespace geoInput
             }
 
             //2.删除原来图元，重新绘制新图元
-            DataEditCommon.DeleteFeatureByBId(featureLayer, faultageEntity.BindingId);
+            DataEditCommon.DeleteFeatureByBId(featureLayer, faultageEntity.binding_id);
             DrawJldc(faultageEntity);
         }
 
@@ -357,7 +357,7 @@ namespace geoInput
 
             ////要素ID字段赋值（对应属性表中BindingID）
             //int iFieldID = pFeature.Fields.FindField(GIS_Const.FIELD_BID);
-            //pFeature.Value[iFieldID] = faultage.BindingId.ToString();
+            //pFeature.Value[iFieldID] = faultage.bid.ToString();
 
             //pFeature.Store();
             //DataEditCommon.g_CurWorkspaceEdit.StopEditOperation();
@@ -403,12 +403,12 @@ namespace geoInput
             //2.生成要素（要根据中心点获取起止点）
             //中心点
             IPoint centrePt = new PointClass();
-            centrePt.X = faultage.CoordinateX;
-            centrePt.Y = faultage.CoordinateY;
-            centrePt.Z = faultage.CoordinateZ;
+            centrePt.X = faultage.coordinate_x;
+            centrePt.Y = faultage.coordinate_y;
+            centrePt.Z = faultage.coordinate_z;
 
-            var trend = faultage.Trend; //走向
-            var length = faultage.Length / 2; //默认长度为20，左右各10
+            var trend = faultage.trend; //走向
+            var length = faultage.length / 2; //默认长度为20，左右各10
 
             //计算起止点
             IPoint fromPt = new PointClass();
@@ -425,14 +425,14 @@ namespace geoInput
 
             var list = new List<ziduan>
             {
-                new ziduan("bid", faultage.BindingId),
-                new ziduan("FAULTAGE_NAME", faultage.FaultageName),
+                new ziduan("bid", faultage.binding_id),
+                new ziduan("FAULTAGE_NAME", faultage.faultage_name),
                 new ziduan("addtime", DateTime.Now.ToString(CultureInfo.InvariantCulture)),
-                new ziduan("GAP", faultage.Gap),
-                new ziduan("ANGLE", faultage.Angle.ToString(CultureInfo.InvariantCulture)),
-                new ziduan("TREND", faultage.Trend.ToString(CultureInfo.InvariantCulture)),
-                new ziduan("SEPARATION", faultage.Separation),
-                new ziduan("type", faultage.Type)
+                new ziduan("GAP", faultage.gap),
+                new ziduan("ANGLE", faultage.angle.ToString(CultureInfo.InvariantCulture)),
+                new ziduan("TREND", faultage.trend.ToString(CultureInfo.InvariantCulture)),
+                new ziduan("SEPARATION", faultage.separation),
+                new ziduan("type", faultage.type)
             };
 
             var pfeature = DataEditCommon.CreateNewFeature(featureLayer, polyline, list);

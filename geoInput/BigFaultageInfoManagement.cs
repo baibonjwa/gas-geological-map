@@ -20,7 +20,7 @@ namespace geoInput
 
         private void RefreshData()
         {
-            var bigFaultages = BigFaultage.FindAll();
+            var bigFaultages = InferFaultage.FindAll();
             gcBigFaultage.DataSource = bigFaultages;
         }
 
@@ -51,7 +51,7 @@ namespace geoInput
                 Alert.AlertMsg("请选择要修改的信息");
                 return;
             }
-            var bigFaultageInfoEntering = new BigFaultageInfoEntering(((BigFaultage)gridView1.GetFocusedRow()));
+            var bigFaultageInfoEntering = new BigFaultageInfoEntering(((InferFaultage)gridView1.GetFocusedRow()));
             if (DialogResult.OK == bigFaultageInfoEntering.ShowDialog())
             {
                 RefreshData();
@@ -67,9 +67,9 @@ namespace geoInput
         {
             if (!Alert.Confirm("确认删除数据吗？")) return;
             var selectedIndex = gridView1.GetSelectedRows();
-            foreach (var bigFaultage in selectedIndex.Select(i => (BigFaultage)gridView1.GetRow(i)))
+            foreach (var bigFaultage in selectedIndex.Select(i => (InferFaultage)gridView1.GetRow(i)))
             {
-                Global.tdclass.DelTdLyr(new[] { bigFaultage.BindingId });
+                Global.tdclass.DelTdLyr(new[] { bigFaultage.bid });
                 bigFaultage.Delete();
             }
             RefreshData();
@@ -126,7 +126,7 @@ namespace geoInput
         private void btnMap_Click(object sender, EventArgs e)
         {
             // 获取已选择明细行的索引
-            int[] iSelIdxsArr = { ((BigFaultage)gridView1.GetFocusedRow()).BigFaultageId };
+            int[] iSelIdxsArr = { ((InferFaultage)gridView1.GetFocusedRow()).id };
 
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.DEFALUT_INFERRED_FAULTAGE);
             if (pLayer == null)
@@ -138,7 +138,7 @@ namespace geoInput
             var str = "";
             for (var i = 0; i < iSelIdxsArr.Length; i++)
             {
-                var bid = ((BigFaultage)gridView1.GetFocusedRow()).BindingId;
+                var bid = ((InferFaultage)gridView1.GetFocusedRow()).bid;
                 if (bid == "") continue;
                 if (i == 0)
                     str = "bid='" + bid + "'";

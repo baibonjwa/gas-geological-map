@@ -85,6 +85,21 @@ namespace GIS.SpecialGraphic
                 EditLayerName = LayerNames.LAYER_ALIAS_MR_YCLDZX;
                 SDELayerName = LayerNames.LAYER_NAME_MR_YCLDZX;
             }
+            if (m_layerAliasName.Equals("地面标高等值线"))
+            {
+                EditLayerName = LayerNames.GROUND_LEVLE_CONTOUR;
+                SDELayerName = LayerNames.LAYER_NAME_MR_DMBG;
+            }
+            if (m_layerAliasName.Equals("煤层底板等值线"))
+            {
+                EditLayerName = LayerNames.FLOOR_ELEVATION_CONTOUR;
+                SDELayerName = LayerNames.LAYER_NAME_MR_MCDB;
+            }
+            if (m_layerAliasName.Equals("埋深等值线"))
+            {
+                EditLayerName = LayerNames.EMBEDDED_DEPTH_CONTOUR;
+                SDELayerName = LayerNames.LAYER_NAME_MR_MS;
+            }
         }
 
         private void FileInput_Click(object sender, EventArgs e)
@@ -128,9 +143,9 @@ namespace GIS.SpecialGraphic
                         foreach (var i in gasPressures)
                         {
                             XYValueStruct temp;
-                            temp.X = i.CoordinateX;
-                            temp.Y = i.CoordinateY;
-                            temp.TheValue = i.GasPressureValue;
+                            temp.X = i.coordinate_x;
+                            temp.Y = i.coordinate_y;
+                            temp.TheValue = i.gas_pressure_value;
                             TheValueList.Add(temp);
                         }
                     }
@@ -140,9 +155,9 @@ namespace GIS.SpecialGraphic
                         foreach (var i in gasContent)
                         {
                             XYValueStruct temp;
-                            temp.X = i.CoordinateX;
-                            temp.Y = i.CoordinateY;
-                            temp.TheValue = i.GasContentValue;
+                            temp.X = i.coordinate_x;
+                            temp.Y = i.coordinate_y;
+                            temp.TheValue = i.gas_content_value;
                             TheValueList.Add(temp);
                         }
                     }
@@ -152,9 +167,9 @@ namespace GIS.SpecialGraphic
                         foreach (var i in gasGushQuantity)
                         {
                             XYValueStruct temp;
-                            temp.X = i.CoordinateX;
-                            temp.Y = i.CoordinateY;
-                            temp.TheValue = i.AbsoluteGasGushQuantity;
+                            temp.X = i.coordinate_x;
+                            temp.Y = i.coordinate_y;
+                            temp.TheValue = i.absolute_gas_gush_quantity;
                             TheValueList.Add(temp);
                         }
                     }
@@ -215,6 +230,18 @@ namespace GIS.SpecialGraphic
                     if (m_layerAliasName.Equals("瓦斯涌出量等值线"))
                     {
                         layername = LayerNames.LAYER_ALIAS_MR_YCLDZX;
+                    }
+                    if (m_layerAliasName.Equals("地面标高等值线"))
+                    {
+                        layername = LayerNames.GROUND_LEVLE_CONTOUR;
+                    }
+                    if (m_layerAliasName.Equals("煤层底板等值线"))
+                    {
+                        layername = LayerNames.FLOOR_ELEVATION_CONTOUR;
+                    }
+                    if (m_layerAliasName.Equals("埋深等值线"))
+                    {
+                        layername = LayerNames.EMBEDDED_DEPTH_CONTOUR;
                     }
                     DataEditCommon.SetLayerVisibleByName(DataEditCommon.g_pMap, layername, true);
 
@@ -399,7 +426,14 @@ namespace GIS.SpecialGraphic
                 string nameOfsourceFeatureClass = EvEContour.Substring(EvEContour.LastIndexOf("\\") + 1);
                 nameOfsourceFeatureClass = nameOfsourceFeatureClass.Substring(0, nameOfsourceFeatureClass.LastIndexOf("."));
                 bool Import = false;
-                List<ziduan> list = new List<ziduan>();
+                List<ziduan> list = new List<ziduan>
+                {
+                    new ziduan("BID", ""),
+                    new ziduan("mingcheng", sLayerAliasName),
+                    new ziduan("mcid", "0"),
+                    new ziduan("date", DateTime.Now.ToString()),
+                    new ziduan("type", CB_InterpolationMethod.Text)
+                };
                 list.Add(new ziduan("BID", ""));
                 list.Add(new ziduan("mingcheng", sLayerAliasName));
                 list.Add(new ziduan("mcid", "0"));

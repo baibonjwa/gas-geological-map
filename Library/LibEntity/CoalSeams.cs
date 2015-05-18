@@ -10,15 +10,15 @@ namespace LibEntity
         ///     煤层编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int CoalSeamsId { get; set; }
+        public int coal_seams_id { get; set; }
 
         /// <summary>
         ///     煤层名称
         /// </summary>
         [Property]
-        public string CoalSeamsName { get; set; }
+        public string coal_seams_name { get; set; }
 
-        public static CoalSeams FindOneByCoalSeamsName(string coalSeamsName)
+        public static CoalSeams find_one_by_coal_seams_name(string coalSeamsName)
         {
             var criterion = new ICriterion[]
             {

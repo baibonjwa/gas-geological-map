@@ -59,7 +59,7 @@ namespace geoInput
         {
             if (!Alert.Confirm("确定要删除勘探线吗？")) return;
             var prospectingLine = (ProspectingLine)gridView1.GetFocusedRow();
-            DeleteJLDCByBID(new[] { prospectingLine.BindingId });
+            DeleteJLDCByBID(new[] { prospectingLine.binding_id });
             prospectingLine.Delete();
             RefreshData();
         }
@@ -144,7 +144,7 @@ namespace geoInput
         /// <param name="e"></param>
         private void btnMap_Click(object sender, EventArgs e)
         {
-            var bid = ((ProspectingLine)gridView1.GetFocusedRow()).BindingId;
+            var bid = ((ProspectingLine)gridView1.GetFocusedRow()).binding_id;
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.DEFALUT_KANTANXIAN);
             if (pLayer == null)
             {

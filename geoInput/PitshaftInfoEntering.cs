@@ -50,24 +50,24 @@ namespace geoInput
             if (pitshaft != null)
             {
                 // 井筒名称
-                txtPitshaftName.Text = pitshaft.PitshaftName;
+                txtPitshaftName.Text = pitshaft.pitshaft_name;
                 // 井筒类型
-                cobPitshaftType.SelectedValue = pitshaft.PitshaftType.PitshaftTypeId;
+                cobPitshaftType.SelectedValue = pitshaft.pitshaft_type.pitshaft_type_id;
                 // 井口标高
-                txtWellheadElevation.Text = pitshaft.WellheadElevation.ToString(CultureInfo.InvariantCulture);
+                txtWellheadElevation.Text = pitshaft.wellhead_elevation.ToString(CultureInfo.InvariantCulture);
                 // 井底标高
-                txtWellbottomElevation.Text = pitshaft.WellbottomElevation.ToString(CultureInfo.InvariantCulture);
+                txtWellbottomElevation.Text = pitshaft.wellbottom_elevation.ToString(CultureInfo.InvariantCulture);
                 // 井筒坐标X
                 txtPitshaftCoordinateX.Text =
-                    pitshaft.PitshaftCoordinateX.ToString(CultureInfo.InvariantCulture);
+                    pitshaft.pitshaft_coordinate_x.ToString(CultureInfo.InvariantCulture);
                 // 井筒坐标Y
-                txtPitshaftCoordinateY.Text = pitshaft.PitshaftCoordinateY.ToString(CultureInfo.InvariantCulture);
+                txtPitshaftCoordinateY.Text = pitshaft.pitshaft_coordinate_y.ToString(CultureInfo.InvariantCulture);
                 // 图形坐标X
-                txtFigureCoordinateX.Text = pitshaft.FigureCoordinateX.ToString(CultureInfo.InvariantCulture);
+                txtFigureCoordinateX.Text = pitshaft.figure_coordinate_x.ToString(CultureInfo.InvariantCulture);
                 // 图形坐标Y
-                txtFigureCoordinateY.Text = pitshaft.FigureCoordinateY.ToString(CultureInfo.InvariantCulture);
+                txtFigureCoordinateY.Text = pitshaft.figure_coordinate_y.ToString(CultureInfo.InvariantCulture);
                 // 图形坐标Z
-                txtFigureCoordinateZ.Text = pitshaft.FigureCoordinateZ.ToString(CultureInfo.InvariantCulture);
+                txtFigureCoordinateZ.Text = pitshaft.figure_coordinate_z.ToString(CultureInfo.InvariantCulture);
             }
         }
 
@@ -94,62 +94,62 @@ namespace geoInput
             DialogResult = DialogResult.OK;
 
             // 创建井筒实体
-            var pitshaftEntity = new Pitshaft { PitshaftName = txtPitshaftName.Text.Trim() };
+            var pitshaftEntity = new Pitshaft { pitshaft_name = txtPitshaftName.Text.Trim() };
             // 井筒名称
             // 井筒类型
             var iPitshaftTypeId = 0;
             if (int.TryParse(Convert.ToString(cobPitshaftType.SelectedValue), out iPitshaftTypeId))
             {
-                pitshaftEntity.PitshaftType.PitshaftTypeId = iPitshaftTypeId;
+                pitshaftEntity.pitshaft_type.pitshaft_type_id = iPitshaftTypeId;
             }
             // 井口标高
             double dWellheadElevation = 0;
             if (double.TryParse(txtWellheadElevation.Text.Trim(), out dWellheadElevation))
             {
-                pitshaftEntity.WellheadElevation = dWellheadElevation;
+                pitshaftEntity.wellhead_elevation = dWellheadElevation;
             }
             // 井底标高
             double dWellbottomElevation = 0;
             if (double.TryParse(txtWellbottomElevation.Text.Trim(), out dWellbottomElevation))
             {
-                pitshaftEntity.WellbottomElevation = dWellbottomElevation;
+                pitshaftEntity.wellbottom_elevation = dWellbottomElevation;
             }
             // 井筒坐标X
             double dPitshaftCoordinateX = 0;
             if (double.TryParse(txtPitshaftCoordinateX.Text.Trim(), out dPitshaftCoordinateX))
             {
-                pitshaftEntity.PitshaftCoordinateX = Math.Round(dPitshaftCoordinateX, 3);
+                pitshaftEntity.pitshaft_coordinate_x = Math.Round(dPitshaftCoordinateX, 3);
             }
             // 井筒坐标Y
             double dPitshaftCoordinateY = 0;
             if (double.TryParse(txtPitshaftCoordinateY.Text.Trim(), out dPitshaftCoordinateY))
             {
-                pitshaftEntity.PitshaftCoordinateY = Math.Round(dPitshaftCoordinateY, 3);
+                pitshaftEntity.pitshaft_coordinate_y = Math.Round(dPitshaftCoordinateY, 3);
             }
             // 图形坐标X
             double dFigureCoordinateX = 0;
             if (double.TryParse(txtFigureCoordinateX.Text.Trim(), out dFigureCoordinateX))
             {
-                pitshaftEntity.FigureCoordinateX = Math.Round(dFigureCoordinateX, 3);
+                pitshaftEntity.figure_coordinate_x = Math.Round(dFigureCoordinateX, 3);
             }
             // 图形坐标Y
             double dFigureCoordinateY = 0;
             if (double.TryParse(txtFigureCoordinateY.Text.Trim(), out dFigureCoordinateY))
             {
-                pitshaftEntity.FigureCoordinateY = Math.Round(dFigureCoordinateY, 3);
+                pitshaftEntity.figure_coordinate_y = Math.Round(dFigureCoordinateY, 3);
             }
             // 图形坐标Z
             double dFigureCoordinateZ = 0;
             if (double.TryParse(txtFigureCoordinateZ.Text.Trim(), out dFigureCoordinateZ))
             {
-                pitshaftEntity.FigureCoordinateZ = dFigureCoordinateZ;
+                pitshaftEntity.figure_coordinate_z = dFigureCoordinateZ;
             }
 
             var bResult = false;
             if (_bllType == "add")
             {
                 // BID
-                pitshaftEntity.BindingId = IdGenerator.NewBindingId();
+                pitshaftEntity.binding_id = IdGenerator.NewBindingId();
                 pitshaftEntity.Save();
 
                 DrawJingTong(pitshaftEntity);
@@ -157,7 +157,7 @@ namespace geoInput
             else
             {
                 // 主键
-                pitshaftEntity.PitshaftId = _iPk;
+                pitshaftEntity.pitshaft_id = _iPk;
                 // 井筒信息修改
                 pitshaftEntity.Save();
 
@@ -165,8 +165,8 @@ namespace geoInput
                 //20140428 lyf 
                 //获取井筒BID，为后面修改绘制井筒赋值所用
                 var sBID = "";
-                sBID = Pitshaft.Find(_iPk).BindingId;
-                pitshaftEntity.BindingId = sBID;
+                sBID = Pitshaft.Find(_iPk).binding_id;
+                pitshaftEntity.binding_id = sBID;
                 //修改图元
                 ModifyJingTong(pitshaftEntity);
             }
@@ -251,7 +251,7 @@ namespace geoInput
             //feature.Shape = pt;
             ////要素ID字段赋值（对应属性表中BindingID）
             //int iFieldID = feature.Fields.FindField(GIS_Const.FIELD_BID);
-            //feature.Value[iFieldID] = pitshaftEntity.BindingId.ToString();
+            //feature.Value[iFieldID] = pitshaftEntity.bid.ToString();
             //feature.Store();
             //DataEditCommon.g_CurWorkspaceEdit.StopEditOperation();
             //string strValue = feature.get_Value(feature.Fields.FindField(GIS_Const.FIELD_OBJECTID)).ToString();
@@ -290,15 +290,15 @@ namespace geoInput
             var pFeatureLayer = (IFeatureLayer)pLayer;
             IGeometry geometry = pt;
             var list = new List<ziduan>();
-            list.Add(new ziduan("bid", pitshaftEntity.BindingId));
-            list.Add(new ziduan("mc", pitshaftEntity.PitshaftName));
+            list.Add(new ziduan("bid", pitshaftEntity.binding_id));
+            list.Add(new ziduan("mc", pitshaftEntity.pitshaft_name));
             list.Add(new ziduan("addtime", DateTime.Now.ToString()));
-            list.Add(new ziduan("jkgc", pitshaftEntity.WellheadElevation.ToString()));
-            list.Add(new ziduan("jdgc", pitshaftEntity.WellbottomElevation.ToString()));
+            list.Add(new ziduan("jkgc", pitshaftEntity.wellhead_elevation.ToString()));
+            list.Add(new ziduan("jdgc", pitshaftEntity.wellbottom_elevation.ToString()));
             list.Add(new ziduan("yt", cobPitshaftType.Text));
-            list.Add(new ziduan("x", pitshaftEntity.PitshaftCoordinateX.ToString()));
-            list.Add(new ziduan("y", pitshaftEntity.PitshaftCoordinateY.ToString()));
-            list.Add(new ziduan("h", (pitshaftEntity.WellbottomElevation + pitshaftEntity.WellheadElevation).ToString()));
+            list.Add(new ziduan("x", pitshaftEntity.pitshaft_coordinate_x.ToString()));
+            list.Add(new ziduan("y", pitshaftEntity.pitshaft_coordinate_y.ToString()));
+            list.Add(new ziduan("h", (pitshaftEntity.wellbottom_elevation + pitshaftEntity.wellhead_elevation).ToString()));
 
             var pfeature = DataEditCommon.CreateNewFeature(pFeatureLayer, geometry, list);
             if (pfeature != null)
@@ -327,7 +327,7 @@ namespace geoInput
 
             //2.删除原来图元，重新绘制新图元
             var bIsDeleteOldFeature = DataEditCommon.DeleteFeatureByWhereClause(featureLayer,
-                "BID='" + pitshaftEntity.BindingId + "'");
+                "BID='" + pitshaftEntity.binding_id + "'");
             //if (bIsDeleteOldFeature)
             {
                 //绘制井筒

@@ -43,13 +43,13 @@ namespace ggm
             dtpMeasureDateTime.CustomFormat = @"yyyy/MM/dd HH:mm:ss";
             // 坐标X
             if (GasPressure == null) return;
-            txtCoordinateX.Text = GasPressure.CoordinateX.ToString(CultureInfo.InvariantCulture);
-            txtCoordinateY.Text = GasPressure.CoordinateY.ToString(CultureInfo.InvariantCulture);
-            txtCoordinateZ.Text = GasPressure.CoordinateZ.ToString(CultureInfo.InvariantCulture);
-            txtDepth.Text = GasPressure.Depth.ToString(CultureInfo.InvariantCulture);
-            txtGasPressureValue.Text = GasPressure.GasPressureValue.ToString(CultureInfo.InvariantCulture);
-            dtpMeasureDateTime.Value = GasPressure.MeasureDateTime;
-            selectTunnelSimple1.SetTunnel(GasPressure.Tunnel);
+            txtCoordinateX.Text = GasPressure.coordinate_x.ToString(CultureInfo.InvariantCulture);
+            txtCoordinateY.Text = GasPressure.coordinate_y.ToString(CultureInfo.InvariantCulture);
+            txtCoordinateZ.Text = GasPressure.coordinate_z.ToString(CultureInfo.InvariantCulture);
+            txtDepth.Text = GasPressure.depth.ToString(CultureInfo.InvariantCulture);
+            txtGasPressureValue.Text = GasPressure.gas_pressure_value.ToString(CultureInfo.InvariantCulture);
+            dtpMeasureDateTime.Value = GasPressure.measure_date_time;
+            selectTunnelSimple1.SetTunnel(GasPressure.tunnel);
         }
 
         /// <summary>
@@ -66,14 +66,14 @@ namespace ggm
             {
                 var gasPressure = new GasPressure
                 {
-                    CoordinateX = Convert.ToDouble(txtCoordinateX.Text),
-                    CoordinateY = Convert.ToDouble(txtCoordinateY.Text),
-                    CoordinateZ = Convert.ToDouble(txtCoordinateZ.Text),
-                    Depth = Convert.ToDouble(txtDepth.Text),
-                    GasPressureValue = Convert.ToDouble(txtGasPressureValue.Text),
-                    MeasureDateTime = dtpMeasureDateTime.Value,
-                    Tunnel = selectTunnelSimple1.SelectedTunnel,
-                    BindingId = IdGenerator.NewBindingId()
+                    coordinate_x = Convert.ToDouble(txtCoordinateX.Text),
+                    coordinate_y = Convert.ToDouble(txtCoordinateY.Text),
+                    coordinate_z = Convert.ToDouble(txtCoordinateZ.Text),
+                    depth = Convert.ToDouble(txtDepth.Text),
+                    gas_pressure_value = Convert.ToDouble(txtGasPressureValue.Text),
+                    measure_date_time = dtpMeasureDateTime.Value,
+                    tunnel = selectTunnelSimple1.SelectedTunnel,
+                    binding_id = IdGenerator.NewBindingId()
                 };
                 // 坐标X
                 gasPressure.Save();
@@ -81,15 +81,15 @@ namespace ggm
             }
             else
             {
-                GasPressure.CoordinateX = Convert.ToDouble(txtCoordinateX.Text);
-                GasPressure.CoordinateY = Convert.ToDouble(txtCoordinateY.Text);
-                GasPressure.CoordinateZ = Convert.ToDouble(txtCoordinateZ.Text);
-                GasPressure.Depth = Convert.ToDouble(txtDepth.Text);
-                GasPressure.GasPressureValue = Convert.ToDouble(txtGasPressureValue.Text);
-                GasPressure.MeasureDateTime = dtpMeasureDateTime.Value;
-                GasPressure.Tunnel = selectTunnelSimple1.SelectedTunnel;
+                GasPressure.coordinate_x = Convert.ToDouble(txtCoordinateX.Text);
+                GasPressure.coordinate_y = Convert.ToDouble(txtCoordinateY.Text);
+                GasPressure.coordinate_z = Convert.ToDouble(txtCoordinateZ.Text);
+                GasPressure.depth = Convert.ToDouble(txtDepth.Text);
+                GasPressure.gas_pressure_value = Convert.ToDouble(txtGasPressureValue.Text);
+                GasPressure.measure_date_time = dtpMeasureDateTime.Value;
+                GasPressure.tunnel = selectTunnelSimple1.SelectedTunnel;
                 GasPressure.Save();
-                DelGasGushQuantityPt(GasPressure.BindingId, GasPressure.CoalSeams.CoalSeamsName);
+                DelGasGushQuantityPt(GasPressure.binding_id, GasPressure.coal_seams.coal_seams_name);
                 DrawGasGushQuantityPt(GasPressure);
             }
         }
@@ -127,13 +127,13 @@ namespace ggm
             IGeometry geometry = pt;
             var list = new List<ziduan>
             {
-                new ziduan("bid", gasGushQuantityEntity.BindingId),
-                new ziduan("mc", gasGushQuantityEntity.CoalSeams.ToString()),
+                new ziduan("bid", gasGushQuantityEntity.binding_id),
+                new ziduan("mc", gasGushQuantityEntity.coal_seams.ToString()),
                 new ziduan("addtime", DateTime.Now.ToString(CultureInfo.InvariantCulture))
             };
-            var wsyl = gasGushQuantityEntity.GasPressureValue.ToString(CultureInfo.InvariantCulture);
-            var cdbg = gasGushQuantityEntity.CoordinateZ.ToString(CultureInfo.InvariantCulture);
-            var ms = gasGushQuantityEntity.Depth.ToString(CultureInfo.InvariantCulture);
+            var wsyl = gasGushQuantityEntity.gas_pressure_value.ToString(CultureInfo.InvariantCulture);
+            var cdbg = gasGushQuantityEntity.coordinate_z.ToString(CultureInfo.InvariantCulture);
+            var ms = gasGushQuantityEntity.depth.ToString(CultureInfo.InvariantCulture);
             if (DataEditCommon.strLen(cdbg) < DataEditCommon.strLen(ms))
             {
                 var count = DataEditCommon.strLen(ms) - DataEditCommon.strLen(cdbg);

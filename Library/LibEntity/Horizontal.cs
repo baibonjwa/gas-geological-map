@@ -11,21 +11,21 @@ namespace LibEntity
         ///     水平编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int HorizontalId { get; set; }
+        public int horizontal_id { get; set; }
 
         /// <summary>
         ///     水平名称
         /// </summary>
         [Property]
-        public string HorizontalName { get; set; }
+        public string horizontal_name { get; set; }
 
         /// <summary>
         ///     矿井
         /// </summary>
         [BelongsTo("MineId")]
-        public Mine Mine { get; set; }
+        public Mine mine { get; set; }
 
-        public static Horizontal[] FindAllByMineId(int mineId)
+        public static Horizontal[] find_all_by_mine_id(int mineId)
         {
             var criterion = new ICriterion[]
             {

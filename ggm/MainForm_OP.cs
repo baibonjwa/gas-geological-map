@@ -75,33 +75,33 @@ namespace ggm
             string sDistrictCode = string.Empty;
             string sScale = string.Empty;
 
-            if (pDataSet != null)
-            {
-                UID uid = new UIDClass();
-                uid.Value = "{" + typeof(IFeatureLayer).GUID.ToString() + "}";
-                IEnumLayer pEnumLayer = mapControl_OP.Map.Layers[uid];
-                IFeatureLayer pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
-                IFeatureWorkspace pFeaClsWks = DataEditCommon.g_pCurrentWorkSpace as IFeatureWorkspace;
-                while (pFeaLyr != null)
-                {
-                    string sDsName = ((pFeaLyr as IDataLayer).DataSourceName as IDatasetName).Name;
-                    if ((DataEditCommon.g_pCurrentWorkSpace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, sDsName))
-                    {
-                        pFeaLyr.FeatureClass = pFeaClsWks.OpenFeatureClass(sDsName);
-                        pFeaLyr.Name = pFeaLyr.Name;
-                    }
+            //if (pDataSet != null)
+            //{
+            //    UID uid = new UIDClass();
+            //    uid.Value = "{" + typeof(IFeatureLayer).GUID.ToString() + "}";
+            //    IEnumLayer pEnumLayer = mapControl_OP.Map.Layers[uid];
+            //    IFeatureLayer pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
+            //    IFeatureWorkspace pFeaClsWks = DataEditCommon.g_pCurrentWorkSpace as IFeatureWorkspace;
+            //    while (pFeaLyr != null)
+            //    {
+            //        string sDsName = ((pFeaLyr as IDataLayer).DataSourceName as IDatasetName).Name;
+            //        if ((DataEditCommon.g_pCurrentWorkSpace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, sDsName))
+            //        {
+            //            pFeaLyr.FeatureClass = pFeaClsWks.OpenFeatureClass(sDsName);
+            //            pFeaLyr.Name = pFeaLyr.Name;
+            //        }
 
-                    pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
-                }
-                ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(DataEditCommon.g_pCurrentWorkSpace);
-                ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(pFeaClsWks);
-                mapControl_OP.Map.SpatialReference = pRef;
-                IMxdContents pMxdC;
-                pMxdC = mapControl_OP.Map as IMxdContents;
-                pMapDocument.Open(ConfigHelper.GetAttribute("mxd_path"));
-                pMapDocument.ReplaceContents(pMxdC);
-                pMapDocument.Save(true, true);
-            }
+            //        pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
+            //    }
+            //    ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(DataEditCommon.g_pCurrentWorkSpace);
+            //    ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(pFeaClsWks);
+            //    mapControl_OP.Map.SpatialReference = pRef;
+            //    IMxdContents pMxdC;
+            //    pMxdC = mapControl_OP.Map as IMxdContents;
+            //    pMapDocument.Open(ConfigHelper.GetAttribute("mxd_path"));
+            //    pMapDocument.ReplaceContents(pMxdC);
+            //    pMapDocument.Save(true, true);
+            //}
 
 
             AddToolBar.Addtool(mapControl_OP, mapControl, toolbarControl, DataEditCommon.g_pCurrentWorkSpace);
@@ -775,5 +775,30 @@ namespace ggm
         }
 
         #endregion
+
+        private void bbiFloorEvevationContour_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            m_currentButton = 0;
+
+            var frmMakeContours = new MakeContours
+            {
+                m_layerName = "FLOOR_ELEVATION_CONTOUR",
+                m_layerAliasName = "煤层底板等值线"
+            };
+            frmMakeContours.Show();
+        }
+
+        private void bbiGroundLevelContour_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            m_currentButton = 0;
+
+            var frmMakeContours = new MakeContours
+            {
+                m_layerName = "GROUND_LEVLE_CONTOUR",
+                m_layerAliasName = "地面标高等值线"
+            };
+            frmMakeContours.Show();
+        }
+
     }
 }

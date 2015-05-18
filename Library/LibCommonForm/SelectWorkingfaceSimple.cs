@@ -99,7 +99,7 @@ namespace LibCommonForm
                 var toWriteWorkingFace = t as WorkingFace;
                 if (toWriteWorkingFace == null) continue;
                 writer.WriteStartElement("Workingface");
-                writer.WriteElementString("ID", toWriteWorkingFace.WorkingFaceId.ToString(CultureInfo.InvariantCulture));   // <-- These are new
+                writer.WriteElementString("ID", toWriteWorkingFace.working_face_id.ToString(CultureInfo.InvariantCulture));   // <-- These are new
                 //writer.WriteElementString("Name", toWriteWorkingFace.WorkingFaceName);
                 //writer.WriteElementString("Type", toWriteWorkingFace.WorkingfaceTypeEnum.ToString());
                 writer.WriteEndElement();

@@ -10,69 +10,69 @@ namespace LibEntity
         ///     井筒编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int PitshaftId { get; set; }
+        public int pitshaft_id { get; set; }
 
         /// <summary>
         ///     井筒名称
         /// </summary>
         [Property]
-        public string PitshaftName { get; set; }
+        public string pitshaft_name { get; set; }
 
         /// <summary>
         ///     井筒类型
         /// </summary>
         [BelongsTo("PitshaftTypeId")]
-        public PitshaftType PitshaftType { get; set; }
+        public PitshaftType pitshaft_type { get; set; }
 
         /// <summary>
         ///     井口标高
         /// </summary>
         [Property]
-        public double WellheadElevation { get; set; }
+        public double wellhead_elevation { get; set; }
 
         /// <summary>
         ///     井底标高
         /// </summary>
         [Property]
-        public double WellbottomElevation { get; set; }
+        public double wellbottom_elevation { get; set; }
 
         /// <summary>
         ///     井筒坐标X
         /// </summary>
         [Property]
-        public double PitshaftCoordinateX { get; set; }
+        public double pitshaft_coordinate_x { get; set; }
 
         /// <summary>
         ///     井筒坐标Y
         /// </summary>
         [Property]
-        public double PitshaftCoordinateY { get; set; }
+        public double pitshaft_coordinate_y { get; set; }
 
         /// <summary>
         ///     图形坐标X
         /// </summary>
         [Property]
-        public double FigureCoordinateX { get; set; }
+        public double figure_coordinate_x { get; set; }
 
         /// <summary>
         ///     图形坐标Y
         /// </summary>
         [Property]
-        public double FigureCoordinateY { get; set; }
+        public double figure_coordinate_y { get; set; }
 
         /// <summary>
         ///     图形坐标ZZ
         /// </summary>
         [Property]
-        public double FigureCoordinateZ { get; set; }
+        public double figure_coordinate_z { get; set; }
 
         /// <summary>
         ///     BID
         /// </summary>
         [Property]
-        public string BindingId { get; set; }
+        public string binding_id { get; set; }
 
-        public static bool ExistsByPitshaftName(string pitshaftName)
+        public static bool exists_by_pitshaft_name(string pitshaftName)
         {
             var criterion = new List<ICriterion>
             {

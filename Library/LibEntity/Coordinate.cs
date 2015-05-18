@@ -10,27 +10,27 @@ namespace LibEntity
     {
         public Coordinate(double xx, double yy, double zz)
         {
-            X = xx;
-            Y = yy;
-            Z = zz;
+            x = xx;
+            y = yy;
+            z = zz;
         }
 
         /// <summary>
         ///     坐标X
         /// </summary>
         [Property("COORDINATE_X")]
-        public double X { get; private set; }
+        public double x { get; private set; }
 
         /// <summary>
         ///     坐标X
         /// </summary>
         [Property("COORDINATE_Y")]
-        public double Y { get; private set; }
+        public double y { get; private set; }
 
         /// <summary>
         ///     坐标X
         /// </summary>
         [Property("COORDINATE_Y")]
-        public double Z { get; private set; }
+        public double z { get; private set; }
     }
 }

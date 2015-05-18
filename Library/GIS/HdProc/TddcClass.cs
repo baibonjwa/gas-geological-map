@@ -48,7 +48,7 @@ namespace GIS.HdProc
         {
             BID = bid;
             string param = ConstructStr(collapsePoints);
-            string sql = BigFaultage.CFaultageName + " IN (" + param + ")";
+            string sql = InferFaultage.C_FAULTAGE_NAME + " IN (" + param + ")";
             IFeatureCursor feacursors = Global.commonclss.PropertySearch(sql, Global.jllyr);
             IFeature fea = feacursors.NextFeature();
             List<IPolyline> plines = new List<IPolyline>();

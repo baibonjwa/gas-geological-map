@@ -65,7 +65,7 @@ namespace ggm
             var selectedIndex = gridView1.GetSelectedRows();
             foreach (var gasContent in selectedIndex.Select(i => (GasContent)gridView1.GetRow(i)))
             {
-                DelGasGushQuantityPt(new[] { gasContent.BindingId });
+                DelGasGushQuantityPt(new[] { gasContent.binding_id });
                 gasContent.Delete();
             }
             RefreshData();
@@ -144,8 +144,8 @@ namespace ggm
             var selectedIndex = gridView1.GetSelectedRows();
             var list = selectedIndex.Select(i => (GasContent)gridView1.GetRow(i)).Select(gasContent => new PointClass
             {
-                X = gasContent.CoordinateX,
-                Y = gasContent.CoordinateY
+                X = gasContent.coordinate_x,
+                Y = gasContent.coordinate_y
             }).Cast<IPoint>().ToList();
             MyMapHelp.Jump(MyMapHelp.GetGeoFromPoint(list));
         }

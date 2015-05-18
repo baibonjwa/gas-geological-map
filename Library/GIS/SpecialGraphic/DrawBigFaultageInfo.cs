@@ -24,28 +24,28 @@ namespace GIS
         /// <param name="faultagePointList"></param>
         /// <param name="bId"></param>
         /// <returns></returns>
-        public static bool DrawTddc(String title, List<BigFaultagePoint> faultagePointList, String bId)
+        public static bool DrawTddc(String title, List<InferFaultagePoint> faultagePointList, String bId)
         {
             List<IPoint> listptS = new List<IPoint>();
             List<IPoint> listptX = new List<IPoint>();
 
             foreach (var i in faultagePointList)
             {
-                if (i.UpOrDown == "上盘")
+                if (i.up_or_down == "上盘")
                 {
                     IPoint point = new PointClass();
-                    point.X = i.CoordinateX;
-                    point.Y = i.CoordinateY;
-                    point.Z = i.CoordinateZ;
+                    point.X = i.coordinate_x;
+                    point.Y = i.coordinate_y;
+                    point.Z = i.coordinate_z;
 
                     listptS.Add(point);
                 }
-                else if (i.UpOrDown == "下盘")
+                else if (i.up_or_down == "下盘")
                 {
                     IPoint point = new PointClass();
-                    point.X = i.CoordinateX;
-                    point.Y = i.CoordinateY;
-                    point.Z = i.CoordinateZ;
+                    point.X = i.coordinate_x;
+                    point.Y = i.coordinate_y;
+                    point.Z = i.coordinate_z;
 
                     listptX.Add(point);
                 }

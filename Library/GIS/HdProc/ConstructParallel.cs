@@ -315,7 +315,7 @@ namespace GIS.HdProc
                     fealin.Shape = plin;
                     if (cols != null)
                     {
-                        string name = cols[i].WirePointName;
+                        string name = cols[i].wire_point_name;
                         int NamePos = fealin.Fields.FindField(GIS_Const.FIELD_NAME);
                         fealin.set_Value(NamePos, name);
                     }
@@ -460,7 +460,7 @@ namespace GIS.HdProc
                         feapnt.Shape = pnts[i];
                         if (pntinfos != null)
                         {
-                            string name = pntinfos[i].WirePointName;
+                            string name = pntinfos[i].wire_point_name;
                             int NamePos = feapnt.Fields.FindField(GIS_Const.FIELD_NAME);
                             feapnt.set_Value(NamePos, name);
                         }
@@ -2324,7 +2324,7 @@ namespace GIS.HdProc
         /// 更新巷道分段图层
         /// </summary>
         /// <param name="HdId">巷道ID</param>
-        /// <param name="Bid">BindingId</param>
+        /// <param name="Bid">bid</param>
         /// <param name="jjcd">掘进尺度</param>
         /// <param name="plin">中心线</param>
         /// <param name="hdwid">巷道宽度</param>

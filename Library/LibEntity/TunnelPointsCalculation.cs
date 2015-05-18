@@ -23,7 +23,7 @@ namespace LibEntity
         /// <param name="leftDirRet">计算左邦的方向</param>
         /// <param name="rightDirRet">计算右邦的方向</param>
         /// <returns></returns>
-        private bool CalcLeftAndRightVerticsWith2TraverPoints(WirePoint[] wirePts,
+        private bool calc_left_and_right_vertics_with2_traver_points(WirePoint[] wirePts,
             ref Vector3_DW[] verticesLeftRet, ref Vector3_DW[] verticesRightRet)
         {
             if (wirePts == null)
@@ -40,8 +40,8 @@ namespace LibEntity
             //仅含两个导线点
             if (nTraversePtCnt == 2)
             {
-                var ptPre = new Vector2_DW(wirePts[0].CoordinateX, wirePts[0].CoordinateY);
-                var ptNext = new Vector2_DW(wirePts[1].CoordinateX, wirePts[1].CoordinateY);
+                var ptPre = new Vector2_DW(wirePts[0].coordinate_x, wirePts[0].coordinate_y);
+                var ptNext = new Vector2_DW(wirePts[1].coordinate_x, wirePts[1].coordinate_y);
 
                 Vector2_DW vecForwardDir = (ptNext - ptPre).Normalize();
                 /*根据法线方向判断巷道左右邦. 
@@ -67,15 +67,15 @@ namespace LibEntity
                 var leftVertices = new List<Vector3_DW>();
                 var rightVertices = new List<Vector3_DW>();
 
-                Vector2_DW ptLeftPre = ptPre + vecPerpendicularLeft * wirePts[0].LeftDis;
-                Vector2_DW ptLeftNext = ptNext + vecPerpendicularLeft * wirePts[1].LeftDis;
-                Vector2_DW ptRightPre = ptPre + vecPerpendicularRight * wirePts[0].RightDis;
-                Vector2_DW ptRightNext = ptNext + vecPerpendicularRight * wirePts[1].RightDis;
+                Vector2_DW ptLeftPre = ptPre + vecPerpendicularLeft * wirePts[0].left_dis;
+                Vector2_DW ptLeftNext = ptNext + vecPerpendicularLeft * wirePts[1].left_dis;
+                Vector2_DW ptRightPre = ptPre + vecPerpendicularRight * wirePts[0].right_dis;
+                Vector2_DW ptRightNext = ptNext + vecPerpendicularRight * wirePts[1].right_dis;
 
-                leftVertices.Add(new Vector3_DW(ptLeftPre.X, ptLeftPre.Y, wirePts[0].CoordinateZ));
-                leftVertices.Add(new Vector3_DW(ptLeftNext.X, ptLeftNext.Y, wirePts[1].CoordinateZ));
-                rightVertices.Add(new Vector3_DW(ptRightPre.X, ptRightPre.Y, wirePts[0].CoordinateZ));
-                rightVertices.Add(new Vector3_DW(ptRightNext.X, ptRightNext.Y, wirePts[1].CoordinateZ));
+                leftVertices.Add(new Vector3_DW(ptLeftPre.X, ptLeftPre.Y, wirePts[0].coordinate_z));
+                leftVertices.Add(new Vector3_DW(ptLeftNext.X, ptLeftNext.Y, wirePts[1].coordinate_z));
+                rightVertices.Add(new Vector3_DW(ptRightPre.X, ptRightPre.Y, wirePts[0].coordinate_z));
+                rightVertices.Add(new Vector3_DW(ptRightNext.X, ptRightNext.Y, wirePts[1].coordinate_z));
 
                 verticesLeftRet = leftVertices.ToArray();
                 verticesRightRet = rightVertices.ToArray();
@@ -91,7 +91,7 @@ namespace LibEntity
         /// <param name="verticesLeftBtmRet">out，根据导线点计算出的巷道左帮所有点</param>
         /// <param name="verticesRightBtmRet">out，根据导线点计算出的巷道右帮所有点</param>
         /// <returns></returns>
-        public bool CalcLeftAndRightVertics(WirePoint[] wirePts, ref Vector3_DW[] verticesLeftBtmRet,
+        public bool calc_left_and_right_vertics(WirePoint[] wirePts, ref Vector3_DW[] verticesLeftBtmRet,
             ref Vector3_DW[] verticesRightBtmRet)
         {
             if (wirePts == null)
@@ -109,7 +109,7 @@ namespace LibEntity
 
             if (nTraversePtCnt == 2)
             {
-                bool bRet = CalcLeftAndRightVerticsWith2TraverPoints(wirePts, ref verticesLeftBtmRet,
+                bool bRet = calc_left_and_right_vertics_with2_traver_points(wirePts, ref verticesLeftBtmRet,
                     ref verticesRightBtmRet);
                 if (bRet == false)
                 {
@@ -143,7 +143,7 @@ namespace LibEntity
                     Vector3_DW[] verticesLeftPreTmp = null;
                     Vector3_DW[] verticesRightPreTmp = null;
                     if (false ==
-                        CalcLeftAndRightVerticsWith2TraverPoints(lwDatasPreTmp, ref verticesLeftPreTmp,
+                        calc_left_and_right_vertics_with2_traver_points(lwDatasPreTmp, ref verticesLeftPreTmp,
                             ref verticesRightPreTmp))
                     {
                         return false;
@@ -151,12 +151,12 @@ namespace LibEntity
                     Vector3_DW[] verticesLeftNextTmp = null;
                     Vector3_DW[] verticesRightNextTmp = null;
                     if (false ==
-                        CalcLeftAndRightVerticsWith2TraverPoints(lwDatasNextTmp, ref verticesLeftNextTmp,
+                        calc_left_and_right_vertics_with2_traver_points(lwDatasNextTmp, ref verticesLeftNextTmp,
                             ref verticesRightNextTmp))
                     {
                         return false;
                     }
-                    var vertexMid2d = new Vector2_DW();
+                    var vertexMid2D = new Vector2_DW();
                     var vertexLeftMid = new Vector3_DW();
                     var vertexRightMid = new Vector3_DW();
                     //左邦中间的点
@@ -164,35 +164,35 @@ namespace LibEntity
                         ToolsMath_DW.LineXLine(new Vector2_DW(verticesLeftPreTmp[0].X, verticesLeftPreTmp[0].Y),
                             new Vector2_DW(verticesLeftPreTmp[1].X, verticesLeftPreTmp[1].Y),
                             new Vector2_DW(verticesLeftNextTmp[0].X, verticesLeftNextTmp[0].Y),
-                            new Vector2_DW(verticesLeftNextTmp[1].X, verticesLeftNextTmp[1].Y), ref vertexMid2d);
+                            new Vector2_DW(verticesLeftNextTmp[1].X, verticesLeftNextTmp[1].Y), ref vertexMid2D);
                     if (lit == LineIntersectType.None) //有重复点,可能是这种情况eg:p0(0, 0), p1(2, 0),p2(1, 0), p3(4, 0)
                     {
                         vertexLeftMid.X = verticesLeftPreTmp[1].X;
                         vertexLeftMid.Y = verticesLeftPreTmp[1].Y;
-                        vertexLeftMid.Z = lwDatasPreTmp[1].CoordinateZ;
+                        vertexLeftMid.Z = lwDatasPreTmp[1].coordinate_z;
                     }
                     else
                     {
-                        vertexLeftMid.X = vertexMid2d.X;
-                        vertexLeftMid.Y = vertexMid2d.Y;
-                        vertexLeftMid.Z = lwDatasPreTmp[1].CoordinateZ;
+                        vertexLeftMid.X = vertexMid2D.X;
+                        vertexLeftMid.Y = vertexMid2D.Y;
+                        vertexLeftMid.Z = lwDatasPreTmp[1].coordinate_z;
                     }
                     //右邦中间的点
                     lit = ToolsMath_DW.LineXLine(new Vector2_DW(verticesRightPreTmp[0].X, verticesRightPreTmp[0].Y),
                         new Vector2_DW(verticesRightPreTmp[1].X, verticesRightPreTmp[1].Y),
                         new Vector2_DW(verticesRightNextTmp[0].X, verticesRightNextTmp[0].Y),
-                        new Vector2_DW(verticesRightNextTmp[1].X, verticesRightNextTmp[1].Y), ref vertexMid2d);
+                        new Vector2_DW(verticesRightNextTmp[1].X, verticesRightNextTmp[1].Y), ref vertexMid2D);
                     if (lit == LineIntersectType.None) //有重复点,可能是这种情况eg:p0(0, 0), p1(2, 0),p2(1, 0), p3(4, 0)
                     {
                         vertexRightMid.X = verticesRightPreTmp[1].X;
                         vertexRightMid.Y = verticesRightPreTmp[1].Y;
-                        vertexRightMid.Z = lwDatasPreTmp[1].CoordinateZ;
+                        vertexRightMid.Z = lwDatasPreTmp[1].coordinate_z;
                     }
                     else
                     {
-                        vertexRightMid.X = vertexMid2d.X;
-                        vertexRightMid.Y = vertexMid2d.Y;
-                        vertexRightMid.Z = lwDatasPreTmp[1].CoordinateZ;
+                        vertexRightMid.X = vertexMid2D.X;
+                        vertexRightMid.Y = vertexMid2D.Y;
+                        vertexRightMid.Z = lwDatasPreTmp[1].coordinate_z;
                     }
                     //保存计算出来的点
                     //第一个顶点

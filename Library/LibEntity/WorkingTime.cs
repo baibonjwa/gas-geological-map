@@ -11,38 +11,38 @@ namespace LibEntity
     public class WorkTime : ActiveRecordBase<WorkTime>
     {
 
-        public const String TableName = "T_WORK_TIME";
+        public const String TABLE_NAME = "T_WORK_TIME";
         /// <summary>
         ///     获取设置工作制Id
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity, "WORK_TIME_ID")]
-        public string Id { get; set; }
+        public string id { get; set; }
 
         /// <summary>
         ///     获取设置工作制制式类别
         /// </summary>
         [Property("WORK_TIME_GROUP_ID")]
-        public int WorkTimeGroupId { get; set; }
+        public int work_time_group_id { get; set; }
 
         /// <summary>
         ///     获取设置工作制名称
         /// </summary>
         [Property("WORK_TIME_NAME")]
-        public string WorkTimeName { get; set; }
+        public string work_time_name { get; set; }
 
         /// <summary>
         ///     获取设置工作起始时间
         /// </summary>
         [Property("WORK_TIME_FROM")]
-        public DateTime WorkTimeFrom { get; set; }
+        public DateTime work_time_from { get; set; }
 
         /// <summary>
         ///     获取设置工作终止时间
         /// </summary>
         [Property("WORK_TIME_TO")]
-        public DateTime WorkTimeTo { get; set; }
+        public DateTime work_time_to { get; set; }
 
-        public static WorkTime[] FindAllByWorkTimeGroupId(int workTimeGroupId)
+        public static WorkTime[] find_all_by_work_time_group_id(int workTimeGroupId)
         {
             var criterion = new ICriterion[]
             {
@@ -51,7 +51,7 @@ namespace LibEntity
             return FindAll(criterion);
         }
 
-        public static WorkTime FindOneByWorkTimeName(string workTimeName)
+        public static WorkTime find_one_by_work_time_name(string workTimeName)
         {
             var criterion = new ICriterion[]
             {
@@ -61,20 +61,20 @@ namespace LibEntity
         }
 
 
-        public static WorkTime[] FindAllBy38Times()
+        public static WorkTime[] find_all_by38_times()
         {
-            return FindAllByWorkTimeGroupId(1);
+            return find_all_by_work_time_group_id(1);
         }
 
-        public static WorkTime[] FindAllBy46Times()
+        public static WorkTime[] find_all_by46_times()
         {
-            return FindAllByWorkTimeGroupId(2);
+            return find_all_by_work_time_group_id(2);
         }
 
-        public static DateTime[] GetDateShiftTimes(string strWorkTimeName)
+        public static DateTime[] get_date_shift_times(string strWorkTimeName)
         {
-            var workingTime = FindOneByWorkTimeName(strWorkTimeName);
-            return new[] { workingTime.WorkTimeFrom, workingTime.WorkTimeTo };
+            var workingTime = find_one_by_work_time_name(strWorkTimeName);
+            return new[] { workingTime.work_time_from, workingTime.work_time_to };
         }
 
 

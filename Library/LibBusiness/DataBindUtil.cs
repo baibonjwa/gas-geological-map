@@ -49,7 +49,7 @@ namespace LibBusiness
         public static void LoadHorizontalName(ListControl lb, int mineId,
             String selectedText = "")
         {
-            var horizontals = Horizontal.FindAllByMineId(mineId);
+            var horizontals = Horizontal.find_all_by_mine_id(mineId);
             if (horizontals != null)
                 DataBindListControl(lb, horizontals, "HorizontalName",
                     "HorizontalId", selectedText);
@@ -57,7 +57,7 @@ namespace LibBusiness
 
         public static void LoadHorizontalName(DataGridView dgv, int mineId)
         {
-            var horizontals = Horizontal.FindAllByMineId(mineId);
+            var horizontals = Horizontal.find_all_by_mine_id(mineId);
             if (horizontals != null) DataBindListControl(dgv, horizontals);
         }
 
@@ -65,7 +65,7 @@ namespace LibBusiness
             horizontalId, String selectedText = "")
         {
             var miningAreas =
-                MiningArea.FindAllByHorizontalId(horizontalId);
+                MiningArea.find_all_by_horizontal_id(horizontalId);
             if (miningAreas != null)
                 DataBindListControl(lb, miningAreas, "MiningAreaName",
                     "MiningAreaId", selectedText);
@@ -75,7 +75,7 @@ namespace LibBusiness
             horizontalId)
         {
             var miningAreas =
-                MiningArea.FindAllByHorizontalId(horizontalId);
+                MiningArea.find_all_by_horizontal_id(horizontalId);
             if (miningAreas != null) DataBindListControl(dgv, miningAreas);
         }
 
@@ -85,7 +85,7 @@ namespace LibBusiness
             miningAreaId, String selectedText = "")
         {
             var workingFaces =
-                WorkingFace.FindAllByMiningAreaId(miningAreaId);
+                WorkingFace.find_all_by_mining_area_id(miningAreaId);
             if (workingFaces != null)
                 DataBindListControl(lb, workingFaces, "WorkingFaceName",
                     "WorkingFaceId", selectedText);
@@ -94,7 +94,7 @@ namespace LibBusiness
         public static void LoadTunnelName(ListControl lb, int workingFaceId,
             String selectedText = "")
         {
-            var tunnels = Tunnel.FindAllByWorkingFaceId(workingFaceId);
+            var tunnels = Tunnel.find_all_by_working_face_id(workingFaceId);
             if (tunnels != null)
                 DataBindListControl(lb, tunnels, "TunnelName", "TunnelId",
                     selectedText);
@@ -134,7 +134,7 @@ namespace LibBusiness
             if (lithologys == null) return;
             foreach (var li in lithologys)
             {
-                dgvcbc.Items.Add(li.LithologyName);
+                dgvcbc.Items.Add(li.lithology_name);
             }
         }
 
@@ -143,7 +143,7 @@ namespace LibBusiness
             String selectedText = "")
         {
             var workingTimes =
-                WorkTime.FindAllByWorkTimeGroupId(timeGroupId);
+                WorkTime.find_all_by_work_time_group_id(timeGroupId);
             if (workingTimes != null)
             {
                 DataBindListControl(lb, workingTimes, "WorkTimeName",
@@ -155,10 +155,10 @@ namespace LibBusiness
         public static void LoadWorkTime(DataGridViewComboBoxColumn dgvcbc, int timeGroupId, String selectedText = "")
         {
             var workingTimes =
-                WorkTime.FindAllByWorkTimeGroupId(timeGroupId);
+                WorkTime.find_all_by_work_time_group_id(timeGroupId);
             foreach (var t in workingTimes)
             {
-                dgvcbc.Items.Add(t.WorkTimeName);
+                dgvcbc.Items.Add(t.work_time_name);
             }
         }
 
@@ -167,8 +167,8 @@ namespace LibBusiness
         {
             //获取班次
             var workingTimes = workStyle == "三八制" ?
-                WorkTime.FindAllBy38Times() :
-                WorkTime.FindAllBy46Times();
+                WorkTime.find_all_by38_times() :
+                WorkTime.find_all_by46_times();
             //小时
             int hour = DateTime.Now.Hour;
             string workTime = "";
@@ -176,13 +176,13 @@ namespace LibBusiness
             {
                 //对比小时
                 if (hour >
-                    Convert.ToInt32(t.WorkTimeFrom.ToString(CultureInfo.InvariantCulture).Remove(2))
+                    Convert.ToInt32(t.work_time_from.ToString(CultureInfo.InvariantCulture).Remove(2))
                     &&
                     hour <=
-                    Convert.ToInt32(t.WorkTimeTo.ToString(CultureInfo.InvariantCulture).Remove(2)))
+                    Convert.ToInt32(t.work_time_to.ToString(CultureInfo.InvariantCulture).Remove(2)))
                 {
                     //获取当前时间对应班次
-                    workTime = t.WorkTimeName;
+                    workTime = t.work_time_name;
                 }
             }
             return workTime;

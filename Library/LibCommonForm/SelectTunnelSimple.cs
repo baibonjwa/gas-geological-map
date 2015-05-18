@@ -20,7 +20,7 @@ namespace LibCommonForm
         public void SetTunnel(Tunnel tunnel)
         {
             SelectedTunnel = tunnel;
-            foreach (Tunnel i in from Tunnel i in cbxTunnel.Items where i.TunnelId == tunnel.TunnelId select i)
+            foreach (Tunnel i in from Tunnel i in cbxTunnel.Items where i.tunnel_id == tunnel.tunnel_id select i)
             {
                 cbxTunnel.SelectedItem = i;
                 return;
@@ -128,7 +128,7 @@ namespace LibCommonForm
                 writer.WriteStartElement("Tunnel");
 
                 if (tunnel != null)
-                    writer.WriteElementString("ID", tunnel.TunnelId.ToString(CultureInfo.InvariantCulture));   // <-- These are new
+                    writer.WriteElementString("ID", tunnel.tunnel_id.ToString(CultureInfo.InvariantCulture));   // <-- These are new
                 writer.WriteEndElement();
             }
 

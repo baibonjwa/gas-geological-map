@@ -58,16 +58,16 @@ namespace GIS.SpecialGraphic
             InitializeComponent();
             using (new SessionScope())
             {
-                collapsePillars = CollapsePillars.Find(collapsePillars.CollapsePillarsId);
-                txtCollapsePillarsName.Text = collapsePillars.CollapsePillarsName;
-                if (collapsePillars.Xtype == "1")
+                collapsePillars = CollapsePillars.Find(collapsePillars.collapse_pillars_id);
+                txtCollapsePillarsName.Text = collapsePillars.collapse_pillars_name;
+                if (collapsePillars.xtype == "1")
                     radioBtnS.Checked = true;
-                txtDescribe.Text = collapsePillars.Discribe;
-                foreach (var t in collapsePillars.CollapsePillarsPoints)
+                txtDescribe.Text = collapsePillars.discribe;
+                foreach (var t in collapsePillars.collapse_pillars_points)
                 {
-                    dgrdvCoordinate.Rows.Add(t.CoordinateX,
-                        t.CoordinateY,
-                        t.CoordinateZ);
+                    dgrdvCoordinate.Rows.Add(t.coordinate_x,
+                        t.coordinate_y,
+                        t.coordinate_z);
                 }
             }
         }
@@ -90,22 +90,22 @@ namespace GIS.SpecialGraphic
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            CollapsePillars collapsePillars = CollapsePillars.FindOneByCollapsePillarsName(txtCollapsePillarsName.Text);
+            CollapsePillars collapsePillars = CollapsePillars.find_one_by_collapse_pillars_name(txtCollapsePillarsName.Text);
             if (collapsePillars == null)
             {
                 collapsePillars = new CollapsePillars
                 {
-                    CollapsePillarsName = txtCollapsePillarsName.Text,
-                    Discribe = txtDescribe.Text,
-                    Xtype = radioBtnX.Checked ? "0" : "1",
-                    BindingId = IdGenerator.NewBindingId()
+                    collapse_pillars_name = txtCollapsePillarsName.Text,
+                    discribe = txtDescribe.Text,
+                    xtype = radioBtnX.Checked ? "0" : "1",
+                    binding_id = IdGenerator.NewBindingId()
                 };
             }
             else
             {
-                collapsePillars.CollapsePillarsName = txtCollapsePillarsName.Text;
-                collapsePillars.Discribe = txtDescribe.Text;
-                collapsePillars.Xtype = radioBtnX.Checked ? "0" : "1";
+                collapsePillars.collapse_pillars_name = txtCollapsePillarsName.Text;
+                collapsePillars.discribe = txtDescribe.Text;
+                collapsePillars.xtype = radioBtnX.Checked ? "0" : "1";
             }
 
             //实体赋值
@@ -127,17 +127,17 @@ namespace GIS.SpecialGraphic
 
                 var collapsePillarsPoint = new CollapsePillarsPoint
                 {
-                    CoordinateX = Convert.ToDouble(dgrdvCoordinate[0, i].Value),
-                    CoordinateY = Convert.ToDouble(dgrdvCoordinate[1, i].Value),
-                    CoordinateZ = Convert.ToDouble(dgrdvCoordinate[2, i].Value),
-                    BindingId = IdGenerator.NewBindingId(),
-                    CollapsePillars = collapsePillars
+                    coordinate_x = Convert.ToDouble(dgrdvCoordinate[0, i].Value),
+                    coordinate_y = Convert.ToDouble(dgrdvCoordinate[1, i].Value),
+                    coordinate_z = Convert.ToDouble(dgrdvCoordinate[2, i].Value),
+                    binding_id = IdGenerator.NewBindingId(),
+                    collapse_pillars = collapsePillars
                 };
                 collapsePillarsPoints.Add(collapsePillarsPoint);
             }
-            collapsePillars.CollapsePillarsPoints = collapsePillarsPoints;
+            collapsePillars.collapse_pillars_points = collapsePillarsPoints;
             collapsePillars.Save();
-            ModifyXlz(collapsePillarsPoints, collapsePillars.CollapsePillarsId.ToString());
+            ModifyXlz(collapsePillarsPoints, collapsePillars.collapse_pillars_id.ToString());
             DialogResult = DialogResult.OK;
         }
 
@@ -237,9 +237,9 @@ namespace GIS.SpecialGraphic
                 var mZAware = (IZAware)pt;
                 mZAware.ZAware = true;
 
-                pt.X = lstCollapsePillarsEntKeyPts[i].CoordinateX;
-                pt.Y = lstCollapsePillarsEntKeyPts[i].CoordinateY;
-                pt.Z = lstCollapsePillarsEntKeyPts[i].CoordinateZ;
+                pt.X = lstCollapsePillarsEntKeyPts[i].coordinate_x;
+                pt.Y = lstCollapsePillarsEntKeyPts[i].coordinate_y;
+                pt.Z = lstCollapsePillarsEntKeyPts[i].coordinate_z;
                 if (i == 0)
                 {
                     pBezier.Start(pt);
@@ -250,9 +250,9 @@ namespace GIS.SpecialGraphic
                     pt = new PointClass();
                     var zZAware = (IZAware)pt;
                     zZAware.ZAware = true;
-                    pt.X = lstCollapsePillarsEntKeyPts[0].CoordinateX;
-                    pt.Y = lstCollapsePillarsEntKeyPts[0].CoordinateY;
-                    pt.Z = lstCollapsePillarsEntKeyPts[0].CoordinateZ;
+                    pt.X = lstCollapsePillarsEntKeyPts[0].coordinate_x;
+                    pt.Y = lstCollapsePillarsEntKeyPts[0].coordinate_y;
+                    pt.Z = lstCollapsePillarsEntKeyPts[0].coordinate_z;
                     pBezier.AddPoint(pt);
                     polyline = pBezier.Stop();
                 }
@@ -269,9 +269,9 @@ namespace GIS.SpecialGraphic
                     var mZAware = (IZAware)pt;
                     mZAware.ZAware = true;
 
-                    pt.X = lstCollapsePillarsEntKeyPts[i].CoordinateX;
-                    pt.Y = lstCollapsePillarsEntKeyPts[i].CoordinateY;
-                    pt.Z = lstCollapsePillarsEntKeyPts[i].CoordinateZ;
+                    pt.X = lstCollapsePillarsEntKeyPts[i].coordinate_x;
+                    pt.Y = lstCollapsePillarsEntKeyPts[i].coordinate_y;
+                    pt.Z = lstCollapsePillarsEntKeyPts[i].coordinate_z;
 
 
                     IPoint pt1 = new PointClass();
@@ -279,18 +279,18 @@ namespace GIS.SpecialGraphic
                     mZAware.ZAware = true;
                     if (i == pSegmentCollection.SegmentCount - 1)
                     {
-                        pt1.X = lstCollapsePillarsEntKeyPts[0].CoordinateX;
-                        pt1.Y = lstCollapsePillarsEntKeyPts[0].CoordinateY;
-                        pt1.Z = lstCollapsePillarsEntKeyPts[0].CoordinateZ;
+                        pt1.X = lstCollapsePillarsEntKeyPts[0].coordinate_x;
+                        pt1.Y = lstCollapsePillarsEntKeyPts[0].coordinate_y;
+                        pt1.Z = lstCollapsePillarsEntKeyPts[0].coordinate_z;
 
                         pSegmentCollection.Segment[i].FromPoint = pt;
                         pSegmentCollection.Segment[i].ToPoint = pt1;
                     }
                     else
                     {
-                        pt1.X = lstCollapsePillarsEntKeyPts[i + 1].CoordinateX;
-                        pt1.Y = lstCollapsePillarsEntKeyPts[i + 1].CoordinateY;
-                        pt1.Z = lstCollapsePillarsEntKeyPts[i + 1].CoordinateZ;
+                        pt1.X = lstCollapsePillarsEntKeyPts[i + 1].coordinate_x;
+                        pt1.Y = lstCollapsePillarsEntKeyPts[i + 1].coordinate_y;
+                        pt1.Z = lstCollapsePillarsEntKeyPts[i + 1].coordinate_z;
 
                         pSegmentCollection.Segment[i].FromPoint = pt;
                         pSegmentCollection.Segment[i].ToPoint = pt1;
@@ -303,7 +303,7 @@ namespace GIS.SpecialGraphic
             IPolygon pPolygon = DataEditCommon.PolylineToPolygon(polyline);
             var list = new List<ziduan>
             {
-                new ziduan("COLLAPSE_PILLAR_NAME", lstCollapsePillarsEntKeyPts.First().CollapsePillars.CollapsePillarsName),
+                new ziduan("COLLAPSE_PILLAR_NAME", lstCollapsePillarsEntKeyPts.First().collapse_pillars.collapse_pillars_name),
                 new ziduan("BID", sCollapseId),
                 radioBtnX.Checked ? new ziduan("XTYPE", "0") : new ziduan("XTYPE", "1")
             };
@@ -384,19 +384,19 @@ namespace GIS.SpecialGraphic
                     string[] file = File.ReadAllLines(fileName);
                     var collapsePillarsName =
                         fileName.Substring(fileName.LastIndexOf(@"\", StringComparison.Ordinal) + 1).Split('.')[0];
-                    CollapsePillars collapsePillars = CollapsePillars.FindOneByCollapsePillarsName(collapsePillarsName);
+                    CollapsePillars collapsePillars = CollapsePillars.find_one_by_collapse_pillars_name(collapsePillarsName);
                     if (collapsePillars == null)
                     {
                         collapsePillars = new CollapsePillars
                         {
-                            Xtype = "0",
-                            BindingId = IdGenerator.NewBindingId(),
-                            CollapsePillarsName = collapsePillarsName
+                            xtype = "0",
+                            binding_id = IdGenerator.NewBindingId(),
+                            collapse_pillars_name = collapsePillarsName
                         };
                     }
                     else
                     {
-                        collapsePillars.CollapsePillarsName = collapsePillarsName;
+                        collapsePillars.collapse_pillars_name = collapsePillarsName;
                     }
 
                     var collapsePillarsPoints = new List<CollapsePillarsPoint>();
@@ -405,17 +405,17 @@ namespace GIS.SpecialGraphic
                     {
                         var collapsePillarsPoint = new CollapsePillarsPoint
                         {
-                            CoordinateX = Convert.ToDouble(file[i].Split(',')[0]),
-                            CoordinateY = Convert.ToDouble(file[i].Split(',')[1]),
-                            CoordinateZ = 0.0,
-                            BindingId = IdGenerator.NewBindingId(),
-                            CollapsePillars = collapsePillars
+                            coordinate_x = Convert.ToDouble(file[i].Split(',')[0]),
+                            coordinate_y = Convert.ToDouble(file[i].Split(',')[1]),
+                            coordinate_z = 0.0,
+                            binding_id = IdGenerator.NewBindingId(),
+                            collapse_pillars = collapsePillars
                         };
                         collapsePillarsPoints.Add(collapsePillarsPoint);
                     }
-                    collapsePillars.CollapsePillarsPoints = collapsePillarsPoints;
+                    collapsePillars.collapse_pillars_points = collapsePillarsPoints;
                     collapsePillars.Save();
-                    ModifyXlz(collapsePillarsPoints, collapsePillars.CollapsePillarsId.ToString());
+                    ModifyXlz(collapsePillarsPoints, collapsePillars.collapse_pillars_id.ToString());
                     lblSuccessed.Text = lblSuccessed.Text =
                         (Convert.ToInt32(lblSuccessed.Text) + 1).ToString(CultureInfo.InvariantCulture);
                     pbCount.Value++;

@@ -7,15 +7,15 @@ namespace LibEntity
     public class Lithology : ActiveRecordBase<Lithology>
     {
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int LithologyId { get; set; }
+        public int lithology_id { get; set; }
 
         [Property]
-        public string LithologyName { get; set; }
+        public string lithology_name { get; set; }
 
         [Property]
-        public string LithologyDescribe { get; set; }
+        public string lithology_describe { get; set; }
 
-        public static Lithology FindOneByCoal()
+        public static Lithology find_one_by_coal()
         {
             var criterion = new ICriterion[]
             {
@@ -24,7 +24,7 @@ namespace LibEntity
             return FindOne(criterion);
         }
 
-        public static Lithology FindOneByLithologyName(string lithologyName)
+        public static Lithology find_one_by_lithology_name(string lithologyName)
         {
             var criterion = new ICriterion[]
             {

@@ -23,12 +23,12 @@ namespace LibEntity
         /// <param name="src">导线点实体</param>
         public WirePoint(WirePoint src)
         {
-            WirePointId = src.WirePointId;
-            CoordinateX = src.CoordinateX;
-            CoordinateY = src.CoordinateY;
-            CoordinateZ = src.CoordinateZ;
-            LeftDis = src.LeftDis;
-            RightDis = src.RightDis;
+            wire_point_id = src.wire_point_id;
+            coordinate_x = src.coordinate_x;
+            coordinate_y = src.coordinate_y;
+            coordinate_z = src.coordinate_z;
+            left_dis = src.left_dis;
+            right_dis = src.right_dis;
             _wire = src._wire;
         }
 
@@ -36,28 +36,28 @@ namespace LibEntity
         ///     主键
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int WirePointId { get; set; }
+        public int wire_point_id { get; set; }
 
         [Property]
-        public string WirePointName { get; set; }
+        public string wire_point_name { get; set; }
 
         /// <summary>
         ///     距底板距离
         /// </summary>
         [Property]
-        public double BottomDis { get; set; }
+        public double bottom_dis { get; set; }
 
         /// <summary>
         ///     距顶板距离
         /// </summary>
         [Property]
-        public double TopDis { get; set; }
+        public double top_dis { get; set; }
 
         /// <summary>
         ///     绑定导线编号
         /// </summary>
         [BelongsTo("WireId")]
-        public Wire Wire
+        public Wire wire
         {
             get { return _wire; }
             set { _wire = value; }
@@ -67,39 +67,39 @@ namespace LibEntity
         ///     坐标X
         /// </summary>
         [Property]
-        public double CoordinateX { get; set; }
+        public double coordinate_x { get; set; }
 
         /// <summary>
         ///     坐标Y
         /// </summary>
         [Property]
-        public double CoordinateY { get; set; }
+        public double coordinate_y { get; set; }
 
         /// <summary>
         ///     坐标Z
         /// </summary>
         [Property]
-        public double CoordinateZ { get; set; }
+        public double coordinate_z { get; set; }
 
         /// <summary>
         ///     距左帮距离
         /// </summary>
         [Property]
-        public double LeftDis { get; set; }
+        public double left_dis { get; set; }
 
         /// <summary>
         ///     距右帮距离
         /// </summary>
         [Property]
-        public double RightDis { get; set; }
+        public double right_dis { get; set; }
 
         /// <summary>
         ///     绑定ID
         /// </summary>
         [Property]
-        public string BindingId { get; set; }
+        public string binding_id { get; set; }
 
-        public static bool ExistsByWirePointIdInWireInfo(int wireInfoId, string wirePointId)
+        public static bool exists_by_wire_point_id_in_wire_info(int wireInfoId, string wirePointId)
         {
             var criterion = new List<ICriterion>
             {
@@ -110,7 +110,7 @@ namespace LibEntity
         }
 
 
-        public static WirePoint[] FindAllByWireId(int wireId)
+        public static WirePoint[] find_all_by_wire_id(int wireId)
         {
             var criterion = new ICriterion[]
             {

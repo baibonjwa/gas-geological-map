@@ -86,20 +86,20 @@ namespace geoInput
             // 创建勘探线实体
             var prospectingLineEntity = new ProspectingLine();
             // 勘探线名称
-            prospectingLineEntity.ProspectingLineName = txtProspectingLineName.Text.Trim();
+            prospectingLineEntity.prospecting_line_name = txtProspectingLineName.Text.Trim();
             // 勘探线钻孔
             var cnt = lstProspectingBoreholeSelected.Items.Count;
             var lstProspectingBoreholePts = new List<IPoint>(); //20140505 lyf 存储选择的钻孔点要素
             for (var i = 0; i < cnt; i++)
             {
                 var strDisplayName = lstProspectingBoreholeSelected.Items[i].ToString();
-                if (String.IsNullOrWhiteSpace(prospectingLineEntity.ProspectingBorehole))
+                if (String.IsNullOrWhiteSpace(prospectingLineEntity.prospecting_borehole))
                 {
-                    prospectingLineEntity.ProspectingBorehole = strDisplayName;
+                    prospectingLineEntity.prospecting_borehole = strDisplayName;
                 }
                 else
                 {
-                    prospectingLineEntity.ProspectingBorehole = prospectingLineEntity.ProspectingBorehole + "," +
+                    prospectingLineEntity.prospecting_borehole = prospectingLineEntity.prospecting_borehole + "," +
                                                                 strDisplayName;
                 }
 
@@ -115,7 +115,7 @@ namespace geoInput
             if (_bllType == "add")
             {
                 // BIDID
-                prospectingLineEntity.BindingId = IdGenerator.NewBindingId();
+                prospectingLineEntity.binding_id = IdGenerator.NewBindingId();
 
                 // 勘探线信息登录
                 prospectingLineEntity.Save();
@@ -127,15 +127,15 @@ namespace geoInput
             else
             {
                 // 主键
-                prospectingLineEntity.ProspectingLineId = _iPK;
+                prospectingLineEntity.prospecting_line_id = _iPK;
                 // 勘探线信息修改
                 prospectingLineEntity.Save();
                 //20140506 lyf 
                 //获取勘探线的BID
-                var sBid = ProspectingLine.Find(_iPK).BindingId;
+                var sBid = ProspectingLine.Find(_iPK).binding_id;
                 if (sBid != "")
                 {
-                    prospectingLineEntity.BindingId = sBid;
+                    prospectingLineEntity.binding_id = sBid;
                     ModifyProspectingLine(prospectingLineEntity, lstProspectingBoreholePts); //修改图元
                 }
             }
@@ -250,7 +250,7 @@ namespace geoInput
             }
 
             //2.删除原来图元，重新绘制新图元
-            var bIsDeleteOldFeature = DataEditCommon.DeleteFeatureByBId(featureLayer, prospectingLineEntity.BindingId);
+            var bIsDeleteOldFeature = DataEditCommon.DeleteFeatureByBId(featureLayer, prospectingLineEntity.binding_id);
             if (bIsDeleteOldFeature)
             {
                 //绘制图元
@@ -267,14 +267,14 @@ namespace geoInput
         {
             try
             {
-                var brehole = Borehole.FindOneByBoreholeNum(strDisplayName);
+                var brehole = Borehole.find_one_by_borehole_num(strDisplayName);
 
                 IPoint pt = new PointClass();
                 if (brehole != null)
                 {
-                    pt.X = brehole.CoordinateX;
-                    pt.Y = brehole.CoordinateX;
-                    pt.Z = brehole.CoordinateZ;
+                    pt.X = brehole.coordinate_x;
+                    pt.Y = brehole.coordinate_x;
+                    pt.Z = brehole.coordinate_z;
                 }
 
                 return pt;
@@ -305,7 +305,7 @@ namespace geoInput
             //2.绘制图元
             if (lstProspectingBoreholePts.Count == 0) return;
 
-            var prospectingLineID = prospectingLineEntity.BindingId;
+            var prospectingLineID = prospectingLineEntity.binding_id;
             //绘制推断断层
             PointsFit2Polyline.CreateLine(featureLayer, lstProspectingBoreholePts, prospectingLineID);
         }

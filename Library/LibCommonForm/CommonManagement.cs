@@ -298,21 +298,21 @@ namespace LibCommonForm
                     {
                         if (e.Value == null) return;
                         var miningArea = (MiningArea)e.Value;
-                        e.DisplayText = miningArea.MiningAreaName;
+                        e.DisplayText = miningArea.mining_area_name;
                         break;
                     }
                 case "Horizontal":
                     {
                         if (e.Value == null) return;
                         var horizontal = (Horizontal)e.Value;
-                        e.DisplayText = horizontal.HorizontalName;
+                        e.DisplayText = horizontal.horizontal_name;
                         break;
                     }
                 case "Mine":
                     {
                         if (e.Value == null) return;
                         var mine = (Mine)e.Value;
-                        e.DisplayText = mine.MineName;
+                        e.DisplayText = mine.mine_name;
                         break;
                     }
             }

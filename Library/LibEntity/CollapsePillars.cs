@@ -15,56 +15,56 @@ namespace LibEntity
         ///     设置或获取主键
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int CollapsePillarsId { get; set; }
+        public int collapse_pillars_id { get; set; }
 
 
         [HasMany(typeof(CollapsePillarsPoint), Table = "T_COLLAPSE_PILLARS_POINT_INFO", ColumnKey = "CollapsePillarsId",
             Cascade = ManyRelationCascadeEnum.All, Lazy = true)]
-        public IList<CollapsePillarsPoint> CollapsePillarsPoints { get; set; }
+        public IList<CollapsePillarsPoint> collapse_pillars_points { get; set; }
 
         /// <summary>
         ///     设置或获取陷落柱名称
         /// </summary>
         [Property]
-        public string CollapsePillarsName { get; set; }
+        public string collapse_pillars_name { get; set; }
 
         /// <summary>
         ///     设置或获取描述
         /// </summary>
         [Property]
-        public string Discribe { get; set; }
+        public string discribe { get; set; }
 
         /// <summary>
         ///     关键点ID
         /// </summary>
-        public int PointId { get; set; }
+        public int point_id { get; set; }
 
         /// <summary>
         ///     设置或获取关键点坐标X
         /// </summary>
-        public double CoordinateX { get; set; }
+        public double coordinate_x { get; set; }
 
         /// <summary>
         ///     设置或获取关键点坐标Y
         /// </summary>
-        public double CoordinateY { get; set; }
+        public double coordinate_y { get; set; }
 
         /// <summary>
         ///     设置或获取关键点坐标Z
         /// </summary>
-        public double CoordinateZ { get; set; }
+        public double coordinate_z { get; set; }
 
         /// <summary>
         ///     bindingID
         /// </summary>
-        public string BindingId { get; set; }
+        public string binding_id { get; set; }
 
         /// <summary>
         ///     类别
         /// </summary>
-        public string Xtype { get; set; }
+        public string xtype { get; set; }
 
-        public static bool ExistsByCollapsePillarsName(string collapsePillarsName)
+        public static bool exists_by_collapse_pillars_name(string collapsePillarsName)
         {
             var criterion = new List<ICriterion>
             {
@@ -73,7 +73,7 @@ namespace LibEntity
             return Exists(criterion.ToArray());
         }
 
-        public static CollapsePillars FindOneByCollapsePillarsName(string collapsePillarsName)
+        public static CollapsePillars find_one_by_collapse_pillars_name(string collapsePillarsName)
         {
             var criterion = new List<ICriterion>
             {
@@ -95,13 +95,13 @@ namespace LibEntity
         ///     关键点ID
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int PointId { get; set; }
+        public int point_id { get; set; }
 
         /// <summary>
         ///     设置或获取陷落柱ID
         /// </summary>
         [BelongsTo("CollapsePillarsId")]
-        public CollapsePillars CollapsePillars { get; set; }
+        public CollapsePillars collapse_pillars { get; set; }
 
         //关键点坐标X
 
@@ -109,7 +109,7 @@ namespace LibEntity
         ///     设置或获取关键点坐标X
         /// </summary>
         [Property]
-        public double CoordinateX { get; set; }
+        public double coordinate_x { get; set; }
 
         //关键点坐标Y
 
@@ -117,7 +117,7 @@ namespace LibEntity
         ///     设置或获取关键点坐标Y
         /// </summary>
         [Property]
-        public double CoordinateY { get; set; }
+        public double coordinate_y { get; set; }
 
         //关键点坐标Z
 
@@ -125,7 +125,7 @@ namespace LibEntity
         ///     设置或获取关键点坐标Z
         /// </summary>
         [Property]
-        public double CoordinateZ { get; set; }
+        public double coordinate_z { get; set; }
 
         //BID
 
@@ -133,10 +133,10 @@ namespace LibEntity
         ///     绑定ID
         /// </summary>
         [Property]
-        public string BindingId { get; set; }
+        public string binding_id { get; set; }
 
 
-        public static CollapsePillarsPoint[] FindAllByCollapsePillarsId(int collapsePillarsId)
+        public static CollapsePillarsPoint[] find_all_by_collapse_pillars_id(int collapsePillarsId)
         {
             var criterion = new List<ICriterion>
             {
@@ -145,9 +145,9 @@ namespace LibEntity
             return FindAll(criterion.ToArray());
         }
 
-        public static void DeleteAllByCollapsePillarsId(int collapsePillarsId)
+        public static void delete_all_by_collapse_pillars_id(int collapsePillarsId)
         {
-            DeleteAll(FindAllByCollapsePillarsId(collapsePillarsId).Select(u => u.PointId));
+            DeleteAll(find_all_by_collapse_pillars_id(collapsePillarsId).Select(u => u.point_id));
         }
     }
 }
