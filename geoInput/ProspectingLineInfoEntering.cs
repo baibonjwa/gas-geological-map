@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Geometry;
 using GIS;
@@ -49,7 +50,7 @@ namespace geoInput
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            for (var i = 0; i < lstProspectingBoreholeAll.SelectedItems.Count; )
+            for (var i = 0; i < lstProspectingBoreholeAll.SelectedItems.Count;)
             {
                 // 将左侧ListBox中选择的数据添加到右侧ListBox中
                 lstProspectingBoreholeSelected.Items.Add(lstProspectingBoreholeAll.SelectedItems[i].ToString());
@@ -65,7 +66,7 @@ namespace geoInput
         /// <param name="e"></param>
         private void btnDeltete_Click(object sender, EventArgs e)
         {
-            for (var i = 0; i < lstProspectingBoreholeSelected.SelectedItems.Count; )
+            for (var i = 0; i < lstProspectingBoreholeSelected.SelectedItems.Count;)
             {
                 // 将右侧ListBox中选择移除的数据恢复到左侧ListBox中
                 lstProspectingBoreholeAll.Items.Add(lstProspectingBoreholeSelected.SelectedItems[i].ToString());
@@ -267,7 +268,7 @@ namespace geoInput
         {
             try
             {
-                var brehole = Borehole.find_one_by_borehole_num(strDisplayName);
+                var brehole = Borehole.FindAllByProperty("name", strDisplayName).FirstOrDefault();
 
                 IPoint pt = new PointClass();
                 if (brehole != null)

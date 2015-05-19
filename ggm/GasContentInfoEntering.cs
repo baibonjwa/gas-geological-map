@@ -48,7 +48,7 @@ namespace ggm
                 txtCoordinateZ.Text = GasContent.coordinate_z.ToString(CultureInfo.InvariantCulture);
                 txtDepth.Text = GasContent.depth.ToString(CultureInfo.InvariantCulture);
                 txtGasContentValue.Text = GasContent.gas_content_value.ToString(CultureInfo.InvariantCulture);
-                dtpMeasureDateTime.Value = GasContent.measure_date_time;
+                dtpMeasureDateTime.Value = GasContent.measure_datetime;
                 selectTunnelSimple1.SetTunnel(GasContent.tunnel);
             }
         }
@@ -72,9 +72,9 @@ namespace ggm
                     coordinate_z = Convert.ToDouble(txtCoordinateZ.Text),
                     depth = Convert.ToDouble(txtDepth.Text),
                     gas_content_value = Convert.ToDouble(txtGasContentValue.Text),
-                    measure_date_time = dtpMeasureDateTime.Value,
+                    measure_datetime = dtpMeasureDateTime.Value,
                     tunnel = selectTunnelSimple1.SelectedTunnel,
-                    binding_id = IdGenerator.NewBindingId()
+                    bid = IdGenerator.NewBindingId()
                 };
                 // 坐标X
                 gasContent.Save();
@@ -87,10 +87,10 @@ namespace ggm
                 GasContent.coordinate_z = Convert.ToDouble(txtCoordinateZ.Text);
                 GasContent.depth = Convert.ToDouble(txtDepth.Text);
                 GasContent.gas_content_value = Convert.ToDouble(txtGasContentValue.Text);
-                GasContent.measure_date_time = dtpMeasureDateTime.Value;
+                GasContent.measure_datetime = dtpMeasureDateTime.Value;
                 GasContent.tunnel = selectTunnelSimple1.SelectedTunnel;
                 GasContent.Save();
-                DelGasGushQuantityPt(GasContent.binding_id);
+                DelGasGushQuantityPt(GasContent.bid);
                 DrawGasGushQuantityPt(GasContent);
             }
         }
@@ -131,7 +131,7 @@ namespace ggm
             IGeometry geometry = pt;
             var list = new List<ziduan>
             {
-                new ziduan("bid", gasGushQuantityEntity.binding_id),
+                new ziduan("bid", gasGushQuantityEntity.bid),
                 new ziduan("mc", ""),
                 new ziduan("addtime", DateTime.Now.ToString(CultureInfo.InvariantCulture))
             };

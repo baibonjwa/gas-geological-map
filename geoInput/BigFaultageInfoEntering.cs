@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Castle.ActiveRecord;
@@ -31,7 +32,7 @@ namespace geoInput
             {
                 // 设置窗体默认属性
                 inferFaultage = InferFaultage.Find(inferFaultage.id);
-                tbFaultageName.Text = inferFaultage.big_faultage_name;
+                tbFaultageName.Text = inferFaultage.name;
                 tbGap.Text = inferFaultage.gap;
                 tbAngle.Text = inferFaultage.angle;
                 tbTrend.Text = inferFaultage.trend;
@@ -47,7 +48,7 @@ namespace geoInput
                     rbtnOppositeFaultage.Checked = true;
                 }
 
-                foreach (var i in inferFaultage.big_faultage_points)
+                foreach (var i in inferFaultage.infer_faultage_points)
                 {
                     if (i.up_or_down == "上盘")
                     {
@@ -122,13 +123,13 @@ namespace geoInput
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            var bigFaultage = InferFaultage.find_one_by_big_faultage_name(tbFaultageName.Text);
+            var bigFaultage = InferFaultage.FindAllByProperty("name", tbFaultageName.Text).FirstOrDefault();
             var bigFaultagePoingList = new List<InferFaultagePoint>();
             if (bigFaultage == null)
             {
                 bigFaultage = new InferFaultage
                 {
-                    big_faultage_name = tbFaultageName.Text,
+                    name = tbFaultageName.Text,
                     gap = tbGap.Text,
                     angle = tbAngle.Text,
                     trend = tbTrend.Text,
@@ -157,13 +158,13 @@ namespace geoInput
                     bigFaultagePoingList.Add(point);
                 }
                 bigFaultage.Save();
-                var title = bigFaultage.big_faultage_name + "  " + bigFaultage.angle + "  " +
+                var title = bigFaultage.name + "  " + bigFaultage.angle + "  " +
                             bigFaultage.gap;
                 DrawBigFaultageInfo.DrawTddc(title, bigFaultagePoingList, bigFaultage.bid);
             }
             else
             {
-                bigFaultage.big_faultage_name = tbFaultageName.Text;
+                bigFaultage.name = tbFaultageName.Text;
                 bigFaultage.gap = tbGap.Text;
                 bigFaultage.angle = tbAngle.Text;
                 bigFaultage.trend = tbTrend.Text;
@@ -201,13 +202,13 @@ namespace geoInput
                     var strs = File.ReadAllLines(fileName, Encoding.GetEncoding("GB2312"));
                     var type = "";
                     var split = strs[0].Split('|');
-                    var bigFaultage = InferFaultage.find_one_by_big_faultage_name(split[0]);
+                    var bigFaultage = InferFaultage.FindAllByProperty("name", split[0]).FirstOrDefault();
                     var bigFaultagePoints = new List<InferFaultagePoint>();
                     if (bigFaultage == null)
                     {
                         bigFaultage = new InferFaultage
                         {
-                            big_faultage_name = split[0],
+                            name = split[0],
                             gap = split[1],
                             type = split[2],
                             angle = split[3],
@@ -216,7 +217,7 @@ namespace geoInput
                     }
                     else
                     {
-                        bigFaultage.big_faultage_name = split[0];
+                        bigFaultage.name = split[0];
                         bigFaultage.gap = split[1];
                         bigFaultage.type = split[2];
                         bigFaultage.angle = split[3];
@@ -264,8 +265,8 @@ namespace geoInput
                             });
                         }
                     }
-                    bigFaultage.big_faultage_points = bigFaultagePoints;
-                    var title = bigFaultage.big_faultage_name + "  " + bigFaultage.angle + "  " +
+                    bigFaultage.infer_faultage_points = bigFaultagePoints;
+                    var title = bigFaultage.name + "  " + bigFaultage.angle + "  " +
                                 bigFaultage.gap;
                     DrawBigFaultageInfo.DrawTddc(title, bigFaultagePoints, bigFaultage.bid);
                     bigFaultage.Save();

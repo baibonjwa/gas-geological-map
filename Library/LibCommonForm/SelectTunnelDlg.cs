@@ -36,10 +36,10 @@ namespace LibCommonForm
             SelectedTunnel = tunnel;
         }
 
-        public SelectTunnelDlg(WorkingFace workingFace)
+        public SelectTunnelDlg(Workingface workingface)
         {
             InitializeComponent();
-            selectTunnelUserControl1.LoadData(workingFace);
+            selectTunnelUserControl1.LoadData(workingface);
         }
 
         /// <summary>

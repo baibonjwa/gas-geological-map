@@ -65,7 +65,7 @@ namespace ggm
             var selectedIndex = gridView1.GetSelectedRows();
             foreach (var gasContent in selectedIndex.Select(i => (GasContent)gridView1.GetRow(i)))
             {
-                DelGasGushQuantityPt(new[] { gasContent.binding_id });
+                DelGasGushQuantityPt(new[] { gasContent.bid });
                 gasContent.Delete();
             }
             RefreshData();

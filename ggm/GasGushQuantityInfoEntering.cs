@@ -102,7 +102,7 @@ namespace ggm
                 GasGushQuantity.tunnel = selectTunnelSimple1.SelectedTunnel;
                 GasGushQuantity.binding_id = IdGenerator.NewBindingId();
                 GasGushQuantity.Save();
-                DelGasGushQuantityPt(GasGushQuantity.binding_id, GasGushQuantity.coal_seams.coal_seams_name);
+                DelGasGushQuantityPt(GasGushQuantity.binding_id, GasGushQuantity.coal_seam);
                 DrawGasGushQuantityPt(GasGushQuantity);
             }
         }
@@ -144,7 +144,7 @@ namespace ggm
             var list = new List<ziduan>
             {
                 new ziduan("bid", gasGushQuantityEntity.binding_id),
-                new ziduan("mc", gasGushQuantityEntity.coal_seams.ToString()),
+                new ziduan("mc", gasGushQuantityEntity.coal_seam.ToString()),
                 new ziduan("addtime", DateTime.Now.ToString(CultureInfo.InvariantCulture))
             };
             var hcny = gasGushQuantityEntity.stope_date.ToLongDateString();

@@ -82,7 +82,7 @@ namespace geoInput
             var selectedIndex = gridView1.GetSelectedRows();
             foreach (var wire in selectedIndex.Select(index => (Wire)gridView1.GetRow(index)))
             {
-                GisHelper.DelHdByHdId(wire.tunnel.tunnel_id.ToString(CultureInfo.InvariantCulture));
+                GisHelper.DelHdByHdId(wire.tunnel.id.ToString(CultureInfo.InvariantCulture));
                 wire.Delete();
             }
 
@@ -148,7 +148,7 @@ namespace geoInput
             }
             var pFeatureLayer = (IFeatureLayer)pLayer;
             var str = "";
-            var bid = ((Wire)gridView1.GetFocusedRow()).tunnel.binding_id;
+            var bid = ((Wire)gridView1.GetFocusedRow()).tunnel.bid;
             if (bid != "")
             {
                 if (true)

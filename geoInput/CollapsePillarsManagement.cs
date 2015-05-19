@@ -23,7 +23,7 @@ namespace geoInput
 
         private void RefreshData()
         {
-            gcCollapsePillars.DataSource = CollapsePillars.FindAll();
+            gcCollapsePillars.DataSource = CollapsePillar.FindAll();
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace geoInput
         /// <param name="e"></param>
         private void tsBtnModify_Click(object sender, EventArgs e)
         {
-            var c = new CollapsePillarsEntering((CollapsePillars)gridView1.GetFocusedRow());
+            var c = new CollapsePillarsEntering((CollapsePillar)gridView1.GetFocusedRow());
             if (DialogResult.OK == c.ShowDialog())
             {
                 RefreshData();
@@ -73,9 +73,9 @@ namespace geoInput
         {
             if (!Alert.Confirm("确认要删除吗？")) return;
             var selectedIndex = gridView1.GetSelectedRows();
-            foreach (var collapsePillars in selectedIndex.Select(i => (CollapsePillars)gridView1.GetRow(i)))
+            foreach (var collapsePillars in selectedIndex.Select(i => (CollapsePillar)gridView1.GetRow(i)))
             {
-                DeleteyXLZ(collapsePillars.collapse_pillars_id.ToString());
+                DeleteyXLZ(collapsePillars.id.ToString());
                 collapsePillars.Delete();
             }
             RefreshData();
@@ -140,7 +140,7 @@ namespace geoInput
             }
             var pFeatureLayer = (IFeatureLayer)pLayer;
             var str = "";
-            var bid = ((CollapsePillars)gridView1.GetFocusedRow()).collapse_pillars_id.ToString(CultureInfo.InvariantCulture);
+            var bid = ((CollapsePillar)gridView1.GetFocusedRow()).id.ToString(CultureInfo.InvariantCulture);
             if (bid != "")
             {
                 if (true)

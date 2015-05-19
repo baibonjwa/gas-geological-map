@@ -10,7 +10,7 @@ namespace LibEntity
         ///     编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int gas_pressure_id { get; set; }
+        public int id { get; set; }
 
         /// <summary>
         ///     坐标X
@@ -57,8 +57,8 @@ namespace LibEntity
         /// <summary>
         ///     煤层编号
         /// </summary>
-        //[BelongsTo("CoalSeamsId")]
-        public CoalSeams coal_seams { get; set; }
+        [Property]
+        public string coal_seam { get; set; }
 
         /// <summary>
         ///     BID

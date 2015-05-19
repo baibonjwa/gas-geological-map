@@ -46,7 +46,7 @@ namespace geoInput
                 Alert.AlertMsg("请选择要修改的信息");
                 return;
             }
-            var m = new PitshaftInfoEntering(((Pitshaft)gridView1.GetFocusedRow()).pitshaft_id.ToString());
+            var m = new PitshaftInfoEntering(((Pitshaft)gridView1.GetFocusedRow()).id.ToString());
             if (DialogResult.OK == m.ShowDialog())
             {
                 RefreshData();
@@ -62,7 +62,7 @@ namespace geoInput
         {
             if (!Alert.Confirm("确认要删除井筒吗？")) return;
             var pitshaft = (Pitshaft)gridView1.GetFocusedRow();
-            DeleteJintTongByBID(new[] { pitshaft.binding_id });
+            DeleteJintTongByBID(new[] { pitshaft.bid });
             pitshaft.Delete();
             RefreshData();
         }
@@ -150,7 +150,7 @@ namespace geoInput
         /// <param name="e"></param>
         private void btnMap_Click(object sender, EventArgs e)
         {
-            var bid = ((Pitshaft)gridView1.GetFocusedRow()).binding_id;
+            var bid = ((Pitshaft)gridView1.GetFocusedRow()).bid;
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.DEFALUT_JINGTONG);
             if (pLayer == null)
             {

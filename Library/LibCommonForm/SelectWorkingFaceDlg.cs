@@ -16,7 +16,7 @@ namespace LibCommonForm
         //public int workFaceId;
         //public string workFaceName;
         //public WorkingfaceTypeEnum workFaceType;
-        public WorkingFace SelectedWorkingFace { get; set; }
+        public Workingface SelectedWorkingFace { get; set; }
 
         public SelectWorkingFaceDlg()
         {

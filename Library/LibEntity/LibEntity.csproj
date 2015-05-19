@@ -99,16 +99,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoalSeams.cs" />
-    <Compile Include="WorkingTimeDefault.cs" />
     <Compile Include="StopLine.cs" />
-    <Compile Include="WorkingTime.cs" />
     <Compile Include="Borehole.cs" />
-    <Compile Include="BoreholeLithology.cs" />
-    <Compile Include="CollapsePillars.cs" />
-    <Compile Include="Coordinate.cs" />
+    <Compile Include="SubBorehole.cs" />
+    <Compile Include="CollapsePillar.cs" />
     <Compile Include="InferFaultagePoint.cs" />
-    <Compile Include="PitshaftType.cs" />
     <Compile Include="Pitshaft.cs" />
     <Compile Include="ProspectingLine.cs" />
     <Compile Include="WorkingFace.cs" />
@@ -116,7 +111,6 @@
     <Compile Include="Horizontal.cs" />
     <Compile Include="Mine.cs" />
     <Compile Include="Faultage.cs" />
-    <Compile Include="Lithology.cs" />
     <Compile Include="TunnelPointsCalculation.cs" />
     <Compile Include="GasContent.cs" />
     <Compile Include="GasPressure.cs" />

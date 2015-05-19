@@ -44,9 +44,6 @@ namespace LibCommonForm
             _formHeight = Height;
             ChangeFormSize(null);
 
-            DataBindUtil.LoadLithology(cboLithology, "煤层");
-
-
             var hash = new Hashtable
             {
                 {"主运顺槽", 0},
@@ -76,13 +73,13 @@ namespace LibCommonForm
             }
             else
             {
-                selectWorkingFaceControl1.LoadData(Tunnel.working_face);
-                txtTunnelName.Text = Tunnel.tunnel_name;
-                cboSupportPattern.Text = Tunnel.tunnel_support_pattern;
+                selectWorkingFaceControl1.LoadData(Tunnel.workingface);
+                txtTunnelName.Text = Tunnel.name;
+                cboSupportPattern.Text = Tunnel.support_pattern;
                 cboLithology.SelectedItem = Tunnel.lithology;
-                txtDesignLength.Text = Tunnel.tunnel_design_length.ToString(CultureInfo.InvariantCulture);
+                txtDesignLength.Text = Tunnel.design_length.ToString(CultureInfo.InvariantCulture);
                 cboCoalOrStone.Text = Tunnel.coal_or_stone;
-                cboTunnelType.SelectedValue = (int)Tunnel.tunnel_type;
+                cboTunnelType.SelectedValue = (int)Tunnel.type;
             }
 
         }
@@ -101,8 +98,8 @@ namespace LibCommonForm
             var workingFace = selectWorkingFaceControl1.SelectedWorkingFace;
             using (new SessionScope())
             {
-                workingFace = WorkingFace.Find(workingFace.working_face_id);
-                if (workingFace.tunnels.FirstOrDefault(u => u.tunnel_name == txtTunnelName.Text) != null)
+                workingFace = Workingface.Find(workingFace.id);
+                if (workingFace.tunnels.FirstOrDefault(u => u.name == txtTunnelName.Text) != null)
                 {
                     Alert.AlertMsg("该工作面下已有同名巷道！");
                     return;
@@ -112,25 +109,25 @@ namespace LibCommonForm
 
             var tunnel = new Tunnel
             {
-                tunnel_name = txtTunnelName.Text,
-                tunnel_support_pattern = cboSupportPattern.Text,
-                working_face = selectWorkingFaceControl1.SelectedWorkingFace,
-                lithology = (Lithology)cboLithology.SelectedItem,
-                tunnel_type = (TunnelTypeEnum)cboTunnelType.SelectedValue,
+                name = txtTunnelName.Text,
+                support_pattern = cboSupportPattern.Text,
+                workingface = selectWorkingFaceControl1.SelectedWorkingFace,
+                lithology = cboLithology.SelectedValue.ToString(),
+                type = (TunnelTypeEnum)cboTunnelType.SelectedValue,
                 coal_or_stone = cboCoalOrStone.Text,
-                coal_seams = CoalSeams.FindAll().First(),
-                binding_id = IdGenerator.NewBindingId(),
-                tunnel_width = 5
+                coal_seam = ConfigHelper.config.coal_seam,
+                bid = IdGenerator.NewBindingId(),
+                width = 5
             };
 
             //设计长度
             if (txtDesignLength.Text != "")
             {
-                tunnel.tunnel_design_length = Convert.ToInt32(txtDesignLength.Text);
+                tunnel.design_length = Convert.ToInt32(txtDesignLength.Text);
             }
             if (txtDesignArea.Text != "")
             {
-                tunnel.tunnel_design_area = Convert.ToInt32(txtDesignLength.Text);
+                tunnel.design_area = Convert.ToInt32(txtDesignLength.Text);
             }
             //巷道信息登录
 
@@ -146,24 +143,24 @@ namespace LibCommonForm
                 return;
             }
             DialogResult = DialogResult.OK;
-            Tunnel.working_face = selectWorkingFaceControl1.SelectedWorkingFace;
+            Tunnel.workingface = selectWorkingFaceControl1.SelectedWorkingFace;
             //巷道名称
-            Tunnel.tunnel_name = txtTunnelName.Text;
+            Tunnel.name = txtTunnelName.Text;
             //支护方式
-            Tunnel.tunnel_support_pattern = cboSupportPattern.Text;
+            Tunnel.support_pattern = cboSupportPattern.Text;
             //围岩类型
-            Tunnel.lithology = (Lithology)cboLithology.SelectedItem;
-            Tunnel.coal_seams = CoalSeams.FindAll().First();
-            Tunnel.tunnel_width = 5;
+            Tunnel.lithology = cboLithology.SelectedValue.ToString();
+            Tunnel.coal_seam = ConfigHelper.config.coal_seam;
+            Tunnel.width = 5;
 
             //设计长度
             if (txtDesignLength.Text != "")
             {
-                Tunnel.tunnel_design_length = Convert.ToInt32(txtDesignLength.Text);
+                Tunnel.design_length = Convert.ToInt32(txtDesignLength.Text);
             }
             if (txtDesignArea.Text != "")
             {
-                Tunnel.tunnel_design_area = Convert.ToInt32(txtDesignLength.Text);
+                Tunnel.design_area = Convert.ToInt32(txtDesignLength.Text);
             }
             //煤巷岩巷
             if (cboCoalOrStone.Text != "")

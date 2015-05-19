@@ -44,25 +44,25 @@ namespace geoInput
             Wire = wire;
             InitializeComponent();
             // 加载需要修改的导线数据
-            var wirePoints = WirePoint.find_all_by_wire_id(wire.wire_id);
+            var wirePoints = WirePoint.FindAllByProperty("wire.id", wire.id);
             if (wirePoints.Length > 0)
             {
                 for (var i = 0; i < wirePoints.Length; i++)
                 {
                     dgrdvWire.Rows.Add();
-                    dgrdvWire[0, i].Value = wirePoints[i].wire_point_name;
+                    dgrdvWire[0, i].Value = wirePoints[i].name;
                     dgrdvWire[1, i].Value = wirePoints[i].coordinate_x;
                     dgrdvWire[2, i].Value = wirePoints[i].coordinate_y;
                     dgrdvWire[3, i].Value = wirePoints[i].coordinate_z;
-                    dgrdvWire[4, i].Value = wirePoints[i].left_dis;
-                    dgrdvWire[5, i].Value = wirePoints[i].right_dis;
-                    dgrdvWire[6, i].Value = wirePoints[i].top_dis;
-                    dgrdvWire[7, i].Value = wirePoints[i].bottom_dis;
+                    dgrdvWire[4, i].Value = wirePoints[i].left_distance;
+                    dgrdvWire[5, i].Value = wirePoints[i].right_distance;
+                    dgrdvWire[6, i].Value = wirePoints[i].top_distance;
+                    dgrdvWire[7, i].Value = wirePoints[i].bottom_distance;
                 }
             }
 
-            txtWireName.Text = wire.wire_name;
-            txtWireLevel.Text = wire.wire_level;
+            txtWireName.Text = wire.name;
+            txtWireLevel.Text = wire.level;
             dtpMeasureDate.Value = wire.measure_date;
             cboVobserver.Text = wire.vobserver;
             cboVobserver.Text = wire.vobserver;
@@ -86,7 +86,7 @@ namespace geoInput
             var wirePoints = GetWirePointListFromDataGrid();
             using (new SessionScope())
             {
-                var wire = Wire.find_one_by_tunnel_id(selectTunnelUserControl1.SelectedTunnel.tunnel_id);
+                var wire = Wire.FindAllByProperty("tunnel.id", selectTunnelUserControl1.SelectedTunnel.id).FirstOrDefault();
                 if (wirePoints.Count < 2)
                 {
                     Alert.AlertMsg("导线点数据小于2个");
@@ -105,8 +105,8 @@ namespace geoInput
                             p.wire = wire;
                             p.Save();
                         }
-                        wire.wire_name = txtWireName.Text;
-                        wire.wire_level = txtWireLevel.Text;
+                        wire.name = txtWireName.Text;
+                        wire.level = txtWireLevel.Text;
                         wire.measure_date = dtpMeasureDate.Value;
                         wire.vobserver = cboVobserver.Text;
                         wire.counter = cboCounter.Text;
@@ -119,7 +119,7 @@ namespace geoInput
                         _dics = ConstructDics(selectTunnelUserControl1.SelectedTunnel, out hdwid);
                         if (selectTunnelUserControl1.SelectedTunnel != null)
                         {
-                            UpdateHdbyPnts(selectTunnelUserControl1.SelectedTunnel.tunnel_id, wirePoints, _dics, hdwid);
+                            UpdateHdbyPnts(selectTunnelUserControl1.SelectedTunnel.id, wirePoints, _dics, hdwid);
                         }
                     }
                     else
@@ -132,8 +132,8 @@ namespace geoInput
                     wire = new Wire
                     {
                         tunnel = selectTunnelUserControl1.SelectedTunnel,
-                        wire_name = txtWireName.Text,
-                        wire_level = txtWireLevel.Text,
+                        name = txtWireName.Text,
+                        level = txtWireLevel.Text,
                         measure_date = dtpMeasureDate.Value,
                         vobserver = cboVobserver.Text,
                         counter = cboCounter.Text,
@@ -165,7 +165,7 @@ namespace geoInput
             {
                 {
                     GIS_Const.FIELD_HDID,
-                    tunnel.tunnel_id.ToString(CultureInfo.InvariantCulture)
+                    tunnel.id.ToString(CultureInfo.InvariantCulture)
                 }
             };
             var selobjs =
@@ -174,11 +174,11 @@ namespace geoInput
             var xh = 0;
             if (selobjs.Count > 0)
                 xh = Convert.ToInt16(selobjs[0].Item3[GIS_Const.FIELD_XH]) + 1;
-            var bid = tunnel.binding_id;
-            var hdname = tunnel.tunnel_name;
-            hdwid = tunnel.tunnel_width;
+            var bid = tunnel.bid;
+            var hdname = tunnel.name;
+            hdwid = tunnel.width;
             _dics.Clear();
-            _dics.Add(GIS_Const.FIELD_HDID, tunnel.tunnel_id.ToString(CultureInfo.InvariantCulture));
+            _dics.Add(GIS_Const.FIELD_HDID, tunnel.id.ToString(CultureInfo.InvariantCulture));
             _dics.Add(GIS_Const.FIELD_ID, "0");
             _dics.Add(GIS_Const.FIELD_BS, "1");
             _dics.Add(GIS_Const.FIELD_BID, bid);
@@ -205,7 +205,7 @@ namespace geoInput
             //导线点编号
             if (dgrdvWire.Rows[i].Cells[0] != null)
             {
-                wirePointInfoEntity.wire_point_name = dgrdvWire.Rows[i].Cells[0].Value.ToString();
+                wirePointInfoEntity.name = dgrdvWire.Rows[i].Cells[0].Value.ToString();
             }
             //坐标X
             if (dgrdvWire.Rows[i].Cells[1].Value != null)
@@ -239,7 +239,7 @@ namespace geoInput
             {
                 if (double.TryParse(dgrdvWire.Rows[i].Cells[4].Value.ToString(), out _tmpDouble))
                 {
-                    wirePointInfoEntity.left_dis = _tmpDouble;
+                    wirePointInfoEntity.left_distance = _tmpDouble;
                     _tmpDouble = 0;
                 }
             }
@@ -248,7 +248,7 @@ namespace geoInput
             {
                 if (double.TryParse(dgrdvWire.Rows[i].Cells[5].Value.ToString(), out _tmpDouble))
                 {
-                    wirePointInfoEntity.right_dis = _tmpDouble;
+                    wirePointInfoEntity.right_distance = _tmpDouble;
                     _tmpDouble = 0;
                 }
             }
@@ -257,7 +257,7 @@ namespace geoInput
             {
                 if (double.TryParse(dgrdvWire.Rows[i].Cells[6].Value.ToString(), out _tmpDouble))
                 {
-                    wirePointInfoEntity.top_dis = _tmpDouble;
+                    wirePointInfoEntity.top_distance = _tmpDouble;
                     _tmpDouble = 0;
                 }
             }
@@ -266,7 +266,7 @@ namespace geoInput
             {
                 if (double.TryParse(dgrdvWire.Rows[i].Cells[7].Value.ToString(), out _tmpDouble))
                 {
-                    wirePointInfoEntity.bottom_dis = _tmpDouble;
+                    wirePointInfoEntity.bottom_distance = _tmpDouble;
                     _tmpDouble = 0;
                 }
             }
@@ -285,7 +285,7 @@ namespace geoInput
             {
                 var wirePoint = SetWirePointEntity(i);
                 if (wirePoint == null) break;
-                wirePoint.binding_id = IdGenerator.NewBindingId();
+                wirePoint.bid = IdGenerator.NewBindingId();
                 wirePoints.Add(wirePoint);
             }
 
@@ -441,13 +441,13 @@ namespace geoInput
                 var tunnelName = strs[2].Split('.')[0];
                 using (new SessionScope())
                 {
-                    var miningArea = MiningArea.find_one_by_mining_area_name(miningAreaName);
+                    var miningArea = MiningArea.FindAllByProperty("name", miningAreaName).FirstOrDefault();
                     if (miningArea == null)
                     {
                         Alert.Confirm("该采区不存在，请先添加采区");
                         return;
                     }
-                    var workingFace = WorkingFace.find_by_working_face_name_and_mining_area_id(workingFaceName, miningArea.mining_area_id);
+                    var workingFace = Workingface.findone_by_workingface_name_and_mining_area_id(workingFaceName, miningArea.id);
                     if (workingFace == null)
                     {
                         if (Alert.Confirm("该工作面不存在，是否创建该工作面？"))
@@ -457,16 +457,16 @@ namespace geoInput
                     }
                     if (workingFace == null) return;
                     if (workingFace.tunnels != null &&
-                        workingFace.tunnels.FirstOrDefault(u => u.tunnel_name == tunnelName) != null)
+                        workingFace.tunnels.FirstOrDefault(u => u.name == tunnelName) != null)
                     {
-                        var tunnel = workingFace.tunnels.FirstOrDefault(u => u.tunnel_name == tunnelName);
+                        var tunnel = workingFace.tunnels.FirstOrDefault(u => u.name == tunnelName);
                         selectTunnelUserControl1.LoadData(tunnel);
                     }
                     else
                     {
                         if (Alert.Confirm("该巷道不存在，是否创建该巷道？"))
                         {
-                            if (Tunnel.exists_by_tunnel_name_and_working_face_id(tunnelName, workingFace.working_face_id))
+                            if (Tunnel.exists_by_tunnel_name_and_working_face_id(tunnelName, workingFace.id))
                             {
                                 Alert.AlertMsg("该巷道已经存在");
                                 return;
@@ -507,28 +507,28 @@ namespace geoInput
 
         #region 绘制导线点和巷道图形
 
-        private Tunnel AddTunnel(WorkingFace workingFace, string tunnelName)
+        private Tunnel AddTunnel(Workingface workingface, string tunnelName)
         {
             var type = tunnelName.Contains("横川") ? TunnelTypeEnum.HENGCHUAN : TunnelTypeEnum.OTHER;
             var tunnel = new Tunnel
             {
-                tunnel_name = tunnelName,
-                working_face = workingFace,
-                tunnel_width = 5,
-                binding_id = IdGenerator.NewBindingId(),
-                tunnel_type = type
+                name = tunnelName,
+                workingface = workingface,
+                width = 5,
+                bid = IdGenerator.NewBindingId(),
+                type = type
             };
             tunnel.Save();
             return tunnel;
         }
 
-        private WorkingFace AddWorkingFace(MiningArea miningArea, String workingFaceName)
+        private Workingface AddWorkingFace(MiningArea miningArea, String workingFaceName)
         {
-            var workingFace = new WorkingFace
+            var workingFace = new Workingface
             {
-                working_face_name = workingFaceName,
+                name = workingFaceName,
                 mining_area = miningArea,
-                workingface_type = WorkingfaceTypeEnum.HC
+                type = WorkingfaceTypeEnum.HC
             };
             workingFace.Save();
             return workingFace;
@@ -670,7 +670,7 @@ namespace geoInput
                 foreach (var t in lstWpie)
                 {
                     var wirePtInfo = t;
-                    DataEditCommon.DeleteFeatureByBId(featureLayer, wirePtInfo.binding_id);
+                    DataEditCommon.DeleteFeatureByBId(featureLayer, wirePtInfo.bid);
                 }
             }
 
@@ -679,7 +679,7 @@ namespace geoInput
                 pt.X = t.coordinate_x;
                 pt.Y = t.coordinate_y;
                 pt.Z = t.coordinate_z;
-                drawWirePt.CreatePoint(featureLayer, pt, t.binding_id, t);
+                drawWirePt.CreatePoint(featureLayer, pt, t.bid, t);
             }
         }
 
@@ -748,13 +748,13 @@ namespace geoInput
                         var workingFaceName = strs[1];
                         var tunnelName = strs[2].Split('.')[0];
 
-                        var miningArea = MiningArea.find_one_by_mining_area_name(miningAreaName);
+                        var miningArea = MiningArea.FindAllByProperty("name", miningAreaName).FirstOrDefault();
                         if (miningArea == null)
                         {
                             Alert.Confirm("该采区不存在，请先添加采区");
                             return;
                         }
-                        var workingFace = WorkingFace.find_by_working_face_name_and_mining_area_id(workingFaceName, miningArea.mining_area_id);
+                        var workingFace = Workingface.findone_by_workingface_name_and_mining_area_id(workingFaceName, miningArea.id);
                         if (workingFace == null)
                         {
                             workingFace = AddWorkingFace(miningArea, workingFaceName);
@@ -762,9 +762,9 @@ namespace geoInput
                         if (workingFace == null) return;
                         Tunnel tunnel;
                         if (workingFace.tunnels != null &&
-                            workingFace.tunnels.FirstOrDefault(u => u.tunnel_name == tunnelName) != null)
+                            workingFace.tunnels.FirstOrDefault(u => u.name == tunnelName) != null)
                         {
-                            tunnel = workingFace.tunnels.FirstOrDefault(u => u.tunnel_name == tunnelName);
+                            tunnel = workingFace.tunnels.FirstOrDefault(u => u.name == tunnelName);
                         }
                         else
                         {
@@ -784,26 +784,26 @@ namespace geoInput
 
                             wirePoints.Add(new WirePoint
                             {
-                                binding_id = IdGenerator.NewBindingId(),
-                                wire_point_name = pointName,
+                                bid = IdGenerator.NewBindingId(),
+                                name = pointName,
                                 coordinate_x = Convert.ToDouble(pointX),
                                 coordinate_y = Convert.ToDouble(pointY),
                                 coordinate_z = 0,
-                                left_dis = 2.5,
-                                right_dis = 2.5,
-                                top_dis = 0,
-                                bottom_dis = 0
+                                left_distance = 2.5,
+                                right_distance = 2.5,
+                                top_distance = 0,
+                                bottom_distance = 0
                             });
                         }
                         if (wirePoints.Count < 2)
                         {
                             throw new Exception();
                         }
-                        var wire = Wire.find_one_by_tunnel_id(tunnel.tunnel_id);
+                        var wire = Wire.FindAllByProperty("tunnel.id", tunnel.id).FirstOrDefault();
 
                         if (wire != null)
                         {
-                            wire.wire_name = tunnelName.Split('.').Length > 0
+                            wire.name = tunnelName.Split('.').Length > 0
                                 ? tunnelName.Split('.')[0] + "导线点"
                                 : tunnelName + "导线点";
                             wire.wire_points = wirePoints;
@@ -816,7 +816,7 @@ namespace geoInput
                                 check_date = DateTime.Now,
                                 measure_date = DateTime.Now,
                                 count_date = DateTime.Now,
-                                wire_name =
+                                name =
                                     tunnelName.Split('.').Length > 0
                                         ? tunnelName.Split('.')[0] + "导线点"
                                         : tunnelName + "导线点",
@@ -828,7 +828,7 @@ namespace geoInput
                         DrawWirePoint(wirePoints, "CHANGE");
                         double hdwid;
                         _dics = ConstructDics(tunnel, out hdwid);
-                        UpdateHdbyPnts(tunnel.tunnel_id, wirePoints, _dics, hdwid);
+                        UpdateHdbyPnts(tunnel.id, wirePoints, _dics, hdwid);
                         pbCount.Value++;
                         lblSuccessed.Text =
                             (Convert.ToInt32(lblSuccessed.Text) + 1).ToString(CultureInfo.InvariantCulture);

@@ -50,8 +50,8 @@ namespace ggm
         {
 
             IMapDocument pMapDocument = new MapDocumentClass();
-            pMapDocument.Open(ConfigHelper.GetAttribute("mxd_path"));
-            mapControl_OP.LoadMxFile(ConfigHelper.GetAttribute("mxd_path"));
+            pMapDocument.Open(ConfigHelper.get_attribute("mxd_path"));
+            mapControl_OP.LoadMxFile(ConfigHelper.get_attribute("mxd_path"));
 
 
 
@@ -66,7 +66,7 @@ namespace ggm
             DataEditCommon.g_tbCtlEdit = toolbarControl;
             DataEditCommon.g_pAxMapControl = mapControl_OP;
             DataEditCommon.g_axTocControl = tocControl_OP;
-            DataEditCommon.load(ConfigHelper.GetAttribute("gdb_path"));
+            DataEditCommon.load(ConfigHelper.get_attribute("gdb_path"));
 
             IEnumDataset pEnumDataSet =
              DataEditCommon.g_pCurrentWorkSpace.Datasets[esriDatasetType.esriDTFeatureDataset];

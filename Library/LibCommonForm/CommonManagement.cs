@@ -147,32 +147,9 @@ namespace LibCommonForm
 
                         AddDeleteButton();
                         lueMiningArea.DataSource = MiningArea.FindAll();
-                        gridControl1.DataSource = CollectionHelper.ConvertTo(WorkingFace.FindAll());
+                        gridControl1.DataSource = CollectionHelper.ConvertTo(Workingface.FindAll());
                     }
-                    break;
-
-                case FlagManangingCoalSeam:
-                    {
-                        //// 窗口标题
-                        Text = @"煤层名称管理";
-                        gridView1.Columns.Add(new GridColumn
-                        {
-                            Caption = @"编号",
-                            FieldName = "CoalSeamsId",
-                            MaxWidth = 60,
-                            VisibleIndex = gridView1.Columns.Count
-                        });
-                        // 矿井名称
-                        gridView1.Columns.Add(new GridColumn
-                        {
-                            Caption = @"煤层名称",
-                            FieldName = "CoalSeamsName",
-                            VisibleIndex = gridView1.Columns.Count
-                        });
-                        AddDeleteButton();
-                        gridControl1.DataSource = CollectionHelper.ConvertTo(CoalSeams.FindAll());
-                    }
-                    break;
+                    break;   
             }
         }
 
@@ -209,12 +186,7 @@ namespace LibCommonForm
                     break;
                 case FlagManangingWorkingFace:
                     // 工作面名称管理
-                    UpdateInfo<WorkingFace>();
-                    //UpdateInfo<WorkingFace>();
-                    break;
-                case FlagManangingCoalSeam:
-                    // 煤层名称管理
-                    UpdateInfo<CoalSeams>();
+                    UpdateInfo<Workingface>();
                     break;
             }
             DialogResult = DialogResult.OK;
@@ -298,21 +270,21 @@ namespace LibCommonForm
                     {
                         if (e.Value == null) return;
                         var miningArea = (MiningArea)e.Value;
-                        e.DisplayText = miningArea.mining_area_name;
+                        e.DisplayText = miningArea.name;
                         break;
                     }
                 case "Horizontal":
                     {
                         if (e.Value == null) return;
                         var horizontal = (Horizontal)e.Value;
-                        e.DisplayText = horizontal.horizontal_name;
+                        e.DisplayText = horizontal.name;
                         break;
                     }
                 case "Mine":
                     {
                         if (e.Value == null) return;
                         var mine = (Mine)e.Value;
-                        e.DisplayText = mine.mine_name;
+                        e.DisplayText = mine.name;
                         break;
                     }
             }
@@ -340,13 +312,8 @@ namespace LibCommonForm
                     break;
                 case FlagManangingWorkingFace:
                     // 工作面名称管理
-                    DeleteInfo<WorkingFace>();
-                    gridControl1.DataSource = CollectionHelper.ConvertTo(WorkingFace.FindAll());
-                    break;
-                case FlagManangingCoalSeam:
-                    // 煤层名称管理
-                    DeleteInfo<CoalSeams>();
-                    gridControl1.DataSource = CollectionHelper.ConvertTo(CoalSeams.FindAll());
+                    DeleteInfo<Workingface>();
+                    gridControl1.DataSource = CollectionHelper.ConvertTo(Workingface.FindAll());
                     break;
             }
         }

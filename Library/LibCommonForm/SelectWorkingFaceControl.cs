@@ -9,16 +9,16 @@ namespace LibCommonForm
     public partial class SelectWorkingFaceControl : UserControl
     {
 
-        public WorkingFace SelectedWorkingFace { get; set; }
+        public Workingface SelectedWorkingFace { get; set; }
 
         public SelectWorkingFaceControl()
         {
             InitializeComponent();
         }
 
-        public SelectWorkingFaceControl(WorkingFace workingFace)
+        public SelectWorkingFaceControl(Workingface workingface)
         {
-            LoadData(workingFace);
+            LoadData(workingface);
         }
 
         public SelectWorkingFaceControl(MiningArea miningArea)
@@ -26,21 +26,21 @@ namespace LibCommonForm
             LoadData(miningArea);
         }
 
-        public void LoadData(WorkingFace workingFace)
+        public void LoadData(Workingface workingface)
         {
             LoadData();
-            lstMineName.SelectedValue = workingFace.mining_area.horizontal.mine.mine_id;
-            lstHorizontalName.SelectedValue = workingFace.mining_area.horizontal.horizontal_id;
-            lstMiningAreaName.SelectedValue = workingFace.mining_area.mining_area_id;
-            lstWorkingFaceName.SelectedValue = workingFace.working_face_id;
+            lstMineName.SelectedValue = workingface.mining_area.horizontal.mine.id;
+            lstHorizontalName.SelectedValue = workingface.mining_area.horizontal.id;
+            lstMiningAreaName.SelectedValue = workingface.mining_area.id;
+            lstWorkingFaceName.SelectedValue = workingface.id;
         }
 
         public void LoadData(MiningArea miningArea)
         {
             LoadData();
-            lstMineName.SelectedValue = miningArea.horizontal.mine.mine_id;
-            lstHorizontalName.SelectedValue = miningArea.horizontal.horizontal_id;
-            lstMiningAreaName.SelectedValue = miningArea.mining_area_id;
+            lstMineName.SelectedValue = miningArea.horizontal.mine.id;
+            lstHorizontalName.SelectedValue = miningArea.horizontal.id;
+            lstMiningAreaName.SelectedValue = miningArea.id;
         }
 
 
@@ -84,7 +84,7 @@ namespace LibCommonForm
                 }
                 if (lstMineName.SelectedItems.Count <= 0) return;
                 var mine = (Mine)lstMineName.SelectedItem;
-                DataBindUtil.LoadHorizontalName(lstHorizontalName, mine.mine_id);
+                DataBindUtil.LoadHorizontalName(lstHorizontalName, mine.id);
             }
             else
             {
@@ -108,7 +108,7 @@ namespace LibCommonForm
                 }
                 if (lstHorizontalName.SelectedItems.Count <= 0) return;
                 var horizontal = (Horizontal)lstHorizontalName.SelectedItem;
-                DataBindUtil.LoadMiningAreaName(lstMiningAreaName, horizontal.horizontal_id);
+                DataBindUtil.LoadMiningAreaName(lstMiningAreaName, horizontal.id);
             }
             else
             {
@@ -132,7 +132,7 @@ namespace LibCommonForm
                 }
                 if (lstMiningAreaName.SelectedItems.Count <= 0) return;
                 var miningArea = (MiningArea)lstMiningAreaName.SelectedItem;
-                DataBindUtil.LoadWorkingFaceName(lstWorkingFaceName, miningArea.mining_area_id);
+                DataBindUtil.LoadWorkingFaceName(lstWorkingFaceName, miningArea.id);
             }
             else
             {
@@ -159,21 +159,21 @@ namespace LibCommonForm
         {
             if (lstMineName.SelectedItems.Count <= 0) return;
             var mine = (Mine)lstMineName.SelectedItem;
-            DataBindUtil.LoadHorizontalName(lstHorizontalName, mine.mine_id);
+            DataBindUtil.LoadHorizontalName(lstHorizontalName, mine.id);
         }
 
         private void lstHorizontalName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstHorizontalName.SelectedItems.Count <= 0) return;
             var horizontal = (Horizontal)lstHorizontalName.SelectedItem;
-            DataBindUtil.LoadMiningAreaName(lstMiningAreaName, horizontal.horizontal_id);
+            DataBindUtil.LoadMiningAreaName(lstMiningAreaName, horizontal.id);
         }
 
         private void lstMiningAreaName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstMiningAreaName.SelectedItems.Count <= 0) return;
             var miningArea = (MiningArea)lstMiningAreaName.SelectedItem;
-            DataBindUtil.LoadWorkingFaceName(lstWorkingFaceName, miningArea.mining_area_id);
+            DataBindUtil.LoadWorkingFaceName(lstWorkingFaceName, miningArea.id);
         }
 
         private void lstWorkingFaceName_SelectedIndexChanged(object sender, EventArgs e)
@@ -181,7 +181,7 @@ namespace LibCommonForm
             if (lstWorkingFaceName.SelectedItems.Count <= 0)
                 SelectedWorkingFace = null;
             else
-                SelectedWorkingFace = (WorkingFace)lstWorkingFaceName.SelectedItem;
+                SelectedWorkingFace = (Workingface)lstWorkingFaceName.SelectedItem;
         }
     }
 }

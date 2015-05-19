@@ -89,7 +89,7 @@ namespace ggm
                 GasPressure.measure_date_time = dtpMeasureDateTime.Value;
                 GasPressure.tunnel = selectTunnelSimple1.SelectedTunnel;
                 GasPressure.Save();
-                DelGasGushQuantityPt(GasPressure.binding_id, GasPressure.coal_seams.coal_seams_name);
+                DelGasGushQuantityPt(GasPressure.binding_id, GasPressure.coal_seam);
                 DrawGasGushQuantityPt(GasPressure);
             }
         }
@@ -128,7 +128,7 @@ namespace ggm
             var list = new List<ziduan>
             {
                 new ziduan("bid", gasGushQuantityEntity.binding_id),
-                new ziduan("mc", gasGushQuantityEntity.coal_seams.ToString()),
+                new ziduan("mc", gasGushQuantityEntity.coal_seam.ToString()),
                 new ziduan("addtime", DateTime.Now.ToString(CultureInfo.InvariantCulture))
             };
             var wsyl = gasGushQuantityEntity.gas_pressure_value.ToString(CultureInfo.InvariantCulture);

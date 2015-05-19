@@ -20,8 +20,6 @@ namespace LibEntity
         /// <param name="wirePts"></param>
         /// <param name="verticesLeftRet"></param>
         /// <param name="verticesRightRet"></param>
-        /// <param name="leftDirRet">计算左邦的方向</param>
-        /// <param name="rightDirRet">计算右邦的方向</param>
         /// <returns></returns>
         private bool calc_left_and_right_vertics_with2_traver_points(WirePoint[] wirePts,
             ref Vector3_DW[] verticesLeftRet, ref Vector3_DW[] verticesRightRet)
@@ -67,10 +65,10 @@ namespace LibEntity
                 var leftVertices = new List<Vector3_DW>();
                 var rightVertices = new List<Vector3_DW>();
 
-                Vector2_DW ptLeftPre = ptPre + vecPerpendicularLeft * wirePts[0].left_dis;
-                Vector2_DW ptLeftNext = ptNext + vecPerpendicularLeft * wirePts[1].left_dis;
-                Vector2_DW ptRightPre = ptPre + vecPerpendicularRight * wirePts[0].right_dis;
-                Vector2_DW ptRightNext = ptNext + vecPerpendicularRight * wirePts[1].right_dis;
+                Vector2_DW ptLeftPre = ptPre + vecPerpendicularLeft * wirePts[0].left_distance;
+                Vector2_DW ptLeftNext = ptNext + vecPerpendicularLeft * wirePts[1].left_distance;
+                Vector2_DW ptRightPre = ptPre + vecPerpendicularRight * wirePts[0].right_distance;
+                Vector2_DW ptRightNext = ptNext + vecPerpendicularRight * wirePts[1].right_distance;
 
                 leftVertices.Add(new Vector3_DW(ptLeftPre.X, ptLeftPre.Y, wirePts[0].coordinate_z));
                 leftVertices.Add(new Vector3_DW(ptLeftNext.X, ptLeftNext.Y, wirePts[1].coordinate_z));
@@ -128,16 +126,16 @@ namespace LibEntity
 
                 for (int i = 0; i < nTraversePtCnt - 2; i++)
                 {
-                    var lwDatasPreTmp = new WirePoint[2]
+                    var lwDatasPreTmp = new[]
                     {
-                        new WirePoint(wirePts[i]),
-                        new WirePoint(wirePts[i + 1])
+                        wirePts[i],
+                        wirePts[i + 1]
                     };
 
-                    var lwDatasNextTmp = new WirePoint[2]
+                    var lwDatasNextTmp = new[]
                     {
-                        new WirePoint(wirePts[i + 1]),
-                        new WirePoint(wirePts[i + 2])
+                        wirePts[i + 1],
+                        wirePts[i + 2]
                     };
 
                     Vector3_DW[] verticesLeftPreTmp = null;

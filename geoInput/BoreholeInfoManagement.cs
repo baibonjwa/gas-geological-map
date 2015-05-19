@@ -70,7 +70,7 @@ namespace geoInput
             var selectedIndex = gridView1.GetSelectedRows();
             foreach (var borehole in selectedIndex.Select(i => (Borehole) gridView1.GetRow(i)))
             {
-                DeleteZuanKongByBid(new[] {borehole.binding_id});
+                DeleteZuanKongByBid(new[] {borehole.bid});
                 borehole.Delete();
             }
             RefreshData();
@@ -162,7 +162,7 @@ namespace geoInput
             }
             var pFeatureLayer = (IFeatureLayer) pLayer;
             var str = "";
-            var bid = ((Borehole) gridView1.GetFocusedRow()).binding_id;
+            var bid = ((Borehole) gridView1.GetFocusedRow()).bid;
             if (bid != "")
             {
                 if (true)

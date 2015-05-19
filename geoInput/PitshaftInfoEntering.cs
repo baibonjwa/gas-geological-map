@@ -26,14 +26,12 @@ namespace geoInput
         public PitshaftInfoEntering()
         {
             InitializeComponent();
-            LoadPitshaftTypeInfo();
         }
 
         /// <summary>
         ///     带参数的构造方法
         /// </summary>
         /// <param name="strPrimaryKey">主键</param>
-        /// <param name="strTitle"></param>
         public PitshaftInfoEntering(string strPrimaryKey)
         {
             InitializeComponent();
@@ -41,9 +39,6 @@ namespace geoInput
             _bllType = "update";
             // 主键
             _iPk = Convert.ToInt32(strPrimaryKey);
-            // 加载井筒类型信息
-            LoadPitshaftTypeInfo();
-            // 设置井筒信息
             // 通过主键获取断层信息
             var pitshaft = Pitshaft.Find(_iPk);
 
@@ -52,7 +47,7 @@ namespace geoInput
                 // 井筒名称
                 txtPitshaftName.Text = pitshaft.pitshaft_name;
                 // 井筒类型
-                cobPitshaftType.SelectedValue = pitshaft.pitshaft_type.pitshaft_type_id;
+                cobPitshaftType.SelectedValue = pitshaft.pitshaft_type;
                 // 井口标高
                 txtWellheadElevation.Text = pitshaft.wellhead_elevation.ToString(CultureInfo.InvariantCulture);
                 // 井底标高
@@ -72,19 +67,6 @@ namespace geoInput
         }
 
         /// <summary>
-        ///     加载井筒类型信息
-        /// </summary>
-        private void LoadPitshaftTypeInfo()
-        {
-            var pitshaftTypes = PitshaftType.FindAll();
-
-            cobPitshaftType.DataSource = pitshaftTypes;
-            cobPitshaftType.DisplayMember = "PitshaftTypeName";
-            cobPitshaftType.ValueMember = "PitshaftTypeId";
-            cobPitshaftType.SelectedIndex = -1;
-        }
-
-        /// <summary>
         ///     提  交
         /// </summary>
         /// <param name="sender"></param>
@@ -95,13 +77,6 @@ namespace geoInput
 
             // 创建井筒实体
             var pitshaftEntity = new Pitshaft { pitshaft_name = txtPitshaftName.Text.Trim() };
-            // 井筒名称
-            // 井筒类型
-            var iPitshaftTypeId = 0;
-            if (int.TryParse(Convert.ToString(cobPitshaftType.SelectedValue), out iPitshaftTypeId))
-            {
-                pitshaftEntity.pitshaft_type.pitshaft_type_id = iPitshaftTypeId;
-            }
             // 井口标高
             double dWellheadElevation = 0;
             if (double.TryParse(txtWellheadElevation.Text.Trim(), out dWellheadElevation))
@@ -149,7 +124,7 @@ namespace geoInput
             if (_bllType == "add")
             {
                 // BID
-                pitshaftEntity.binding_id = IdGenerator.NewBindingId();
+                pitshaftEntity.bid = IdGenerator.NewBindingId();
                 pitshaftEntity.Save();
 
                 DrawJingTong(pitshaftEntity);
@@ -157,7 +132,7 @@ namespace geoInput
             else
             {
                 // 主键
-                pitshaftEntity.pitshaft_id = _iPk;
+                pitshaftEntity.id = _iPk;
                 // 井筒信息修改
                 pitshaftEntity.Save();
 
@@ -165,8 +140,8 @@ namespace geoInput
                 //20140428 lyf 
                 //获取井筒BID，为后面修改绘制井筒赋值所用
                 var sBID = "";
-                sBID = Pitshaft.Find(_iPk).binding_id;
-                pitshaftEntity.binding_id = sBID;
+                sBID = Pitshaft.Find(_iPk).bid;
+                pitshaftEntity.bid = sBID;
                 //修改图元
                 ModifyJingTong(pitshaftEntity);
             }
@@ -290,7 +265,7 @@ namespace geoInput
             var pFeatureLayer = (IFeatureLayer)pLayer;
             IGeometry geometry = pt;
             var list = new List<ziduan>();
-            list.Add(new ziduan("bid", pitshaftEntity.binding_id));
+            list.Add(new ziduan("bid", pitshaftEntity.bid));
             list.Add(new ziduan("mc", pitshaftEntity.pitshaft_name));
             list.Add(new ziduan("addtime", DateTime.Now.ToString()));
             list.Add(new ziduan("jkgc", pitshaftEntity.wellhead_elevation.ToString()));
@@ -327,7 +302,7 @@ namespace geoInput
 
             //2.删除原来图元，重新绘制新图元
             var bIsDeleteOldFeature = DataEditCommon.DeleteFeatureByWhereClause(featureLayer,
-                "BID='" + pitshaftEntity.binding_id + "'");
+                "BID='" + pitshaftEntity.bid + "'");
             //if (bIsDeleteOldFeature)
             {
                 //绘制井筒

@@ -83,7 +83,7 @@ namespace geoInput
             var selectedIndex = gridView1.GetSelectedRows();
             foreach (var tunnel in selectedIndex.Select(i => (Tunnel)gridView1.GetRow(i)))
             {
-                GisHelper.DelHdByHdId(tunnel.tunnel_id.ToString(CultureInfo.InvariantCulture));
+                GisHelper.DelHdByHdId(tunnel.id.ToString(CultureInfo.InvariantCulture));
                 tunnel.Delete();
             }
             RefreshData();
@@ -148,7 +148,7 @@ namespace geoInput
             //if (bid != "")
             //{
             //if (true)
-            var str = "HdId='" + tunnel.tunnel_id + "'";
+            var str = "HdId='" + tunnel.id + "'";
             //else
             //    str += " or HdId='" + bid + "'";
             //}

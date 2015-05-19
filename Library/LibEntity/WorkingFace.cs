@@ -6,29 +6,23 @@ using NHibernate.Criterion;
 namespace LibEntity
 {
     [ActiveRecord]
-    public class WorkingFace : ActiveRecordBase<WorkingFace>
+    public class Workingface : ActiveRecordBase<Workingface>
     {
-        /** 工作面编号 **/
-        private DateTime _startDate;
-        private DateTime _stopDate;
-
-        [HasMany(typeof(Tunnel), ColumnKey = "WorkingFaceId", Table = "Tunnel",
-            Cascade = ManyRelationCascadeEnum.SaveUpdate, Lazy = true)]
+        [HasMany(typeof(Tunnel), ColumnKey = "id", Table = "Tunnel",
+            Cascade = ManyRelationCascadeEnum.All, Lazy = true)]
         public IList<Tunnel> tunnels { get; set; }
 
         /// <summary>
         ///     工作面编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int working_face_id { get; set; }
-
-        /** 工作面名称 **/
+        public int id { get; set; }
 
         /// <summary>
         ///     工作面名称
         /// </summary>
         [Property]
-        public string working_face_name { get; set; }
+        public string name { get; set; }
 
         /// <summary>
         ///     坐标X
@@ -48,19 +42,11 @@ namespace LibEntity
         [Property]
         public double coordinate_z { get; set; }
 
-        // 开工日期
-
         /// <summary>
         ///     设置或获取开工日期
         /// </summary>
         //[Property("START_DATE")]
-        public DateTime start_date
-        {
-            get { return _startDate; }
-            set { _startDate = value; }
-        }
-
-        // 是否掘进完毕
+        public DateTime start_date { get; set; }
 
         /// <summary>
         ///     设置或获取是否掘进完毕
@@ -74,11 +60,7 @@ namespace LibEntity
         ///     设置或获取停工日期
         /// </summary>
         //[Property("STOP_DATE")]
-        public DateTime stop_date
-        {
-            get { return _stopDate; }
-            set { _stopDate = value; }
-        }
+        public DateTime stop_date { get; set; }
 
 
         // 采区
@@ -114,27 +96,9 @@ namespace LibEntity
         ///     巷道类型
         /// </summary>
         [Property]
-        public WorkingfaceTypeEnum workingface_type { get; set; }
+        public WorkingfaceTypeEnum type { get; set; }
 
-        public static WorkingFace[] find_all_by_mining_area_id(int miningAreaId)
-        {
-            var criterion = new ICriterion[]
-            {
-                Restrictions.Eq("MiningArea.MiningAreaId", miningAreaId)
-            };
-            return FindAll(criterion);
-        }
-
-        public static WorkingFace find_by_working_face_name(string workingFaceName)
-        {
-            var criterion = new ICriterion[]
-            {
-                Restrictions.Eq("WorkingFaceName", workingFaceName)
-            };
-            return FindOne(criterion);
-        }
-
-        public static WorkingFace find_by_working_face_name_and_mining_area_id(string workingFaceName, int miningAreaId)
+        public static Workingface findone_by_workingface_name_and_mining_area_id(string workingFaceName, int miningAreaId)
         {
             var criterion = new ICriterion[]
             {
@@ -144,14 +108,6 @@ namespace LibEntity
             return FindOne(criterion);
         }
 
-        public static bool exists_by_working_face_name(string workingFaceName)
-        {
-            var criterion = new List<ICriterion>
-            {
-                Restrictions.Eq("WorkingFaceName", workingFaceName)
-            };
-            return Exists(criterion.ToArray());
-        }
 
         public static bool exists_by_mining_area_id(int miningAreaId)
         {

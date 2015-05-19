@@ -8,15 +8,15 @@ namespace LibEntity
     [ActiveRecord]
     public class Wire : ActiveRecordBase<Wire>
     {
-        public const String TABLE_NAME = "T_WIRE_INFO";
+        public const string TABLE_NAME = "T_WIRE_INFO";
 
         /// <summary>
         ///     导线编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int wire_id { get; set; }
+        public int id { get; set; }
 
-        [HasMany(typeof(WirePoint), Table = "WirePoint", ColumnKey = "WireId",
+        [HasMany(typeof(WirePoint), Table = "wire_points", ColumnKey = "id",
     Cascade = ManyRelationCascadeEnum.All, Lazy = true)]
         public IList<WirePoint> wire_points { get; set; }
 
@@ -47,20 +47,20 @@ namespace LibEntity
         /// <summary>
         ///     巷道编号
         /// </summary>
-        [BelongsTo("TunnelId")]
+        [BelongsTo("id")]
         public Tunnel tunnel { get; set; }
 
         /// <summary>
         ///     导线名称
         /// </summary>
         [Property]
-        public string wire_name { get; set; }
+        public string name { get; set; }
 
         /// <summary>
         ///     导线级别
         /// </summary>
         [Property]
-        public string wire_level { get; set; }
+        public string level { get; set; }
 
         /// <summary>
         ///     测试日期
@@ -73,35 +73,5 @@ namespace LibEntity
         /// </summary>
         [Property]
         public string vobserver { get; set; }
-
-        public override void Delete()
-        {
-            var wirePoints = WirePoint.find_all_by_wire_id(wire_id);
-            foreach (var p in wirePoints)
-            {
-                p.Delete();
-            }
-            base.Delete();
-        }
-
-        public static Wire find_one_by_tunnel_id(int tunnelId)
-        {
-            var criterion = new ICriterion[]
-            {
-                Restrictions.Eq("Tunnel.TunnelId",tunnelId)
-            };
-            return FindOne(criterion);
-        }
-
-        public static void delete_by_tunnel_id(int tunnelId)
-        {
-            var criterion = new ICriterion[]
-            {
-                Restrictions.Eq("Tunnel.TunnelId",tunnelId)
-            };
-            Delete(criterion);
-        }
-
-
     }
 }

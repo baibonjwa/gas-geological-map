@@ -14,7 +14,7 @@ namespace LibCommonForm
             InitializeComponent();
         }
 
-        public WorkingFace SelectedWorkingFace { get; set; }
+        public Workingface SelectedWorkingFace { get; set; }
 
         private void SelectTunnelSimple_Load(object sender, EventArgs e)
         {
@@ -34,7 +34,7 @@ namespace LibCommonForm
                                                          where selectSingleNode != null
                                                          select selectSingleNode.InnerText
                                                              into id
-                                                             select WorkingFace.TryFind(Convert.ToInt32(id))).Where(workingface => workingface != null))
+                                                             select Workingface.TryFind(Convert.ToInt32(id))).Where(workingface => workingface != null))
                         {
                             cbxWorkingface.Items.Add(workingface);
                         }
@@ -57,7 +57,7 @@ namespace LibCommonForm
 
         public void cbxTunnel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SelectedWorkingFace = cbxWorkingface.SelectedItem as WorkingFace;
+            SelectedWorkingFace = cbxWorkingface.SelectedItem as Workingface;
         }
 
         // 按delete键，删除选中的tunnel
@@ -96,10 +96,10 @@ namespace LibCommonForm
 
             foreach (var t in cbxWorkingface.Items)
             {
-                var toWriteWorkingFace = t as WorkingFace;
+                var toWriteWorkingFace = t as Workingface;
                 if (toWriteWorkingFace == null) continue;
                 writer.WriteStartElement("Workingface");
-                writer.WriteElementString("ID", toWriteWorkingFace.working_face_id.ToString(CultureInfo.InvariantCulture));   // <-- These are new
+                writer.WriteElementString("ID", toWriteWorkingFace.id.ToString(CultureInfo.InvariantCulture));   // <-- These are new
                 //writer.WriteElementString("Name", toWriteWorkingFace.WorkingFaceName);
                 //writer.WriteElementString("Type", toWriteWorkingFace.WorkingfaceTypeEnum.ToString());
                 writer.WriteEndElement();

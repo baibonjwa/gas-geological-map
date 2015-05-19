@@ -69,7 +69,7 @@ namespace geoInput
             var selectedIndex = gridView1.GetSelectedRows();
             foreach (var faultage in selectedIndex.Select(i => (Faultage)gridView1.GetRow(i)))
             {
-                DeleteJLDCByBID(new[] { faultage.binding_id });
+                DeleteJLDCByBID(new[] { faultage.bid });
                 faultage.Delete();
             }
             RefreshData();
@@ -147,7 +147,7 @@ namespace geoInput
         private void btnMap_Click(object sender, EventArgs e)
         {
             var faultage = (Faultage)gridView1.GetFocusedRow();
-            var bid = faultage.binding_id;
+            var bid = faultage.bid;
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.DEFALUT_EXPOSE_FAULTAGE);
             if (pLayer == null)
             {

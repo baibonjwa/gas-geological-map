@@ -54,8 +54,8 @@ namespace geoInput
         private void MainForm_GM_Load(object sender, EventArgs e)
         {
             IMapDocument pMapDocument = new MapDocumentClass();
-            pMapDocument.Open(ConfigHelper.GetAttribute("mxd_path"));
-            mapControl_GM.LoadMxFile(ConfigHelper.GetAttribute("mxd_path"));
+            pMapDocument.Open(ConfigHelper.get_attribute("mxd_path"));
+            mapControl_GM.LoadMxFile(ConfigHelper.get_attribute("mxd_path"));
             //this.mapControl_GM.LoadMxFile(Application.StartupPath + "\\local.mxd");
             Log.Debug("[GM]....Finished to load MXD file.....");
             statusStrip1.AxMap = mapControl_GM;
@@ -73,7 +73,7 @@ namespace geoInput
             DataEditCommon.g_tbCtlEdit = toolbarControl;
             DataEditCommon.g_pAxMapControl = mapControl_GM;
             DataEditCommon.g_axTocControl = tocControl_GM;
-            DataEditCommon.load(ConfigHelper.GetAttribute("gdb_path"));
+            DataEditCommon.load(ConfigHelper.get_attribute("gdb_path"));
 
             IEnumDataset pEnumDataSet =
                 DataEditCommon.g_pCurrentWorkSpace.Datasets[esriDatasetType.esriDTFeatureDataset];
@@ -105,7 +105,7 @@ namespace geoInput
                 mapControl_GM.Map.SpatialReference = pRef;
                 IMxdContents pMxdC;
                 pMxdC = mapControl_GM.Map as IMxdContents;
-                pMapDocument.Open(ConfigHelper.GetAttribute("mxd_path"));
+                pMapDocument.Open(ConfigHelper.get_attribute("mxd_path"));
                 pMapDocument.ReplaceContents(pMxdC);
                 pMapDocument.Save(true, true);
             }

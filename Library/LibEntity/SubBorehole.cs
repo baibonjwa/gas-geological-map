@@ -6,25 +6,25 @@ using NHibernate.Criterion;
 namespace LibEntity
 {
     [ActiveRecord]
-    public class BoreholeLithology : ActiveRecordBase<BoreholeLithology>
+    public class SubBorehole : ActiveRecordBase<SubBorehole>
     {
         /// <summary>
         ///     编号
         /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
-        public int borehole_lithhology_id { get; set; }
+        public int id { get; set; }
 
         /// <summary>
         ///     钻孔编号
         /// </summary>
-        [BelongsTo("BoreholeId")]
+        [BelongsTo("id")]
         public Borehole borehole { get; set; }
 
         /// <summary>
         ///     岩性编号
         /// </summary>
-        [BelongsTo]
-        public Lithology lithology { get; set; }
+        [Property]
+        public string lithology { get; set; }
 
         /// <summary>
         ///     底板标高
@@ -42,7 +42,7 @@ namespace LibEntity
         ///     煤层名称
         /// </summary>
         [Property]
-        public string coal_seams_name { get; set; }
+        public string coal_seam { get; set; }
 
         /// <summary>
         ///     坐标X
@@ -61,16 +61,5 @@ namespace LibEntity
         /// </summary>
         [Property]
         public double coordinate_z { get; set; }
-
-        public static BoreholeLithology[] find_all_by_borehole_id(int boreholeId)
-        {
-            var criterion = new List<ICriterion> { Restrictions.Eq("Borehole.BoreholeId", boreholeId) };
-            return FindAll(criterion.ToArray());
-        }
-
-        public static void delete_all_by_borehole_id(int boreholeId)
-        {
-            DeleteAll(find_all_by_borehole_id(boreholeId).Select(u => u.borehole_lithhology_id));
-        }
     }
 }

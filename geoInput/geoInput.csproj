@@ -207,6 +207,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Iesi.Collections.1.0.1\lib\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -363,6 +364,7 @@
     <EmbeddedResource Include="PitshaftInfoEntering.resx">
       <DependentUpon>PitshaftInfoEntering.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ProspectingLineInfoManagement.resx">
       <DependentUpon>ProspectingLineInfoManagement.cs</DependentUpon>
     </EmbeddedResource>
