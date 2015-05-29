@@ -54,8 +54,8 @@ namespace GIS
         /// <summary>
         /// 关闭按钮
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -64,8 +64,8 @@ namespace GIS
         /// <summary>
         /// 保存按钮
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (m_pFeature == null)

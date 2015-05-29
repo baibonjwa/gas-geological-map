@@ -259,8 +259,8 @@ namespace GIS.FileMenu
         /// <summary>
         /// 更新文本位置
         /// </summary>
-        /// <param name="mapEnvelop">地图范围</param>
-        /// <param name="mapSurroundEntity">文本位置实体</param>
+        /// <params name="mapEnvelop">地图范围</params>
+        /// <params name="mapSurroundEntity">文本位置实体</params>
         /// <returns></returns>
         private bool UpdateTextElement(IEnvelope mapEnvelop, MapSurroundEntity mapSurroundEntity)
         {
@@ -292,8 +292,8 @@ namespace GIS.FileMenu
         /// <summary>
         /// 更新MapSurroundFrame位置
         /// </summary>
-        /// <param name="mapEnvelop">地图范围</param>
-        /// <param name="mapSurroundEntity">MapSurroundFrame位置实体</param>
+        /// <params name="mapEnvelop">地图范围</params>
+        /// <params name="mapSurroundEntity">MapSurroundFrame位置实体</params>
         /// <returns></returns>
         private bool UpdateMapSurroundFrame(IEnvelope mapEnvelop, MapSurroundEntity mapSurroundEntity)
         {

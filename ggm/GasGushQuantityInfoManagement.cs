@@ -28,8 +28,8 @@ namespace ggm
         /// <summary>
         ///     添加（必须实装）
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var gasGushQuantityInfoEnteringForm = new GasGushQuantityInfoEntering();
@@ -42,8 +42,8 @@ namespace ggm
         /// <summary>
         ///     修改（必须实装）
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             var gasGushQuantityInfoEnteringForm =
@@ -57,8 +57,8 @@ namespace ggm
         /// <summary>
         ///     删除按钮（必须实装）
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (!Alert.Confirm("确定要删除瓦斯涌出量数据吗？")) return;
@@ -73,7 +73,7 @@ namespace ggm
         /// <summary>
         ///     删除瓦斯信息
         /// </summary>
-        /// <param name="bid">绑定ID</param>
+        /// <params name="bid">绑定ID</params>
         private void DelGasGushQuantityPt(string[] bid)
         {
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.LAYER_ALIAS_MR_WSYLD);
@@ -92,8 +92,8 @@ namespace ggm
         /// <summary>
         ///     导出
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnExport_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -105,8 +105,8 @@ namespace ggm
         /// <summary>
         ///     打印
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnPrint_Click(object sender, EventArgs e)
         {
             DevUtil.DevPrint(gcGasGushQuantity, "瓦斯涌出量点信息报表");
@@ -115,8 +115,8 @@ namespace ggm
         /// <summary>
         ///     退出
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <param name="e"></params>
         private void btnExit_Click(object sender, EventArgs e)
         {
             // 关闭窗口
@@ -126,8 +126,8 @@ namespace ggm
         /// <summary>
         ///     刷新
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshData();

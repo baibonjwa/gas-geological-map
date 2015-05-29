@@ -109,7 +109,7 @@ namespace GIS
         /// <summary>
         /// Occurs when this tool is created
         /// </summary>
-        /// <param name="hook">Instance of the application</param>
+        /// <params name="hook">Instance of the application</params>
         public override void OnCreate(object hook)
         {
             if (m_hookHelper == null)
@@ -297,10 +297,10 @@ namespace GIS
         /// <summary>
         /// 判断鼠标点击处有无巷道要素
         /// </summary>
-        /// <param name="m_hookHelper"></param>
-        /// <param name="pMousePoint">鼠标点</param>
-        /// <param name="pFeatureLayer">导线点图层</param>
-        /// <param name="theFeature">返回离鼠标最近的导线点</param>
+        /// <params name="m_hookHelper"></params>
+        /// <params name="pMousePoint">鼠标点</params>
+        /// <params name="pFeatureLayer">导线点图层</params>
+        /// <params name="theFeature">返回离鼠标最近的导线点</params>
         public void TestExistPointFeature(IHookHelper m_hookHelper, IPoint pMousePoint, IFeatureLayer pFeatureLayer, ref IFeature theFeature)
         {
             ArrayList pSelected = new ArrayList();
@@ -364,11 +364,11 @@ namespace GIS
         /// <summary>
         /// 获取离鼠标点最近的要素
         /// </summary>
-        /// <param name="m_hookHelper"></param>
-        /// <param name="SearchDist">查询距离</param>
-        /// <param name="searchCollection">搜索到的要素集合</param>
-        /// <param name="pPoint">鼠标点</param>
-        /// <param name="pFeature">返回的最近要素</param>
+        /// <params name="m_hookHelper"></params>
+        /// <params name="SearchDist">查询距离</params>
+        /// <params name="searchCollection">搜索到的要素集合</params>
+        /// <params name="pPoint">鼠标点</params>
+        /// <params name="pFeature">返回的最近要素</params>
         public void GetClosestFeatureInCollection(IHookHelper m_hookHelper, double SearchDist, ArrayList searchCollection, IPoint pPoint, ref IFeature pFeature)
         {
             IProximityOperator pProximity;

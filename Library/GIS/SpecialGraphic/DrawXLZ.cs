@@ -107,7 +107,7 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             try
@@ -227,8 +227,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 根据图形绘制要素
         /// </summary>
-        /// <param name="pLayer"></param>
-        /// <param name="pGeometry"></param>
+        /// <params name="pLayer"></params>
+        /// <params name="pGeometry"></params>
         private void DrawFeatureByShape(ILayer pLayer, IGeometry pGeometry)
         {
             if (pLayer != null)
@@ -266,9 +266,9 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 颜色转换
         /// </summary>
-        /// <param name="red"></param>
-        /// <param name="green"></param>
-        /// <param name="blue"></param>
+        /// <params name="red"></params>
+        /// <params name="green"></params>
+        /// <params name="blue"></params>
         /// <returns></returns>
         private IRgbColor GetRGBColor(int red, int green, int blue)
         {

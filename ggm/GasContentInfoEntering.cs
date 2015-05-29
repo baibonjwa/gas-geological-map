@@ -35,8 +35,8 @@ namespace ggm
         /// <summary>
         ///     20140311 lyf 加载窗体时传入拾取点的坐标值
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void GasContentInfoEntering_Load(object sender, EventArgs e)
         {
             dtpMeasureDateTime.Format = DateTimePickerFormat.Custom;
@@ -56,8 +56,8 @@ namespace ggm
         /// <summary>
         ///     提交
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -73,7 +73,7 @@ namespace ggm
                     depth = Convert.ToDouble(txtDepth.Text),
                     gas_content_value = Convert.ToDouble(txtGasContentValue.Text),
                     measure_datetime = dtpMeasureDateTime.Value,
-                    tunnel = selectTunnelSimple1.SelectedTunnel,
+                    tunnel = selectTunnelSimple1.selected_tunnel,
                     bid = IdGenerator.NewBindingId()
                 };
                 // 坐标X
@@ -88,7 +88,7 @@ namespace ggm
                 GasContent.depth = Convert.ToDouble(txtDepth.Text);
                 GasContent.gas_content_value = Convert.ToDouble(txtGasContentValue.Text);
                 GasContent.measure_datetime = dtpMeasureDateTime.Value;
-                GasContent.tunnel = selectTunnelSimple1.SelectedTunnel;
+                GasContent.tunnel = selectTunnelSimple1.selected_tunnel;
                 GasContent.Save();
                 DelGasGushQuantityPt(GasContent.bid);
                 DrawGasGushQuantityPt(GasContent);
@@ -98,8 +98,8 @@ namespace ggm
         /// <summary>
         ///     取消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
@@ -170,8 +170,8 @@ namespace ggm
         /// <summary>
         ///     删除瓦斯信息
         /// </summary>
-        /// <param name="bid">绑定ID</param>
-        /// <param name="mc">煤层</param>
+        /// <params name="bid">绑定ID</params>
+        /// <params name="mc">煤层</params>
         private void DelGasGushQuantityPt(string bid)
         {
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.LAYER_ALIAS_MR_WSHLD);

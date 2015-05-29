@@ -63,8 +63,8 @@ namespace GIS
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void MeasureResult_Load(object sender, EventArgs e)
         {
             tsbtnClear.Visible = false;

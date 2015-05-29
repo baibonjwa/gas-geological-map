@@ -43,7 +43,7 @@ namespace geoInput
         /// <summary>
         ///     带参数的构造方法
         /// </summary>
-        /// <param name="borehole"></param>
+        /// <params name="borehole"></params>
         public BoreholeInfoEntering(Borehole borehole)
         {
             InitializeComponent();
@@ -51,7 +51,7 @@ namespace geoInput
             {
                 borehole = Borehole.Find(borehole.id);
                 // 孔号
-                txtBoreholeNumber.Text = borehole.borehole_number;
+                txtBoreholeNumber.Text = borehole.name;
                 // 地面标高
                 txtGroundElevation.Text = borehole.ground_elevation.ToString(CultureInfo.InvariantCulture);
                 // X坐标
@@ -65,29 +65,29 @@ namespace geoInput
 
 
                 // 明细
-                gvCoalSeamsTexture.RowCount = borehole.borehole_lithologys.Count + 1;
-                for (var i = 0; i < borehole.borehole_lithologys.Count; i++)
+                gvCoalSeamsTexture.RowCount = borehole.sub_boreholes.Count + 1;
+                for (var i = 0; i < borehole.sub_boreholes.Count; i++)
                 {
 
                     gvCoalSeamsTexture[0, i].Value = LITHOLOGY.Selected;
                     // 底板标高
-                    gvCoalSeamsTexture[1, i].Value = borehole.borehole_lithologys[i].floor_elevation;
+                    gvCoalSeamsTexture[1, i].Value = borehole.sub_boreholes[i].floor_elevation;
                     // 厚度
-                    gvCoalSeamsTexture[2, i].Value = borehole.borehole_lithologys[i].thickness;
+                    gvCoalSeamsTexture[2, i].Value = borehole.sub_boreholes[i].thickness;
                     // 煤层名称
-                    gvCoalSeamsTexture[3, i].Value = borehole.borehole_lithologys[i].coal_seam;
+                    gvCoalSeamsTexture[3, i].Value = borehole.sub_boreholes[i].coal_seam;
 
                     // 坐标X
                     gvCoalSeamsTexture[4, i].Value =
-                        borehole.borehole_lithologys[i].coordinate_x.ToString(CultureInfo.InvariantCulture);
+                        borehole.sub_boreholes[i].coordinate_x.ToString(CultureInfo.InvariantCulture);
 
                     // 坐标Y
                     gvCoalSeamsTexture[5, i].Value =
-                        borehole.borehole_lithologys[i].coordinate_y.ToString(CultureInfo.InvariantCulture);
+                        borehole.sub_boreholes[i].coordinate_y.ToString(CultureInfo.InvariantCulture);
 
                     // 坐标Z
                     gvCoalSeamsTexture[6, i].Value =
-                        borehole.borehole_lithologys[i].coordinate_x.ToString(CultureInfo.InvariantCulture);
+                        borehole.sub_boreholes[i].coordinate_x.ToString(CultureInfo.InvariantCulture);
                 }
             }
         }
@@ -95,20 +95,20 @@ namespace geoInput
         /// <summary>
         ///     提  交
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             var borehole = Borehole.FindAllByProperty("name", txtBoreholeNumber.Text).FirstOrDefault() ??
                            new Borehole { bid = IdGenerator.NewBindingId() };
-            borehole.borehole_number = txtBoreholeNumber.Text.Trim();
+            borehole.name = txtBoreholeNumber.Text.Trim();
             borehole.ground_elevation = Convert.ToDouble(txtGroundElevation.Text.Trim());
             borehole.coordinate_x = Convert.ToDouble(txtCoordinateX.Text.Trim());
             borehole.coordinate_y = Convert.ToDouble(txtCoordinateY.Text.Trim());
             borehole.coordinate_z = Convert.ToDouble(txtCoordinateZ.Text.Trim());
             borehole.coal_seam_texture = string.Empty;
-
-            var boreholeLithologys = new List<SubBorehole>();
+            borehole.Save();
+            var subBorehole = new SubBorehole();
             for (var i = 0; i < gvCoalSeamsTexture.RowCount; i++)
             {
                 // 最后一行为空行时，跳出循环
@@ -116,8 +116,9 @@ namespace geoInput
                 {
                     break;
                 }
+
                 // 创建钻孔岩性实体
-                var boreholeLithology = new SubBorehole
+                subBorehole = new SubBorehole
                 {
                     floor_elevation = Convert.ToDouble(gvCoalSeamsTexture.Rows[i].Cells[1].Value),
                     thickness = Convert.ToDouble(gvCoalSeamsTexture.Rows[i].Cells[2].Value),
@@ -128,29 +129,9 @@ namespace geoInput
                     lithology = gvCoalSeamsTexture.Rows[i].Cells[0].Value.ToString(),
                     borehole = borehole
                 };
-                boreholeLithologys.Add(boreholeLithology);
+                subBorehole.Save();
             }
-            borehole.borehole_lithologys = boreholeLithologys;
-            borehole.Save();
 
-            //    var dlgResult = MessageBox.Show(@"是：见煤钻孔，否：未见煤钻孔，取消：不绘制钻孔", @"绘制钻孔",
-            //        MessageBoxButtons.YesNoCancel);
-
-            //    if (dlgResult == DialogResult.Yes)
-            //    {
-            //        DrawZuanKong(borehole, boreholeLithologyEntityList[0]);
-            //    }
-            //    else if (dlgResult == DialogResult.No)
-            //    {
-            //        DrawZuanKong(borehole);
-            //    }
-            //    else if (dlgResult == DialogResult.Cancel)
-            //    {
-            //    }
-            //}
-            //else
-            //{
-            //1.获得当前编辑图层
             var drawspecial = new DrawSpecialCommon();
             const string sLayerAliasName = LayerNames.DEFALUT_BOREHOLE; //“钻孔”图层
             var featureLayer = drawspecial.GetFeatureLayerByName(sLayerAliasName);
@@ -168,10 +149,11 @@ namespace geoInput
             var dlgResult = MessageBox.Show(@"是：见煤钻孔，否：未见煤钻孔，取消：不绘制钻孔",
                 @"绘制钻孔", MessageBoxButtons.YesNoCancel);
 
+            borehole = Borehole.FindAllByProperty("name", borehole.name).First();
             switch (dlgResult)
             {
                 case DialogResult.Yes:
-                    DrawZuanKong(borehole, borehole.borehole_lithologys.First());
+                    DrawZuanKong(borehole, subBorehole);
                     break;
                 case DialogResult.No:
                     DrawZuanKong(borehole);
@@ -180,13 +162,14 @@ namespace geoInput
                     break;
             }
             DialogResult = DialogResult.OK;
+
         }
 
         /// <summary>
         ///     取  消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // 关闭窗体
@@ -196,8 +179,8 @@ namespace geoInput
         /// <summary>
         ///     岩性选择事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void gvCoalSeamsTexture_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex != 0) return;
@@ -229,8 +212,8 @@ namespace geoInput
         /// <summary>
         ///     修改岩性时，当前记录为煤时，煤层名称设为可编辑，否则设为不可编辑
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void gvCoalSeamsTexture_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
             for (var i = 0; i < gvCoalSeamsTexture.RowCount - 1; i++)
@@ -260,8 +243,8 @@ namespace geoInput
         /// <summary>
         ///     行删除
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void gvCoalSeamsTexture_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // 判断列索引是不是删除按钮
@@ -280,8 +263,8 @@ namespace geoInput
         /// <summary>
         ///     右键菜单
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void gvCoalSeamsTexture_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -302,8 +285,8 @@ namespace geoInput
         /// <summary>
         ///     上移
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void 上移ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (gvCoalSeamsTexture.CurrentRow != null)
@@ -362,8 +345,8 @@ namespace geoInput
         /// <summary>
         ///     下移
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void 下移ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (gvCoalSeamsTexture.CurrentRow == null) return;
@@ -421,8 +404,8 @@ namespace geoInput
         /// <summary>
         ///     插入
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void 插入ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (gvCoalSeamsTexture.CurrentRow == null) return;
@@ -435,8 +418,8 @@ namespace geoInput
         /// <summary>
         ///     添加数据顺序编号
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void gvCoalSeamsTexture_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             var rectangle = new Rectangle(e.RowBounds.Location.X,
@@ -480,7 +463,7 @@ namespace geoInput
                         var borehole = Borehole.FindAllByProperty("name", str[0]).FirstOrDefault() ??
                                        new Borehole { bid = IdGenerator.NewBindingId() };
 
-                        borehole.borehole_number = str[0];
+                        borehole.name = str[0];
                         borehole.ground_elevation = Convert.ToDouble(str[3]);
                         borehole.coordinate_x = Convert.ToDouble(str[1].Split(',')[0]);
                         borehole.coordinate_y = Convert.ToDouble(str[1].Split(',')[1]);
@@ -492,14 +475,14 @@ namespace geoInput
                             borehole = borehole,
                             lithology = "煤层",
                             floor_elevation = Convert.ToDouble(str[4]),
-                            coal_seam = ConfigHelper.config.coal_seam,
+                            coal_seam = ConfigHelper.current_seam.name,
                             thickness = Convert.ToDouble(str[2]),
                             coordinate_x = Convert.ToDouble(str[1].Split(',')[0]),
                             coordinate_y = Convert.ToDouble(str[1].Split(',')[1]),
                             coordinate_z = 0
                         };
 
-                        borehole.borehole_lithologys = new[] { boreholeLithology };
+                        borehole.sub_boreholes = new[] { boreholeLithology };
                         DrawZuanKong(borehole, boreholeLithology);
                         borehole.Save();
                     }
@@ -539,7 +522,7 @@ namespace geoInput
                     txtCoordinateX.Text = str[1].Split(',')[0];
                     txtCoordinateY.Text = str[1].Split(',')[1];
                     txtCoordinateZ.Text = @"0";
-                    gvCoalSeamsTexture.Rows.Add("煤层", str[4], str[2], "3#", str[1].Split(',')[0],
+                    gvCoalSeamsTexture.Rows.Add("煤层", str[4], str[2], ConfigHelper.current_seam.name, str[1].Split(',')[0],
                         str[1].Split(',')[1],
                         "0");
                     txtGroundElevation.Text = str[3];
@@ -557,8 +540,8 @@ namespace geoInput
         /// <summary>
         ///     见煤钻孔
         /// </summary>
-        /// <param name="breholeEntity">钻孔实体</param>
-        /// <param name="subBoreholeEntity">钻孔岩性实体</param>
+        /// <params name="breholeEntity">钻孔实体</params>
+        /// <params name="subBoreholeEntity">钻孔岩性实体</params>
         private void DrawZuanKong(Borehole breholeEntity, SubBorehole subBoreholeEntity)
         {
             ////1.获得当前编辑图层
@@ -627,7 +610,7 @@ namespace geoInput
             var list = new List<ziduan>
             {
                 new ziduan("bid", breholeEntity.bid),
-                new ziduan("BOREHOLE_NUMBER", breholeEntity.borehole_number),
+                new ziduan("BOREHOLE_NUMBER", breholeEntity.name),
                 new ziduan("addtime", DateTime.Now.ToString(CultureInfo.InvariantCulture)),
                 new ziduan("GROUND_ELEVATION", breholeEntity.ground_elevation.ToString(CultureInfo.InvariantCulture)),
                 new ziduan("FLOOR_ELEVATION",
@@ -648,7 +631,7 @@ namespace geoInput
         /// <summary>
         ///     未见煤钻孔
         /// </summary>
-        /// <param name="breholeEntity">钻孔实体</param>
+        /// <params name="breholeEntity">钻孔实体</params>
         private void DrawZuanKong(Borehole breholeEntity)
         {
             ////1.获得当前编辑图层
@@ -712,7 +695,7 @@ namespace geoInput
             var list = new List<ziduan>
             {
                 new ziduan(GIS_Const.FIELD_BID, breholeEntity.bid),
-                new ziduan(GIS_Const.FIELD_BOREHOLE_NUMBER, breholeEntity.borehole_number),
+                new ziduan(GIS_Const.FIELD_BOREHOLE_NUMBER, breholeEntity.name),
                 new ziduan(GIS_Const.FIELD_ADD_TIME, DateTime.Now.ToString(CultureInfo.InvariantCulture)),
                 new ziduan(GIS_Const.FIELD_GROUND_ELEVATION,
                     breholeEntity.ground_elevation.ToString(CultureInfo.InvariantCulture)),

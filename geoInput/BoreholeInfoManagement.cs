@@ -28,8 +28,8 @@ namespace geoInput
         /// <summary>
         ///     添加
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var m = new BoreholeInfoEntering();
@@ -43,8 +43,8 @@ namespace geoInput
         /// <summary>
         ///     修改
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (gridView1.GetFocusedRow() == null)
@@ -62,8 +62,8 @@ namespace geoInput
         /// <summary>
         ///     删除按钮
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (!Alert.Confirm("确认要删除该钻孔吗？")) return;
@@ -79,7 +79,7 @@ namespace geoInput
         /// <summary>
         ///     根据钻孔绑定ID删除钻孔图元
         /// </summary>
-        /// <param name="sBoreholeBidArray">要删除钻孔的绑定ID</param>
+        /// <params name="sBoreholeBidArray">要删除钻孔的绑定ID</params>
         private static void DeleteZuanKongByBid(ICollection<string> sBoreholeBidArray)
         {
             if (sBoreholeBidArray.Count == 0) return;
@@ -104,8 +104,8 @@ namespace geoInput
         /// <summary>
         ///     退出
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnExit_Click(object sender, EventArgs e)
         {
             // 关闭窗口
@@ -115,8 +115,8 @@ namespace geoInput
         /// <summary>
         ///     导出
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnExport_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -128,8 +128,8 @@ namespace geoInput
         /// <summary>
         ///     打印
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnPrint_Click(object sender, EventArgs e)
         {
             DevUtil.DevPrint(gcBorehole, "钻孔信息报表");
@@ -138,8 +138,8 @@ namespace geoInput
         /// <summary>
         ///     刷新
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshData();
@@ -148,8 +148,8 @@ namespace geoInput
         /// <summary>
         ///     图显按钮事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnMap_Click(object sender, EventArgs e)
         {
             // 获取已选择明细行的索引

@@ -31,7 +31,7 @@ namespace geoInput
         /// <summary>
         ///     带参数的构造方法
         /// </summary>
-        /// <param name="strPrimaryKey">主键</param>
+        /// <params name="strPrimaryKey">主键</params>
         public PitshaftInfoEntering(string strPrimaryKey)
         {
             InitializeComponent();
@@ -69,8 +69,8 @@ namespace geoInput
         /// <summary>
         ///     提  交
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -153,8 +153,8 @@ namespace geoInput
         /// <summary>
         ///     取  消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // 关闭窗口
@@ -176,7 +176,7 @@ namespace geoInput
         /// <summary>
         ///     绘制井筒图元
         /// </summary>
-        /// <param name="pitshaftEntity"></param>
+        /// <params name="pitshaftEntity"></params>
         private void DrawJingTong(Pitshaft pitshaftEntity)
         {
             ////1.获得当前编辑图层
@@ -287,7 +287,7 @@ namespace geoInput
         /// <summary>
         ///     修改井筒
         /// </summary>
-        /// <param name="pitshaftEntity"></param>
+        /// <params name="pitshaftEntity"></params>
         private void ModifyJingTong(Pitshaft pitshaftEntity)
         {
             //1.获得当前编辑图层
@@ -313,7 +313,7 @@ namespace geoInput
         /// <summary>
         ///     坐标长度处理
         /// </summary>
-        /// <param name="str"></param>
+        /// <params name="str"></params>
         /// <returns></returns>
         private string SplitStr(string str)
         {

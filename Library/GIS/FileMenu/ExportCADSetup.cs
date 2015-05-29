@@ -191,8 +191,8 @@ namespace GIS.FileMenu
         /// <summary>
         /// 选择导出路径
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSelectedPath_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveExportCADFileDialog = new SaveFileDialog();

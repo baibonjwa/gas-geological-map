@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Castle.ActiveRecord;
 using NHibernate.Criterion;
 
@@ -38,5 +39,11 @@ namespace LibEntity
 
         [Property]
         public string bid { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
     }
 }

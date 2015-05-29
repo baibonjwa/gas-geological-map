@@ -126,7 +126,7 @@ namespace GIS
         /// <summary>
         /// Occurs when this tool is created
         /// </summary>
-        /// <param name="hook">Instance of the application</param>
+        /// <params name="hook">Instance of the application</params>
         public override void OnCreate(object hook)
         {
             if (m_hookHelper == null)
@@ -255,8 +255,8 @@ namespace GIS
         /// <summary>
         /// 根据参考线要素，对选择的线要素进行裁剪
         /// </summary>
-        /// <param name="featTrim">待裁剪的线要素</param>
-        /// <param name="featRef">参考线要素</param>
+        /// <params name="featTrim">待裁剪的线要素</params>
+        /// <params name="featRef">参考线要素</params>
         /// <returns>成功返回True</returns>
         public bool TrimLine(IFeature featTrim, IFeature featRef, IPoint pMousePnt)
         {
@@ -529,8 +529,8 @@ namespace GIS
         /// <summary>
         /// 计算点到直线的距离
         /// </summary>
-        /// <param name="pPoint"></param>
-        /// <param name="pLine"></param>
+        /// <params name="pPoint"></params>
+        /// <params name="pLine"></params>
         /// <returns></returns>
         public double GetPointToLineDistance(IPoint pPoint, ILine pLine)
         {
@@ -609,8 +609,8 @@ namespace GIS
         /// <summary>
         /// 计算两点之间的距离
         /// </summary>
-        /// <param name="pt1"></param>
-        /// <param name="pt2"></param>
+        /// <params name="pt1"></params>
+        /// <params name="pt2"></params>
         /// <returns></returns>
         private double GetTwoPointDistance(IPoint pt1, IPoint pt2)
         {

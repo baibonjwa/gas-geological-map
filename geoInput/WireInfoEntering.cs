@@ -37,7 +37,7 @@ namespace geoInput
         /// <summary>
         ///     构造方法
         /// </summary>
-        /// <param name="wire"></param>
+        /// <params name="wire"></params>
         public WireInfoEntering(Wire wire)
         {
             // 初始化主窗体变量
@@ -64,8 +64,8 @@ namespace geoInput
             txtWireName.Text = wire.name;
             txtWireLevel.Text = wire.level;
             dtpMeasureDate.Value = wire.measure_date;
-            cboVobserver.Text = wire.vobserver;
-            cboVobserver.Text = wire.vobserver;
+            cboVobserver.Text = wire.observer;
+            cboVobserver.Text = wire.observer;
             cboCounter.Text = wire.counter;
             cboCounter.Text = wire.counter;
             dtpCountDate.Value = wire.count_date;
@@ -79,82 +79,80 @@ namespace geoInput
         /// <summary>
         ///     提交
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             var wirePoints = GetWirePointListFromDataGrid();
-            using (new SessionScope())
+
+            var wire = Wire.FindAllByProperty("tunnel.id", selectTunnelUserControl1.selected_tunnel.id).FirstOrDefault();
+            if (wirePoints.Count < 2)
             {
-                var wire = Wire.FindAllByProperty("tunnel.id", selectTunnelUserControl1.SelectedTunnel.id).FirstOrDefault();
-                if (wirePoints.Count < 2)
+                Alert.AlertMsg("导线点数据小于2个");
+                return;
+            }
+            if (wire != null)
+            {
+                if (Alert.Confirm("该巷道已绑定导线点，是否覆盖？"))
                 {
-                    Alert.AlertMsg("导线点数据小于2个");
-                    return;
-                }
-                if (wire != null)
-                {
-                    if (Alert.Confirm("该巷道已绑定导线点，是否覆盖？"))
-                    {
-                        //foreach (var p in wire.WirePoints)
-                        //{
-                        //    p.Delete();
-                        //}
-                        foreach (var p in wirePoints)
-                        {
-                            p.wire = wire;
-                            p.Save();
-                        }
-                        wire.name = txtWireName.Text;
-                        wire.level = txtWireLevel.Text;
-                        wire.measure_date = dtpMeasureDate.Value;
-                        wire.vobserver = cboVobserver.Text;
-                        wire.counter = cboCounter.Text;
-                        wire.count_date = dtpCountDate.Value;
-                        wire.checker = cboChecker.Text;
-                        wire.check_date = dtpCheckDate.Value;
-                        wire.Save();
-                        DrawWirePoint(wirePoints, "CHANGE");
-                        double hdwid;
-                        _dics = ConstructDics(selectTunnelUserControl1.SelectedTunnel, out hdwid);
-                        if (selectTunnelUserControl1.SelectedTunnel != null)
-                        {
-                            UpdateHdbyPnts(selectTunnelUserControl1.SelectedTunnel.id, wirePoints, _dics, hdwid);
-                        }
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-                else
-                {
-                    wire = new Wire
-                    {
-                        tunnel = selectTunnelUserControl1.SelectedTunnel,
-                        name = txtWireName.Text,
-                        level = txtWireLevel.Text,
-                        measure_date = dtpMeasureDate.Value,
-                        vobserver = cboVobserver.Text,
-                        counter = cboCounter.Text,
-                        count_date = dtpCountDate.Value,
-                        checker = cboChecker.Text,
-                        check_date = dtpCheckDate.Value
-                    };
+                    //foreach (var p in wire.WirePoints)
+                    //{
+                    //    p.Delete();
+                    //}
                     foreach (var p in wirePoints)
                     {
                         p.wire = wire;
                         p.Save();
                     }
+                    wire.name = txtWireName.Text;
+                    wire.level = txtWireLevel.Text;
+                    wire.measure_date = dtpMeasureDate.Value;
+                    wire.observer = cboVobserver.Text;
+                    wire.counter = cboCounter.Text;
+                    wire.count_date = dtpCountDate.Value;
+                    wire.checker = cboChecker.Text;
+                    wire.check_date = dtpCheckDate.Value;
                     wire.Save();
-
-                    DrawWirePoint(wirePoints, "ADD");
-
+                    DrawWirePoint(wirePoints, "CHANGE");
                     double hdwid;
-                    _dics = ConstructDics(selectTunnelUserControl1.SelectedTunnel, out hdwid);
-                    AddHdbyPnts(wirePoints, _dics, hdwid);
+                    _dics = ConstructDics(selectTunnelUserControl1.selected_tunnel, out hdwid);
+                    if (selectTunnelUserControl1.selected_tunnel != null)
+                    {
+                        UpdateHdbyPnts(selectTunnelUserControl1.selected_tunnel.id, wirePoints, _dics, hdwid);
+                    }
+                }
+                else
+                {
+                    return;
                 }
             }
+            else
+            {
+                wire = new Wire
+                {
+                    tunnel = selectTunnelUserControl1.selected_tunnel,
+                    name = txtWireName.Text,
+                    level = txtWireLevel.Text,
+                    measure_date = dtpMeasureDate.Value,
+                    observer = cboVobserver.Text,
+                    counter = cboCounter.Text,
+                    count_date = dtpCountDate.Value,
+                    checker = cboChecker.Text,
+                    check_date = dtpCheckDate.Value
+                };
+                wire.Save();
+                foreach (var p in wirePoints)
+                {
+                    p.wire = wire;
+                    p.Save();
+                }
+                DrawWirePoint(wirePoints, "ADD");
+
+                double hdwid;
+                _dics = ConstructDics(selectTunnelUserControl1.selected_tunnel, out hdwid);
+                AddHdbyPnts(wirePoints, _dics, hdwid);
+            }
+
             DialogResult = DialogResult.OK;
         }
 
@@ -190,7 +188,7 @@ namespace geoInput
         /// <summary>
         ///     导线点实体赋值
         /// </summary>
-        /// <param name="i">Datagridview行号</param>
+        /// <params name="i">Datagridview行号</params>
         /// <returns>导线点实体</returns>
         private WirePoint SetWirePointEntity(int i)
         {
@@ -295,8 +293,8 @@ namespace geoInput
         /// <summary>
         ///     取消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // 关闭窗口
@@ -306,8 +304,8 @@ namespace geoInput
         /// <summary>
         ///     显示行号
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void dgrdvWire_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             var rectangle = new Rectangle(e.RowBounds.Location.X,
@@ -322,8 +320,8 @@ namespace geoInput
         /// <summary>
         ///     初始化
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void WireInfoEntering_Load(object sender, EventArgs e)
         {
             selectTunnelUserControl1.LoadData(Wire.tunnel);
@@ -332,8 +330,8 @@ namespace geoInput
         /// <summary>
         ///     datagridview进入行时，按钮可操作性
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void dgrdvWire_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             _tmpRowIndex = e.RowIndex;
@@ -355,8 +353,8 @@ namespace geoInput
         /// <summary>
         ///     添加按钮
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (dgrdvWire.CurrentRow != null)
@@ -371,8 +369,8 @@ namespace geoInput
         /// <summary>
         ///     删除按钮
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnDel_Click(object sender, EventArgs e)
         {
             if (dgrdvWire.CurrentRow != null &&
@@ -383,8 +381,8 @@ namespace geoInput
         /// <summary>
         ///     上移按钮
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnMoveUp_Click(object sender, EventArgs e)
         {
             var isLast = _tmpRowIndex == dgrdvWire.Rows.Count - 2;
@@ -414,8 +412,8 @@ namespace geoInput
         /// <summary>
         ///     下移按钮
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnMoveDown_Click(object sender, EventArgs e)
         {
             _tmpRowIndex = dgrdvWire.SelectedRows[0].Index;
@@ -444,8 +442,13 @@ namespace geoInput
                     var miningArea = MiningArea.FindAllByProperty("name", miningAreaName).FirstOrDefault();
                     if (miningArea == null)
                     {
-                        Alert.Confirm("该采区不存在，请先添加采区");
-                        return;
+                        var newMiningArea = new MiningArea
+                        {
+                            name = miningAreaName,
+                            horizontal = Horizontal.FindFirst()
+                        };
+                        newMiningArea.Save();
+                        miningArea = newMiningArea;
                     }
                     var workingFace = Workingface.findone_by_workingface_name_and_mining_area_id(workingFaceName, miningArea.id);
                     if (workingFace == null)
@@ -541,9 +544,9 @@ namespace geoInput
         /// <summary>
         ///     通过（关键/导线）点绘制巷道
         /// </summary>
-        /// <param name="wirepntcols">导线信息列表</param>
-        /// <param name="dics">巷道属性</param>
-        /// <param name="hdwid">巷道宽度</param>
+        /// <params name="wirepntcols">导线信息列表</params>
+        /// <params name="dics">巷道属性</params>
+        /// <params name="hdwid">巷道宽度</params>
         private void AddHdbyPnts(List<WirePoint> wirepntcols, Dictionary<string, string> dics, double hdwid)
         {
             if (wirepntcols == null || wirepntcols.Count == 0)
@@ -585,10 +588,10 @@ namespace geoInput
         /// <summary>
         ///     更新巷道
         /// </summary>
-        /// <param name="wirepntcols"></param>
-        /// <param name="dics"></param>
-        /// <param name="hdwid"></param>
-        /// <param name="tunnelId"></param>
+        /// <params name="wirepntcols"></params>
+        /// <params name="dics"></params>
+        /// <params name="hdwid"></params>
+        /// <params name="tunnelId"></params>
         private void UpdateHdbyPnts(int tunnelId, List<WirePoint> wirepntcols, Dictionary<string, string> dics,
             double hdwid)
         {
@@ -646,8 +649,8 @@ namespace geoInput
         /// <summary>
         ///     根据坐标绘制导线点
         /// </summary>
-        /// <param name="lstWpie">导线坐标（List）</param>
-        /// <param name="addOrChange"></param>
+        /// <params name="lstWpie">导线坐标（List）</params>
+        /// <params name="addOrChange"></params>
         private void DrawWirePoint(List<WirePoint> lstWpie, string addOrChange)
         {
             IPoint pt = new Point();
@@ -683,7 +686,7 @@ namespace geoInput
             }
         }
 
-        ///// <param name="verticesBtmRet">Vector3_DW数据</param>
+        ///// <params name="verticesBtmRet">Vector3_DW数据</params>
         /// <summary>
         ///     根据导线点坐标绘制巷道
         /// </summary>
@@ -741,6 +744,7 @@ namespace geoInput
                 try
                 {
                     using (new SessionScope())
+
                     {
                         safeFileName = fileName.Substring(fileName.LastIndexOf(@"\", StringComparison.Ordinal) + 1);
                         var strs = safeFileName.Split('-');
@@ -751,14 +755,17 @@ namespace geoInput
                         var miningArea = MiningArea.FindAllByProperty("name", miningAreaName).FirstOrDefault();
                         if (miningArea == null)
                         {
-                            Alert.Confirm("该采区不存在，请先添加采区");
-                            return;
+                            var newMiningArea = new MiningArea
+                            {
+                                name = miningAreaName,
+                                horizontal = Horizontal.FindFirst()
+                            };
+                            newMiningArea.Save();
+                            miningArea = newMiningArea;
                         }
-                        var workingFace = Workingface.findone_by_workingface_name_and_mining_area_id(workingFaceName, miningArea.id);
-                        if (workingFace == null)
-                        {
-                            workingFace = AddWorkingFace(miningArea, workingFaceName);
-                        }
+                        var workingFace =
+                            Workingface.findone_by_workingface_name_and_mining_area_id(workingFaceName, miningArea.id) ??
+                            AddWorkingFace(miningArea, workingFaceName);
                         if (workingFace == null) return;
                         Tunnel tunnel;
                         if (workingFace.tunnels != null &&
@@ -773,6 +780,31 @@ namespace geoInput
 
                         var sr = new StreamReader(fileName, Encoding.GetEncoding("GB2312"));
                         string fileContent;
+
+                        var wire = Wire.FindAllByProperty("tunnel.id", tunnel.id).FirstOrDefault();
+
+                        if (wire != null)
+                        {
+                            wire.name = tunnelName.Split('.').Length > 0
+                                ? tunnelName.Split('.')[0] + "导线点"
+                                : tunnelName + "导线点";
+                        }
+                        else
+                        {
+                            wire = new Wire
+                            {
+                                tunnel = tunnel,
+                                check_date = DateTime.Now,
+                                measure_date = DateTime.Now,
+                                count_date = DateTime.Now,
+                                name =
+                                    tunnelName.Split('.').Length > 0
+                                        ? tunnelName.Split('.')[0] + "导线点"
+                                        : tunnelName + "导线点"
+                            };
+                        }
+                        wire.Save();
+
                         var wirePoints = new List<WirePoint>();
                         while ((fileContent = sr.ReadLine()) != null)
                         {
@@ -786,6 +818,7 @@ namespace geoInput
                             {
                                 bid = IdGenerator.NewBindingId(),
                                 name = pointName,
+                                wire = wire,
                                 coordinate_x = Convert.ToDouble(pointX),
                                 coordinate_y = Convert.ToDouble(pointY),
                                 coordinate_z = 0,
@@ -799,31 +832,6 @@ namespace geoInput
                         {
                             throw new Exception();
                         }
-                        var wire = Wire.FindAllByProperty("tunnel.id", tunnel.id).FirstOrDefault();
-
-                        if (wire != null)
-                        {
-                            wire.name = tunnelName.Split('.').Length > 0
-                                ? tunnelName.Split('.')[0] + "导线点"
-                                : tunnelName + "导线点";
-                            wire.wire_points = wirePoints;
-                        }
-                        else
-                        {
-                            wire = new Wire
-                            {
-                                tunnel = tunnel,
-                                check_date = DateTime.Now,
-                                measure_date = DateTime.Now,
-                                count_date = DateTime.Now,
-                                name =
-                                    tunnelName.Split('.').Length > 0
-                                        ? tunnelName.Split('.')[0] + "导线点"
-                                        : tunnelName + "导线点",
-                                wire_points = wirePoints
-                            };
-                        }
-                        wire.Save();
                         pbCount.Value++;
                         DrawWirePoint(wirePoints, "CHANGE");
                         double hdwid;
@@ -834,7 +842,7 @@ namespace geoInput
                             (Convert.ToInt32(lblSuccessed.Text) + 1).ToString(CultureInfo.InvariantCulture);
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
                     pbCount.Value++;
                     lblError.Text =

@@ -315,7 +315,7 @@ namespace geoInput
             // gridColumn1
             // 
             this.gridColumn1.Caption = "矿井名称";
-            this.gridColumn1.FieldName = "Workingface.MiningArea.Horizontal.Mine.MineName";
+            this.gridColumn1.FieldName = "workingface.mining_area.horizontal.mine.name";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
@@ -323,7 +323,7 @@ namespace geoInput
             // gridColumn2
             // 
             this.gridColumn2.Caption = "水平";
-            this.gridColumn2.FieldName = "Workingface.MiningArea.Horizontal.HorizontalName";
+            this.gridColumn2.FieldName = "workingface.mining_area.horizontal.name";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -331,7 +331,7 @@ namespace geoInput
             // gridColumn3
             // 
             this.gridColumn3.Caption = "采区";
-            this.gridColumn3.FieldName = "Workingface.MiningArea.MiningAreaName";
+            this.gridColumn3.FieldName = "workingface.mining_area.name";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
@@ -339,7 +339,7 @@ namespace geoInput
             // gridColumn4
             // 
             this.gridColumn4.Caption = "工作面";
-            this.gridColumn4.FieldName = "Workingface.WorkingFaceName";
+            this.gridColumn4.FieldName = "workingface.name";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
@@ -347,7 +347,7 @@ namespace geoInput
             // gridColumn5
             // 
             this.gridColumn5.Caption = "巷道名称";
-            this.gridColumn5.FieldName = "TunnelName";
+            this.gridColumn5.FieldName = "name";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
@@ -355,7 +355,7 @@ namespace geoInput
             // gridColumn6
             // 
             this.gridColumn6.Caption = "设计长度";
-            this.gridColumn6.FieldName = "TunnelDesignLength";
+            this.gridColumn6.FieldName = "design_length";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
@@ -363,7 +363,7 @@ namespace geoInput
             // gridColumn7
             // 
             this.gridColumn7.Caption = "设计面积";
-            this.gridColumn7.FieldName = "TunnelDesignArea";
+            this.gridColumn7.FieldName = "design_area";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
@@ -371,7 +371,7 @@ namespace geoInput
             // gridColumn8
             // 
             this.gridColumn8.Caption = "支护方式";
-            this.gridColumn8.FieldName = "TunnelSupportPattern";
+            this.gridColumn8.FieldName = "support_pattern";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
@@ -379,7 +379,7 @@ namespace geoInput
             // gridColumn9
             // 
             this.gridColumn9.Caption = "围岩类型";
-            this.gridColumn9.FieldName = "Lithology.LithologyName";
+            this.gridColumn9.FieldName = "lithology_name";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 8;
@@ -387,7 +387,7 @@ namespace geoInput
             // gridColumn11
             // 
             this.gridColumn11.Caption = "煤巷岩巷";
-            this.gridColumn11.FieldName = "CoalOrStone";
+            this.gridColumn11.FieldName = "coal_or_stone";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 9;
@@ -395,7 +395,7 @@ namespace geoInput
             // gridColumn12
             // 
             this.gridColumn12.Caption = "绑定煤层";
-            this.gridColumn12.FieldName = "CoalSeams.CoalSeamsName";
+            this.gridColumn12.FieldName = "coal_seam";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 10;
@@ -403,7 +403,7 @@ namespace geoInput
             // gridColumn14
             // 
             this.gridColumn14.Caption = "巷道类型";
-            this.gridColumn14.FieldName = "TunnelType";
+            this.gridColumn14.FieldName = "type";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 11;

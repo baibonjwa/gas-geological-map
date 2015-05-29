@@ -30,8 +30,8 @@ namespace geoInput
         /// <summary>
         ///     初始化
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void TunnelInfoManagement_Load(object sender, EventArgs e)
         {
             RefreshData();
@@ -40,8 +40,8 @@ namespace geoInput
         /// <summary>
         ///     添加按钮响应
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnAdd_Click(object sender, EventArgs e)
         {
             var d = new TunnelInfoEntering();
@@ -55,8 +55,8 @@ namespace geoInput
         /// <summary>
         ///     修改按钮响应
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnModify_Click(object sender, EventArgs e)
         {
             if (gridView1.GetFocusedRow() == null)
@@ -74,8 +74,8 @@ namespace geoInput
         /// <summary>
         ///     删除按钮响应
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnDel_Click(object sender, EventArgs e)
         {
             if (!Alert.Confirm("确认要删除该巷道吗？")) return;
@@ -92,8 +92,8 @@ namespace geoInput
         /// <summary>
         ///     退出按钮事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnExit_Click(object sender, EventArgs e)
         {
             Close();
@@ -102,8 +102,8 @@ namespace geoInput
         /// <summary>
         ///     导出按钮事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnExport_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -115,8 +115,8 @@ namespace geoInput
         /// <summary>
         ///     打印按钮事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnPrint_Click(object sender, EventArgs e)
         {
             DevUtil.DevPrint(gcTunnel, "巷道信息报表");
@@ -125,8 +125,8 @@ namespace geoInput
         /// <summary>
         ///     刷新按钮事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnRefresh_Click(object sender, EventArgs e)
         {
             RefreshData();

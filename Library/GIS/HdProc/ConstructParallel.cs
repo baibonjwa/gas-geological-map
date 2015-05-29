@@ -15,8 +15,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 计算直线的倾角
         /// </summary>
-        /// <param name="AOrigin">起始点</param>
-        /// <param name="APoint">终点</param>
+        /// <params name="AOrigin">起始点</params>
+        /// <params name="APoint">终点</params>
         /// <returns>返回倾角弧度值</returns>
         private double PointToAngle(IPoint AOrigin, IPoint APoint)
         {
@@ -50,8 +50,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 平行线
         /// </summary>
-        /// <param name="inPolyline"></param>
-        /// <param name="offset"></param>
+        /// <params name="inPolyline"></params>
+        /// <params name="offset"></params>
         /// <returns></returns>
         private IPolyline ConstructOffset(IPolyline inPolyline, double offset)
         {
@@ -68,9 +68,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 构造平行线的边点坐标串
         /// </summary>
-        /// <param name="centerPts">中心线的坐标集合</param>
-        /// <param name="lineSpace">巷道宽度的一半</param>
-        /// <param name="flag">方向</param>
+        /// <params name="centerPts">中心线的坐标集合</params>
+        /// <params name="lineSpace">巷道宽度的一半</params>
+        /// <params name="flag">方向</params>
         /// <returns>返回平行线的坐标串</returns>
         public List<IPoint> GetLRParallelPnts(List<IPoint> centerPts, double lineSpace, int flag)
         {
@@ -139,10 +139,10 @@ namespace GIS.HdProc
         /// <summary>
         /// 计算两条直线的交点坐标
         /// </summary>
-        /// <param name="pline0Start"></param>
-        /// <param name="pline0End"></param>
-        /// <param name="pline1Start"></param>
-        /// <param name="plineEnd"></param>
+        /// <params name="pline0Start"></params>
+        /// <params name="pline0End"></params>
+        /// <params name="pline1Start"></params>
+        /// <params name="plineEnd"></params>
         /// <returns></returns>
         private IPoint GetIntersection(IPoint pline0Start, IPoint pline0End, IPoint pline1Start, IPoint pline1End)
         {
@@ -211,7 +211,7 @@ namespace GIS.HdProc
         /// <summary>
         /// 计算同侧相邻两条直线的交点坐标
         /// </summary>
-        /// <param name="LinePnts">中心线 同侧 每段线段的平行线的点串</param>
+        /// <params name="LinePnts">中心线 同侧 每段线段的平行线的点串</params>
         /// <returns>同侧平行线的点串</returns>
         public List<IPoint> CalculateRegPnts(List<IPoint> LinePnts)
         {
@@ -279,8 +279,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 构造多边形的边点坐标组
         /// </summary>
-        /// <param name="pntsl">左侧平行线的点串</param>
-        /// <param name="pntsr">右侧平行线的点串</param>
+        /// <params name="pntsl">左侧平行线的点串</params>
+        /// <params name="pntsr">右侧平行线的点串</params>
         /// <returns>返回多边形点的坐标串</returns>
         public List<IPoint> ConstructPnts(List<IPoint> pntsr, List<IPoint> pntsl)
         {
@@ -295,8 +295,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 添加导线点线图层元素
         /// </summary>
-        /// <param name="pnts"></param>
-        /// <param name="layer"></param>
+        /// <params name="pnts"></params>
+        /// <params name="layer"></params>
         public void AddDxdLines(List<IPoint> pnts, Dictionary<string, string> dics, IFeatureLayer layer, List<WirePoint> cols = null)
         {
             try
@@ -342,9 +342,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 添加对象到指定的图层
         /// </summary>
-        /// <param name="pnts">对象的点串</param>
-        /// <param name="dics">属性字段</param>
-        /// <param name="hdlayer">添加对象图层</param>
+        /// <params name="pnts">对象的点串</params>
+        /// <params name="dics">属性字段</params>
+        /// <params name="hdlayer">添加对象图层</params>
         public void AddHangdaoToLayer(List<IPoint> pnts, Dictionary<string, string> dics, IFeatureLayer layer, List<WirePoint> pntinfos = null)
         {
             //try
@@ -489,10 +489,10 @@ namespace GIS.HdProc
         /// <summary>
         /// 添加(分段)对象到指定的图层
         /// </summary>
-        /// <param name="pnts">对象的点串</param>
-        /// <param name="sxzs">上下</param>
-        /// <param name="hdlayer">添加对象图层</param>
-        /// <param name="BS">对象类型（针对巷道）</param>
+        /// <params name="pnts">对象的点串</params>
+        /// <params name="sxzs">上下</params>
+        /// <params name="hdlayer">添加对象图层</params>
+        /// <params name="BS">对象类型（针对巷道）</params>
         public void AddFDLineToLayer(List<IPoint> pnts, Dictionary<string, string> sxzs, IFeatureLayer hdlayer, int BS)
         {
             try
@@ -578,9 +578,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="pnts0"></param>
-        /// <param name="sxzs"></param>
-        /// <param name="hdlayer"></param>
+        /// <params name="pnts0"></params>
+        /// <params name="sxzs"></params>
+        /// <params name="hdlayer"></params>
         /// <returns></returns>
         public IPolygon AddRegToLayer(List<IPoint> pnts0, Dictionary<string, string> sxzs, IFeatureLayer hdlayer)
         {
@@ -640,11 +640,11 @@ namespace GIS.HdProc
         /// <summary>
         /// 将分段添加对象到指定的图层
         /// </summary>
-        /// <param name="hdpnts">对象的点串</param>
-        /// <param name="hdid">对象Id</param>
-        /// <param name="hdtype">对象类型（针对巷道）</param>
-        /// <param name="hdlayer">添加对象图层</param>
-        /// <param name="centpnts">中心线上的点串</param>
+        /// <params name="hdpnts">对象的点串</params>
+        /// <params name="hdid">对象Id</params>
+        /// <params name="hdtype">对象类型（针对巷道）</params>
+        /// <params name="hdlayer">添加对象图层</params>
+        /// <params name="centpnts">中心线上的点串</params>
         //public void AddFDRegToLayer(List<IPoint> pnts0, List<IPoint> pnts1, List<IPoint> centpnts, Dictionary<string, string> sxzs, IFeatureLayer hdlayer, double hdwid)
         //{
         //    try
@@ -1006,9 +1006,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 获得巷道分段面下的中心线的xh和id值
         /// </summary>
-        /// <param name="geom">查询对象</param>
-        /// <param name="sql">查询条件</param>
-        /// <param name="featurelyr">图层</param>
+        /// <params name="geom">查询对象</params>
+        /// <params name="sql">查询条件</params>
+        /// <params name="featurelyr">图层</params>
         /// <returns>返回xh,id数组</returns>
         public int[] GetCenterLineXH(IGeometry geom, string sql, IFeatureLayer featurelyr, double hdwid)
         {
@@ -1060,10 +1060,10 @@ namespace GIS.HdProc
         /// <summary>
         /// 查询分段巷道覆盖的线的序号
         /// </summary>
-        /// <param name="geom"></param>
-        /// <param name="sql"></param>
-        /// <param name="featurelyr"></param>
-        /// <param name="hdwid"></param>
+        /// <params name="geom"></params>
+        /// <params name="sql"></params>
+        /// <params name="featurelyr"></params>
+        /// <params name="hdwid"></params>
         /// <returns></returns>
         public int[] GetCenterLineXHNew(IGeometry geom, string sql, IFeatureLayer featurelyr, double hdwid)
         {
@@ -1116,9 +1116,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 对线做buffer,求得buffer与geom相交部分的面积
         /// </summary>
-        /// <param name="geom">查询对象-面</param>
-        /// <param name="polyline">线</param>
-        /// <param name="hdwid">巷道宽度</param>
+        /// <params name="geom">查询对象-面</params>
+        /// <params name="polyline">线</params>
+        /// <params name="hdwid">巷道宽度</params>
         private double GetIntersectGeoArea(IGeometry geom, IPolyline polyline, double hdwid)
         {
             ITopologicalOperator topo = polyline as ITopologicalOperator;
@@ -1132,9 +1132,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 添加几何对象到图层中
         /// </summary>
-        /// <param name="ptcols">几何形状的点坐标集合</param>
-        /// <param name="lyr">图层</param>
-        /// <param name="dics">属性</param>
+        /// <params name="ptcols">几何形状的点坐标集合</params>
+        /// <params name="lyr">图层</params>
+        /// <params name="dics">属性</params>
         public void AddRegToLayerByPoints(IGeometry geo, IFeatureLayer lyr, Dictionary<string, string> sxzs)
         {
             IFeatureClass Featureclass = lyr.FeatureClass;
@@ -1203,9 +1203,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 根据传入的起止点计算延长点的坐标
         /// </summary>
-        /// <param name="startP"></param>
-        /// <param name="endP"></param>
-        /// <param name="jjcd"></param>
+        /// <params name="startP"></params>
+        /// <params name="endP"></params>
+        /// <params name="jjcd"></params>
         /// <returns></returns>
         public IPoint CalculateExtendPoint(IPoint startP, IPoint endP, double jjcd)
         {
@@ -1272,9 +1272,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 计算延长线上的距离
         /// </summary>
-        /// <param name="startP"></param>
-        /// <param name="endP"></param>
-        /// <param name="jjcd"></param>
+        /// <params name="startP"></params>
+        /// <params name="endP"></params>
+        /// <params name="jjcd"></params>
         /// <returns></returns>
         public IPoint CalculateExtendPointNew(IPolyline plin, IPoint pntTo, double jjcd, out bool bres)
         {
@@ -1302,14 +1302,14 @@ namespace GIS.HdProc
         /// 延长面对象
         /// 延长中心线
         /// </summary>
-        /// <param name="HdId">鼠标点击获得的点</param>
-        /// <param name="jjcd">掘进尺度</param>
-        /// <param name="centerlinlyr">掘进绘制图层</param>
-        /// <param name="checkval">上下层关系判断阈值</param>
-        /// <param name="jjfx">掘进方向（0,1,2,3）</param>
-        /// <param name="search">查询地质构造的值</param>
-        /// <param name="jjbs">掘进标识 （0标识不精确的， 1代表由导线点精确定位的） </param>
-        ///<param name="xzpnts">校正点坐标串</param>
+        /// <params name="HdId">鼠标点击获得的点</params>
+        /// <params name="jjcd">掘进尺度</params>
+        /// <params name="centerlinlyr">掘进绘制图层</params>
+        /// <params name="checkval">上下层关系判断阈值</params>
+        /// <params name="jjfx">掘进方向（0,1,2,3）</params>
+        /// <params name="search">查询地质构造的值</params>
+        /// <params name="jjbs">掘进标识 （0标识不精确的， 1代表由导线点精确定位的） </params>
+        ///<params name="xzpnts">校正点坐标串</params>
         /// <returns></returns>
         private void CreateFeature(List<IPoint> pntlist, IFeatureLayer layer)
         {
@@ -1347,13 +1347,13 @@ namespace GIS.HdProc
         /// <summary>
         /// 掘进巷道矫正
         /// </summary>
-        /// <param name="HdId"></param>
-        /// <param name="xzpnts"></param>
-        /// <param name="jjcd"></param>
-        /// <param name="jjfx"></param>
-        /// <param name="search"></param>
-        /// <param name="checkval"></param>
-        /// <param name="jjbs">掘进标识</param>
+        /// <params name="HdId"></params>
+        /// <params name="xzpnts"></params>
+        /// <params name="jjcd"></params>
+        /// <params name="jjfx"></params>
+        /// <params name="search"></params>
+        /// <params name="checkval"></params>
+        /// <params name="jjbs">掘进标识</params>
         public void DrawJJJZ(string HdId, List<IPoint> xzpnts, double hdwid, double jjcd = 0, int jjfx = 0, double search = 0, double checkval = 0, int jjbs = 0)
         {
             List<IPoint> rightpts = null;
@@ -1525,13 +1525,13 @@ namespace GIS.HdProc
         /// <summary>
         /// 绘制巷道掘进
         /// </summary>
-        /// <param name="HdId">巷道ID</param>
-        /// <param name="xzpnts">校正点</param>
-        /// <param name="jjcd">掘进长度</param>
-        /// <param name="jjfx">掘进方向</param>
-        /// <param name="search">查询地质资料的范围</param>
-        /// <param name="checkval">上下层关系判断阈值</param>
-        /// <param name="jjbs">掘进与校正标识</param>
+        /// <params name="HdId">巷道ID</params>
+        /// <params name="xzpnts">校正点</params>
+        /// <params name="jjcd">掘进长度</params>
+        /// <params name="jjfx">掘进方向</params>
+        /// <params name="search">查询地质资料的范围</params>
+        /// <params name="checkval">上下层关系判断阈值</params>
+        /// <params name="jjbs">掘进与校正标识</params>
         public Dictionary<string, List<GeoStruct>> DrawJJCD(string HdId, string bid, double hdwid, List<IPoint> xzpnts, double jjcd = 0, int jjfx = 0, double search = 0, double checkval = 0, int jjbs = 0)
         {
             Dictionary<string, List<GeoStruct>> dzxlist = null;
@@ -1695,12 +1695,12 @@ namespace GIS.HdProc
         /// <summary>
         ///  删除掘进进尺操作
         /// </summary>
-        /// <param name="HdId">巷道ID</param>
-        /// <param name="Bid">进尺对象</param>
-        /// <param name="jjfx">掘进方向</param>
-        /// <param name="search">地质结构查询范围</param>
-        /// <param name="checkval">上下距离判断阈值</param>
-        /// <param name="jjbs">掘进标识 掘进还是校正</param>
+        /// <params name="HdId">巷道ID</params>
+        /// <params name="Bid">进尺对象</params>
+        /// <params name="jjfx">掘进方向</params>
+        /// <params name="search">地质结构查询范围</params>
+        /// <params name="checkval">上下距离判断阈值</params>
+        /// <params name="jjbs">掘进标识 掘进还是校正</params>
         public void DelJJCD(string HdId, string Bid, int jjfx = 0, double search = 0, double checkval = 0, int jjbs = 0)
         {
             IPolyline centerlin = DelCenterlin_fd(HdId, Bid);
@@ -1717,7 +1717,7 @@ namespace GIS.HdProc
         /// <summary>
         /// 更新导线点图层中的掘进点
         /// </summary>
-        /// <param name="dxdpnts"></param>
+        /// <params name="dxdpnts"></params>
         private void DelDxdS(Dictionary<string, string> dxdpnts)
         {
             try
@@ -1787,9 +1787,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 删除巷道分段图层中的掘进记录
         /// </summary>
-        /// <param name="HdId">巷道ID</param>
-        /// <param name="Bid">掘进记录对象</param>
-        /// <param name="centerlin">中心线分段中对应的线对象</param>
+        /// <params name="HdId">巷道ID</params>
+        /// <params name="Bid">掘进记录对象</params>
+        /// <params name="centerlin">中心线分段中对应的线对象</params>
         private void DelHdFd(string HdId, string Bid, IPolyline centerlin)
         {
             try
@@ -1859,9 +1859,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 删除巷道全图层中的掘进记录
         /// </summary>
-        /// <param name="HdId">巷道ID</param>
-        /// <param name="Bid">掘进记录对象</param>
-        /// <param name="centerlin">中心线分段中对应的线对象</param>
+        /// <params name="HdId">巷道ID</params>
+        /// <params name="Bid">掘进记录对象</params>
+        /// <params name="centerlin">中心线分段中对应的线对象</params>
         private void DelHdFull(string HdId, string Bid, IPolyline centerlin)
         {
             try
@@ -1928,8 +1928,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 删除中心线全图层中的掘进记录
         /// </summary>
-        /// <param name="HdId">巷道ID</param>
-        /// <param name="Bid">掘进记录对象</param>
+        /// <params name="HdId">巷道ID</params>
+        /// <params name="Bid">掘进记录对象</params>
         private Dictionary<string, string> DelCenterlin_full(string HdId, string Bid)
         {
             Dictionary<string, string> results = new Dictionary<string, string>();
@@ -2005,8 +2005,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 删除中心线分段图层中的掘进记录
         /// </summary>
-        /// <param name="HdId">巷道ID</param>
-        /// <param name="Bid">掘进记录对象</param>
+        /// <params name="HdId">巷道ID</params>
+        /// <params name="Bid">掘进记录对象</params>
         private IPolyline DelCenterlin_fd(string HdId, string Bid)
         {
             IPolyline lin_fd = null;
@@ -2079,15 +2079,15 @@ namespace GIS.HdProc
         /// <summary>
         /// 更新掘进尺度
         /// </summary>
-        /// <param name="HdId">巷道ID</param>
-        /// <param name="Jjxh">要修改的对象</param>
-        /// <param name="Bid">当前要修改的对象</param>
-        /// <param name="jjcd">掘进尺度修改</param>
-        /// <param name="jjfx">方向</param>
-        /// <param name="search">查询地质构造距离</param>
-        /// <param name="checkval">判断距离</param>
-        /// <param name="jjbs">掘进和掘进校正标识</param>
-        /// <param name="hdwid">掘进巷道宽度</param>
+        /// <params name="HdId">巷道ID</params>
+        /// <params name="Jjxh">要修改的对象</params>
+        /// <params name="Bid">当前要修改的对象</params>
+        /// <params name="jjcd">掘进尺度修改</params>
+        /// <params name="jjfx">方向</params>
+        /// <params name="search">查询地质构造距离</params>
+        /// <params name="checkval">判断距离</params>
+        /// <params name="jjbs">掘进和掘进校正标识</params>
+        /// <params name="hdwid">掘进巷道宽度</params>
         public Dictionary<string, string> UpdateJJCD(string HdId, string Bid, double hdwid, double jjcd = 0, int jjfx = 0, double search = 0, double checkval = 0, int jjbs = 0)
         {
             IPolyline centerlin = UpdateCenterlin_fd(HdId, Bid, jjcd);
@@ -2102,7 +2102,7 @@ namespace GIS.HdProc
         /// <summary>
         /// 更新导线点图层中的掘进点
         /// </summary>
-        /// <param name="dxdpnts"></param>
+        /// <params name="dxdpnts"></params>
         private void UpdateDxdS(Dictionary<string, string> dxdpnts)
         {
             try
@@ -2163,11 +2163,11 @@ namespace GIS.HdProc
         /// <summary>
         /// 更新巷道全图层
         /// </summary>
-        /// <param name="HdId">巷道ID</param>
-        /// <param name="Bid">BID</param>
-        /// <param name="jjcd">掘进尺度</param>
-        /// <param name="plin">中心线</param>
-        /// <param name="hdwid">巷道宽度</param>
+        /// <params name="HdId">巷道ID</params>
+        /// <params name="Bid">BID</params>
+        /// <params name="jjcd">掘进尺度</params>
+        /// <params name="plin">中心线</params>
+        /// <params name="hdwid">巷道宽度</params>
         private void UpdateHdFull(string HdId, string Bid, double jjcd, IPolyline plin, double hdwid)
         {
             try
@@ -2323,11 +2323,11 @@ namespace GIS.HdProc
         /// <summary>
         /// 更新巷道分段图层
         /// </summary>
-        /// <param name="HdId">巷道ID</param>
-        /// <param name="Bid">bid</param>
-        /// <param name="jjcd">掘进尺度</param>
-        /// <param name="plin">中心线</param>
-        /// <param name="hdwid">巷道宽度</param>
+        /// <params name="HdId">巷道ID</params>
+        /// <params name="Bid">bid</params>
+        /// <params name="jjcd">掘进尺度</params>
+        /// <params name="plin">中心线</params>
+        /// <params name="hdwid">巷道宽度</params>
         private void UpdateHdFd(string HdId, string Bid, double jjcd, IPolyline plin, double hdwid)
         {
             try
@@ -2479,9 +2479,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 更新中心线全图层
         /// </summary>
-        /// <param name="HdId"></param>
-        /// <param name="Bid"></param>
-        /// <param name="jjcd"></param>
+        /// <params name="HdId"></params>
+        /// <params name="Bid"></params>
+        /// <params name="jjcd"></params>
         private Dictionary<string, string> UpdateCenterlin_full(string HdId, string Bid, double jjcd)
         {
             Dictionary<string, string> results = new Dictionary<string, string>();
@@ -2559,9 +2559,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 中心线分段图层更新
         /// </summary>
-        /// <param name="HdId"></param>
-        /// <param name="Bid"></param>
-        /// <param name="jjcd"></param>
+        /// <params name="HdId"></params>
+        /// <params name="Bid"></params>
+        /// <params name="jjcd"></params>
         private IPolyline UpdateCenterlin_fd(string HdId, string Bid, double jjcd)
         {
             IPolyline lin_fd = null;
@@ -2638,13 +2638,13 @@ namespace GIS.HdProc
         /// <summary>
         /// 绘制工作面回采
         /// </summary>
-        /// <param name="hd1">巷道1 ID</param>
-        /// <param name="hd2">巷道2 ID</param>
-        /// <param name="hd3">切眼  ID</param>
-        /// <param name="hccd">回采长度</param>
-        /// <param name="hd1wid1">巷道1宽度</param>
-        /// <param name="hd1wid2">巷道2宽度</param>
-        /// <param name="hcbz">回采与回采校正标识</param>
+        /// <params name="hd1">巷道1 ID</params>
+        /// <params name="hd2">巷道2 ID</params>
+        /// <params name="hd3">切眼  ID</params>
+        /// <params name="hccd">回采长度</params>
+        /// <params name="hd1wid1">巷道1宽度</params>
+        /// <params name="hd1wid2">巷道2宽度</params>
+        /// <params name="hcbz">回采与回采校正标识</params>
         /// <returns></returns>
         public Dictionary<string, List<GeoStruct>> DrawHDHC(string hd1, string hd2, string hd3, double hccd, double hd1wid1, double hd1wid2, double qywid, int hcbz, double searchlen,
             Dictionary<string, string> dics, bool isAdd, IPoint prevPoint, out IPoint pos)
@@ -2764,12 +2764,12 @@ namespace GIS.HdProc
         /// <summary>
         /// 回采进尺更新
         /// </summary>
-        /// <param name="hd1">主巷道ID</param>
-        /// <param name="hd2">辅助巷道ID</param>
-        /// <param name="hd3">切眼巷道ID</param>
-        /// <param name="Bid">要修改的回采对象的BID</param>
-        /// <param name="hccd">回采的尺度</param>
-        /// <param name="search">查询附近地质构造的距离</param>
+        /// <params name="hd1">主巷道ID</params>
+        /// <params name="hd2">辅助巷道ID</params>
+        /// <params name="hd3">切眼巷道ID</params>
+        /// <params name="Bid">要修改的回采对象的BID</params>
+        /// <params name="hccd">回采的尺度</params>
+        /// <params name="search">查询附近地质构造的距离</params>
         /// <returns></returns>
         public Dictionary<string, IPoint> UpdateHCCD(string hd1, string hd2, string hd3, string Bid, double hccd, double zywid, double fywid, double qywid, double search = 0)
         {
@@ -2900,12 +2900,12 @@ namespace GIS.HdProc
         /// <summary>
         /// 回采进尺更新
         /// </summary>
-        /// <param name="hd1">主巷道ID</param>
-        /// <param name="hd2">辅助巷道ID</param>
-        /// <param name="hd3">切眼巷道ID</param>
-        /// <param name="Bid">要修改的回采对象的BID</param>
-        /// <param name="hccd">回采的尺度</param>
-        /// <param name="search">查询附近地质构造的距离</param>
+        /// <params name="hd1">主巷道ID</params>
+        /// <params name="hd2">辅助巷道ID</params>
+        /// <params name="hd3">切眼巷道ID</params>
+        /// <params name="Bid">要修改的回采对象的BID</params>
+        /// <params name="hccd">回采的尺度</params>
+        /// <params name="search">查询附近地质构造的距离</params>
         /// <returns></returns>
         public Dictionary<string, IPoint> DelHCCD(string hd1, string hd2, string hd3, string Bid, double zywid, double fywid, double search = 0)
         {

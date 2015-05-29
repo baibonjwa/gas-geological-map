@@ -10,7 +10,7 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <params name="disposing">true if managed resources should be disposed; otherwise, false.</params>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -68,35 +68,32 @@
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(417, 24);
+            this.toolStrip1.Size = new System.Drawing.Size(289, 24);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.TabStop = true;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // tsBtnPrint
             // 
-            this.tsBtnPrint.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnPrint.Image")));
             this.tsBtnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnPrint.Name = "tsBtnPrint";
-            this.tsBtnPrint.Size = new System.Drawing.Size(52, 21);
+            this.tsBtnPrint.Size = new System.Drawing.Size(36, 21);
             this.tsBtnPrint.Text = "打印";
             this.tsBtnPrint.Click += new System.EventHandler(this.tsBtnPrint_Click);
             // 
             // tsBtnExport
             // 
-            this.tsBtnExport.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnExport.Image")));
             this.tsBtnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnExport.Name = "tsBtnExport";
-            this.tsBtnExport.Size = new System.Drawing.Size(52, 21);
+            this.tsBtnExport.Size = new System.Drawing.Size(36, 21);
             this.tsBtnExport.Text = "导出";
             this.tsBtnExport.Click += new System.EventHandler(this.tsBtnExport_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(52, 21);
+            this.btnAdd.Size = new System.Drawing.Size(36, 21);
             this.btnAdd.Text = "添加";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -104,7 +101,7 @@
             // 
             this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(52, 21);
+            this.btnUpdate.Size = new System.Drawing.Size(36, 21);
             this.btnUpdate.Text = "修改";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -112,7 +109,7 @@
             // 
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(52, 21);
+            this.btnDelete.Size = new System.Drawing.Size(36, 21);
             this.btnDelete.Text = "删除";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -120,7 +117,7 @@
             // 
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(52, 21);
+            this.btnRefresh.Size = new System.Drawing.Size(36, 21);
             this.btnRefresh.Text = "刷新";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
@@ -128,7 +125,7 @@
             // 
             this.btnMap.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMap.Name = "btnMap";
-            this.btnMap.Size = new System.Drawing.Size(52, 21);
+            this.btnMap.Size = new System.Drawing.Size(36, 21);
             this.btnMap.Text = "图显";
             this.btnMap.Click += new System.EventHandler(this.btnMap_Click);
             // 
@@ -136,7 +133,7 @@
             // 
             this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(52, 21);
+            this.btnExit.Size = new System.Drawing.Size(36, 21);
             this.btnExit.Text = "退出";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -178,7 +175,7 @@
             // bandedGridColumn1
             // 
             this.bandedGridColumn1.Caption = "孔号";
-            this.bandedGridColumn1.FieldName = "BoreholeNumber";
+            this.bandedGridColumn1.FieldName = "name";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.Visible = true;
             this.bandedGridColumn1.VisibleIndex = 0;
@@ -186,7 +183,7 @@
             // bandedGridColumn2
             // 
             this.bandedGridColumn2.Caption = "地面标高";
-            this.bandedGridColumn2.FieldName = "GroundElevation";
+            this.bandedGridColumn2.FieldName = "ground_elevation";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.Visible = true;
             this.bandedGridColumn2.VisibleIndex = 1;
@@ -194,7 +191,7 @@
             // bandedGridColumn3
             // 
             this.bandedGridColumn3.Caption = "勘探钻孔坐标X";
-            this.bandedGridColumn3.FieldName = "CoordinateX";
+            this.bandedGridColumn3.FieldName = "coordinate_x";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.Visible = true;
             this.bandedGridColumn3.VisibleIndex = 2;
@@ -202,7 +199,7 @@
             // bandedGridColumn4
             // 
             this.bandedGridColumn4.Caption = "勘探钻孔坐标Y";
-            this.bandedGridColumn4.FieldName = "CoordinateY";
+            this.bandedGridColumn4.FieldName = "coordinate_y";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
             this.bandedGridColumn4.VisibleIndex = 3;
@@ -210,6 +207,7 @@
             // bandedGridColumn5
             // 
             this.bandedGridColumn5.Caption = "勘探钻孔坐标Z";
+            this.bandedGridColumn5.FieldName = "coordinate_z";
             this.bandedGridColumn5.Name = "bandedGridColumn5";
             this.bandedGridColumn5.Visible = true;
             this.bandedGridColumn5.VisibleIndex = 4;

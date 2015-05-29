@@ -255,7 +255,7 @@
             this.selectTunnelSimple1.BackColor = System.Drawing.Color.Transparent;
             this.selectTunnelSimple1.Location = new System.Drawing.Point(16, 17);
             this.selectTunnelSimple1.Name = "selectTunnelSimple1";
-            this.selectTunnelSimple1.SelectedTunnel = null;
+            this.selectTunnelSimple1.selected_tunnel = null;
             this.selectTunnelSimple1.Size = new System.Drawing.Size(219, 38);
             this.selectTunnelSimple1.TabIndex = 0;
             // 

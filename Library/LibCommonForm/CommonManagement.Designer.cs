@@ -10,7 +10,7 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <params name="disposing">true if managed resources should be disposed; otherwise, false.</params>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -48,9 +48,9 @@
             // btnSubmit
             // 
             this.btnSubmit.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSubmit.Location = new System.Drawing.Point(293, 264);
+            this.btnSubmit.Location = new System.Drawing.Point(251, 226);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(87, 27);
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 1;
             this.btnSubmit.Text = "提交";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -59,9 +59,9 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(388, 264);
+            this.btnCancel.Location = new System.Drawing.Point(333, 226);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(87, 27);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -70,7 +70,7 @@
             // gridControl1
             // 
             this.gridControl1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gridControl1.Location = new System.Drawing.Point(12, 14);
+            this.gridControl1.Location = new System.Drawing.Point(10, 12);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -78,7 +78,7 @@
             this.lueHorizontal,
             this.lueMine,
             this.beDelete});
-            this.gridControl1.Size = new System.Drawing.Size(465, 243);
+            this.gridControl1.Size = new System.Drawing.Size(399, 208);
             this.gridControl1.TabIndex = 3;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -97,9 +97,9 @@
             this.lueMiningArea.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueMiningArea.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MiningAreaId", "编号"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MiningAreaName", "采区名称")});
-            this.lueMiningArea.DisplayMember = "MiningAreaName";
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("id", "编号"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "采区名称")});
+            this.lueMiningArea.DisplayMember = "name";
             this.lueMiningArea.Name = "lueMiningArea";
             // 
             // lueHorizontal
@@ -108,9 +108,9 @@
             this.lueHorizontal.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueHorizontal.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("HorizontalId", "编号"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("HorizontalName", "水平名称")});
-            this.lueHorizontal.DisplayMember = "HorizontalName";
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("id", "编号"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "水平名称")});
+            this.lueHorizontal.DisplayMember = "name";
             this.lueHorizontal.Name = "lueHorizontal";
             // 
             // lueMine
@@ -119,9 +119,9 @@
             this.lueMine.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueMine.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MineId", "编号"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MineName", "矿区名称")});
-            this.lueMine.DisplayMember = "MineName";
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("id", "编号"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "矿区名称")});
+            this.lueMine.DisplayMember = "name";
             this.lueMine.Name = "lueMine";
             // 
             // beDelete
@@ -136,10 +136,10 @@
             // CommonManagement
             // 
             this.AcceptButton = this.btnSubmit;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(489, 299);
+            this.ClientSize = new System.Drawing.Size(419, 256);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);

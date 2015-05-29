@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Castle.ActiveRecord;
 using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord]
+    [ActiveRecord("infer_faultages")]
     public class InferFaultage : ActiveRecordBase<InferFaultage>
     {
         public const string TABLE_NAME = "InferFaultage";
@@ -13,7 +14,7 @@ namespace LibEntity
         [PrimaryKey(PrimaryKeyType.Identity)]
         public int id { get; set; }
 
-        [HasMany(typeof (InferFaultagePoint), Table = "InferFaultagePoints", ColumnKey = "id",
+        [HasMany(typeof (InferFaultagePoint), Table = "infer_faultage_points", ColumnKey = "infer_faultage_id",
             Cascade = ManyRelationCascadeEnum.All, Lazy = true)]
         public IList<InferFaultagePoint> infer_faultage_points { get; set; }
 
@@ -34,5 +35,11 @@ namespace LibEntity
 
         [Property]
         public string bid { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
     }
 }

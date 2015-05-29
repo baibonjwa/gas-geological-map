@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Castle.ActiveRecord;
 using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord]
+    [ActiveRecord("mines")]
     public class Mine : ActiveRecordBase<Mine>
     {
         [PrimaryKey(PrimaryKeyType.Identity)]
@@ -13,5 +14,12 @@ namespace LibEntity
 
         [Property]
         public string name { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
+
     }
 }

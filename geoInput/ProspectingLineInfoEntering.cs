@@ -34,7 +34,7 @@ namespace geoInput
         /// <summary>
         ///     带参数的构造方法
         /// </summary>
-        /// <param name="strPrimaryKey">主键</param>
+        /// <params name="strPrimaryKey">主键</params>
         public ProspectingLineInfoEntering(ProspectingLine prospectingLine)
         {
             InitializeComponent();
@@ -46,8 +46,8 @@ namespace geoInput
         /// <summary>
         ///     选择（小）断层 【→】
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             for (var i = 0; i < lstProspectingBoreholeAll.SelectedItems.Count;)
@@ -62,8 +62,8 @@ namespace geoInput
         /// <summary>
         ///     将已经选择的（小）断层移除 【←】
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnDeltete_Click(object sender, EventArgs e)
         {
             for (var i = 0; i < lstProspectingBoreholeSelected.SelectedItems.Count;)
@@ -78,8 +78,8 @@ namespace geoInput
         /// <summary>
         ///     提交
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -150,8 +150,8 @@ namespace geoInput
         /// <summary>
         ///     取消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // 窗口关闭
@@ -161,8 +161,8 @@ namespace geoInput
         /// <summary>
         ///     实现点击鼠标右键，将点击处的Item设为选中
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void lstProspectingBoreholeSelected_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right) //判断是否右键点击
@@ -180,8 +180,8 @@ namespace geoInput
         /// <summary>
         ///     上移
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void 上移ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // 当前下标
@@ -207,8 +207,8 @@ namespace geoInput
         /// <summary>
         ///     下移
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void 下移ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // 当前下标
@@ -236,8 +236,8 @@ namespace geoInput
         /// <summary>
         ///     修改勘探线图元
         /// </summary>
-        /// <param name="prospectingLineEntity"></param>
-        /// <param name="lstProspectingBoreholePts"></param>
+        /// <params name="prospectingLineEntity"></params>
+        /// <params name="lstProspectingBoreholePts"></params>
         private void ModifyProspectingLine(ProspectingLine prospectingLineEntity, List<IPoint> lstProspectingBoreholePts)
         {
             //1.获得当前编辑图层
@@ -262,7 +262,7 @@ namespace geoInput
         /// <summary>
         ///     根据钻孔点名查找钻孔点信息
         /// </summary>
-        /// <param name="strDisplayName"></param>
+        /// <params name="strDisplayName"></params>
         /// <returns></returns>
         private IPoint GetProspectingBoreholePointSelected(String strDisplayName)
         {
@@ -289,8 +289,8 @@ namespace geoInput
         /// <summary>
         ///     根据所选钻孔点绘制勘探线
         /// </summary>
-        /// <param name="prospectingLineEntity"></param>
-        /// <param name="lstProspectingBoreholePts"></param>
+        /// <params name="prospectingLineEntity"></params>
+        /// <params name="lstProspectingBoreholePts"></params>
         private void DrawProspectingLine(ProspectingLine prospectingLineEntity, List<IPoint> lstProspectingBoreholePts)
         {
             //1.获得当前编辑图层

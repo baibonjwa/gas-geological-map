@@ -16,12 +16,12 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 绘制小柱状
         /// </summary>
-        /// <param name="datasources">各地质层厚度(0.83,0.3,1.2,200)最后一个值为底板标高</param>
-        /// <param name="pt">小柱状中心点</param>
-        /// <param name="Angle">旋转角度</param>
-        /// <param name="bili">比例</param>
-        /// <param name="bid">BID</param>
-        /// <param name="edit">函数外控制编辑状态为false，函数内自动控制编辑状态为true，当批量绘图时建议函数外控制编辑状态</param>
+        /// <params name="datasources">各地质层厚度(0.83,0.3,1.2,200)最后一个值为底板标高</params>
+        /// <param name="pt">小柱状中心点</params>
+        /// <params name="Angle">旋转角度</params>
+        /// <params name="bili">比例</params>
+        /// <params name="bid">BID</params>
+        /// <params name="edit">函数外控制编辑状态为false，函数内自动控制编辑状态为true，当批量绘图时建议函数外控制编辑状态</params>
         public static bool drawXZZ(List<KeyValuePair<int, double>> datasources, IPoint pt,double Angle, string bid, double bili = 1, bool edit = true)
         {
             double angle = -Angle;

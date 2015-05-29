@@ -99,7 +99,7 @@ namespace GIS.GraphicModify
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">创建工具</param>
+        /// <params name="hook">创建工具</params>
         public override void OnCreate(object hook)
         {
             if (hook == null)

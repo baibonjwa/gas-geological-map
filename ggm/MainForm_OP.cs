@@ -66,7 +66,7 @@ namespace ggm
             DataEditCommon.g_tbCtlEdit = toolbarControl;
             DataEditCommon.g_pAxMapControl = mapControl_OP;
             DataEditCommon.g_axTocControl = tocControl_OP;
-            DataEditCommon.load(ConfigHelper.get_attribute("gdb_path"));
+            DataEditCommon.load(ConfigHelper.current_seam.gis_name);
 
             IEnumDataset pEnumDataSet =
              DataEditCommon.g_pCurrentWorkSpace.Datasets[esriDatasetType.esriDTFeatureDataset];
@@ -239,8 +239,8 @@ namespace ggm
         /// <summary>
         ///     右键弹出图层管理菜单，进行图层管理
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tocControl_OP_OnMouseDown(object sender, ITOCControlEvents_OnMouseDownEvent e)
         {
             if (e.button != 2)
@@ -281,8 +281,8 @@ namespace ggm
         /// <summary>
         ///     双击图层符号，修改整个图层符号类型
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tocControl_OP_OnDoubleClick(object sender, ITOCControlEvents_OnDoubleClickEvent e)
         {
             //esriTOCControlItem tocControlItem = esriTOCControlItem.esriTOCControlItemNone;

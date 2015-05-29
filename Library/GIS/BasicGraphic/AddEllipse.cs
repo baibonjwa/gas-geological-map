@@ -115,7 +115,7 @@ namespace GIS
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             try
@@ -342,7 +342,7 @@ namespace GIS
         /// <summary>
         /// 绘制椭圆
         /// </summary>
-        /// <param name="pEnvelope"></param>
+        /// <params name="pEnvelope"></params>
         public void DrawEllipse(IEnvelope pEnvelope)
         {
             IFeatureLayer pFeatureLayer = m_pCurrentLayer as IFeatureLayer;

@@ -9,6 +9,7 @@ using Castle.ActiveRecord.Framework.Config;
 using ESRI.ArcGIS;
 using geoInput;
 using LibCommon;
+using LibLoginForm;
 
 namespace sys3
 {
@@ -27,20 +28,9 @@ namespace sys3
             Thread.CurrentThread.CurrentCulture =
                 new CultureInfo("zh-Hans");
 
-            IConfigurationSource config = new XmlConfigurationSource("ARConfig.xml");
-
-            var asm = Assembly.Load("LibEntity");
-
-            ActiveRecordStarter.Initialize(asm, config);
-            Log.Debug("Starting ......");
-            RuntimeManager.Bind(ProductCode.EngineOrDesktop);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            Log.Debug("[GM] ......Constructing Main Form....");
             var mf = new MainForm_GM();
-            Log.Debug("Logging ......");
-            Application.Run(mf);
+            var select = new SelectCoalSeam(mf);
+            Application.Run(select);
         }
     }
 }

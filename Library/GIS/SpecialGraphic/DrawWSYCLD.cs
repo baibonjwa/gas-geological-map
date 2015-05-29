@@ -51,10 +51,10 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 输入数值的构造函数
         /// </summary>
-        /// <param name="strBT"></param>
-        /// <param name="strWSYLZ"></param>
-        /// <param name="strCDBG"></param>
-        /// <param name="strMS"></param>
+        /// <params name="strBT"></params>
+        /// <params name="strWSYLZ"></params>
+        /// <params name="strCDBG"></params>
+        /// <params name="strMS"></params>
         public DrawWSYCLD(string strJDWSYCL, string strXDWSYCL, string strRCL, string strTIME)
         {
             m_strJDWSYCL = strJDWSYCL;

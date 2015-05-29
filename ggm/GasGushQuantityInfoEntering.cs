@@ -25,7 +25,7 @@ namespace ggm
         /// <summary>
         ///     带参数的构造方法
         /// </summary>
-        /// <param name="gasGushQuantity"></param>
+        /// <params name="gasGushQuantity"></params>
         public GasGushQuantityInfoEntering(GasGushQuantity gasGushQuantity)
         {
             GasGushQuantityPoint = null;
@@ -39,8 +39,8 @@ namespace ggm
         /// <summary>
         ///     20140311 lyf 加载窗体时传入拾取点的坐标值
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void GasGushQuantityInfoEntering_Load(object sender, EventArgs e)
         {
             // 设置日期控件格式
@@ -65,8 +65,8 @@ namespace ggm
         /// <summary>
         ///     提交
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -83,7 +83,7 @@ namespace ggm
                     relative_gas_gush_quantity = Convert.ToDouble(txtRelativeGasGushQuantity.Text),
                     working_face_day_output = Convert.ToDouble(txtWorkingFaceDayOutput.Text),
                     stope_date = dtpStopeDate.Value,
-                    tunnel = selectTunnelSimple1.SelectedTunnel,
+                    tunnel = selectTunnelSimple1.selected_tunnel,
                     binding_id = IdGenerator.NewBindingId()
                 };
                 // 坐标X
@@ -99,7 +99,7 @@ namespace ggm
                 GasGushQuantity.relative_gas_gush_quantity = Convert.ToDouble(txtRelativeGasGushQuantity.Text);
                 GasGushQuantity.working_face_day_output = Convert.ToDouble(txtWorkingFaceDayOutput.Text);
                 GasGushQuantity.stope_date = dtpStopeDate.Value;
-                GasGushQuantity.tunnel = selectTunnelSimple1.SelectedTunnel;
+                GasGushQuantity.tunnel = selectTunnelSimple1.selected_tunnel;
                 GasGushQuantity.binding_id = IdGenerator.NewBindingId();
                 GasGushQuantity.Save();
                 DelGasGushQuantityPt(GasGushQuantity.binding_id, GasGushQuantity.coal_seam);
@@ -110,8 +110,8 @@ namespace ggm
         /// <summary>
         ///     取消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // 关闭窗口
@@ -199,8 +199,8 @@ namespace ggm
         /// <summary>
         ///     删除瓦斯信息
         /// </summary>
-        /// <param name="bid">绑定ID</param>
-        /// <param name="mc">煤层</param>
+        /// <params name="bid">绑定ID</params>
+        /// <params name="mc">煤层</params>
         private void DelGasGushQuantityPt(string bid, string mc)
         {
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.LAYER_ALIAS_MR_HCGZMWSYCLD);

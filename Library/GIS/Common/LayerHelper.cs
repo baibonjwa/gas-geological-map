@@ -291,7 +291,7 @@ namespace GIS.Common
         /// <summary>
         /// 获得一个shapefile文件的的要素类对象
         /// </summary>
-        /// <param name="sFilePath"></param>
+        /// <params name="sFilePath"></params>
         /// <returns></returns>
         public static IFeatureClass GetShapefileWorkspaceFeatureClass(string sFilePath)
         {
@@ -331,8 +331,8 @@ namespace GIS.Common
         /// <summary>
         /// 根据图层名获得图层
         /// </summary>
-        /// <param name="map">Map</param>
-        /// <param name="lyrname">图层名</param>
+        /// <params name="map">Map</params>
+        /// <params name="lyrname">图层名</params>
         /// <returns>要素图层</returns>
         public static IFeatureLayer GetLayerByName(IMap map, string lyrname)
         {

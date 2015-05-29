@@ -22,10 +22,10 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 根据点坐标绘制点要素
         /// </summary>
-        /// <param name="featureLayer"></param>
-        /// <param name="point"></param>
-        /// <param name="id"></param>
-        /// <param name="wirePoint"></param>
+        /// <params name="featureLayer"></params>
+        /// <params name="point"></params>
+        /// <params name="id"></params>
+        /// <params name="wirePoint"></params>
         public void CreatePoint(IFeatureLayer featureLayer, IPoint point, string id, WirePoint wirePoint)
         {
             try
@@ -71,8 +71,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 根据点集坐标绘制线要素
         /// </summary>
-        /// <param name="featureLayer"></param>
-        /// <param name="lstPoint"></param>
+        /// <params name="featureLayer"></params>
+        /// <params name="lstPoint"></params>
         public void CreateLine(IFeatureLayer featureLayer, List<IPoint> lstPoint, int ID)
         {
             //try
@@ -138,8 +138,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 根据要素ID查找对应要素
         /// </summary>
-        /// <param name="feaLayer"></param>
-        /// <param name="featureID"></param>
+        /// <params name="feaLayer"></params>
+        /// <params name="featureID"></params>
         /// <returns></returns>
         public IFeature FindFeatureByID(IFeatureLayer feaLayer, string featureID)
         {
@@ -176,8 +176,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 删除指定要素
         /// </summary>
-        /// <param name="feaLayer"></param>
-        /// <param name="featureID"></param>
+        /// <params name="feaLayer"></params>
+        /// <params name="featureID"></params>
         public void DeleteFeature(IFeatureLayer feaLayer, string featureID)
         {
             //方法1：删除要素

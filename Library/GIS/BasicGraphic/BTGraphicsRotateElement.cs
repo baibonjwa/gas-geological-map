@@ -224,7 +224,7 @@ namespace GIS.BasicGraphic
         /// <summary>
         /// 获取线的角度（弧度）
         /// </summary>
-        /// <param name="pPolyline">线</param>
+        /// <params name="pPolyline">线</params>
         /// <returns></returns>
         private static double GetAngle(IPolyline pPolyline)
         {

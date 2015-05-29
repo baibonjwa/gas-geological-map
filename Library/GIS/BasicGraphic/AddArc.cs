@@ -111,7 +111,7 @@ namespace GIS
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             try
@@ -310,7 +310,7 @@ namespace GIS
         /// <summary>
         /// 绘制圆弧
         /// </summary>
-        /// <param name="pCircleArc"></param>
+        /// <params name="pCircleArc"></params>
         private void DrawArc(ICircularArc pCircleArc)
         {
             if (pCircleArc == null) return;

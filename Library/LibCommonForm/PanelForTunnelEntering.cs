@@ -48,7 +48,7 @@ namespace LibCommonForm
         /// <summary>
         /// 带参数的构造方法
         /// </summary>
-        /// <param name="intArr">存储所选矿井编号，水平编号，采区编号，工作面编号的数组</param>
+        /// <params name="intArr">存储所选矿井编号，水平编号，采区编号，工作面编号的数组</params>
         public PanelForTunnelEntering(int[] intArr)
         {
             InitializeComponent();
@@ -90,8 +90,8 @@ namespace LibCommonForm
         /// <summary>
         /// 矿井名称选择事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void lstMineName_MouseUp(object sender, MouseEventArgs e)
         {
             // 矿井编号
@@ -130,8 +130,8 @@ namespace LibCommonForm
         /// <summary>
         /// 水平名称选择事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void lstHorizontalName_MouseUp(object sender, MouseEventArgs e)
         {
             this.lstMiningAreaName.DataSource = null;
@@ -179,8 +179,8 @@ namespace LibCommonForm
         /// <summary>
         /// 采区名称选择事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void lstMiningAreaName_MouseUp(object sender, MouseEventArgs e)
         {
             lstWorkingFaceName.DataSource = null;
@@ -224,8 +224,8 @@ namespace LibCommonForm
         /// <summary>
         /// 工作面名称选择事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void lstWorkingFaceName_MouseUp(object sender, MouseEventArgs e)
         {
 
@@ -243,8 +243,8 @@ namespace LibCommonForm
         /// <summary>
         /// 矿井名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnMineName_Click(object sender, EventArgs e)
         {
             CommonManagement commonManagement = new CommonManagement(1, 999);
@@ -258,8 +258,8 @@ namespace LibCommonForm
         /// <summary>
         /// 水平名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnHorizontalName_Click(object sender, EventArgs e)
         {
             if (this.lstMineName.SelectedItems.Count > 0)
@@ -280,8 +280,8 @@ namespace LibCommonForm
         /// <summary>
         /// 采区名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnMiningAreaName_Click(object sender, EventArgs e)
         {
             if (this.lstHorizontalName.SelectedItems.Count > 0)
@@ -302,8 +302,8 @@ namespace LibCommonForm
         /// <summary>
         /// 工作面名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnWorkingFaceName_Click(object sender, EventArgs e)
         {
             if (this.lstMiningAreaName.SelectedItems.Count > 0)

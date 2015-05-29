@@ -54,8 +54,8 @@ namespace geoInput
         private void MainForm_GM_Load(object sender, EventArgs e)
         {
             IMapDocument pMapDocument = new MapDocumentClass();
-            pMapDocument.Open(ConfigHelper.get_attribute("mxd_path"));
-            mapControl_GM.LoadMxFile(ConfigHelper.get_attribute("mxd_path"));
+            pMapDocument.Open(ConfigHelper.current_seam.mxd_name);
+            mapControl_GM.LoadMxFile(ConfigHelper.current_seam.mxd_name);
             //this.mapControl_GM.LoadMxFile(Application.StartupPath + "\\local.mxd");
             Log.Debug("[GM]....Finished to load MXD file.....");
             statusStrip1.AxMap = mapControl_GM;
@@ -73,7 +73,7 @@ namespace geoInput
             DataEditCommon.g_tbCtlEdit = toolbarControl;
             DataEditCommon.g_pAxMapControl = mapControl_GM;
             DataEditCommon.g_axTocControl = tocControl_GM;
-            DataEditCommon.load(ConfigHelper.get_attribute("gdb_path"));
+            DataEditCommon.load(ConfigHelper.current_seam.gis_name);
 
             IEnumDataset pEnumDataSet =
                 DataEditCommon.g_pCurrentWorkSpace.Datasets[esriDatasetType.esriDTFeatureDataset];
@@ -82,36 +82,33 @@ namespace geoInput
             string sDistrictCode = string.Empty;
             string sScale = string.Empty;
 
-            if (pDataSet != null)
-            {
-                UID uid = new UIDClass();
-                uid.Value = "{" + typeof(IFeatureLayer).GUID.ToString() + "}";
-                IEnumLayer pEnumLayer = mapControl_GM.Map.Layers[uid];
-                IFeatureLayer pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
-                IFeatureWorkspace pFeaClsWks = DataEditCommon.g_pCurrentWorkSpace as IFeatureWorkspace;
-                while (pFeaLyr != null)
-                {
-                    string sDsName = ((pFeaLyr as IDataLayer).DataSourceName as IDatasetName).Name;
-                    if ((DataEditCommon.g_pCurrentWorkSpace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, sDsName))
-                    {
-                        pFeaLyr.FeatureClass = pFeaClsWks.OpenFeatureClass(sDsName);
-                        pFeaLyr.Name = pFeaLyr.Name;
-                    }
+            //if (pDataSet != null)
+            //{
+            //    UID uid = new UIDClass();
+            //    uid.Value = "{" + typeof(IFeatureLayer).GUID.ToString() + "}";
+            //    IEnumLayer pEnumLayer = mapControl_GM.Map.Layers[uid];
+            //    IFeatureLayer pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
+            //    IFeatureWorkspace pFeaClsWks = DataEditCommon.g_pCurrentWorkSpace as IFeatureWorkspace;
+            //    while (pFeaLyr != null)
+            //    {
+            //        string sDsName = ((pFeaLyr as IDataLayer).DataSourceName as IDatasetName).Name;
+            //        if ((DataEditCommon.g_pCurrentWorkSpace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, sDsName))
+            //        {
+            //            pFeaLyr.FeatureClass = pFeaClsWks.OpenFeatureClass(sDsName);
+            //            pFeaLyr.Name = pFeaLyr.Name;
+            //        }
 
-                    pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
-                }
-                ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(DataEditCommon.g_pCurrentWorkSpace);
-                ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(pFeaClsWks);
-                mapControl_GM.Map.SpatialReference = pRef;
-                IMxdContents pMxdC;
-                pMxdC = mapControl_GM.Map as IMxdContents;
-                pMapDocument.Open(ConfigHelper.get_attribute("mxd_path"));
-                pMapDocument.ReplaceContents(pMxdC);
-                pMapDocument.Save(true, true);
-            }
-
-
-
+            //        pFeaLyr = pEnumLayer.Next() as IFeatureLayer;
+            //    }
+            //    ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(DataEditCommon.g_pCurrentWorkSpace);
+            //    ESRI.ArcGIS.ADF.ComReleaser.ReleaseCOMObject(pFeaClsWks);
+            //    mapControl_GM.Map.SpatialReference = pRef;
+            //    IMxdContents pMxdC;
+            //    pMxdC = mapControl_GM.Map as IMxdContents;
+            //    pMapDocument.Open(ConfigHelper.current_seam.mxd_name);
+            //    pMapDocument.ReplaceContents(pMxdC);
+            //    pMapDocument.Save(true, true);
+            //}
 
             AddToolBar.Addtool(mapControl_GM, mapControl, toolbarControl, DataEditCommon.g_pCurrentWorkSpace);
 
@@ -196,8 +193,8 @@ namespace geoInput
         /// <summary>
         ///     右键弹出图层管理菜单，进行图层管理
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tocControl_GM_OnMouseDown(object sender, ITOCControlEvents_OnMouseDownEvent e)
         {
             if (e.button != 2) return; //左键则跳出
@@ -235,8 +232,8 @@ namespace geoInput
         /// <summary>
         ///     双击图层符号，修改整个图层符号类型
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tocControl_GM_OnDoubleClick(object sender, ITOCControlEvents_OnDoubleClickEvent e)
         {
             //esriTOCControlItem tocControlItem = esriTOCControlItem.esriTOCControlItemNone;

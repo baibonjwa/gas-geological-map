@@ -52,7 +52,7 @@ namespace GIS.SpecialGraphic
         /// <summary>
         ///     构造方法
         /// </summary>
-        /// <param name="collapsePillar"></param>
+        /// <params name="collapsePillar"></params>
         public CollapsePillarsEntering(CollapsePillar collapsePillar)
         {
             InitializeComponent();
@@ -75,8 +75,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         ///     取消按钮事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             //关闭窗体
@@ -86,15 +86,15 @@ namespace GIS.SpecialGraphic
         /// <summary>
         ///     提交按钮
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            var collapsePillars =
+            var collapsePillar =
                 CollapsePillar.FindAllByProperty("name", txtCollapsePillarsName.Text).FirstOrDefault();
-            if (collapsePillars == null)
+            if (collapsePillar == null)
             {
-                collapsePillars = new CollapsePillar
+                collapsePillar = new CollapsePillar
                 {
                     name = txtCollapsePillarsName.Text,
                     discribe = txtDescribe.Text,
@@ -104,9 +104,9 @@ namespace GIS.SpecialGraphic
             }
             else
             {
-                collapsePillars.name = txtCollapsePillarsName.Text;
-                collapsePillars.discribe = txtDescribe.Text;
-                collapsePillars.xtype = radioBtnX.Checked ? "0" : "1";
+                collapsePillar.name = txtCollapsePillarsName.Text;
+                collapsePillar.discribe = txtDescribe.Text;
+                collapsePillar.xtype = radioBtnX.Checked ? "0" : "1";
             }
 
             //实体赋值
@@ -120,33 +120,34 @@ namespace GIS.SpecialGraphic
                     dgrdvCoordinate.Rows.RemoveAt(i);
                 }
             }
+            collapsePillar.Save();
 
-            var collapsePillarsPoints = new List<CollapsePillarPoint>();
             //添加关键点
+            List<CollapsePillarPoint> collapsePillarPoints = new List<CollapsePillarPoint>();
             for (int i = 0; i < dgrdvCoordinate.RowCount - 1; i++)
             {
 
-                var collapsePillarsPoint = new CollapsePillarPoint
+                var collapsePillarPoint = new CollapsePillarPoint
                 {
                     coordinate_x = Convert.ToDouble(dgrdvCoordinate[0, i].Value),
                     coordinate_y = Convert.ToDouble(dgrdvCoordinate[1, i].Value),
                     coordinate_z = Convert.ToDouble(dgrdvCoordinate[2, i].Value),
                     bid = IdGenerator.NewBindingId(),
-                    collapse_pillar = collapsePillars
+                    collapse_pillar = collapsePillar
                 };
-                collapsePillarsPoints.Add(collapsePillarsPoint);
+                collapsePillarPoints.Add(collapsePillarPoint);
+                collapsePillarPoint.Save();
             }
-            collapsePillars.collapse_pillar_points = collapsePillarsPoints;
-            collapsePillars.Save();
-            ModifyXlz(collapsePillarsPoints, collapsePillars.id.ToString());
+
+            ModifyXlz(collapsePillarPoints, collapsePillar.bid);
             DialogResult = DialogResult.OK;
         }
 
         /// <summary>
         ///     显示行号
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void dgrdvCoordinate_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             var rectangle = new Rectangle(e.RowBounds.Location.X,
@@ -200,8 +201,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         ///     修改陷落柱图元
         /// </summary>
-        /// <param name="lstCollapsePillarsEntKeyPts"></param>
-        /// <param name="sCollapseId"></param>
+        /// <params name="lstCollapsePillarsEntKeyPts"></params>
+        /// <params name="sCollapseId"></params>
         private void ModifyXlz(List<CollapsePillarPoint> lstCollapsePillarsEntKeyPts, string sCollapseId)
         {
             //1.获得当前编辑图层
@@ -416,7 +417,7 @@ namespace GIS.SpecialGraphic
                     }
                     collapsePillar.collapse_pillar_points = collapsePillarsPoints;
                     collapsePillar.Save();
-                    ModifyXlz(collapsePillarsPoints, collapsePillar.id.ToString());
+                    ModifyXlz(collapsePillarsPoints, collapsePillar.bid);
                     lblSuccessed.Text = lblSuccessed.Text =
                         (Convert.ToInt32(lblSuccessed.Text) + 1).ToString(CultureInfo.InvariantCulture);
                     pbCount.Value++;

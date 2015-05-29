@@ -120,7 +120,7 @@ namespace GIS
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             try
@@ -276,7 +276,7 @@ namespace GIS
         /// <summary>
         /// 设置旋转的原点并加载旋转的要素
         /// </summary>
-        /// <param name="pPt"></param>
+        /// <params name="pPt"></params>
         private void SetTrackGeometry(IPoint pPt)
         {
             IEnumFeature pEnumFeature;
@@ -306,7 +306,7 @@ namespace GIS
         /// <summary>
         /// 是否双击
         /// </summary>
-        /// <param name="pRotateTracker"></param>
+        /// <params name="pRotateTracker"></params>
         /// <returns></returns>
         private bool DoubleCheck(IRotateTracker pRotateTracker)
         {

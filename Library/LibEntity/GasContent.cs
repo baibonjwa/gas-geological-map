@@ -3,7 +3,7 @@ using Castle.ActiveRecord;
 
 namespace LibEntity
 {
-    [ActiveRecord]
+    [ActiveRecord("gas_contents")]
     public class GasContent : ActiveRecordBase<GasContent>
     {
         [PrimaryKey(PrimaryKeyType.Identity)]
@@ -27,7 +27,7 @@ namespace LibEntity
         [Property]
         public DateTime measure_datetime { get; set; }
 
-        [BelongsTo("TunnelId")]
+        [BelongsTo("tunnel_id")]
         public Tunnel tunnel { get; set; }
 
         [Property]
@@ -35,5 +35,11 @@ namespace LibEntity
 
         [Property]
         public string bid { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
     }
 }

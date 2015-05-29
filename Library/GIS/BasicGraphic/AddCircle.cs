@@ -109,7 +109,7 @@ namespace GIS
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             try
@@ -251,9 +251,9 @@ namespace GIS
         /// <summary>
         /// 根据绘制的圆形创建要素
         /// </summary>
-        /// <param name="pLayer"></param>
-        /// <param name="pCircuArc"></param>
-        /// <param name="pScreenDisplay"></param>
+        /// <params name="pLayer"></params>
+        /// <params name="pCircuArc"></params>
+        /// <params name="pScreenDisplay"></params>
         private void DrawCircleFeature(ILayer pLayer, ICircularArc pCircuArc, IScreenDisplay pScreenDisplay)
         {
             if (pLayer == null) return;
@@ -297,10 +297,10 @@ namespace GIS
         /// <summary>
         /// 根据圆心和半径绘制圆
         /// </summary>
-        /// <param name="pLayer"></param>
-        /// <param name="pPoint"></param>
-        /// <param name="circleRadius"></param>
-        /// <param name="pScreenDisplay"></param>
+        /// <params name="pLayer"></params>
+        /// <params name="pPoint"></params>
+        /// <params name="circleRadius"></params>
+        /// <params name="pScreenDisplay"></params>
         private void DrawCircleByCenterAndRadius(ILayer pLayer, IPoint pPoint, double circleRadius, IScreenDisplay pScreenDisplay)
         {
             if (pLayer != null)

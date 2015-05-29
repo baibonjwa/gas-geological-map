@@ -112,7 +112,7 @@ namespace GIS
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             try
@@ -239,8 +239,8 @@ namespace GIS
         /// <summary>
         /// 新建对象，添加点
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <params name="x"></params>
+        /// <params name="y"></params>
         public void NewFeatureMouseDown(IPoint pPoint)
         {
             INewPolygonFeedback pPolyFeed;
@@ -292,8 +292,8 @@ namespace GIS
         /// 新建对象过程中鼠标移动方法,产生Track效果
         /// 在Map.MouseMove事件中调用本方法
         /// </summary>
-        /// <param name="x">鼠标X坐标，屏幕坐标</param>
-        /// <param name="y">鼠标Y坐标，屏幕坐标</param>
+        /// <params name="x">鼠标X坐标，屏幕坐标</params>
+        /// <params name="y">鼠标Y坐标，屏幕坐标</params>
         public void NewFeatureMouseMove(IPoint pt)
         {
             if ((!m_bInUse) || (m_pFeedback == null)) return;
@@ -384,7 +384,7 @@ namespace GIS
         /// <summary>
         /// 根据点创建要素
         /// </summary>
-        /// <param name="pGeom"></param>
+        /// <params name="pGeom"></params>
         private void CreateFeature(IGeometry pGeom)
         {
             try

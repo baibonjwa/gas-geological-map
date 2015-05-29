@@ -17,7 +17,7 @@ namespace GIS
         public const string LAYER_ALIAS_MR_HLDZX = "含量等值线";
         public const string LAYER_ALIAS_MR_YLDZX = "压力等值线";
         public const string LAYER_ALIAS_MR_YCLDZX = "涌出量等值线";
-        public const string LAYER_ALIAS_MR_XianLuoZhu1 = "陷落柱1";
+        public const string LAYER_ALIAS_MR_XianLuoZhu1 = "陷落柱";
         public const string LAYER_ALIAS_MR_QYYJT = "区域预警图";
         public const string LAYER_ALIAS_MR_Zhuzhuang = "柱状图";
         public const string LAYER_ALIAS_MR_AnnotationXZZ = "小柱状文字";
@@ -38,8 +38,8 @@ namespace GIS
         public const string LAYER_NAME_MR_JLDC = "揭露断层";
         public const string LAYER_NAME_MR_TDDC = "推断断层";
         public const string LAYER_NAME_MR_ZK = "钻孔";
-        public const string LAYER_NAME_MR_XLZ = "陷落柱";
-        public const string LAYER_NAME_MR_XLZ1 = "陷落柱1";
+        //public const string LAYER_NAME_MR_XLZ = "陷落柱";
+        public const string LAYER_NAME_MR_XLZ1 = "陷落柱";
         public const string LAYER_NAME_MR_JT = "井筒";
         public const string LAYER_NAME_MR_zhuzhuang = "GasEarlyWarningGIS.SDE.MR_zhuzhuang";
 
@@ -125,7 +125,7 @@ namespace GIS
 
         public const string DEFALUT_COLLAPSE_PILLAR = "陷落柱";
 
-        public const string DEFALUT_COLLAPSE_PILLAR_1 = "陷落柱1";
+        public const string DEFALUT_COLLAPSE_PILLAR_1 = "陷落柱";
 
         public const string DEFALUT_TUNNEL = "巷道";
 

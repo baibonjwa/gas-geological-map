@@ -24,8 +24,8 @@ namespace geoInput
         /// <summary>
         ///     添加（必须实装）
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var prospectingLineInfoEnteringForm = new ProspectingLineInfoEntering();
@@ -38,8 +38,8 @@ namespace geoInput
         /// <summary>
         ///     修改（必须实装）
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             var prospectingLineInfoEnteringForm =
@@ -53,8 +53,8 @@ namespace geoInput
         /// <summary>
         ///     删除按钮（必须实装）
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (!Alert.Confirm("确定要删除勘探线吗？")) return;
@@ -69,7 +69,7 @@ namespace geoInput
         /// <summary>
         ///     根据勘探线层绑定ID删除勘探线层图元
         /// </summary>
-        /// <param name="sfpFaultageBidArray">要删除勘探线层的绑定ID</param>
+        /// <params name="sfpFaultageBidArray">要删除勘探线层的绑定ID</params>
         private void DeleteJLDCByBID(string[] sfpFaultageBidArray)
         {
             if (sfpFaultageBidArray.Length == 0) return;
@@ -96,8 +96,8 @@ namespace geoInput
         /// <summary>
         ///     退出
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnExit_Click(object sender, EventArgs e)
         {
             // 关闭窗口
@@ -107,8 +107,8 @@ namespace geoInput
         /// <summary>
         ///     导出
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnExport_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -120,8 +120,8 @@ namespace geoInput
         /// <summary>
         ///     打印
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnPrint_Click(object sender, EventArgs e)
         {
             DevUtil.DevPrint(gcProspectingLine, "勘探线信息报表");
@@ -130,8 +130,8 @@ namespace geoInput
         /// <summary>
         ///     刷新
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshData();
@@ -140,8 +140,8 @@ namespace geoInput
         /// <summary>
         ///     图显按钮事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnMap_Click(object sender, EventArgs e)
         {
             var bid = ((ProspectingLine)gridView1.GetFocusedRow()).binding_id;

@@ -22,7 +22,7 @@ namespace GIS.Common
         /// <summary>
         /// 获得数据库连接
         /// </summary>
-        /// <param name="strConnString"></param>连接字符串
+        /// <params name="strConnString"></params>连接字符串
         /// <returns></returns>
         public static OleDbConnection GetODbConnection(string strConnString)
         {
@@ -96,7 +96,7 @@ namespace GIS.Common
         /// <summary>
         /// 根据查询语句获取内存表(OleDb)
         /// </summary>
-        /// <param name="strSql"></param>
+        /// <params name="strSql"></params>
         /// <returns></returns>
         public static DataTable GetDataTableFromSql(string strSql)
         {
@@ -125,8 +125,8 @@ namespace GIS.Common
         /// <summary>
         /// 利用内存表更新数据库(OleDb)
         /// </summary>
-        /// <param name="dtNewData"></param>
-        /// <param name="strSql"></param>
+        /// <params name="dtNewData"></params>
+        /// <params name="strSql"></params>
         /// <returns></returns>
         public static bool UpDateDataBaseFromTable(DataTable dtNewData, string strSql)
         {
@@ -153,8 +153,8 @@ namespace GIS.Common
         /// <summary>
         /// 将图片，文档等文件保存到数据库
         /// </summary>
-        /// <param name="strFileName"></param>文件路径
-        /// <param name="strID"></param>该表的主键
+        /// <params name="strFileName"></params>文件路径
+        /// <params name="strID"></params>该表的主键
         public static void WriteFileInOleDb(string strFileName, int strID)
         {
             try
@@ -174,8 +174,8 @@ namespace GIS.Common
         /// <summary>
         /// 参数与二进制字节数组互换
         /// </summary>
-        /// <param name="strSQL"></param>
-        /// <param name="byteBlob"></param>
+        /// <params name="strSQL"></params>
+        /// <params name="byteBlob"></params>
         /// <returns></returns>
         public static bool UpdateBlobField(string strSQL, byte[] byteBlob)
         {

@@ -107,7 +107,7 @@ namespace GIS.Common
         /// <summary>
         /// 设置SDE连接属性
         /// </summary>
-        /// <param name="ChkSdeLinkModle"></param>
+        /// <params name="ChkSdeLinkModle"></params>
         /// <returns>IPropertySet</returns>
         public static IPropertySet ConnectSDE(bool ChkSdeLinkModle)
         {

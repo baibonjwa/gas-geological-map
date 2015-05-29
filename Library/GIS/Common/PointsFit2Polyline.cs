@@ -20,8 +20,8 @@ namespace GIS.Common
         /// <summary>
         /// 根据点集坐标绘制线要素
         /// </summary>
-        /// <param name="featureLayer"></param>
-        /// <param name="lstPoint"></param>
+        /// <params name="featureLayer"></params>
+        /// <params name="lstPoint"></params>
         public static void CreateLine(IFeatureLayer featureLayer, List<IPoint> lstPoint, string ID)
         {
             try
@@ -96,8 +96,8 @@ namespace GIS.Common
         /// <summary>
         /// 从本地获得要素类
         /// </summary>
-        /// <param name="shapefileDirectory">文件路径（不含文件名）</param>
-        /// <param name="shapefileName">文件名</param>
+        /// <params name="shapefileDirectory">文件路径（不含文件名）</params>
+        /// <params name="shapefileName">文件名</params>
         /// <returns></returns>
         /// <remarks></remarks>
         public static IFeatureClass GetFeatureClassFromShapefileOnDisk(String shapefileDirectory, String shapefileName)
@@ -133,9 +133,9 @@ namespace GIS.Common
         /// <summary>
         /// 复制要素
         /// </summary>
-        /// <param name="sourceFeaLayer"></param>
-        /// <param name="targetFeaLayer"></param>
-        /// <param name="ID"></param>
+        /// <params name="sourceFeaLayer"></params>
+        /// <params name="targetFeaLayer"></params>
+        /// <params name="ID"></params>
         /// <returns></returns>
         public static bool CopyFeature(IFeatureLayer sourceFeaLayer, IFeatureLayer targetFeaLayer, string ID)
         {
@@ -185,9 +185,9 @@ namespace GIS.Common
         /// <summary>
         /// 插入新要素
         /// </summary>
-        /// <param name="featureLayer">图层</param>
-        /// <param name="geom">插入要素几何图形</param>
-        /// <param name="ID">要素ID（绑定ID）</param>
+        /// <params name="featureLayer">图层</params>
+        /// <params name="geom">插入要素几何图形</params>
+        /// <params name="ID">要素ID（绑定ID）</params>
         /// <returns></returns>
         public static bool InsertNewFeature(IFeatureLayer featureLayer, IGeometry geom, string ID)
         {

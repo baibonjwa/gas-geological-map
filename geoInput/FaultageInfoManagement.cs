@@ -25,8 +25,8 @@ namespace geoInput
         /// <summary>
         ///     添加（必须实装）
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"></params>
+        /// <params name="e"></params>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var faultageInfoEnteringForm = new FaultageInfoEntering();
@@ -41,8 +41,8 @@ namespace geoInput
         /// <summary>
         ///     修改（必须实装）
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (gridView1.GetFocusedRow() == null)
@@ -60,8 +60,8 @@ namespace geoInput
         /// <summary>
         ///     删除按钮（必须实装）
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (!Alert.Confirm("确认要删除该断层吗？")) return;
@@ -78,7 +78,7 @@ namespace geoInput
         /// <summary>
         ///     根据揭露断层绑定ID删除揭露断层图元
         /// </summary>
-        /// <param name="sfpFaultageBidArray">要删除揭露断层的绑定ID</param>
+        /// <params name="sfpFaultageBidArray">要删除揭露断层的绑定ID</params>
         private void DeleteJLDCByBID(ICollection<string> sfpFaultageBidArray)
         {
             if (sfpFaultageBidArray.Count == 0) return;
@@ -103,8 +103,8 @@ namespace geoInput
         /// <summary>
         ///     退出
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnExit_Click(object sender, EventArgs e)
         {
             // 关闭窗口
@@ -114,8 +114,8 @@ namespace geoInput
         /// <summary>
         ///     导出
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnExport_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -127,8 +127,8 @@ namespace geoInput
         /// <summary>
         ///     打印
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void tsBtnPrint_Click(object sender, EventArgs e)
         {
             DevUtil.DevPrint(gcFaultage, "揭露断层信息报表");
@@ -137,8 +137,8 @@ namespace geoInput
         /// <summary>
         ///     刷新
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshData();

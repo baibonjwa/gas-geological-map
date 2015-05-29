@@ -1,21 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Castle.ActiveRecord;
 using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord]
+    [ActiveRecord("boreholes")]
     public class Borehole : ActiveRecordBase<Borehole>
     {
         [PrimaryKey(PrimaryKeyType.Identity)]
         public int id { get; set; }
 
-        [HasMany(typeof(SubBorehole), Table = "SubBorehole", ColumnKey = "id",
+        [HasMany(typeof(SubBorehole), Table = "sub_boreholes", ColumnKey = "borehole_id",
 Cascade = ManyRelationCascadeEnum.All, Lazy = true)]
-        public IList<SubBorehole> borehole_lithologys { get; set; }
+        public IList<SubBorehole> sub_boreholes { get; set; }
 
         [Property]
-        public string borehole_number { get; set; }
+        public string name { get; set; }
 
         [Property]
         public double ground_elevation { get; set; }
@@ -34,5 +35,13 @@ Cascade = ManyRelationCascadeEnum.All, Lazy = true)]
 
         [Property]
         public string bid { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
+
+
     }
 }

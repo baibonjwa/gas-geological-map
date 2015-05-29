@@ -36,8 +36,8 @@ namespace LibCommonForm
         /// <summary>
         ///     带参数的构造方法
         /// </summary>
-        /// <param name="typeFlag"></param>
-        /// <param name="id"></param>
+        /// <params name="typeFlag"></params>
+        /// <params name="id"></params>
         public CommonManagement(int typeFlag, int id)
         {
             InitializeComponent();
@@ -51,13 +51,13 @@ namespace LibCommonForm
                     {
                         // 窗口标题
                         Text = @"矿井名称管理";
-                        AddIdColumn("编号", "MineId");
+                        AddIdColumn("编号", "id");
 
                         // 矿井名称
                         gridView1.Columns.Add(new GridColumn
                         {
                             Caption = @"矿井名称",
-                            FieldName = "MineName",
+                            FieldName = "name",
                             VisibleIndex = gridView1.Columns.Count
                         });
 
@@ -69,20 +69,20 @@ namespace LibCommonForm
                 case FlagManangingHorizontal:
                     {
                         Text = @"水平名称管理";
-                        AddIdColumn("编号", "HorizontalId");
+                        AddIdColumn("编号", "id");
 
                         // 矿井名称
                         gridView1.Columns.Add(new GridColumn
                         {
                             Caption = @"水平名称",
-                            FieldName = "HorizontalName",
+                            FieldName = "name",
                             VisibleIndex = gridView1.Columns.Count
                         });
 
                         gridView1.Columns.Add(new GridColumn
                         {
                             Caption = @"所在矿区",
-                            FieldName = "Mine",
+                            FieldName = "mine",
                             ColumnEdit = lueMine,
                             VisibleIndex = gridView1.Columns.Count,
                             FilterMode = ColumnFilterMode.DisplayText
@@ -96,13 +96,13 @@ namespace LibCommonForm
                 case FlagManangingMiningArea:
                     {
                         Text = @"采区名称管理";
-                        AddIdColumn("编号", "MiningAreaId");
+                        AddIdColumn("编号", "id");
 
                         // 矿井名称
                         gridView1.Columns.Add(new GridColumn
                         {
                             Caption = @"采区名称",
-                            FieldName = "MiningAreaName",
+                            FieldName = "name",
                             VisibleIndex = gridView1.Columns.Count
                         });
 
@@ -111,7 +111,7 @@ namespace LibCommonForm
                         gridView1.Columns.Add(new GridColumn
                         {
                             Caption = @"所在水平",
-                            FieldName = "Horizontal",
+                            FieldName = "horizontal",
                             ColumnEdit = lueHorizontal,
                             VisibleIndex = gridView1.Columns.Count,
                             FilterMode = ColumnFilterMode.DisplayText
@@ -126,20 +126,20 @@ namespace LibCommonForm
                 case FlagManangingWorkingFace:
                     {
                         Text = @"工作面名称管理";
-                        AddIdColumn("编号", "WorkingFaceId");
+                        AddIdColumn("编号", "id");
 
                         // 矿井名称
                         gridView1.Columns.Add(new GridColumn
                         {
                             Caption = @"工作面名称",
-                            FieldName = "WorkingFaceName",
+                            FieldName = "name",
                             VisibleIndex = gridView1.Columns.Count
                         });
 
                         gridView1.Columns.Add(new GridColumn
                         {
                             Caption = @"所在采区",
-                            FieldName = "MiningArea",
+                            FieldName = "mining_area",
                             ColumnEdit = lueMiningArea,
                             VisibleIndex = gridView1.Columns.Count,
                             FilterMode = ColumnFilterMode.DisplayText
@@ -164,8 +164,8 @@ namespace LibCommonForm
         /// <summary>
         ///     提交
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
 
@@ -229,8 +229,8 @@ namespace LibCommonForm
         /// <summary>
         ///     取消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // 窗口关闭
@@ -266,21 +266,21 @@ namespace LibCommonForm
         {
             switch (e.Column.FieldName)
             {
-                case "MiningArea":
+                case "mining_area":
                     {
                         if (e.Value == null) return;
                         var miningArea = (MiningArea)e.Value;
                         e.DisplayText = miningArea.name;
                         break;
                     }
-                case "Horizontal":
+                case "horizontal":
                     {
                         if (e.Value == null) return;
                         var horizontal = (Horizontal)e.Value;
                         e.DisplayText = horizontal.name;
                         break;
                     }
-                case "Mine":
+                case "mine":
                     {
                         if (e.Value == null) return;
                         var mine = (Mine)e.Value;

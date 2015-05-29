@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Castle.ActiveRecord;
 using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord]
+    [ActiveRecord("infer_faultage_points")]
     public class InferFaultagePoint : ActiveRecordBase<InferFaultagePoint>
     {
         [PrimaryKey(PrimaryKeyType.Identity, "id")]
@@ -22,10 +23,16 @@ namespace LibEntity
         [Property]
         public virtual double coordinate_z { get; set; }
 
-        [BelongsTo("id")]
+        [BelongsTo("infer_faultage_id")]
         public InferFaultage infer_faultage { get; set; }
 
         [Property]
         public virtual string bid { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
     }
 }

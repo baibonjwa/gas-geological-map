@@ -21,7 +21,7 @@ namespace GIS.Common
         /// <summary>
         /// 查询地图中的FeatureLayer(图层名为汉化图层名，一般为汉语名）
         /// </summary>
-        /// <param name="strLayerName">图层名</param>
+        /// <params name="strLayerName">图层名</params>
         /// <returns>矢量图层</returns>
         /// <remarks></remarks>
         public IFeatureLayer GetFeatureLayerByName(string strLayerName)
@@ -64,7 +64,7 @@ namespace GIS.Common
         /// <summary>
         /// 移除非本系统所需图层
         /// </summary>
-        /// <param name="strLayerName">当前系统图层组名称</param>
+        /// <params name="strLayerName">当前系统图层组名称</params>
         public void RemoveLayerByName(string strLayerName)
         {
             try
@@ -139,10 +139,10 @@ namespace GIS.Common
         /// 创建要素图层
         /// 也可以利用现有要素图层创建：IFeatureLayer featurelayer,
         /// </summary>
-        /// <param name="map"></param>
-        /// <param name="workspace"></param>
-        /// <param name="layername"></param>
-        /// <param name="aliasname"></param>
+        /// <params name="map"></params>
+        /// <params name="workspace"></params>
+        /// <params name="layername"></params>
+        /// <params name="aliasname"></params>
         /// <returns></returns>
         public IFeatureLayer CreateFeatureLayer(IMap map, IWorkspace workspace,
             string layername, string aliasname)
@@ -228,7 +228,7 @@ namespace GIS.Common
         /// <summary>
         /// 根据名称，查找GroupLayer图层
         /// </summary>
-        /// <param name="strLayerName">当前系统图层组名称</param>
+        /// <params name="strLayerName">当前系统图层组名称</params>
         public IGroupLayer GetGroupLayerByName(string strLayerName)
         {
             try
@@ -267,8 +267,8 @@ namespace GIS.Common
         /// <summary>
         /// 根据名称获取数据库中对应图层（要素集）
         /// </summary>
-        /// <param name="workspace"></param>
-        /// <param name="dsName"></param>
+        /// <params name="workspace"></params>
+        /// <params name="dsName"></params>
         /// <returns></returns>
         public IDataset GetDatasetByName(IWorkspace workspace ,string dsName)
         {
@@ -300,10 +300,10 @@ namespace GIS.Common
         /// <summary>
         /// shape图层入库
         /// </summary>
-        /// <param name="sourceworkspace"></param>
-        /// <param name="targetworkspace"></param>
-        /// <param name="nameOfsourceFeatureClass"></param>
-        /// <param name="nameOftargetFeatureClass"></param>
+        /// <params name="sourceworkspace"></params>
+        /// <params name="targetworkspace"></params>
+        /// <params name="nameOfsourceFeatureClass"></params>
+        /// <params name="nameOftargetFeatureClass"></params>
         /// <returns></returns>
         public IFeatureClass ShapeFileIntoGDB(IWorkspace sourceworkspace,IWorkspace targetworkspace,
             string nameOfsourceFeatureClass, string nameOftargetFeatureClass)
@@ -421,10 +421,10 @@ namespace GIS.Common
         /// <summary>
         /// Shape数据导入SDE现有数据源
         /// </summary>
-        /// <param name="sourceworkspace"></param>
-        /// <param name="targetworkspace"></param>
-        /// <param name="nameOfsourceFeatureClass"></param>
-        /// <param name="nameOftargetFeatureClass"></param>
+        /// <params name="sourceworkspace"></params>
+        /// <params name="targetworkspace"></params>
+        /// <params name="nameOfsourceFeatureClass"></params>
+        /// <params name="nameOftargetFeatureClass"></params>
         /// <returns></returns>
         public bool ShapeImportGDB(IWorkspace sourceworkspace, IWorkspace targetworkspace,
             string nameOfsourceFeatureClass, string nameOftargetFeatureClass,List<ziduan> list)
@@ -519,10 +519,10 @@ namespace GIS.Common
         /// <summary>
         /// Raster图层导入到数据库
         /// </summary>
-        /// <param name="dbWorkspace">数据库</param>
-        /// <param name="strRasterFileDir">本地栅格图层路径</param>
-        /// <param name="strRasterFileName">本地栅格图层名称</param>
-        /// <param name="strOutName">数据库栅格图层名称</param>
+        /// <params name="dbWorkspace">数据库</params>
+        /// <params name="strRasterFileDir">本地栅格图层路径</params>
+        /// <params name="strRasterFileName">本地栅格图层名称</params>
+        /// <params name="strOutName">数据库栅格图层名称</params>
         /// <returns></returns>
         public IRasterDataset RasterFileIntoGDB(IWorkspace dbWorkspace,string strRasterFileDir, 
             string strRasterFileName,string strOutName)

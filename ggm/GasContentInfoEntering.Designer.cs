@@ -10,7 +10,7 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <params name="disposing">true if managed resources should be disposed; otherwise, false.</params>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -105,7 +105,7 @@
             this.selectTunnelSimple1.BackColor = System.Drawing.Color.Transparent;
             this.selectTunnelSimple1.Location = new System.Drawing.Point(14, 20);
             this.selectTunnelSimple1.Name = "selectTunnelSimple1";
-            this.selectTunnelSimple1.SelectedTunnel = null;
+            this.selectTunnelSimple1.selected_tunnel = null;
             this.selectTunnelSimple1.Size = new System.Drawing.Size(219, 38);
             this.selectTunnelSimple1.TabIndex = 0;
             // 

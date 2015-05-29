@@ -80,9 +80,9 @@ namespace GIS.LayersManager
         /// <summary>
         /// 在指定位置弹出菜单
         /// </summary>
-        /// <param name="X">X坐标</param>
-        /// <param name="Y">Y坐标</param>
-        /// <param name="hWndParent">父窗口句柄</param>
+        /// <params name="X">X坐标</params>
+        /// <params name="Y">Y坐标</params>
+        /// <params name="hWndParent">父窗口句柄</params>
         public void PopupMenu(int X, int Y, int hWndParent)
         {
             if (m_toolbarMenu != null)

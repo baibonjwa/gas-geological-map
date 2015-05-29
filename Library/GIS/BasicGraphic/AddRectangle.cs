@@ -99,7 +99,7 @@ namespace GIS
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             try
@@ -224,8 +224,8 @@ namespace GIS
         /// <summary>
         /// 绘制矩形
         /// </summary>
-        /// <param name="pLayer"></param>
-        /// <param name="pScreenDisplay"></param>
+        /// <params name="pLayer"></params>
+        /// <params name="pScreenDisplay"></params>
         private void DrawRectangular(ILayer pLayer, IGeometry pGeo)
         {
             if (pLayer != null)

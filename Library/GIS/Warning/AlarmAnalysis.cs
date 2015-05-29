@@ -63,9 +63,9 @@ namespace GIS
       /// <summary>
       /// 根据生成的featureclass动态生成tin
       /// </summary>
-      /// <param name="pFeatureClass"></param>
-      /// <param name="pField"></param>
-      /// <param name="pPath"></param>
+      /// <params name="pFeatureClass"></params>
+      /// <params name="pField"></params>
+      /// <params name="pPath"></params>
       /// <returns></returns>
        private ITin CreateTin(IFeatureClass pFeatureClass, IField pField, string pPath)
          {
@@ -81,7 +81,7 @@ namespace GIS
       /// <summary>
       /// 根据离散点数据动态生成featureclass点图层
       /// </summary>
-      /// <param name="vectors"></param>
+      /// <params name="vectors"></params>
       /// <returns></returns>
        private static IFeatureClass GetFeatureCLass(LibGeometry.Vector3_DW[] vectors,ESRI.ArcGIS.Controls.AxMapControl map)
         {

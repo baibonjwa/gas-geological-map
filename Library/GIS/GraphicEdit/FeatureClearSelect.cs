@@ -110,7 +110,7 @@ namespace GIS.GraphicEdit
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             if (hook == null)

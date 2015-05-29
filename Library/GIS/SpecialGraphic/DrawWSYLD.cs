@@ -55,9 +55,9 @@ namespace GIS.SpecialGraphic
         /// 输入数值的构造函数
         /// </summary>
         /// <param name="strBT"></param>
-        /// <param name="strWSYLZ"></param>
-        /// <param name="strCDBG"></param>
-        /// <param name="strMS"></param>
+        /// <param name="strWSYLZ"></params>
+        /// <params name="strCDBG"></params>
+        /// <params name="strMS"></params>
         public DrawWSYLD(string strBT, string strWSYLZ, string strCDBG, string strMS)
         {
             m_strBT = strBT;

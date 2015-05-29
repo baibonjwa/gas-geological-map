@@ -35,8 +35,8 @@ namespace ggm
         /// <summary>
         ///     20140308 lyf 加载窗体时传入拾取点的坐标值
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"></params>
+        /// <params name="e"></params>
         private void GasPressureInfoEntering_Load(object sender, EventArgs e)
         {
             dtpMeasureDateTime.Format = DateTimePickerFormat.Custom;
@@ -55,8 +55,8 @@ namespace ggm
         /// <summary>
         ///     提  交
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -72,8 +72,8 @@ namespace ggm
                     depth = Convert.ToDouble(txtDepth.Text),
                     gas_pressure_value = Convert.ToDouble(txtGasPressureValue.Text),
                     measure_date_time = dtpMeasureDateTime.Value,
-                    tunnel = selectTunnelSimple1.SelectedTunnel,
-                    binding_id = IdGenerator.NewBindingId()
+                    tunnel = selectTunnelSimple1.selected_tunnel,
+                    bid = IdGenerator.NewBindingId()
                 };
                 // 坐标X
                 gasPressure.Save();
@@ -87,9 +87,9 @@ namespace ggm
                 GasPressure.depth = Convert.ToDouble(txtDepth.Text);
                 GasPressure.gas_pressure_value = Convert.ToDouble(txtGasPressureValue.Text);
                 GasPressure.measure_date_time = dtpMeasureDateTime.Value;
-                GasPressure.tunnel = selectTunnelSimple1.SelectedTunnel;
+                GasPressure.tunnel = selectTunnelSimple1.selected_tunnel;
                 GasPressure.Save();
-                DelGasGushQuantityPt(GasPressure.binding_id, GasPressure.coal_seam);
+                DelGasGushQuantityPt(GasPressure.bid, GasPressure.coal_seam);
                 DrawGasGushQuantityPt(GasPressure);
             }
         }
@@ -97,8 +97,8 @@ namespace ggm
         /// <summary>
         ///     取  消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // 关闭窗口
@@ -127,7 +127,7 @@ namespace ggm
             IGeometry geometry = pt;
             var list = new List<ziduan>
             {
-                new ziduan("bid", gasGushQuantityEntity.binding_id),
+                new ziduan("bid", gasGushQuantityEntity.bid),
                 new ziduan("mc", gasGushQuantityEntity.coal_seam.ToString()),
                 new ziduan("addtime", DateTime.Now.ToString(CultureInfo.InvariantCulture))
             };
@@ -167,8 +167,8 @@ namespace ggm
         /// <summary>
         ///     删除瓦斯信息
         /// </summary>
-        /// <param name="bid">绑定ID</param>
-        /// <param name="mc">煤层</param>
+        /// <params name="bid">绑定ID</params>
+        /// <params name="mc">煤层</params>
         private void DelGasGushQuantityPt(string bid, string mc)
         {
             var pLayer = DataEditCommon.GetLayerByName(DataEditCommon.g_pMap, LayerNames.LAYER_ALIAS_MR_WSYLD);

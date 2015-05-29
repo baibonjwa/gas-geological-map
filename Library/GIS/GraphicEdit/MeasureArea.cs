@@ -106,7 +106,7 @@ namespace GIS
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             try
@@ -377,7 +377,7 @@ namespace GIS
         /// <summary>
         /// 创建一个TextElement
         /// </summary>
-        /// <param name="text"></param>
+        /// <params name="text"></params>
         /// <returns></returns>
         ITextElement CreateTextElement(string text)
         {
@@ -402,7 +402,7 @@ namespace GIS
         /// <summary>
         /// 将系统颜色转换为IColor
         /// </summary>
-        /// <param name="color"></param>
+        /// <params name="color"></params>
         /// <returns></returns>
         ESRI.ArcGIS.Display.IColor TransColorToAEColor(Color color)
         {
@@ -414,8 +414,8 @@ namespace GIS
         /// <summary>
         /// 绘制几何图形
         /// </summary>
-        /// <param name="geoType"></param>
-        /// <param name="geometry"></param>
+        /// <params name="geoType"></params>
+        /// <params name="geometry"></params>
         /// <returns></returns>
         ESRI.ArcGIS.Carto.IElement createElement_x(ESRI.ArcGIS.Geometry.IGeometry geometry)
         {
@@ -494,9 +494,9 @@ namespace GIS
         /// <summary>
         /// 按指定的角度旋转
         /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="originPt"></param>
-        /// <param name="rotate"></param>
+        /// <params name="obj"></params>
+        /// <params name="originPt"></params>
+        /// <params name="rotate"></params>
         void TransformByRotate(ref object obj, IPoint originPt, double rotate)
         {
             if (obj == null && originPt == null)
@@ -571,7 +571,7 @@ namespace GIS
         /// <summary>
         /// 计算面积
         /// </summary>
-        /// <param name="CurPoint"></param>
+        /// <params name="CurPoint"></params>
         /// <returns></returns>
         private double CaculateArea(IPoint CurPoint)
         {

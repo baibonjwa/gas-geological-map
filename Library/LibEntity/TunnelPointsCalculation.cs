@@ -17,9 +17,9 @@ namespace LibEntity
         /// <summary>
         ///     计算仅含两个导线点的巷道的左右邦点
         /// </summary>
-        /// <param name="wirePts"></param>
-        /// <param name="verticesLeftRet"></param>
-        /// <param name="verticesRightRet"></param>
+        /// <params name="wirePts"></params>
+        /// <params name="verticesLeftRet"></params>
+        /// <params name="verticesRightRet"></params>
         /// <returns></returns>
         private bool calc_left_and_right_vertics_with2_traver_points(WirePoint[] wirePts,
             ref Vector3_DW[] verticesLeftRet, ref Vector3_DW[] verticesRightRet)
@@ -85,9 +85,9 @@ namespace LibEntity
         ///     根据导线点计算巷道左右帮的点
         ///     前后两个导线点坐标一样的情况未处理，传入的导线点数据需要保证不重复.
         /// </summary>
-        /// <param name="wirePts">导线点实体</param>
-        /// <param name="verticesLeftBtmRet">out，根据导线点计算出的巷道左帮所有点</param>
-        /// <param name="verticesRightBtmRet">out，根据导线点计算出的巷道右帮所有点</param>
+        /// <params name="wirePts">导线点实体</params>
+        /// <params name="verticesLeftBtmRet">out，根据导线点计算出的巷道左帮所有点</params>
+        /// <params name="verticesRightBtmRet">out，根据导线点计算出的巷道右帮所有点</params>
         /// <returns></returns>
         public bool calc_left_and_right_vertics(WirePoint[] wirePts, ref Vector3_DW[] verticesLeftBtmRet,
             ref Vector3_DW[] verticesRightBtmRet)

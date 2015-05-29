@@ -17,9 +17,9 @@ namespace GIS.Common
         /// <summary>
         /// Geometry中Z值和M值处理
         /// </summary>
-        /// <param name="feature"></param>
-        /// <param name="geometry"></param>
-        /// <param name="zValue"></param>
+        /// <params name="feature"></params>
+        /// <params name="geometry"></params>
+        /// <params name="zValue"></params>
         public static void HandleZMValue(IFeature feature, IGeometry geometry)
         {
             //先判断图层要素是否有Z值
@@ -63,9 +63,9 @@ namespace GIS.Common
         /// <summary>
         /// Geometry中Z值和M值处理
         /// </summary>
-        /// <param name="feature"></param>
-        /// <param name="geometry"></param>
-        /// <param name="zValue"></param>
+        /// <params name="feature"></params>
+        /// <params name="geometry"></params>
+        /// <params name="zValue"></params>
         public static void HandleZMValue(IFeature feature, IGeometry geometry, double zValue)
         {
             //先判断图层要素是否有Z值

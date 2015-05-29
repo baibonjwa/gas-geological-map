@@ -20,9 +20,9 @@ namespace GIS
         /// <summary>
         /// 绘制推断断层
         /// </summary>
-        /// <param name="title"></param>
-        /// <param name="faultagePointList"></param>
-        /// <param name="bId"></param>
+        /// <params name="title"></params>
+        /// <params name="faultagePointList"></params>
+        /// <params name="bId"></params>
         /// <returns></returns>
         public static bool DrawTddc(String title, List<InferFaultagePoint> faultagePointList, String bId)
         {
@@ -58,8 +58,8 @@ namespace GIS
         /// <summary>
         /// 根据文本文件绘制推断断层
         /// </summary>
-        /// <param name="filename">文本路径</param>
-        /// <param name="bid"></param>
+        /// <params name="filename">文本路径</params>
+        /// <params name="bid"></params>
         /// <returns></returns>
         public static bool DrawTddcByFile(string filename, string bid)
         {
@@ -189,10 +189,10 @@ namespace GIS
         /// <summary>
         /// 绘制推断断层
         /// </summary>
-        /// <param name="title">文字</param>
-        /// <param name="bid"></param>
-        /// <param name="listptS">上盘坐标集合</param>
-        /// <param name="listptX">下盘坐标集合</param>
+        /// <params name="title">文字</params>
+        /// <params name="bid"></params>
+        /// <params name="listptS">上盘坐标集合</params>
+        /// <params name="listptX">下盘坐标集合</params>
         /// <returns></returns>
         public static bool DrawTDDC(string title, string bid, List<IPoint> listptS, List<IPoint> listptX)
         {

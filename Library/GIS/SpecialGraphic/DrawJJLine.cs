@@ -14,9 +14,9 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 求导线（pRefPoint到pEndPoint）上的掘进点
         /// </summary>
-        /// <param name="pRefPoint">参考导线点</param>
-        /// <param name="pEndPoint">导线的终点</param>
-        /// <param name="dDistance">距离参考导线点的距离</param>
+        /// <params name="pRefPoint">参考导线点</params>
+        /// <params name="pEndPoint">导线的终点</params>
+        /// <params name="dDistance">距离参考导线点的距离</params>
         /// <returns>距参考导线点一定距离的点</returns>
         public static IPoint GetJJPoint(IPoint pRefPoint, IPoint pEndPoint, double dDistance)
         {
@@ -45,9 +45,9 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 在掘进进尺图层创建掘进进尺线要素
         /// </summary>
-        /// <param name="featureLayer">掘进进尺图层</param>
-        /// <param name="pJjPolyline">掘进进尺线</param>
-        /// <param name="tunnelID">对应的巷道ID</param>
+        /// <params name="featureLayer">掘进进尺图层</params>
+        /// <params name="pJjPolyline">掘进进尺线</params>
+        /// <params name="tunnelID">对应的巷道ID</params>
         /// <returns>成功返回true</returns>
         public static bool CreateLineFeature(IFeatureLayer featureLayer, IPolyline pJjPolyline, string bindingID,  double distance)
         {
@@ -105,10 +105,10 @@ namespace GIS.SpecialGraphic
         /// <summary>
         ///  删除满足条件的掘进进尺线要素
         /// </summary>
-        /// <param name="featureLayer">掘进进尺图层</param>
-        /// <param name="tunnelID">巷道ID</param>
-        /// <param name="consultWirepointID">参考导线点编号</param>
-        /// <param name="distance">掘进距离</param>
+        /// <params name="featureLayer">掘进进尺图层</params>
+        /// <params name="tunnelID">巷道ID</params>
+        /// <params name="consultWirepointID">参考导线点编号</params>
+        /// <params name="distance">掘进距离</params>
         /// <returns>成功删除返回true</returns>
         public static bool DeleteLineFeature(IFeatureLayer featureLayer, string bindingID)
         {

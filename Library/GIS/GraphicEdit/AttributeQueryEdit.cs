@@ -102,7 +102,7 @@ namespace GIS
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             try
@@ -249,10 +249,10 @@ namespace GIS
         /// <summary>
         /// 获得最近的要素几何 
         /// </summary>
-        /// <param name="SearchDist">搜索距离</param>
-        /// <param name="searchCollection">搜索集</param>
-        /// <param name="pPoint">点击的点</param>
-        /// <param name="pFeature">获得要素</param>
+        /// <params name="SearchDist">搜索距离</params>
+        /// <params name="searchCollection">搜索集</params>
+        /// <params name="pPoint">点击的点</params>
+        /// <params name="pFeature">获得要素</params>
         private void GetClosestFeatureInCollection(double SearchDist, ArrayList searchCollection, IPoint pPoint, ref IFeature pFeature)
         {
             IProximityOperator pProximity;
@@ -413,10 +413,10 @@ namespace GIS
         /// <summary>
         /// 图形闪烁
         /// </summary>
-        /// <param name="pDisplay">显示设备</param>
-        /// <param name="pGeometry">显示图形</param>
-        /// <param name="nTimer">闪烁次数</param>
-        /// <param name="time">系统线程暂停时间</param>
+        /// <params name="pDisplay">显示设备</params>
+        /// <params name="pGeometry">显示图形</params>
+        /// <params name="nTimer">闪烁次数</params>
+        /// <params name="time">系统线程暂停时间</params>
         private void FlashPolygon(IScreenDisplay pDisplay, IGeometry pGeometry, int nTimer, int time)
         {
             ISimpleFillSymbol pFillSymbol = new SimpleFillSymbolClass();

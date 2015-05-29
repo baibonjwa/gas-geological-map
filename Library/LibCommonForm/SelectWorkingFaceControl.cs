@@ -57,8 +57,8 @@ namespace LibCommonForm
         /// <summary>
         /// 矿井名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnMineName_Click(object sender, EventArgs e)
         {
             var commonManagement = new CommonManagement(1, 999);
@@ -71,8 +71,8 @@ namespace LibCommonForm
         /// <summary>
         /// 水平名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnHorizontalName_Click(object sender, EventArgs e)
         {
             if (lstMineName.SelectedItems.Count > 0)
@@ -95,8 +95,8 @@ namespace LibCommonForm
         /// <summary>
         /// 采区名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnMiningAreaName_Click(object sender, EventArgs e)
         {
             if (lstHorizontalName.SelectedItems.Count > 0)
@@ -119,8 +119,8 @@ namespace LibCommonForm
         /// <summary>
         /// 工作面名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnWorkingFaceName_Click(object sender, EventArgs e)
         {
             if (lstMiningAreaName.SelectedItems.Count > 0)

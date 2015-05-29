@@ -20,7 +20,7 @@ namespace GIS
         /// <summary>
         /// 点集合转成范围
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="list"></params>
         /// <returns></returns>
         public static IGeometry GetGeoFromPoint(List<IPoint> list)
         {
@@ -85,7 +85,7 @@ namespace GIS
         /// <summary>
         /// 跳转
         /// </summary>
-        /// <param name="pGeo"></param>
+        /// <params name="pGeo"></params>
         public static void Jump(IGeometry pGeo)
         {
             if (pGeo == null)
@@ -115,7 +115,7 @@ namespace GIS
         /// <summary>
         /// 地图单位转中文
         /// </summary>
-        /// <param name="inUnit"></param>
+        /// <params name="inUnit"></params>
         /// <returns></returns>
         public static string mapUnit(string inUnit)
         {
@@ -167,8 +167,8 @@ namespace GIS
         /// <summary>
         /// 判断是否包含
         /// </summary>
-        /// <param name="Poly">参考范围图形</param>
-        /// <param name="list">要判断的图形集合</param>
+        /// <params name="Poly">参考范围图形</params>
+        /// <params name="list">要判断的图形集合</params>
         /// <returns>所有不包含在范围内的图形</returns>
         public static List<IGeometry> withIn(IGeometry Poly, List<IGeometry> list)
         {
@@ -198,7 +198,7 @@ namespace GIS
         /// <summary>
         /// 设定当前工具
         /// </summary>
-        /// <param name="tool">ICommand</param>
+        /// <params name="tool">ICommand</params>
         public static void SetCurrentTool(ICommand tool)
         {
             tool.OnCreate(DataEditCommon.g_pAxMapControl.Object);
@@ -215,7 +215,7 @@ namespace GIS
         /// <summary>
         /// 面转线
         /// </summary>
-        /// <param name="pPolyline"></param>
+        /// <params name="pPolyline"></params>
         /// <returns></returns>
         public static List<ILine> PolygonToListline(IPolygon Polygon)
         {
@@ -241,7 +241,7 @@ namespace GIS
         /// <summary>
         /// 面转线
         /// </summary>
-        /// <param name="pPolyline"></param>
+        /// <params name="pPolyline"></params>
         /// <returns></returns>
         public static IPolyline PolygonToPolyline(IPolygon Polygon)
         {
@@ -290,8 +290,8 @@ namespace GIS
         /// <summary>
         /// 查询条件要素
         /// </summary>
-        /// <param name="feaLayer">IFeatureLayer</param>
-        /// <param name="WhereClause">自定义查询条件</param>
+        /// <params name="feaLayer">IFeatureLayer</params>
+        /// <params name="WhereClause">自定义查询条件</params>
         public static IFeature FindFeatureByWhereClause(IFeatureLayer feaLayer, string WhereClause)
         {
             try
@@ -313,8 +313,8 @@ namespace GIS
         /// <summary>
         /// 查询条件要素
         /// </summary>
-        /// <param name="feaLayer">IFeatureLayer</param>
-        /// <param name="WhereClause">自定义查询条件</param>
+        /// <params name="feaLayer">IFeatureLayer</params>
+        /// <params name="WhereClause">自定义查询条件</params>
         public static List<IFeature> FindFeatureListByWhereClause(IFeatureLayer feaLayer, string WhereClause)
         {
             try
@@ -381,8 +381,8 @@ namespace GIS
         /// <summary>
         /// 计算两点之间的距离
         /// </summary>
-        /// <param name="pt1"></param>
-        /// <param name="pt2"></param>
+        /// <params name="pt1"></params>
+        /// <params name="pt2"></params>
         /// <returns></returns>
         public static double GetTwoPointDistance(IPoint pt1, IPoint pt2)
         {
@@ -400,9 +400,9 @@ namespace GIS
         /// <summary>
         /// 给定过滤条件，显示符合条件的纪录
         /// </summary>
-        /// <param name="pMap">IMap</param>
-        /// <param name="p2DLayer">ILayer</param>
-        /// <param name="strFilter">sql语句where 后面的条件</param>
+        /// <params name="pMap">IMap</params>
+        /// <params name="p2DLayer">ILayer</params>
+        /// <params name="strFilter">sql语句where 后面的条件</params>
         public static void Show_IsVisiable(IMap pMap, ILayer p2DLayer, string strFilter)
         {
             try
@@ -423,9 +423,9 @@ namespace GIS
         /// <summary>
         /// 空间特征查询排序
         /// </summary>
-        /// <param name="pfeatureclass">操作的 pfeatureclass</param>
-        /// <param name="strSQL">查询条件sql 语句的where 后面的</param>
-        /// <param name="PostfixClause">order by  xxxx</param>
+        /// <params name="pfeatureclass">操作的 pfeatureclass</params>
+        /// <params name="strSQL">查询条件sql 语句的where 后面的</params>
+        /// <params name="PostfixClause">order by  xxxx</params>
         ///<returns>查询结果集的游标</returns>
         public static IFeatureCursor FeatureSorting(IFeatureClass pfeatureclass, string strSQL, string PostfixClause)
         {

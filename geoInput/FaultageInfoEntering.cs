@@ -18,7 +18,6 @@ using GIS.Common;
 using LibCommon;
 using LibEntity;
 using stdole;
-using static System.String;
 using Font = System.Drawing.Font;
 
 namespace geoInput
@@ -93,8 +92,8 @@ namespace geoInput
         /// <summary>
         ///     提  交
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -150,8 +149,8 @@ namespace geoInput
         /// <summary>
         ///     取  消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // 关闭窗口
@@ -225,9 +224,9 @@ namespace geoInput
                                 coordinate_z = 0.0,
                                 separation = str[2],
                                 gap = str[2],
-                                trend = IsNullOrWhiteSpace(str[4]) ? 0.0 : Convert.ToDouble(str[4]),
-                                angle = IsNullOrWhiteSpace(str[5]) ? 0.0 : Convert.ToDouble(str[5]),
-                                length = IsNullOrWhiteSpace(str[6]) ? 0.0 : Convert.ToDouble(str[6]),
+                                trend = string.IsNullOrWhiteSpace(str[4]) ? 0.0 : Convert.ToDouble(str[4]),
+                                angle = string.IsNullOrWhiteSpace(str[5]) ? 0.0 : Convert.ToDouble(str[5]),
+                                length = string.IsNullOrWhiteSpace(str[6]) ? 0.0 : Convert.ToDouble(str[6]),
                                 type = str[3],
                                 bid = IdGenerator.NewBindingId()
                             };
@@ -241,9 +240,9 @@ namespace geoInput
                             faultage.coordinate_z = 0.0;
                             faultage.separation = str[2];
                             faultage.gap = str[2];
-                            faultage.trend = IsNullOrWhiteSpace(str[4]) ? 0.0 : Convert.ToDouble(str[4]);
-                            faultage.angle = IsNullOrWhiteSpace(str[5]) ? 0.0 : Convert.ToDouble(str[5]);
-                            faultage.length = IsNullOrWhiteSpace(str[6]) ? 0.0 : Convert.ToDouble(str[6]);
+                            faultage.trend = string.IsNullOrWhiteSpace(str[4]) ? 0.0 : Convert.ToDouble(str[4]);
+                            faultage.angle = string.IsNullOrWhiteSpace(str[5]) ? 0.0 : Convert.ToDouble(str[5]);
+                            faultage.length = string.IsNullOrWhiteSpace(str[6]) ? 0.0 : Convert.ToDouble(str[6]);
                             faultage.type = str[3];
                             ModifyJldc(faultage);
                         }
@@ -274,7 +273,7 @@ namespace geoInput
         /// <summary>
         ///     修改揭露断层图元
         /// </summary>
-        /// <param name="faultageEntity"></param>
+        /// <params name="faultageEntity"></params>
         private void ModifyJldc(Faultage faultageEntity)
         {
             //1.获得当前编辑图层
@@ -295,7 +294,7 @@ namespace geoInput
         /// <summary>
         ///     绘制揭露断层图元
         /// </summary>
-        /// <param name="faultage"></param>
+        /// <params name="faultage"></params>
         private void DrawJldc(Faultage faultage)
         {
             ////1.获得当前编辑图层
@@ -447,11 +446,11 @@ namespace geoInput
         /// <summary>
         ///     根据中心点、倾角和长度计算起止点
         /// </summary>
-        /// <param name="centrePt">中心点</param>
-        /// <param name="angle">倾角</param>
-        /// <param name="length">1/2长度</param>
-        /// <param name="fromPt">起点</param>
-        /// <param name="toPt">终点</param>
+        /// <params name="centrePt">中心点</params>
+        /// <params name="angle">倾角</params>
+        /// <params name="length">1/2长度</params>
+        /// <params name="fromPt">起点</params>
+        /// <params name="toPt">终点</params>
         private static void CalculateEndpoints(IPoint centrePt, double angle, double length, ref IPoint fromPt,
             ref IPoint toPt)
         {
@@ -479,9 +478,9 @@ namespace geoInput
         /// <summary>
         ///     获得符号
         /// </summary>
-        /// <param name="sServerStylePath"></param>
-        /// <param name="sGalleryClassName"></param>
-        /// <param name="symbolName"></param>
+        /// <params name="sServerStylePath"></params>
+        /// <params name="sGalleryClassName"></params>
+        /// <params name="symbolName"></params>
         /// <returns></returns>
         public static ILineSymbol GetSymbol(string sServerStylePath, string sGalleryClassName, string symbolName)
         {

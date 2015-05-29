@@ -103,8 +103,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 显示行号
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void dgrdvZhzzt_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(e.RowBounds.Location.X,
@@ -138,8 +138,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 上移
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void 上移ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int iNowIndex = this.dgrdvZhzzt.CurrentRow.Index;
@@ -174,8 +174,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 下移
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void 下移ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int iNowIndex = this.dgrdvZhzzt.CurrentRow.Index;
@@ -210,8 +210,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 插入
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void 插入ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int iNowIndex = this.dgrdvZhzzt.CurrentRow.Index;
@@ -222,8 +222,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 复制
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int iNowIndex = this.dgrdvZhzzt.CurrentRow.Index;
@@ -245,8 +245,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 粘贴
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void 粘贴ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int iNowIndex = this.dgrdvZhzzt.CurrentRow.Index;
@@ -267,8 +267,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 剪切
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void 剪切ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int iNowIndex = this.dgrdvZhzzt.CurrentRow.Index;

@@ -8,7 +8,7 @@ namespace LibCommonForm
 {
     public partial class SelectTunnelUserControl : UserControl
     {
-        public Tunnel SelectedTunnel { get; set; }
+        public Tunnel selected_tunnel { get; set; }
 
         public SelectTunnelUserControl()
         {
@@ -51,8 +51,8 @@ namespace LibCommonForm
         /// <summary>
         /// 矿井名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnMineName_Click(object sender, EventArgs e)
         {
             var commonManagement = new CommonManagement(1, 999);
@@ -65,8 +65,8 @@ namespace LibCommonForm
         /// <summary>
         /// 水平名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnHorizontalName_Click(object sender, EventArgs e)
         {
             if (lstMineName.SelectedItems.Count > 0)
@@ -89,8 +89,8 @@ namespace LibCommonForm
         /// <summary>
         /// 采区名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnMiningAreaName_Click(object sender, EventArgs e)
         {
             if (lstHorizontalName.SelectedItems.Count > 0)
@@ -113,8 +113,8 @@ namespace LibCommonForm
         /// <summary>
         /// 工作面名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnWorkingFaceName_Click(object sender, EventArgs e)
         {
             if (lstMiningAreaName.SelectedItems.Count > 0)
@@ -137,16 +137,16 @@ namespace LibCommonForm
         /// <summary>
         /// 巷道名称Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnTunnelName_Click(object sender, EventArgs e)
         {
-            if (SelectedTunnel != null)
+            if (selected_tunnel != null)
             {
-                var tunnelInfoEntering = new TunnelInfoEntering(SelectedTunnel);
+                var tunnelInfoEntering = new TunnelInfoEntering(selected_tunnel);
                 if (DialogResult.OK == tunnelInfoEntering.ShowDialog())
                 {
-                    LoadData(SelectedTunnel);
+                    LoadData(selected_tunnel);
                 }
             }
             else
@@ -190,9 +190,9 @@ namespace LibCommonForm
         private void lstTunnelName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstTunnelName.SelectedItems.Count <= 0)
-                SelectedTunnel = null;
+                selected_tunnel = null;
             else
-                SelectedTunnel = (Tunnel)lstTunnelName.SelectedItem;
+                selected_tunnel = (Tunnel)lstTunnelName.SelectedItem;
         }
     }
 }

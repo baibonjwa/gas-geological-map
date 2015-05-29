@@ -152,6 +152,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoalSeam.cs" />
     <Compile Include="CollectionHelper.cs" />
     <Compile Include="DataBindUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

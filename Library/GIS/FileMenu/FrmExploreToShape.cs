@@ -91,8 +91,8 @@ namespace GIS.FileMenu
         /// <summary>
         /// 选择导出路径
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSelectedPath_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog saveExportCADFileDialog = new FolderBrowserDialog();
@@ -189,10 +189,10 @@ namespace GIS.FileMenu
         /// 将一个要素类从一个工作空间转移到另外一个工作空间
         /// 注意目标工作空间不能有改要素类，必须先清除  
         /// </summary>
-        /// <param name="sourceWorkspace">源工作空间</param>
-        /// <param name="targetWorkspace">目标工作空间</param>
-        /// <param name="nameOfSourceFeatureClass">源要素类名</param>
-        /// <param name="nameOfTargetFeatureClass">目标要素类名</param>
+        /// <params name="sourceWorkspace">源工作空间</params>
+        /// <params name="targetWorkspace">目标工作空间</params>
+        /// <params name="nameOfSourceFeatureClass">源要素类名</params>
+        /// <params name="nameOfTargetFeatureClass">目标要素类名</params>
         public bool IFeatureDataConverter_ConvertFeatureClass(IWorkspace sourceWorkspace, IWorkspace targetWorkspace, string nameOfSourceFeatureClass, string nameOfTargetFeatureClass)
         {
             bool change = false;

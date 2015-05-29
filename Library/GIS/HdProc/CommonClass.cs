@@ -17,8 +17,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 根据图层索引获得图层
         /// </summary>
-        /// <param name="activeView">当前视图窗口对象</param>
-        /// <param name="layerIndex">图层序号</param>
+        /// <params name="activeView">当前视图窗口对象</params>
+        /// <params name="layerIndex">图层序号</params>
         /// <returns></returns>
         public ESRI.ArcGIS.Carto.IFeatureLayer GetFeatureLayerFromLayerName(ESRI.ArcGIS.Carto.IActiveView activeView, System.String name)
         {
@@ -64,8 +64,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 根据图层索引获得图层
         /// </summary>
-        /// <param name="activeView">当前视图窗口对象</param>
-        /// <param name="layerIndex">图层序号</param>
+        /// <params name="activeView">当前视图窗口对象</params>
+        /// <params name="layerIndex">图层序号</params>
         /// <returns></returns>
         public ESRI.ArcGIS.Carto.IFeatureLayer GetFeatureLayerFromLayerIndexNumber(ESRI.ArcGIS.Carto.IActiveView activeView, System.Int32 layerIndex)
         {
@@ -87,7 +87,7 @@ namespace GIS.HdProc
         /// <summary>
         /// 根据传入的字段与值的字典信息，返回sql查询语句
         /// </summary>
-        /// <param name="fldvals">键值字典</param>
+        /// <params name="fldvals">键值字典</params>
         /// <returns>sql查询语句</returns>
         public string CreateSqlexpression(IFields flds, Dictionary<string, string> fldvals)
         {
@@ -128,9 +128,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 查找要素
         /// </summary>
-        /// <param name="layer">图层</param>
-        /// <param name="fieldName">字段</param>
-        /// <param name="attributeValue">查询条件</param>
+        /// <params name="layer">图层</params>
+        /// <params name="fieldName">字段</params>
+        /// <params name="attributeValue">查询条件</params>
         /// <returns>查询结果(图层名称，几何图形，属性信息)</returns>
         public List<Tuple<IFeature, IGeometry, Dictionary<string, string>>> SearchFeaturesByGeoAndText(ILayer layer, Dictionary<string, string> fldvals)
         {
@@ -192,7 +192,7 @@ namespace GIS.HdProc
         /// <summary>
         /// 由点坐标创建面对象
         /// </summary>
-        /// <param name="pnts">点集合</param>
+        /// <params name="pnts">点集合</params>
         /// <returns>返回的面对象</returns>
         public IPolygon CreatePolygonFromPnts(IList<IPoint> pnts, ISpatialReference spr)
         {
@@ -213,8 +213,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 查询地质构造
         /// </summary>
-        /// <param name="pGeomety"></param>
-        /// <param name="searchregion"></param>
+        /// <params name="pGeomety"></params>
+        /// <params name="searchregion"></params>
         /// <returns></returns>
         public Dictionary<string, List<GeoStruct>> GetStructsInfos(IPoint pGeomety, List<int> hdids = null)
         {
@@ -264,9 +264,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 获得查询结果信息
         /// </summary>
-        /// <param name="pGeometry">点</param>
-        /// <param name="hdids">巷道ID</param>
-        /// <param name="kind">表示巷道掘进还是回采掘进</param>
+        /// <params name="pGeometry">点</params>
+        /// <params name="hdids">巷道ID</params>
+        /// <params name="kind">表示巷道掘进还是回采掘进</params>
         /// <returns></returns>
         public Dictionary<string, List<GeoStruct>> GetStructsInfosNew(IPoint pGeometry, List<int> hdids = null, int kind = 1)
         {
@@ -414,9 +414,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 创建点缓冲区查询 查询对应的地质构造信息
         /// </summary>
-        /// <param name="pGeom">点</param>
-        /// <param name="dist">缓冲距离</param>
-        /// <param name="fealyr">缓冲图层</param>
+        /// <params name="pGeom">点</params>
+        /// <params name="dist">缓冲距离</params>
+        /// <params name="fealyr">缓冲图层</params>
         /// <returns></returns>
         public List<GeoStruct> BufferAnalyse(IPoint pGeom, double dist, IFeatureLayer fealyr)
         {
@@ -511,9 +511,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 空间属性查询
         /// </summary>
-        /// <param name="geom">查询对象</param>
-        /// <param name="sql">sql语句</param>
-        /// <param name="featurelyr">图层</param>
+        /// <params name="geom">查询对象</params>
+        /// <params name="sql">sql语句</params>
+        /// <params name="featurelyr">图层</params>
         /// <returns>返回查询结果集合</returns>
         public IFeatureCursor SpatialSearch(IGeometry geom, string sql, IFeatureLayer featurelyr, esriSpatialRelEnum rel = esriSpatialRelEnum.esriSpatialRelEnvelopeIntersects)
         {
@@ -533,9 +533,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 空间属性查询
         /// </summary>
-        /// <param name="geom">查询对象</param>
-        /// <param name="dics">属性值字典</param>
-        /// <param name="featurelyr">图层</param>
+        /// <params name="geom">查询对象</params>
+        /// <params name="dics">属性值字典</params>
+        /// <params name="featurelyr">图层</params>
         /// <returns>返回查询结果集合</returns>
         public IFeatureCursor PropertySearch(string sql, IFeatureLayer featurelyr)
         {
@@ -554,8 +554,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 计算两点之间的空间距离
         /// </summary>
-        /// <param name="pnt0">起点</param>
-        /// <param name="pnt1">终点</param>
+        /// <params name="pnt0">起点</params>
+        /// <params name="pnt1">终点</params>
         /// <returns>返回距离</returns>
         public double CalculateDistance(IPoint pnt0, IGeometry geom)
         {
@@ -588,8 +588,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 计算两点之间的空间距离
         /// </summary>
-        /// <param name="pnt0">起点</param>
-        /// <param name="pnt1">终点</param>
+        /// <params name="pnt0">起点</params>
+        /// <params name="pnt1">终点</params>
         /// <returns>返回距离</returns>
         public double CalculateDistanceNew(IPolyline plin, IGeometry geom)
         {
@@ -625,9 +625,9 @@ namespace GIS.HdProc
         /// 根据当前绘制的线段判断在中心线分段图层中与之相交的线段，
         /// 根据z值判断上下层关系，返回对应的Id属性信息
         /// </summary>
-        /// <param name="plin">要绘制的中心线</param>
-        /// <param name="centlyr">中心线图层</param>
-        /// <param name="HdId">巷道Id</param>
+        /// <params name="plin">要绘制的中心线</params>
+        /// <params name="centlyr">中心线图层</params>
+        /// <params name="HdId">巷道Id</params>
         /// <returns>返回线对象的Id值，决定显示效果</returns>
         public int SearchHdByLine(IPolyline plin, string HdId, IFeatureLayer centlyr)
         {
@@ -672,9 +672,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 根据巷道高度判断两条巷道的上下级关系
         /// </summary>
-        /// <param name="pl0">线0</param>
-        /// <param name="pl1">线1</param>
-        /// <param name="jdpnt">交点</param>
+        /// <params name="pl0">线0</params>
+        /// <params name="pl1">线1</params>
+        /// <params name="jdpnt">交点</params>
         /// <returns>z值大小的比较 0相同 1在上 -1在下</returns>
         public int CheckHdGd(IPolyline pl0, IPolyline pl1, IPoint jdpnt)
         {
@@ -709,10 +709,10 @@ namespace GIS.HdProc
         /// <summary>
         /// 删除几何对象
         /// </summary>
-        /// <param name="lyr">图层</param>
-        /// <param name="fea">要素对象</param>
-        /// <param name="attributes">属性集合</param>
-        /// <param name="pGeo">空间对象</param>
+        /// <params name="lyr">图层</params>
+        /// <params name="fea">要素对象</params>
+        /// <params name="attributes">属性集合</params>
+        /// <params name="pGeo">空间对象</params>
         /// <returns>成功失败标志</returns>
         public void DelFeature(IFeatureLayer lyr, IFeature fea)
         {
@@ -741,8 +741,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 根据查询语句从ITable中删除对应的记录信息
         /// </summary>
-        /// <param name="lyr">图层</param>
-        /// <param name="sql">查询语句</param>
+        /// <params name="lyr">图层</params>
+        /// <params name="sql">查询语句</params>
         public void DelFeaturesByQueryFilter(IFeatureLayer lyr, string sql)
         {
             IFeatureClass Featureclass = lyr.FeatureClass;
@@ -775,10 +775,10 @@ namespace GIS.HdProc
         /// <summary>
         /// 删除多个几何对象
         /// </summary>
-        /// <param name="lyr">图层</param>
-        /// <param name="fea">要素对象</param>
-        /// <param name="attributes">属性集合</param>
-        /// <param name="pGeo">空间对象</param>
+        /// <params name="lyr">图层</params>
+        /// <params name="fea">要素对象</params>
+        /// <params name="attributes">属性集合</params>
+        /// <params name="pGeo">空间对象</params>
         /// <returns>成功失败标志</returns>
         public void DelFeatures(IFeatureLayer lyr, string sql)
         {
@@ -811,9 +811,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 更新对象
         /// </summary>
-        /// <param name="lyr">图层</param>
-        /// <param name="fea">要素</param>
-        /// <param name="pGeo">几何对象</param>
+        /// <params name="lyr">图层</params>
+        /// <params name="fea">要素</params>
+        /// <params name="pGeo">几何对象</params>
         /// <returns></returns>
         public bool UpdateFeature(IFeatureLayer lyr, IFeature fea, IGeometry pGeo)
         {
@@ -839,9 +839,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 更新导线点图层
         /// </summary>
-        /// <param name="sql">更新查询语句</param>
-        /// <param name="pgeo">几何对象</param>
-        /// <param name="flyr">要查询更新的要素图层对象</param>
+        /// <params name="sql">更新查询语句</params>
+        /// <params name="pgeo">几何对象</params>
+        /// <params name="flyr">要查询更新的要素图层对象</params>
         /// <returns></returns>
         public bool UpdateFeature(string sql, IGeometry pgeo, IFeatureLayer flyr)
         {
@@ -867,10 +867,10 @@ namespace GIS.HdProc
         /// <summary>
         /// 更新数据
         /// </summary>
-        /// <param name="lyr">图层</param>
-        /// <param name="fea">要素对象</param>
-        /// <param name="attributes">属性集合</param>
-        /// <param name="pGeo">空间对象</param>
+        /// <params name="lyr">图层</params>
+        /// <params name="fea">要素对象</params>
+        /// <params name="attributes">属性集合</params>
+        /// <params name="pGeo">空间对象</params>
         /// <returns>成功失败标志</returns>
         public bool UpdateFeature(IFeatureLayer lyr, IFeature fea, Dictionary<string, string> attributes, IGeometry pGeo)
         {
@@ -924,8 +924,8 @@ namespace GIS.HdProc
 
         /// 合并列表中所有多边形
         /// </summary>
-        /// <param name="orifeature">保留源对象</param>
-        /// <param name="geolist">图形列表</param>
+        /// <params name="orifeature">保留源对象</params>
+        /// <params name="geolist">图形列表</params>
         /// <returns></returns>
         public void CreatePolygonFromExistingGeometries(IFeatureLayer lyr, IFeature orifeature, List<IGeometry> geolist)
         {
@@ -961,7 +961,7 @@ namespace GIS.HdProc
         /// <summary>
         /// 地图跳转到指定对象
         /// </summary>
-        /// <param name="geom"></param>
+        /// <params name="geom"></params>
         public void JumpToGeometry(IGeometry geom)
         {
             if (geom != null)
@@ -990,9 +990,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 构造圆形对象
         /// </summary>
-        /// <param name="point"></param>
-        /// <param name="radius"></param>
-        /// <param name="isCCW"></param>
+        /// <params name="point"></params>
+        /// <params name="radius"></params>
+        /// <params name="isCCW"></params>
         /// <returns></returns>
         public ICircularArc CreateCircleArc(IPoint point, double radius, bool isCCW)
         {
@@ -1004,8 +1004,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 判断点在切眼巷道的哪侧
         /// </summary>
-        /// <param name="qyhd">切眼巷道</param>
-        /// <param name="pntcenter">回采面中点坐标</param>
+        /// <params name="qyhd">切眼巷道</params>
+        /// <params name="pntcenter">回采面中点坐标</params>
         /// <returns></returns>
         public int GetDirectionByPnt(IPolyline qyhd, IPoint pntcenter)
         {

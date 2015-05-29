@@ -125,7 +125,7 @@ namespace GIS
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             try
@@ -308,10 +308,10 @@ namespace GIS
         /// <summary>
         /// 获得选中要素集合
         /// </summary>
-        /// <param name="SearchDist">搜索距离</param>
-        /// <param name="searchCollection">搜索集合</param>
-        /// <param name="pPoint">点</param>
-        /// <param name="pFeature">选中要素</param>
+        /// <params name="SearchDist">搜索距离</params>
+        /// <params name="searchCollection">搜索集合</params>
+        /// <params name="pPoint">点</params>
+        /// <params name="pFeature">选中要素</params>
         private void GetClosestFeatureInCollection(double SearchDist, ArrayList searchCollection, IPoint pPoint, ref IFeature pFeature)
         {
             IProximityOperator pProximity;

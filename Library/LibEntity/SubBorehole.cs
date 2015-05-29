@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Castle.ActiveRecord;
 using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord]
+    [ActiveRecord("sub_boreholes")]
     public class SubBorehole : ActiveRecordBase<SubBorehole>
     {
         /// <summary>
@@ -17,7 +18,7 @@ namespace LibEntity
         /// <summary>
         ///     钻孔编号
         /// </summary>
-        [BelongsTo("id")]
+        [BelongsTo("borehole_id")]
         public Borehole borehole { get; set; }
 
         /// <summary>
@@ -61,5 +62,11 @@ namespace LibEntity
         /// </summary>
         [Property]
         public double coordinate_z { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
     }
 }

@@ -14,7 +14,7 @@ namespace LibCommonForm
     public partial class TunnelInfoEntering : Form
     {
         private int _formHeight;
-        private Tunnel Tunnel { set; get; }
+        private Tunnel tunnel { set; get; }
 
         /// <summary>
         ///     添加
@@ -36,7 +36,7 @@ namespace LibCommonForm
         public TunnelInfoEntering(Tunnel tunnel)
         {
             InitializeComponent();
-            Tunnel = tunnel;
+            tunnel = tunnel;
         }
 
         private void TunnelInfoEntering_Load(object sender, EventArgs e)
@@ -66,20 +66,20 @@ namespace LibCommonForm
             cboTunnelType.ValueMember = "Value";
 
 
-            if (Tunnel == null)
+            if (tunnel == null)
             {
                 selectWorkingFaceControl1.LoadData();
                 cboTunnelType.SelectedValue = (int)TunnelTypeEnum.OTHER;
             }
             else
             {
-                selectWorkingFaceControl1.LoadData(Tunnel.workingface);
-                txtTunnelName.Text = Tunnel.name;
-                cboSupportPattern.Text = Tunnel.support_pattern;
-                cboLithology.SelectedItem = Tunnel.lithology;
-                txtDesignLength.Text = Tunnel.design_length.ToString(CultureInfo.InvariantCulture);
-                cboCoalOrStone.Text = Tunnel.coal_or_stone;
-                cboTunnelType.SelectedValue = (int)Tunnel.type;
+                selectWorkingFaceControl1.LoadData(tunnel.workingface);
+                txtTunnelName.Text = tunnel.name;
+                cboSupportPattern.Text = tunnel.support_pattern;
+                cboLithology.SelectedItem = tunnel.lithology;
+                txtDesignLength.Text = tunnel.design_length.ToString(CultureInfo.InvariantCulture);
+                cboCoalOrStone.Text = tunnel.coal_or_stone;
+                cboTunnelType.SelectedValue = (int)tunnel.type;
             }
 
         }
@@ -115,7 +115,7 @@ namespace LibCommonForm
                 lithology = cboLithology.SelectedValue.ToString(),
                 type = (TunnelTypeEnum)cboTunnelType.SelectedValue,
                 coal_or_stone = cboCoalOrStone.Text,
-                coal_seam = ConfigHelper.config.coal_seam,
+                coal_seam = ConfigHelper.current_seam.name,
                 bid = IdGenerator.NewBindingId(),
                 width = 5
             };
@@ -143,32 +143,32 @@ namespace LibCommonForm
                 return;
             }
             DialogResult = DialogResult.OK;
-            Tunnel.workingface = selectWorkingFaceControl1.SelectedWorkingFace;
+            tunnel.workingface = selectWorkingFaceControl1.SelectedWorkingFace;
             //巷道名称
-            Tunnel.name = txtTunnelName.Text;
+            tunnel.name = txtTunnelName.Text;
             //支护方式
-            Tunnel.support_pattern = cboSupportPattern.Text;
+            tunnel.support_pattern = cboSupportPattern.Text;
             //围岩类型
-            Tunnel.lithology = cboLithology.SelectedValue.ToString();
-            Tunnel.coal_seam = ConfigHelper.config.coal_seam;
-            Tunnel.width = 5;
+            tunnel.lithology = cboLithology.SelectedValue.ToString();
+            tunnel.coal_seam = ConfigHelper.current_seam.name;
+            tunnel.width = 5;
 
             //设计长度
             if (txtDesignLength.Text != "")
             {
-                Tunnel.design_length = Convert.ToInt32(txtDesignLength.Text);
+                tunnel.design_length = Convert.ToInt32(txtDesignLength.Text);
             }
             if (txtDesignArea.Text != "")
             {
-                Tunnel.design_area = Convert.ToInt32(txtDesignLength.Text);
+                tunnel.design_area = Convert.ToInt32(txtDesignLength.Text);
             }
             //煤巷岩巷
             if (cboCoalOrStone.Text != "")
             {
-                Tunnel.coal_or_stone = cboCoalOrStone.Text;
+                tunnel.coal_or_stone = cboCoalOrStone.Text;
             }
 
-            Tunnel.Save();
+            tunnel.Save();
             Alert.AlertMsg("提交成功！");
         }
 
@@ -176,11 +176,11 @@ namespace LibCommonForm
         /// <summary>
         ///     提交
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (Tunnel == null)
+            if (tunnel == null)
             {
                 AddTunnelInfo();
             }
@@ -193,8 +193,8 @@ namespace LibCommonForm
         /// <summary>
         ///     取消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();

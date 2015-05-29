@@ -10,7 +10,7 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <params name="disposing">true if managed resources should be disposed; otherwise, false.</params>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -49,6 +49,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.插入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.上移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.下移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -72,7 +73,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnReadMultTxt = new System.Windows.Forms.Button();
             this.btnReadTxt = new System.Windows.Forms.Button();
-            this.上移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblSuccessed = new System.Windows.Forms.Label();
             this.lblError = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -184,6 +184,9 @@
             // LITHOLOGY
             // 
             this.LITHOLOGY.HeaderText = "岩性";
+            this.LITHOLOGY.Items.AddRange(new object[] {
+            "煤层",
+            "岩层"});
             this.LITHOLOGY.Name = "LITHOLOGY";
             this.LITHOLOGY.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.LITHOLOGY.ToolTipText = "岩性";
@@ -250,19 +253,26 @@
             // 插入ToolStripMenuItem
             // 
             this.插入ToolStripMenuItem.Name = "插入ToolStripMenuItem";
-            this.插入ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.插入ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.插入ToolStripMenuItem.Text = "插入";
             this.插入ToolStripMenuItem.Click += new System.EventHandler(this.插入ToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(97, 6);
+            // 
+            // 上移ToolStripMenuItem
+            // 
+            this.上移ToolStripMenuItem.Name = "上移ToolStripMenuItem";
+            this.上移ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.上移ToolStripMenuItem.Text = "上移";
+            this.上移ToolStripMenuItem.Click += new System.EventHandler(this.上移ToolStripMenuItem_Click);
             // 
             // 下移ToolStripMenuItem
             // 
             this.下移ToolStripMenuItem.Name = "下移ToolStripMenuItem";
-            this.下移ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.下移ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.下移ToolStripMenuItem.Text = "下移";
             this.下移ToolStripMenuItem.Click += new System.EventHandler(this.下移ToolStripMenuItem_Click);
             // 
@@ -490,13 +500,6 @@
             this.btnReadTxt.Text = "读取txt文件";
             this.btnReadTxt.UseVisualStyleBackColor = true;
             this.btnReadTxt.Click += new System.EventHandler(this.btnReadTxt_Click);
-            // 
-            // 上移ToolStripMenuItem
-            // 
-            this.上移ToolStripMenuItem.Name = "上移ToolStripMenuItem";
-            this.上移ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.上移ToolStripMenuItem.Text = "上移";
-            this.上移ToolStripMenuItem.Click += new System.EventHandler(this.上移ToolStripMenuItem_Click);
             // 
             // lblSuccessed
             // 

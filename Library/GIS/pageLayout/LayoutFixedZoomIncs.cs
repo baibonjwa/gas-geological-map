@@ -97,7 +97,7 @@ namespace GIS.pageLayout
         /// <summary>
         /// Occurs when this tool is created
         /// </summary>
-        /// <param name="hook">Instance of the application</param>
+        /// <params name="hook">Instance of the application</params>
         public override void OnCreate(object hook)
         {
             try

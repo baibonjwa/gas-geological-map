@@ -30,8 +30,8 @@ namespace GIS.BasicGraphic
         /// <summary>
         /// 选择（修改）字体
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnFont_Click(object sender, EventArgs e)
         {
             FontDialog pFontDialog = new FontDialog();
@@ -43,8 +43,8 @@ namespace GIS.BasicGraphic
         /// <summary>
         /// 绘制文字
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (m_Point == null)
@@ -57,9 +57,9 @@ namespace GIS.BasicGraphic
         /// <summary>
         /// 绘制文字到地图中
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="pPoint"></param>
-        /// <param name="drawFont"></param>
+        /// <params name="text"></params>
+        /// <params name="pPoint"></params>
+        /// <params name="drawFont"></params>
         void DrawTextToMap(string text, ESRI.ArcGIS.Geometry.IPoint pPoint)
         {
             IElement element;
@@ -86,9 +86,9 @@ namespace GIS.BasicGraphic
         /// <summary>
         /// 文字颜色
         /// </summary>
-        /// <param name="red"></param>
-        /// <param name="green"></param>
-        /// <param name="blue"></param>
+        /// <params name="red"></params>
+        /// <params name="green"></params>
+        /// <params name="blue"></params>
         /// <returns></returns>
         private IRgbColor GetRGBColor(int red, int green, int blue)
         {

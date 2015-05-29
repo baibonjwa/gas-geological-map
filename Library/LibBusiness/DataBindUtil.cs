@@ -36,8 +36,8 @@ namespace LibBusiness
         {
             var mines = Mine.FindAll();
             if (mines != null)
-                DataBindListControl(lb, mines, "MineName",
- "MineId", selectedText);
+                DataBindListControl(lb, mines, "name",
+ "id", selectedText);
         }
 
         public static void LoadMineName(DataGridView dgv, String
@@ -65,12 +65,11 @@ namespace LibBusiness
         public static void LoadMiningAreaName(ListControl lb, int
             horizontalId, string selectedText = "")
         {
-            if (selectedText == null) throw new ArgumentNullException(nameof(selectedText));
             var miningAreas =
                 MiningArea.FindAllByProperty("horizontal.id", horizontalId);
             if (miningAreas != null)
-                DataBindListControl(lb, miningAreas, "MiningAreaName",
-                    "MiningAreaId", selectedText);
+                DataBindListControl(lb, miningAreas, "name",
+                    "id", selectedText);
         }
 
         public static void LoadMiningAreaName(DataGridView dgv, int
@@ -89,16 +88,16 @@ namespace LibBusiness
             var workingFaces =
                 Workingface.FindAllByProperty("mining_area.id", miningAreaId);
             if (workingFaces != null)
-                DataBindListControl(lb, workingFaces, "WorkingFaceName",
-                    "WorkingFaceId", selectedText);
+                DataBindListControl(lb, workingFaces, "name",
+                    "id", selectedText);
         }
 
         public static void LoadTunnelName(ListControl lb, int workingFaceId,
             String selectedText = "")
         {
-            var tunnels = Tunnel.find_all_by_working_face_id(workingFaceId);
+            var tunnels = Tunnel.FindAllByProperty("workingface.id", workingFaceId);
             if (tunnels != null)
-                DataBindListControl(lb, tunnels, "TunnelName", "TunnelId",
+                DataBindListControl(lb, tunnels, "name", "id",
                     selectedText);
         }
 

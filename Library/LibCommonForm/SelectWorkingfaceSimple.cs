@@ -43,7 +43,7 @@ namespace LibCommonForm
         }
 
         /**
-         *  Choose tunnel from the database.
+         *  Choose Tunnel from the database.
          */
         private void btnChooseTunnel_Click(object sender, EventArgs e)
         {

@@ -73,7 +73,7 @@ namespace GIS
         /// <summary>
         /// Occurs when this tool is created
         /// </summary>
-        /// <param name="hook">Instance of the application</param>
+        /// <params name="hook">Instance of the application</params>
         public override void OnCreate(object hook)
         {
             try
@@ -279,8 +279,8 @@ namespace GIS
         /// <summary>
         /// 根据参考线要素，对选择的线要素进行延伸
         /// </summary>
-        /// <param name="featExtend">待延伸的线要素</param>
-        /// <param name="featRef">参考线要素</param>
+        /// <params name="featExtend">待延伸的线要素</params>
+        /// <params name="featRef">参考线要素</params>
         /// <returns>成功返回True</returns>
         public bool ExtendLine(IFeature featExtend, IFeature featRef)
         {

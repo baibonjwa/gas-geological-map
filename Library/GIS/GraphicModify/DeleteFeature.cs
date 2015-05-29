@@ -109,7 +109,7 @@ namespace GIS.GraphicModify
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             if (hook == null)
@@ -194,7 +194,7 @@ namespace GIS.GraphicModify
         /// <summary>
         /// 刷新修改要素
         /// </summary>
-        /// <param name="pObject"></param>
+        /// <params name="pObject"></params>
         private void RefreshModifyFeature(IObject pObject)
         {
             IInvalidArea pRefreshArea;

@@ -5,85 +5,52 @@ using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord]
+    [ActiveRecord("workingfaces")]
     public class Workingface : ActiveRecordBase<Workingface>
     {
-        [HasMany(typeof(Tunnel), ColumnKey = "id", Table = "Tunnel",
+        [HasMany(typeof(Tunnel), ColumnKey = "workingface_id", Table = "tunnels",
             Cascade = ManyRelationCascadeEnum.All, Lazy = true)]
         public IList<Tunnel> tunnels { get; set; }
 
-        /// <summary>
-        ///     工作面编号
-        /// </summary>
         [PrimaryKey(PrimaryKeyType.Identity)]
         public int id { get; set; }
 
-        /// <summary>
-        ///     工作面名称
-        /// </summary>
         [Property]
         public string name { get; set; }
 
-        /// <summary>
-        ///     坐标X
-        /// </summary>
         [Property]
         public double coordinate_x { get; set; }
 
-        /// <summary>
-        ///     坐标X
-        /// </summary>
         [Property]
         public double coordinate_y { get; set; }
 
-        /// <summary>
-        ///     坐标X
-        /// </summary>
         [Property]
         public double coordinate_z { get; set; }
 
-        /// <summary>
-        ///     设置或获取开工日期
-        /// </summary>
-        //[Property("START_DATE")]
+        [Property]
         public DateTime start_date { get; set; }
 
-        /// <summary>
-        ///     设置或获取是否掘进完毕
-        /// </summary>
         [Property]
         public int is_finish { get; set; }
 
-        // 停工日期
-
-        /// <summary>
-        ///     设置或获取停工日期
-        /// </summary>
-        //[Property("STOP_DATE")]
+        [Property]
         public DateTime stop_date { get; set; }
 
-
-        // 采区
-        [BelongsTo("MiningAreaId")]
+        [BelongsTo("mining_area_id")]
         public MiningArea mining_area { get; set; }
 
-        // 工作制式
-
-        /// <summary>
-        ///     设置或获取工作制式
-        /// </summary>
         [Property]
         public string work_style { get; set; }
 
-        // 班次
-
-        /// <summary>
-        ///     设置或获取班次
-        /// </summary>
         [Property]
         public string work_time { get; set; }
 
-        // 用于暂存关联巷道信息
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
 
         public void set_coordinate(double xx, double yy, double zz)
         {
@@ -102,20 +69,10 @@ namespace LibEntity
         {
             var criterion = new ICriterion[]
             {
-                Restrictions.Eq("WorkingFaceName", workingFaceName),
-                Restrictions.Eq("MiningArea.MiningAreaId",miningAreaId)
+                Restrictions.Eq("name", workingFaceName),
+                Restrictions.Eq("mining_area.id",miningAreaId)
             };
             return FindOne(criterion);
-        }
-
-
-        public static bool exists_by_mining_area_id(int miningAreaId)
-        {
-            var criterion = new List<ICriterion>
-            {
-                Restrictions.Eq("MiningArea.MiningAreaId", miningAreaId)
-            };
-            return Exists(criterion);
         }
     }
 }

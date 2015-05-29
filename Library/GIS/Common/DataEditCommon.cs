@@ -105,8 +105,8 @@ namespace GIS.Common
         /// <summary>
         /// 转换坐标点
         /// </summary>
-        /// <param name="vActiveView"></param>
-        /// <param name="vPixelDistance"></param>
+        /// <params name="vActiveView"></params>
+        /// <params name="vPixelDistance"></params>
         /// <returns></returns>
         public static double ConvertPixelDistanceToMapDistance(IActiveView vActiveView, double vPixelDistance)
         {
@@ -121,10 +121,10 @@ namespace GIS.Common
         /// <summary>
         /// 单个要素符号化
         /// </summary>
-        /// <param name="layer"></param>
-        /// <param name="field"></param>
-        /// <param name="value"></param>
-        /// <param name="pBitmap"></param>
+        /// <params name="layer"></params>
+        /// <params name="field"></params>
+        /// <params name="value"></params>
+        /// <params name="pBitmap"></params>
         public static void SpecialPointRenderer(ILayer layer, string field, string value, Bitmap pBitmap)
         {
             IGeoFeatureLayer geoFeaLayer;
@@ -190,10 +190,10 @@ namespace GIS.Common
         /// <summary>
         /// 测试点的位置是否存在Feature
         /// </summary>
-        /// <param name="m_hookHelper"></param>
-        /// <param name="X"></param>
-        /// <param name="Y"></param>
-        /// <param name="theFeature"></param>
+        /// <params name="m_hookHelper"></params>
+        /// <params name="X"></params>
+        /// <params name="Y"></params>
+        /// <params name="theFeature"></params>
         public static void TestExistFeature(IHookHelper m_hookHelper, int X, int Y, ref IFeature theFeature)
         {
             ArrayList pSelected = new ArrayList();
@@ -505,8 +505,8 @@ namespace GIS.Common
         /// <summary>
         /// 根据几何图形添加新要素
         /// </summary>
-        /// <param name="featureLayer">当前编辑图层</param>
-        /// <param name="geom">要素的几何形状</param>
+        /// <params name="featureLayer">当前编辑图层</params>
+        /// <params name="geom">要素的几何形状</params>
         public static void CreateFeature(IFeatureLayer featureLayer, IGeometry geom)
         {
             IWorkspaceEdit workspaceEdit = null;
@@ -562,8 +562,8 @@ namespace GIS.Common
         /// <summary>
         /// 根据几何图形添加新要素(可以撤销)
         /// </summary>
-        /// <param name="featureLayer">当前编辑图层</param>
-        /// <param name="geom">要素的几何形状</param>
+        /// <params name="featureLayer">当前编辑图层</params>
+        /// <params name="geom">要素的几何形状</params>
         public static IFeature CreateUndoRedoFeature(IFeatureLayer featureLayer, IGeometry geom)
         {
             try
@@ -587,8 +587,8 @@ namespace GIS.Common
         /// <summary>
         /// 根据几何图形添加新要素
         /// </summary>
-        /// <param name="featureLayer">当前编辑图层</param>
-        /// <param name="geom">要素的几何形状</param>
+        /// <params name="featureLayer">当前编辑图层</params>
+        /// <params name="geom">要素的几何形状</params>
         public static IFeature CreateNewFeature(IFeatureLayer featureLayer, IGeometry geom)
         {
             IWorkspaceEdit workspaceEdit = null;
@@ -649,8 +649,8 @@ namespace GIS.Common
         /// <summary>
         /// 根据几何图形添加新要素
         /// </summary>
-        /// <param name="featureLayer">当前编辑图层</param>
-        /// <param name="geom">要素集合</param>
+        /// <params name="featureLayer">当前编辑图层</params>
+        /// <params name="geom">要素集合</params>
         public static void CreateFeature(IFeatureClass featureClass, IGeometryArray geometryArray2, List<ziduan> list)
         {
             IWorkspaceEdit workspaceEdit = null;
@@ -710,8 +710,8 @@ namespace GIS.Common
         /// <summary>
         /// 根据几何图形添加新要素
         /// </summary>
-        /// <param name="featureLayer">当前编辑图层</param>
-        /// <param name="geom">要素集合</param>
+        /// <params name="featureLayer">当前编辑图层</params>
+        /// <params name="geom">要素集合</params>
         public static void CreateFeatureNoEditor(IFeatureClass featureClass, IGeometry geometry, List<ziduan> list)
         {
             IFeature feature = featureClass.CreateFeature();
@@ -732,8 +732,8 @@ namespace GIS.Common
         /// <summary>
         /// 根据几何图形添加新要素
         /// </summary>
-        /// <param name="featureLayer">当前编辑图层</param>
-        /// <param name="geom">要素的几何形状</param>
+        /// <params name="featureLayer">当前编辑图层</params>
+        /// <params name="geom">要素的几何形状</params>
         public static IFeature CreateNewFeature(IFeatureLayer featureLayer, IGeometry geom, List<ziduan> list)
         {
             IWorkspaceEdit workspaceEdit = null;
@@ -782,8 +782,8 @@ namespace GIS.Common
         /// <summary>
         /// 根据几何图形添加新要素
         /// </summary>
-        /// <param name="featureLayer">当前编辑图层</param>
-        /// <param name="geom">要素的几何形状</param>
+        /// <params name="featureLayer">当前编辑图层</params>
+        /// <params name="geom">要素的几何形状</params>
         public static IFeature ModifyFeature(IFeatureLayer featureLayer, int id, IGeometry geom, List<ziduan> list)
         {
             IWorkspaceEdit workspaceEdit = null;
@@ -839,9 +839,9 @@ namespace GIS.Common
         /// <summary>
         /// Geometry中Z值和M值处理
         /// </summary>
-        /// <param name="feature"></param>
-        /// <param name="geometry"></param>
-        /// <param name="zValue"></param>
+        /// <params name="feature"></params>
+        /// <params name="geometry"></params>
+        /// <params name="zValue"></params>
         public static void ZMValue(IFeatureBuffer feature, IGeometry geometry)
         {
             //先判断图层要素是否有Z值
@@ -858,9 +858,9 @@ namespace GIS.Common
         /// <summary>
         /// Geometry中Z值和M值处理
         /// </summary>
-        /// <param name="feature"></param>
-        /// <param name="geometry"></param>
-        /// <param name="zValue"></param>
+        /// <params name="feature"></params>
+        /// <params name="geometry"></params>
+        /// <params name="zValue"></params>
         public static void ZMValue(IFeature feature, IGeometry geometry)
         {
             //先判断图层要素是否有Z值
@@ -924,7 +924,7 @@ namespace GIS.Common
         /// <summary>
         /// 获取捕捉编辑环境
         /// </summary>
-        /// <param name="hookHelper"></param>
+        /// <params name="hookHelper"></params>
         /// <returns></returns>
         public static ISnappingEnvironment GetSnapEnvironment(IHookHelper hookHelper, esriSnappingType snappingType)
         {
@@ -946,8 +946,8 @@ namespace GIS.Common
         /// <summary>
         /// 根据图层名称在地图中查找对应的图层
         /// </summary>
-        /// <param name="pMap">地图</param>
-        /// <param name="layerName">图层名称</param>
+        /// <params name="pMap">地图</params>
+        /// <params name="layerName">图层名称</params>
         /// <returns></returns>
         public static ILayer GetLayerByName(IMap pMap, string layerName)
         {
@@ -993,8 +993,8 @@ namespace GIS.Common
         /// <summary>
         /// 返回图层集合
         /// </summary>
-        /// <param name="pMap">IMap</param>
-        /// <param name="key">图层字符串关键字</param>
+        /// <params name="pMap">IMap</params>
+        /// <params name="key">图层字符串关键字</params>
         /// <returns></returns>
         public static List<ILayer> GetLayerListByKey(IMap pMap, string key = "")
         {
@@ -1042,9 +1042,9 @@ namespace GIS.Common
         /// <summary>
         /// 设定图层的Visible属性，若是true则所有父图层都将设为true，若为false父图层不变
         /// </summary>
-        /// <param name="pMap"></param>
-        /// <param name="layerName"></param>
-        /// <param name="visible"></param>
+        /// <params name="pMap"></params>
+        /// <params name="layerName"></params>
+        /// <params name="visible"></params>
         public static void SetLayerVisibleByName(IMap pMap, string layerName, bool visible)
         {
             ILayer pLayer;
@@ -1097,8 +1097,8 @@ namespace GIS.Common
         /// <summary>
         /// 删除指定要素
         /// </summary>
-        /// <param name="feaLayer"></param>
-        /// <param name="featureID"></param>
+        /// <params name="feaLayer"></params>
+        /// <params name="featureID"></params>
         public static bool DeleteFeatureByBId(IFeatureLayer feaLayer, string featureID)
         {
             try
@@ -1168,8 +1168,8 @@ namespace GIS.Common
         /// <summary>
         /// 删除指定要素
         /// </summary>
-        /// <param name="feaLayer"></param>
-        /// <param name="featureID"></param>
+        /// <params name="feaLayer"></params>
+        /// <params name="featureID"></params>
         public static bool DeleteFeatureByObjectId(IFeatureLayer feaLayer, string objId)
         {
             try
@@ -1193,8 +1193,8 @@ namespace GIS.Common
         /// <summary>
         /// 删除查询条件要素
         /// </summary>
-        /// <param name="feaLayer">IFeatureLayer</param>
-        /// <param name="WhereClause">自定义查询条件</param>
+        /// <params name="feaLayer">IFeatureLayer</params>
+        /// <params name="WhereClause">自定义查询条件</params>
         public static bool DeleteFeatureByWhereClause(IFeatureLayer feaLayer, string WhereClause)
         {
             try
@@ -1222,8 +1222,8 @@ namespace GIS.Common
         /// <summary>
         /// 删除查询条件要素
         /// </summary>
-        /// <param name="feaLayer">IFeatureLayer</param>
-        /// <param name="WhereClause">自定义查询条件</param>
+        /// <params name="feaLayer">IFeatureLayer</params>
+        /// <params name="WhereClause">自定义查询条件</params>
         public static bool DeleteFeatureByWhereClause(IFeatureClass FeatureClass, string WhereClause)
         {
             try
@@ -1253,7 +1253,7 @@ namespace GIS.Common
         /// <summary>
         /// 字符串长度
         /// </summary>
-        /// <param name="str"></param>
+        /// <params name="str"></params>
         /// <returns></returns>
         public static int strLen(string str)
         {
@@ -1283,7 +1283,7 @@ namespace GIS.Common
         /// <summary>
         /// 线转面
         /// </summary>
-        /// <param name="pPolyline"></param>
+        /// <params name="pPolyline"></params>
         /// <returns></returns>
         public static IPolygon PolylineToPolygon(IPolyline pPolyline)
         {
@@ -1315,8 +1315,8 @@ namespace GIS.Common
         /// <summary>
         /// 判断线的方向，如果是逆时针，转换成顺时针
         /// </summary>
-        /// <param name="pPolyline"></param>
-        /// <param name="type">"Bezier,Line"</param>
+        /// <params name="pPolyline"></params>
+        /// <params name="type">"Bezier,Line"</params>
         /// <returns></returns>
         public static IPolyline PDFX(IPolyline pPolyline, string type)
         {
@@ -1405,8 +1405,8 @@ namespace GIS.Common
         /// <summary>
         /// 保标绘文字
         /// </summary>
-        /// <param name="pElement">文字Element</param>
-        /// <param name="TitleContent">内容</param>
+        /// <params name="pElement">文字Element</params>
+        /// <params name="TitleContent">内容</params>
         public static IFeature SaveAnno(IElement pElement, string TitleContent)
         {
             try
@@ -1496,7 +1496,7 @@ namespace GIS.Common
         /// <summary>
         /// 刷新修改要素
         /// </summary>
-        /// <param name="pObject"></param>
+        /// <params name="pObject"></params>
         private static void RefreshModifyFeature(IObject pObject)
         {
             IInvalidArea pRefreshArea;
@@ -1509,8 +1509,8 @@ namespace GIS.Common
         /// <summary>
         /// 在地图上拾取点，自动填充textbox
         /// </summary>
-        /// <param name="txtX">X坐标TextBox控件</param>
-        /// <param name="txtY">Y坐标TextBox控件</param>
+        /// <params name="txtX">X坐标TextBox控件</params>
+        /// <params name="txtY">Y坐标TextBox控件</params>
         public static void PickUpPoint(TextBox txtX, TextBox txtY)
         {
             if (txtX.FindForm().Owner != null && txtX.FindForm().Owner != g_pAxMapControl.FindForm())

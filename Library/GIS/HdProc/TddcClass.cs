@@ -19,7 +19,7 @@ namespace GIS.HdProc
         /// <summary>
         /// 删除BID对应的推断断层符号
         /// </summary>
-        /// <param name="bid"></param>
+        /// <params name="bid"></params>
         public void DelTdLyr(string[] bid)
         {
             //首先删除对应BID的推断断层信息
@@ -43,7 +43,7 @@ namespace GIS.HdProc
         /// <summary>
         /// 添加推断断层符号
         /// </summary>
-        /// <param name="collapsePoints"></param>
+        /// <params name="collapsePoints"></params>
         public void AddTdLyr(string collapsePoints, string bid)
         {
             BID = bid;
@@ -70,7 +70,7 @@ namespace GIS.HdProc
         /// <summary>
         /// 构造sql语句
         /// </summary>
-        /// <param name="param"></param>
+        /// <params name="param"></params>
         /// <returns></returns>
         private string ConstructStr(string param)
         {
@@ -133,7 +133,7 @@ namespace GIS.HdProc
         /// <summary>
         /// 处理线的顺序
         /// </summary>
-        /// <param name="lines"></param>
+        /// <params name="lines"></params>
         /// <returns></returns>
         private List<IPolyline> ProcLines(List<IPolyline> lines)
         {
@@ -159,9 +159,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 绘制曲线部分
         /// </summary>
-        /// <param name="lyr">推断断层</param>
-        /// <param name="newplines">延长点构造的线</param>
-        /// <param name="originlines">原始点构造的线</param>
+        /// <params name="lyr">推断断层</params>
+        /// <params name="newplines">延长点构造的线</params>
+        /// <params name="originlines">原始点构造的线</params>
         private void AddCurveToMap(IFeatureLayer lyr, List<IPolyline> newplines, List<IPolyline> originlines)
         {
             IFeatureClass Featureclass = lyr.FeatureClass;

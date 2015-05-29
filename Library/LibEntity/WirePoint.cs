@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Castle.ActiveRecord;
 using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord]
+    [ActiveRecord("wire_points")]
     public class WirePoint : ActiveRecordBase<WirePoint>
     {
         [PrimaryKey(PrimaryKeyType.Identity)]
@@ -20,7 +21,7 @@ namespace LibEntity
         [Property]
         public double top_distance { get; set; }
 
-        [BelongsTo("id")]
+        [BelongsTo("wire_id")]
         public Wire wire { get; set; }
 
         [Property]
@@ -40,5 +41,11 @@ namespace LibEntity
 
         [Property]
         public string bid { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
     }
 }

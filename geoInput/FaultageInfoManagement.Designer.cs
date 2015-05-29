@@ -87,73 +87,65 @@
             // 
             // tsBtnPrint
             // 
-            this.tsBtnPrint.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnPrint.Image")));
             this.tsBtnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnPrint.Name = "tsBtnPrint";
-            this.tsBtnPrint.Size = new System.Drawing.Size(52, 21);
+            this.tsBtnPrint.Size = new System.Drawing.Size(36, 21);
             this.tsBtnPrint.Text = "打印";
             this.tsBtnPrint.Click += new System.EventHandler(this.tsBtnPrint_Click);
             // 
             // tsBtnExport
             // 
-            this.tsBtnExport.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnExport.Image")));
             this.tsBtnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnExport.Name = "tsBtnExport";
-            this.tsBtnExport.Size = new System.Drawing.Size(52, 21);
+            this.tsBtnExport.Size = new System.Drawing.Size(36, 21);
             this.tsBtnExport.Text = "导出";
             this.tsBtnExport.Click += new System.EventHandler(this.tsBtnExport_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(52, 21);
+            this.btnAdd.Size = new System.Drawing.Size(36, 21);
             this.btnAdd.Text = "添加";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(52, 21);
+            this.btnUpdate.Size = new System.Drawing.Size(36, 21);
             this.btnUpdate.Text = "修改";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(52, 21);
+            this.btnDelete.Size = new System.Drawing.Size(36, 21);
             this.btnDelete.Text = "删除";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(52, 21);
+            this.btnRefresh.Size = new System.Drawing.Size(36, 21);
             this.btnRefresh.Text = "刷新";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnMap
             // 
-            this.btnMap.Image = ((System.Drawing.Image)(resources.GetObject("btnMap.Image")));
             this.btnMap.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMap.Name = "btnMap";
-            this.btnMap.Size = new System.Drawing.Size(52, 21);
+            this.btnMap.Size = new System.Drawing.Size(36, 21);
             this.btnMap.Text = "图显";
             this.btnMap.Click += new System.EventHandler(this.btnMap_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(52, 21);
+            this.btnExit.Size = new System.Drawing.Size(36, 21);
             this.btnExit.Text = "退出";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -192,7 +184,7 @@
             // gridColumn1
             // 
             this.gridColumn1.Caption = "断层名称";
-            this.gridColumn1.FieldName = "FaultageName";
+            this.gridColumn1.FieldName = "name";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
@@ -201,7 +193,7 @@
             // gridColumn10
             // 
             this.gridColumn10.Caption = "长度";
-            this.gridColumn10.FieldName = "Length";
+            this.gridColumn10.FieldName = "length";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 1;
@@ -210,7 +202,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "落差";
-            this.gridColumn2.FieldName = "Gap";
+            this.gridColumn2.FieldName = "gap";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
@@ -219,7 +211,7 @@
             // gridColumn3
             // 
             this.gridColumn3.Caption = "倾角";
-            this.gridColumn3.FieldName = "Angle";
+            this.gridColumn3.FieldName = "angle";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 3;
@@ -228,7 +220,7 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "类型";
-            this.gridColumn4.FieldName = "Type";
+            this.gridColumn4.FieldName = "type";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 4;
@@ -237,7 +229,7 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "走向";
-            this.gridColumn5.FieldName = "Trend";
+            this.gridColumn5.FieldName = "trend";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
@@ -246,7 +238,7 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "断距";
-            this.gridColumn6.FieldName = "Separation";
+            this.gridColumn6.FieldName = "separation";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
@@ -255,7 +247,7 @@
             // gridColumn7
             // 
             this.gridColumn7.Caption = "X坐标";
-            this.gridColumn7.FieldName = "CoordinateX";
+            this.gridColumn7.FieldName = "coordinate_x";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 7;
@@ -264,7 +256,7 @@
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Y坐标";
-            this.gridColumn8.FieldName = "CoordinateY";
+            this.gridColumn8.FieldName = "coordinate_y";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 8;
@@ -273,7 +265,7 @@
             // gridColumn9
             // 
             this.gridColumn9.Caption = "Z坐标";
-            this.gridColumn9.FieldName = "CoordinateZ";
+            this.gridColumn9.FieldName = "coordinate_z";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 9;

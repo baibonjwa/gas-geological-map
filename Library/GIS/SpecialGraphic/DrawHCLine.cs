@@ -13,9 +13,9 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 创建回采进尺线（根据参考线创建平行线）
         /// </summary>
-        /// <param name="featureLayer">回采进尺图层</param>
-        /// <param name="pRefPolyline">参考开切眼巷道</param>
-        /// <param name="dDistance">回采距离</param>
+        /// <params name="featureLayer">回采进尺图层</params>
+        /// <params name="pRefPolyline">参考开切眼巷道</params>
+        /// <params name="dDistance">回采距离</params>
         /// <returns>成功创建返回True</returns>
         public static bool CreateParaLineFeature(IFeatureLayer featureLayer, IPolyline pRefPolyline,string bindID, double dDistance)
         {
@@ -82,8 +82,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         ///  删除满足条件的回采进尺线要素
         /// </summary>
-        /// <param name="featureLayer">回采进尺图层</param>
-        /// <param name="tunnelID">bindingID</param>
+        /// <params name="featureLayer">回采进尺图层</params>
+        /// <params name="tunnelID">bindingID</params>
         /// <returns>成功删除返回true</returns>
         public static bool DeleteHCLineFeature(IFeatureLayer featureLayer, string bindingID)
         {

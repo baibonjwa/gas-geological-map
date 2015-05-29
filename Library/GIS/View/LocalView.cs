@@ -103,7 +103,7 @@ namespace GIS.View
         /// <summary>
         /// 创建工具
         /// </summary>
-        /// <param name="hook">程序实例</param>
+        /// <params name="hook">程序实例</params>
         public override void OnCreate(object hook)
         {
             try
@@ -167,7 +167,7 @@ namespace GIS.View
         /// <summary>
         /// 根据拉框范围选择要素
         /// </summary>
-        /// <param name="pGeometry"></param>
+        /// <params name="pGeometry"></params>
         private void GetFeaturesByShape(IGeometry pGeometry)
         {    
             IMap pMap = m_hookHelper.FocusMap;
@@ -213,7 +213,7 @@ namespace GIS.View
         /// <summary>
         /// 获得图层中所有要素
         /// </summary>
-        /// <param name="featureLayer"></param>
+        /// <params name="featureLayer"></params>
         /// <returns>要素OID组成的字符串</returns>
         private string GetLayerAllFeatures(IFeatureLayer featureLayer)
         {
@@ -250,8 +250,8 @@ namespace GIS.View
         /// <summary>
         /// 获得图层选中的要素集
         /// </summary>
-        /// <param name="geometry"></param>
-        /// <param name="featureLayer"></param>
+        /// <params name="geometry"></params>
+        /// <params name="featureLayer"></params>
         /// <returns>要素OID组成的字符串</returns>
         private string GetLayerFeatureSelectSet(IGeometry geometry, IFeatureLayer featureLayer)
         {

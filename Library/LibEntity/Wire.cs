@@ -5,7 +5,7 @@ using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord]
+    [ActiveRecord("wires")]
     public class Wire : ActiveRecordBase<Wire>
     {
         public const string TABLE_NAME = "T_WIRE_INFO";
@@ -16,7 +16,7 @@ namespace LibEntity
         [PrimaryKey(PrimaryKeyType.Identity)]
         public int id { get; set; }
 
-        [HasMany(typeof(WirePoint), Table = "wire_points", ColumnKey = "id",
+        [HasMany(typeof(WirePoint), Table = "wire_points", ColumnKey = "wire_id",
     Cascade = ManyRelationCascadeEnum.All, Lazy = true)]
         public IList<WirePoint> wire_points { get; set; }
 
@@ -47,7 +47,7 @@ namespace LibEntity
         /// <summary>
         ///     巷道编号
         /// </summary>
-        [BelongsTo("id")]
+        [BelongsTo("tunnel_id")]
         public Tunnel tunnel { get; set; }
 
         /// <summary>
@@ -72,6 +72,12 @@ namespace LibEntity
         ///     观测者
         /// </summary>
         [Property]
-        public string vobserver { get; set; }
+        public string observer { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
     }
 }

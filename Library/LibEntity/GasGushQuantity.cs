@@ -71,5 +71,11 @@ namespace LibEntity
         /// </summary>
         [Property]
         public string binding_id { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
     }
 }

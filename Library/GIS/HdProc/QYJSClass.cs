@@ -14,13 +14,13 @@ namespace GIS.HdProc
         /// <summary>
         /// 获得回采多边形点列表，最后点为切眼中心点
         /// </summary>
-        /// <param name="pline1"></巷道1>
-        /// <param name="pline2"></巷道2>
-        /// <param name="pline3"></切眼>
-        /// <param name="widthhd"></巷道宽度>
-        /// <param name="widthqy"></切眼宽度>
-        /// <param name="hcDis"></回采距离>
-        /// <param name="direct"></回采方向，pline3 from-to方向,返回1-切眼右侧, 返回-1-切眼左侧（），只在中间回采时使用此参数,开始回采时值为0>
+        /// <params name="pline1"></巷道1>
+        /// <params name="pline2"></巷道2>
+        /// <params name="pline3"></切眼>
+        /// <params name="widthhd"></巷道宽度>
+        /// <params name="widthqy"></切眼宽度>
+        /// <params name="hcDis"></回采距离>
+        /// <params name="direct"></回采方向，pline3 from-to方向,返回1-切眼右侧, 返回-1-切眼左侧（），只在中间回采时使用此参数,开始回采时值为0>
         /// <returns></returns>
         public IPointCollection GetBackPolygonArea(IPolyline pline1, IPolyline pline2, IPolyline pline3, double widthhd, double widthhd1, double widthqy, double hcDis, int direct)
         {
@@ -115,9 +115,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 延长切眼线使之与两条巷道相交，
         /// </summary>
-        /// <param name="ply1"></巷道1>
-        /// <param name="ply2"></巷道2>
-        /// <param name="plyqy"></切眼>
+        /// <params name="ply1"></巷道1>
+        /// <params name="ply2"></巷道2>
+        /// <params name="plyqy"></切眼>
         /// <returns></延长的的切眼线>
         private IPolyline GetExtentQy(IPolyline ply1, IPolyline ply2, IPolyline plyqy)
         {
@@ -160,9 +160,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 向pline两侧指定距离做平行线，比较与point 的距离，返回距离近的偏移线做为偏移后的巷道
         /// </summary>
-        /// <param name="pline"></param>
-        /// <param name="distance"></param>
-        /// <param name="point"></param>
+        /// <params name="pline"></params>
+        /// <params name="distance"></params>
+        /// <params name="point"></params>
         /// <returns></returns>
         private IPolyline GetConstructOffsetHD(IPolyline pline, double distance, IPoint point)
         {
@@ -185,10 +185,10 @@ namespace GIS.HdProc
         /// <summary>
         /// 判断切眼的回采方向
         /// </summary>
-        /// <param name="pline"></切眼线>
-        /// <param name="distance"></偏移距离>
-        /// <param name="plyhd1"></巷道1>
-        /// <param name="plyhd2"></巷道2>
+        /// <params name="pline"></切眼线>
+        /// <params name="distance"></偏移距离>
+        /// <params name="plyhd1"></巷道1>
+        /// <params name="plyhd2"></巷道2>
         /// <returns></returns>
         private int GetBackDirection(IPolyline pline, double distance, IPolyline plyhd1, IPolyline plyhd2)
         {
@@ -221,9 +221,9 @@ namespace GIS.HdProc
         /// <summary>
         /// 判断pline的frompoint 在pnt1和 pnt2组成的线的哪一侧
         /// </summary>
-        /// <param name="pnt1"></param>
-        /// <param name="pnt2"></param>
-        /// <param name="pline"></param>
+        /// <params name="pnt1"></params>
+        /// <params name="pnt2"></params>
+        /// <params name="pline"></params>
         /// <returns>返回与回采方向相同的巷道线 </returns>
         private IPolyline GetPointPos(IPoint pnt1, IPoint pnt2, IPolyline pline, int iDirect)
         {
@@ -268,8 +268,8 @@ namespace GIS.HdProc
         /// <summary>
         /// 将line1延长与line2相交后求交点
         /// </summary>
-        /// <param name="line1"></param>
-        /// <param name="line2"></param>
+        /// <params name="line1"></params>
+        /// <params name="line2"></params>
         /// <returns></returns>
         private IPoint GetIntersectPointExtend(IPolyline line1, IPolyline line2)
         {

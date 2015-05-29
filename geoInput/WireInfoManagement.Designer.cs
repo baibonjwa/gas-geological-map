@@ -75,73 +75,65 @@
             // 
             // tsBtnPrint
             // 
-            this.tsBtnPrint.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnPrint.Image")));
             this.tsBtnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnPrint.Name = "tsBtnPrint";
-            this.tsBtnPrint.Size = new System.Drawing.Size(52, 21);
+            this.tsBtnPrint.Size = new System.Drawing.Size(36, 21);
             this.tsBtnPrint.Text = "打印";
             this.tsBtnPrint.Click += new System.EventHandler(this.tsBtnPrint_Click);
             // 
             // tsBtnExport
             // 
-            this.tsBtnExport.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnExport.Image")));
             this.tsBtnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnExport.Name = "tsBtnExport";
-            this.tsBtnExport.Size = new System.Drawing.Size(52, 21);
+            this.tsBtnExport.Size = new System.Drawing.Size(36, 21);
             this.tsBtnExport.Text = "导出";
             this.tsBtnExport.Click += new System.EventHandler(this.tsBtnExport_Click);
             // 
             // tsBtnAdd
             // 
-            this.tsBtnAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnAdd.Image")));
             this.tsBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnAdd.Name = "tsBtnAdd";
-            this.tsBtnAdd.Size = new System.Drawing.Size(52, 21);
+            this.tsBtnAdd.Size = new System.Drawing.Size(36, 21);
             this.tsBtnAdd.Text = "添加";
             this.tsBtnAdd.Click += new System.EventHandler(this.tsBtnAdd_Click);
             // 
             // tsBtnModify
             // 
-            this.tsBtnModify.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnModify.Image")));
             this.tsBtnModify.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnModify.Name = "tsBtnModify";
-            this.tsBtnModify.Size = new System.Drawing.Size(52, 21);
+            this.tsBtnModify.Size = new System.Drawing.Size(36, 21);
             this.tsBtnModify.Text = "修改";
             this.tsBtnModify.Click += new System.EventHandler(this.tsBtnModify_Click);
             // 
             // tsBtnDel
             // 
-            this.tsBtnDel.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnDel.Image")));
             this.tsBtnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnDel.Name = "tsBtnDel";
-            this.tsBtnDel.Size = new System.Drawing.Size(52, 21);
+            this.tsBtnDel.Size = new System.Drawing.Size(36, 21);
             this.tsBtnDel.Text = "删除";
             this.tsBtnDel.Click += new System.EventHandler(this.tsBtnDel_Click);
             // 
             // tsBtnRefresh
             // 
-            this.tsBtnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnRefresh.Image")));
             this.tsBtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnRefresh.Name = "tsBtnRefresh";
-            this.tsBtnRefresh.Size = new System.Drawing.Size(52, 21);
+            this.tsBtnRefresh.Size = new System.Drawing.Size(36, 21);
             this.tsBtnRefresh.Text = "刷新";
             this.tsBtnRefresh.Click += new System.EventHandler(this.tsBtnRefresh_Click);
             // 
             // btnMap
             // 
-            this.btnMap.Image = ((System.Drawing.Image)(resources.GetObject("btnMap.Image")));
             this.btnMap.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMap.Name = "btnMap";
-            this.btnMap.Size = new System.Drawing.Size(52, 21);
+            this.btnMap.Size = new System.Drawing.Size(36, 21);
             this.btnMap.Text = "图显";
             this.btnMap.Click += new System.EventHandler(this.btnMap_Click);
             // 
             // tsBtnExit
             // 
-            this.tsBtnExit.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnExit.Image")));
             this.tsBtnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnExit.Name = "tsBtnExit";
-            this.tsBtnExit.Size = new System.Drawing.Size(52, 21);
+            this.tsBtnExit.Size = new System.Drawing.Size(36, 21);
             this.tsBtnExit.Text = "退出";
             this.tsBtnExit.Click += new System.EventHandler(this.tsBtnExit_Click);
             // 
@@ -188,7 +180,7 @@
             // gridColumn1
             // 
             this.gridColumn1.Caption = "矿井名称";
-            this.gridColumn1.FieldName = "Tunnel.Workingface.MiningArea.Horizontal.Mine.MineName";
+            this.gridColumn1.FieldName = "tunnel.workingface.mining_area.horizontal.mine.name";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
@@ -196,7 +188,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "水平";
-            this.gridColumn2.FieldName = "Tunnel.Workingface.MiningArea.Horizontal.HorizontalName";
+            this.gridColumn2.FieldName = "tunnel.workingface.mining_area.horizontal.name";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -204,7 +196,7 @@
             // gridColumn3
             // 
             this.gridColumn3.Caption = "采区";
-            this.gridColumn3.FieldName = "Tunnel.Workingface.MiningArea.MiningAreaName";
+            this.gridColumn3.FieldName = "tunnel.workingface.mining_area.name";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
@@ -212,7 +204,7 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "工作面";
-            this.gridColumn4.FieldName = "Tunnel.Workingface.WorkingFaceName";
+            this.gridColumn4.FieldName = "tunnel.workingface.name";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
@@ -220,7 +212,7 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "巷道名称";
-            this.gridColumn5.FieldName = "Tunnel.TunnelName";
+            this.gridColumn5.FieldName = "tunnel.name";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
@@ -228,7 +220,7 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "导线名称";
-            this.gridColumn6.FieldName = "WireName";
+            this.gridColumn6.FieldName = "name";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;

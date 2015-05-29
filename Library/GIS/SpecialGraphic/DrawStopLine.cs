@@ -67,8 +67,8 @@ namespace GIS.SpecialGraphic
         /// <summary>
         ///  删除满足条件的停采线要素
         /// </summary>
-        /// <param name="featureLayer">停采线图层</param>
-        /// <param name="stopLineID">停采线ID</param>
+        /// <params name="featureLayer">停采线图层</params>
+        /// <params name="stopLineID">停采线ID</params>
         /// <returns>成功删除返回true</returns>
         public static bool DeleteLineFeature(IFeatureLayer featureLayer, string stopLineID)
         {

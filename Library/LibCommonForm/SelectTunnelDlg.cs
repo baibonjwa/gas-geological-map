@@ -16,7 +16,7 @@ namespace LibCommonForm
     public partial class SelectTunnelDlg : Form
     {
 
-        public Tunnel SelectedTunnel { get; set; }
+        public Tunnel selected_tunnel { get; set; }
         /// <summary>
         /// 构造方法
         /// </summary>
@@ -29,11 +29,11 @@ namespace LibCommonForm
         /// <summary>
         /// 构造方法
         /// </summary>
-        /// <param name="tunnel"></param>
+        /// <params name="tunnel"></params>
         public SelectTunnelDlg(Tunnel tunnel)
         {
             InitializeComponent();
-            SelectedTunnel = tunnel;
+            selected_tunnel = tunnel;
         }
 
         public SelectTunnelDlg(Workingface workingface)
@@ -45,19 +45,19 @@ namespace LibCommonForm
         /// <summary>
         /// 提交
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            SelectedTunnel = selectTunnelUserControl1.SelectedTunnel;
+            selected_tunnel = selectTunnelUserControl1.selected_tunnel;
             DialogResult = DialogResult.OK;
         }
 
         /// <summary>
         /// Cancel the option
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <params name="sender"></params>
+        /// <params name="e"></params>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.None;

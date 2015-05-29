@@ -59,7 +59,7 @@ namespace GIS.HdProc
                 jllyr = commonclss.GetFeatureLayerFromLayerName(activeView, LayerNames.LAYER_NAME_MR_JLDC);//峒室层
                 tdlyr = commonclss.GetFeatureLayerFromLayerName(activeView, LayerNames.LAYER_NAME_MR_TDDC);//峒室层
                 zklyr = commonclss.GetFeatureLayerFromLayerName(activeView, LayerNames.LAYER_NAME_MR_ZK);//峒室层
-                xlzlyr = commonclss.GetFeatureLayerFromLayerName(activeView, LayerNames.LAYER_NAME_MR_XLZ);//峒室层
+                //xlzlyr = commonclss.GetFeatureLayerFromLayerName(activeView, LayerNames.LAYER_NAME_MR_XLZ);//峒室层
                 xlzlyr1 = commonclss.GetFeatureLayerFromLayerName(activeView, LayerNames.LAYER_NAME_MR_XLZ1);//峒室层
                 jtlyr = commonclss.GetFeatureLayerFromLayerName(activeView, LayerNames.LAYER_NAME_MR_JT);//井筒
             }

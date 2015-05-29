@@ -276,9 +276,9 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 生成等值线
         /// </summary>
-        /// <param name="targetworkspace"></param>
-        /// <param name="nameOftargetFeatureClass"></param>
-        /// <param name="sLayerAliasName"></param>
+        /// <params name="targetworkspace"></params>
+        /// <params name="nameOftargetFeatureClass"></params>
+        /// <params name="sLayerAliasName"></params>
         private bool CreateContours(IWorkspace targetworkspace, string nameOftargetFeatureClass,
             string sLayerAliasName, string extent, ref string failInfo)
         {
@@ -494,7 +494,7 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// 拉伸渲染raster图层
         /// </summary>
-        /// <param name="pRLayer">raster图层</param>
+        /// <params name="pRLayer">raster图层</params>
         /// <remarks></remarks>
         public void UsingRasterStretchColorRampRender(IRasterLayer pRLayer)
         {
@@ -598,7 +598,7 @@ namespace GIS.SpecialGraphic
         /// <summary>
         /// Check数据是否在矿界范围之内。
         /// </summary>
-        /// <param name="file"></param>
+        /// <params name="file"></params>
         /// <returns></returns>
         private bool withIn(string file)
         {

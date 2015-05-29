@@ -6,7 +6,7 @@ using NHibernate.Criterion;
 
 namespace LibEntity
 {
-    [ActiveRecord]
+    [ActiveRecord("collapse_pillars")]
     public class CollapsePillar : ActiveRecordBase<CollapsePillar>
     {
         public const string TABLE_NAME = "T_COLLAPSE_PILLARS_INFO";
@@ -18,7 +18,7 @@ namespace LibEntity
         public int id { get; set; }
 
 
-        [HasMany(typeof(CollapsePillarPoint), Table = "collapse_pillar_points", ColumnKey = "id",
+        [HasMany(typeof(CollapsePillarPoint), Table = "collapse_pillar_points", ColumnKey = "collapse_pillar_id",
             Cascade = ManyRelationCascadeEnum.All, Lazy = true)]
         public IList<CollapsePillarPoint> collapse_pillar_points { get; set; }
 
@@ -37,25 +37,34 @@ namespace LibEntity
         /// <summary>
         ///     bindingID
         /// </summary>
+        [Property]
         public string bid { get; set; }
 
         /// <summary>
         ///     类别
         /// </summary>
         public string xtype { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
+
+
     }
 
     /// <summary>
     ///     20140531 lyf
     ///     陷落柱关键点实体
     /// </summary>
-    [ActiveRecord]
+    [ActiveRecord("collapse_pillar_points")]
     public class CollapsePillarPoint : ActiveRecordBase<CollapsePillarPoint>
     {
         [PrimaryKey(PrimaryKeyType.Identity)]
         public int id { get; set; }
 
-        [BelongsTo("id")]
+        [BelongsTo("collapse_pillar_id")]
         public CollapsePillar collapse_pillar { get; set; }
 
         [Property]
@@ -69,6 +78,12 @@ namespace LibEntity
 
         [Property]
         public string bid { get; set; }
+
+        [Property]
+        public DateTime created_at { get; set; } = DateTime.Now;
+
+        [Property]
+        public DateTime updated_at { get; set; } = DateTime.Now;
 
     }
 }
